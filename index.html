@@ -9,180 +9,6 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
     <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-
-    <style>
-      :root {
-        --white-bg: #FDFFF6;
-        --white-text: #ffffff;
-        --black: #1a1a1a;
-        --primary-color: #52b3f8;
-        --main-padding: 0 3%;
-        --font-caption: 1rem;
-        --font-body: 1.2rem;
-        --font-subheading: 1.4rem;
-        --font-heading: 1.6rem;
-        --font-display: 4rem;
-        --font-display-large: 5rem;
-        --font-weight-thin: 100;
-        --font-weight-extralight: 200;
-        --font-weight-light: 300;
-        --font-weight-regular: 400;
-        --font-weight-medium: 500;
-        --font-weight-semibold: 600;
-        --font-weight-bold: 700;
-        --font-weight-extrabold: 800;
-        --font-weight-black: 900;
-        --font-line-height-1-15: 1.15;
-        --font-line-height-1-3: 1.3;
-        --font-line-height-1-4: 1.4;
-        --font-line-height-1-5: 1.5;
-        --font-line-height-1-6: 1.6;
-        --transition-speed-fast: 0.3s;
-        --transition-speed-medium: 0.5s;
-        --transition-speed-slow: 0.7s;
-      }
-
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-      }
-
-      body {
-        width: 100%;
-        max-width: 2560px;
-        height: auto;
-        background-color: var(--white-bg);
-        color: var(--black);
-        padding: var(--main-padding);
-      }
-
-      main {
-        position: relative;
-        background-color: var(--white-bg);
-      }
-
-      section {
-        width: 100%;
-        height: 100vh;
-        margin-bottom: 2rem;
-      }
-
-      .site-header {
-        width: 100%;
-        height: auto;
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 2rem 0;
-        z-index: 1000;
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .nav-logo {
-        width: 75px;
-        height: 20px;
-        background-color: var(--primary-color);
-      }
-
-      .nav__list {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        list-style: none;
-      }
-
-      .nav__item {
-        font-size: var(--font-caption);
-        font-weight: var(--font-weight-regular);
-        width: auto;
-        height: auto;
-        padding: 0.3rem 0.6rem;
-        background-color: var(--white-bg);
-        color: var(--black);
-        border-radius: 5rem;
-        border: solid 0.06rem var(--black);
-        transition: background-color var(--transition-speed-fast), color var(--transition-speed-fast);
-      }
-
-      .nav__item:hover {
-        cursor: pointer;
-        background-color: var(--black);
-        color: var(--white-text);
-      }
-
-      .nav__link {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .intro__heading {
-        font-size: var(--font-sub-heading);
-        font-weight: var(--font-weight-medium);
-        line-height: var(--font-line-height-1-4);
-        text-align: left;
-      }
-
-      .intro__title {
-        font-size: var(--font-display-large);
-        font-weight: var(--font-weight-bold);
-        line-height: var(--font-line-height-1-3);
-        text-align: left;
-        white-space: pre-wrap;
-      }
-
-      .intro__title span {
-        opacity: 0;
-        animation: fadeInUp 0.5s forwards;
-        /* transform: translateY(1rem); */
-        white-space: pre-wrap;
-      }
-
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          /* transform: translateY(0); */
-        }
-      }
-
-      .about__container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .about__image {
-        width: 50%;
-        height: auto;
-        border-radius: 50%;
-      }
-
-      .about__content {
-        width: 50%;
-        height: auto;
-      }
-
-      .about__heading {
-        font-size: var(--font-heading);
-        font-weight: var(--font-weight-semibold);
-        line-height: var(--font-line-height-1-4);
-        text-align: left;
-      }
-
-      .about__text {
-        font-size: var(--font-body);
-        font-weight: var(--font-weight-regular);
-        line-height: var(--font-line-height-1-5);
-        text-align: left;
-      }
-    </style>
   </head>
 
   <body>
@@ -190,79 +16,97 @@
       <header class="site-header">
         <nav class="nav">
           <img src="#" alt="logo" class="nav-logo">
-          <ul class="nav__list">
-            <li class="nav__item"><a href="#home" class="nav__link" id="nav__home">Home</a></li>
-            <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-            <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-            <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
-            <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+          <ul class="nav--list">
+            <li class="nav--item" id="nav--home">Home</li>
+            <li class="nav--item" id="nav--about">About</li>
+            <li class="nav--item" id="nav--skills">Skills</li>
+            <li class="nav--item" id="nav--projects">Projects</li>
+            <li class="nav--item" id="nav--contact">Contact</li>
           </ul>
+
+            <button class="nav--button" id="theme-toggle" aria-label="라이트 모드로 전환">
+              <img src="./assets/images/light-mode-icon.svg" class="nav--button-icon" alt="라이트 모드 아이콘">
+              <span class="nav--button-text">Light</span>
+            </button>
         </nav>
       </header>
 
-      <section class="intro__section">
-        <h1 class="intro__heading">안녕하세요. 노현수입니다.</h1>
-
-        <!-- <p class="intro__title">Front-End Developer Web Developer Communicating Developing Hard-Working HTML CSS
-          JavaScript Git UI/UX</p> -->
-
-        <p class="intro__title"></p>
-      </section>
-
-      <section class="about__section">
-        <div class="about__container">
-          <img src="" alt="" class="about__image">
-          <div class="about__content">
-            <h2 class="about__heading">안녕하세요. 프론트엔드 개발자 노현수입니다.</h2>
-            <p class="about__text">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-          </div>
+      <section class="intro--section">
+        <h1 class="intro--heading">Hello, I'm Ro HyunSoo.</h1>
+        <div class="intro--description">
+          <p class="intro--job">Front-End<br>Developer</p>
+          <p class="intro--text">안녕하세요, 노현수입니다.<br>사용자 경험을 최우선으로 하며, 끈기와 소통으로 문제를 해결하고<br>
+            팀과 함께 성장하는 프론트엔드 개발자입니다.</p>
         </div>
+
       </section>
+
+      <section class="about--section">
+        <h2 class="section--heading">About</h2>
+
+        <div class="about--container">
+          <div class="about--container-image">
+            <img src="./assets/images/profile.png" alt="증명사진">
+          </div>
+          <div class="about--container-info">
+            <p class="about--title">노현수<br>
+              <span class="about--info-description">Front-End Developer</span><br>
+              <span class="about--info-description">2000. 11. 07</span>
+            </p>
+            <p class="about--bio"><span style="font-weight: 600;">•</span> JavaScript를 주요 언어로 삼아 발전하는 프론트엔드 개발자입니다.<br>
+              <span style="font-weight: 600;">•</span> 팀 프로젝트 경험을 통해 소통하는 능력을 키워갑니다.<br>
+              <span style="font-weight: 600;">•</span> 성실한 자세로 최신 기술을 지속적으로 학습하고 있습니다.
+            </p>
+            <div class="link--icon-container">
+              <a href="https://github.com/toosign00/" target="_blank">
+                <div class="link--icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 0C18.6276 0 24 5.50791 24 12.3035C24 17.7383 20.5656 22.3487 15.8004 23.9771C15.192 24.0983 14.976 23.7141 14.976 23.3865C14.976 22.9809 14.9904 21.6562 14.9904 20.0098C14.9904 18.8626 14.6064 18.1138 14.1756 17.7322C16.848 17.4274 19.656 16.3869 19.656 11.6613C19.656 10.3173 19.1904 9.22058 18.42 8.35898C18.5448 8.04818 18.9564 6.79674 18.3024 5.10234C18.3024 5.10234 17.2968 4.77267 15.006 6.36387C14.0472 6.09147 13.02 5.95441 12 5.94961C10.98 5.95441 9.954 6.09147 8.9964 6.36387C6.7032 4.77267 5.6952 5.10234 5.6952 5.10234C5.0436 6.79674 5.4552 8.04818 5.5788 8.35898C4.812 9.22058 4.3428 10.3173 4.3428 11.6613C4.3428 16.3749 7.1448 17.4314 9.81 17.7422C9.4668 18.0494 9.156 18.5913 9.048 19.3869C8.364 19.7013 6.6264 20.2454 5.556 18.365C5.556 18.365 4.9212 17.1829 3.7164 17.0965C3.7164 17.0965 2.5464 17.0809 3.6348 17.8441C3.6348 17.8441 4.4208 18.2221 4.9668 19.6441C4.9668 19.6441 5.6712 21.8401 9.0096 21.0961C9.0156 22.1245 9.0264 23.0937 9.0264 23.3865C9.0264 23.7117 8.8056 24.0923 8.2068 23.9783C3.438 22.3523 0 17.7395 0 12.3035C0 5.50791 5.3736 0 12 0Z"
+                      fill="white" />
+                  </svg>
+                </div>
+              </a>
+              <a href="https://www.linkedin.com/in/hyunsoo-ro-97871431b/" target="_blank">
+                <div class="link--icon">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M20 20H16V13.001C16 11.081 15.153 10.0098 13.634 10.0098C11.981 10.0098 11 11.126 11 13.001V20H7V7H11V8.46191C11 8.46191 12.255 6.25977 15.083 6.25977C17.912 6.25977 20 7.98611 20 11.5581V20ZM2.442 4.9209C1.093 4.9209 0 3.81896 0 2.45996C0 1.10196 1.093 0 2.442 0C3.79 0 4.883 1.10196 4.883 2.45996C4.884 3.81896 3.79 4.9209 2.442 4.9209ZM0 20H5V7H0V20Z"
+                      fill="white" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div>
+              <div class="about--container-info">
+                <p class="about--title">학력</p>
+                <p class="about--info-description">계원예술대학교 디지털미디어디자인과 졸업<br>
+                  <span style="font-size: var(--font-caption);">2023. 03 ~ 2025. 02</span>
+                </p>
+                <p class="about--info-description">고잔고등학교 졸업<br>
+                  <span style="font-size: var(--font-caption);">2016. 03 ~ 2019. 02</span>
+                </p>
+              </div>
+            </div>
+            <div>
+              <div class="about--container-info">
+                <p class="about--title">경력 및 수상</p>
+                <p class="about--info-description">커뮤니케이션디자인국제공모전 UI/UX 부문 우수상<br>
+                  <span style="font-size: var(--font-caption);">2024. 07</span>
+                </p>
+              </div>
+            </div>
+          </div>
+      </section>
+
+      <section class="skills--section">
+        <h2 class="section--heading">Skills</h2>
+        <p>HTML 5</p>
     </main>
 
-    <script>
-      // 헤더 높이만큼 section padding-top 조정
-      document.addEventListener("DOMContentLoaded", () => {
-        let header = document.querySelector(".site-header");
-        let introSection = document.querySelector(".intro__section");
-
-        let adjustSectionPadding = () => {
-          let headerHeight = header.offsetHeight;
-          introSection.style.paddingTop = `${headerHeight}px`;
-        };
-
-        // 네비게이션 메뉴 클릭 시 해당 section으로 이동
-        let navHome = document.querySelector("#nav__home");
-
-        navHome.addEventListener("click", () => {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-          });
-        });
-
-        // 함수 실행 및 윈도우 리사이즈 이벤트 발생 시 함수 실행
-        adjustSectionPadding();
-        window.addEventListener("resize", adjustSectionPadding);
-
-        let introTitle = document.querySelector(".intro__title");
-        let introTitleText = `A front-end developer dedicated to prioritizing user experience and solving problems through persistence and communication.`;
-
-        // 텍스트를 문자 단위로 분리
-        let characters = introTitleText.split('');
-
-        // 랜덤한 delay 시간 계산
-        let intoTitleMaxDelay = 2.8; // 최대 지연 시간 (초)
-        let introTitleDelays = characters.map(() => Math.random() * intoTitleMaxDelay);
-
-        // 문자와 애니메이션 delay 적용
-        introTitle.innerHTML = characters.map((char, index) =>
-          `<span style="animation-delay: ${introTitleDelays[index]}s">${char}</span>`
-        ).join('');
-      });
-
-
-    </script>
+    <script src="./assets/js/main.js"></script>
   </body>
 
 </html>
