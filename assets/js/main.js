@@ -125,23 +125,45 @@ document.addEventListener('DOMContentLoaded', () => {
 // EmailJS 초기화
 emailjs.init("_fLh71BSAA_4dy3Bh");
 
-// 폼 제출 이벤트 처리
-document.getElementById('emailForm').addEventListener('submit', function (event) {
+// 이메일 유효성 검사 함수
+function isValidEmail(email) {
+  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return pattern.test(email);
+}
+
+// 폼 제출 이벤트에 대한 핸들러 등록
+document.getElementById('emailForm').addEventListener('submit', async function (event) {
+  // 폼의 기본 제출 동작 방지
   event.preventDefault();
 
-  // 전송 버튼 비활성화
-  document.querySelector('.submit--btn').disabled = true;
+  // 입력 필드와 버튼 선택
+  const emailInput = this.querySelector('[name="reply_to"]');
+  const submitButton = document.querySelector('.submit--btn');
+  const email = emailInput.value;
 
-  // EmailJS로 이메일 전송
-  emailjs.sendForm('Portfolio_Email_Form', 'template_7a418yv', this, '_fLh71BSAA_4dy3Bh')
-    .then(function () {
-      alert('이메일이 성공적으로 전송되었습니다!');
-      document.getElementById('emailForm').reset();
-    }, function (error) {
-      alert('전송 실패: ' + error.text);
-    })
-    .finally(function () {
-      // 전송 버튼 다시 활성화
-      document.querySelector('.submit--btn').disabled = false;
-    });
+  // 이메일 유효성 검사
+  if (!isValidEmail(email)) {
+    emailInput.setCustomValidity('올바른 이메일 형식이 아닙니다.');
+    // 브라우저의 기본 검증 UI로 오류 표시
+    emailInput.reportValidity();
+    return;
+  }
+
+  // 이메일이 유효한 경우 이전 오류 메시지 초기화
+  emailInput.setCustomValidity(''); // 유효성 메시지 초기화
+
+  // Loading 상태 표시
+  submitButton.disabled = true;
+  submitButton.innerHTML = '<i class="bi bi-hourglass"></i> 전송중...';
+
+  try {
+    await emailjs.sendForm('Portfolio_Email_Form', 'template_7a418yv', this, '_fLh71BSAA_4dy3Bh');
+    alert('이메일이 성공적으로 전송되었습니다!');
+    this.reset();
+  } catch (error) {
+    alert('전송 실패: ' + error.text);
+  } finally {
+    submitButton.disabled = false;
+    submitButton.innerHTML = '보내기 <i class="bi bi-send"></i>';
+  }
 });
