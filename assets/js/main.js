@@ -114,3 +114,29 @@ document.addEventListener('DOMContentLoaded', () => {
     box.addEventListener('click', () => typeWriter(designText));
   });
 });
+
+// EmailJS 초기화 
+emailjs.init("_fLh71BSAA_4dy3Bh");
+
+// 폼 제출 이벤트 처리
+document.getElementById('emailForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // 전송 버튼 비활성화
+    document.querySelector('.submit--btn').disabled = true;
+
+    // EmailJS로 이메일 전송
+    emailjs.sendForm('Portfolio_Email_Form', 'template_7a418yv', this, {
+        to_name: "노현수"
+    })
+        .then(function() {
+            alert('이메일이 성공적으로 전송되었습니다!');
+            document.getElementById('emailForm').reset();
+        }, function(error) {
+            alert('전송 실패: ' + error.text);
+        })
+        .finally(function() {
+            // 전송 버튼 다시 활성화
+            document.querySelector('.submit--btn').disabled = false;
+        });
+});
