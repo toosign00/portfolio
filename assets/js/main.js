@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 document.addEventListener("DOMContentLoaded", () => {
   // 시스템 다크모드 감지 및 초기 테마 설정
   // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -116,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // EmailJS 초기화 
-emailjs.init("EMAILJS_PUBLIC_KEY");
+emailjs.init("YOUR_PUBLIC_KEY");
 
 // 폼 제출 이벤트 처리
 document.getElementById('emailForm').addEventListener('submit', function (event) {
@@ -126,7 +128,7 @@ document.getElementById('emailForm').addEventListener('submit', function (event)
   document.querySelector('.submit--btn').disabled = true;
 
   // EmailJS로 이메일 전송
-  emailjs.sendForm('EMAILJS_SERVICE_ID', 'EMAILJS_TEMPLATE_ID', this, {
+  emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this, {
     to_name: "노현수"
   })
     .then(function () {

@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@vercel/speed-insights": "^1.1.0"
+    "@vercel/speed-insights": "^1.1.0",
+    "dotenv": "^16.4.7"
   }
 }
