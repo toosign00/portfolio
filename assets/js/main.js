@@ -1,23 +1,28 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // 시스템 다크모드 감지 및 초기 테마 설정
-  // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  //   document.body.setAttribute("data-theme", "dark");
-  //   document.querySelector(".nav--button-text").textContent = "Dark";
-  //   document.querySelector(".nav--button-icon").src = "./assets/images/dark-mode-icon.svg";
-  // }
+document.addEventListener('DOMContentLoaded', function () {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  const body = document.body;
+  const buttonText = document.querySelector(".nav--button-text");
+  const buttonIcon = document.querySelector(".nav--button-icon");
 
-  // 테마 토글 이벤트
-  document.getElementById("theme-toggle").addEventListener("click", function () {
-    const body = document.body;
-    const currentTheme = body.getAttribute("data-theme") || "light";
-    const isDark = currentTheme === "dark";
+  body.setAttribute('data-theme', savedTheme);
+  buttonText.textContent = savedTheme === 'dark' ? 'Dark' : 'Light';
+  buttonIcon.src = savedTheme === 'dark'
+    ? "./assets/images/dark-mode-icon.svg"
+    : "./assets/images/light-mode-icon.svg";
+});
 
-    body.setAttribute("data-theme", isDark ? "light" : "dark");
-    document.querySelector(".nav--button-text").textContent = isDark ? "Light" : "Dark";
-    document.querySelector(".nav--button-icon").src = isDark
-      ? "./assets/images/light-mode-icon.svg"
-      : "./assets/images/dark-mode-icon.svg";
-  });
+document.getElementById("theme-toggle").addEventListener("click", function () {
+  const body = document.body;
+  const currentTheme = body.getAttribute("data-theme") || "light";
+  const isDark = currentTheme === "dark";
+  const newTheme = isDark ? "light" : "dark";
+
+  body.setAttribute("data-theme", newTheme);
+  localStorage.setItem('theme', newTheme);
+  document.querySelector(".nav--button-text").textContent = !isDark ? "Dark" : "Light";
+  document.querySelector(".nav--button-icon").src = isDark
+    ? "./assets/images/light-mode-icon.svg"
+    : "./assets/images/dark-mode-icon.svg";
 });
 
 // 헤더 높이만큼 section padding-top 조정

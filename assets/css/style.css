@@ -10,7 +10,7 @@
   --black: #1a1a1a;
   --primary-color: #472918;
   --main-padding: 0 5%;
-  --font-micro: 0.8rem;
+  --font-micro: 0.75rem;
   --font-caption: 1rem;
   --font-body: 1.2rem;
   --font-sub-heading: 1.4rem;
@@ -95,6 +95,7 @@ main {
   background-color: var(--white-bg);
   color: var(--black);
   transition: background-color var(--transition-speed-fast), color var(--transition-speed-fast);
+  flex: 1;
 }
 
 section {
@@ -621,4 +622,24 @@ section {
 
 .submit--btn:hover {
   opacity: 0.9;
+}
+
+footer {
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+.footer--container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer--text {
+  color: #666;
+  font-size: var(--font-micro);
+  line-height: 1.5;
+  text-align: center;
 }

@@ -11,6 +11,32 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      // 즉시 실행되는 인라인 스크립트
+      (function() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      })();
+    </script>
+    <style>
+      /* 초기 렌더링 차단 */
+    .theme-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--white-bg);
+      z-index: 9999;
+      transition: opacity 0.2s;
+      opacity: 1;
+    }
+
+    .theme-loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    </style>
   </head>
 
   <body>
@@ -303,6 +329,12 @@
           </form>
         </div>
       </section>
+
+      <footer>
+        <div class="footer--container">
+          <p class="footer--text">© 2024. Ro HyunSoo. All rights reserved.</p>
+        </div>
+      </footer>
     </main>
 
     <!-- 메인 스크립트 -->
