@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      import { injectSpeedInsights } from '@vercel/speed-insights';
+
+      injectSpeedInsights();
+    </script>
   </head>
 
   <body>
@@ -253,7 +258,7 @@
           </article>
         </div>
       </section>
-      
+
       <section id="contact">
 
         <h2 class="section--heading">Contact</h2>
@@ -286,10 +291,6 @@
     </main>
 
     <script src="./assets/js/main.js"></script>
-    <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
   </body>
 
 </html>
