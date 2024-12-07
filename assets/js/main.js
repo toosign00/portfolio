@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+console.log("Public Key:", process.env.EMAILJS_PUBLIC_KEY);
 // EmailJS 초기화 
 emailjs.init("EMAILJS_PUBLIC_KEY");
 
