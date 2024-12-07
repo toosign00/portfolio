@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// EmailJS 초기화 
+// EmailJS 초기화
 emailjs.init("_fLh71BSAA_4dy3Bh");
 
 // 폼 제출 이벤트 처리
@@ -126,9 +126,7 @@ document.getElementById('emailForm').addEventListener('submit', function (event)
   document.querySelector('.submit--btn').disabled = true;
 
   // EmailJS로 이메일 전송
-  emailjs.sendForm('Portfolio_Email_Form', 'template_7a418yv', this, {
-    to_name: "노현수"
-  })
+  emailjs.sendForm('Portfolio_Email_Form', 'template_7a418yv', this, '_fLh71BSAA_4dy3Bh')
     .then(function () {
       alert('이메일이 성공적으로 전송되었습니다!');
       document.getElementById('emailForm').reset();
