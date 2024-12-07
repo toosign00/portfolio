@@ -1,28 +1,28 @@
 document.addEventListener('DOMContentLoaded', function () {
   const savedTheme = localStorage.getItem('theme') || 'light';
-  const body = document.body;
   const buttonText = document.querySelector(".nav--button-text");
   const buttonIcon = document.querySelector(".nav--button-icon");
 
-  body.setAttribute('data-theme', savedTheme);
-  buttonText.textContent = savedTheme === 'dark' ? 'Dark' : 'Light';
-  buttonIcon.src = savedTheme === 'dark'
-    ? "./assets/images/dark-mode-icon.svg"
-    : "./assets/images/light-mode-icon.svg";
-});
+  // UI 요소만 업데이트
+  updateThemeUI(savedTheme);
 
-document.getElementById("theme-toggle").addEventListener("click", function () {
-  const body = document.body;
-  const currentTheme = body.getAttribute("data-theme") || "light";
-  const isDark = currentTheme === "dark";
-  const newTheme = isDark ? "light" : "dark";
+  // 테마 전환 버튼 이벤트 리스너
+  document.getElementById("theme-toggle").addEventListener("click", function () {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
 
-  body.setAttribute("data-theme", newTheme);
-  localStorage.setItem('theme', newTheme);
-  document.querySelector(".nav--button-text").textContent = !isDark ? "Dark" : "Light";
-  document.querySelector(".nav--button-icon").src = isDark
-    ? "./assets/images/light-mode-icon.svg"
-    : "./assets/images/dark-mode-icon.svg";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeUI(newTheme);
+  });
+
+  // UI 업데이트 함수
+  function updateThemeUI(theme) {
+    buttonText.textContent = theme === "dark" ? "Dark" : "Light";
+    buttonIcon.src = theme === "dark"
+      ? "./assets/images/dark-mode-icon.svg"
+      : "./assets/images/light-mode-icon.svg";
+  }
 });
 
 // 헤더 높이만큼 section padding-top 조정

@@ -1,15 +1,12 @@
-[data-theme="dark"] {
-  --white-bg: #1a1a1a;
-  --white-text: #1a1a1a;
-  --black: #FDFFF6;
-}
-
 :root {
+  /* Light theme (default) */
   --white-bg: #FDFFF6;
   --white-text: #ffffff;
   --black: #1a1a1a;
   --primary-color: #472918;
   --main-padding: 0 5%;
+  
+  /* Font sizes */
   --font-micro: 0.75rem;
   --font-caption: 1rem;
   --font-body: 1.2rem;
@@ -18,6 +15,8 @@
   --font-display-small: 2.5rem;
   --font-display: 3.5rem;
   --font-display-large: 4.5rem;
+  
+  /* Font weights */
   --font-weight-thin: 100;
   --font-weight-extralight: 200;
   --font-weight-light: 300;
@@ -27,11 +26,53 @@
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
   --font-weight-black: 900;
+  
+  /* Line heights */
   --font-line-height-1-15: 1.15;
   --font-line-height-1-3: 1.3;
   --font-line-height-1-4: 1.4;
   --font-line-height-1-5: 1.5;
   --font-line-height-1-6: 1.6;
+  
+  /* Transitions */
+  --transition-speed-fast: 0.3s;
+  --transition-speed-medium: 0.5s;
+  --transition-speed-slow: 0.7s;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --white-bg: #1a1a1a;
+  --white-text: #ffffff;
+  --black: #FDFFF6;
+  --primary-color: #8B6D5C;
+  
+  --main-padding: 0 5%;
+  --font-micro: 0.75rem;
+  --font-caption: 1rem;
+  --font-body: 1.2rem;
+  --font-sub-heading: 1.4rem;
+  --font-heading: 1.6rem;
+  --font-display-small: 2.5rem;
+  --font-display: 3.5rem;
+  --font-display-large: 4.5rem;
+  
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+  
+  --font-line-height-1-15: 1.15;
+  --font-line-height-1-3: 1.3;
+  --font-line-height-1-4: 1.4;
+  --font-line-height-1-5: 1.5;
+  --font-line-height-1-6: 1.6;
+  
   --transition-speed-fast: 0.3s;
   --transition-speed-medium: 0.5s;
   --transition-speed-slow: 0.7s;
@@ -94,8 +135,8 @@ main {
   position: relative;
   background-color: var(--white-bg);
   color: var(--black);
-  transition: background-color var(--transition-speed-fast), color var(--transition-speed-fast);
   flex: 1;
+  transition: background-color var(--transition-speed-fast), color var(--transition-speed-fast);
 }
 
 section {
@@ -146,9 +187,9 @@ section {
 }
 
 .nav--link:hover {
-  cursor: pointer;
-  background-color: var(--black);
-  color: var(--white-text);
+    cursor: pointer;
+    background-color: var(--black);
+    color: var(--white-bg);
 }
 
 .nav--button {
@@ -324,7 +365,7 @@ section {
 .cv--button:hover {
   cursor: pointer;
   background-color: var(--black);
-  color: var(--white-text);
+  color: var(--white-bg);
 }
 
 .cv--button span {
@@ -420,7 +461,7 @@ section {
 .skill--box:hover {
   cursor: pointer;
   background-color: var(--black);
-  color: var(--white-text);
+  color: var(--white-bg);
 }
 
 .skill--box-text {
