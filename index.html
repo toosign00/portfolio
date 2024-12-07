@@ -256,21 +256,6 @@
         <h2 class="section--heading">Projects</h2>
 
         <div class="projects--grid">
-          <article class="project--item">
-            <div class="project--thumbnail">
-              <img src="./assets/images/thumbnail.png" alt="프로젝트 썸네일">
-            </div>
-            <div class="project--info">
-              <h3 class="project--title">TYPE</h3>
-              <p class="project--duration">2024.04 ~ 2024.07</p>
-              <p class="project--description">타이포그래피 소개 웹사이트</p>
-              <div class="project--tags">
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-                <span class="tag">JavaScript</span>
-              </div>
-            </div>
-          </article>
 
           <article class="project--item">
             <div class="project--thumbnail">
@@ -290,7 +275,7 @@
 
           <article class="project--item">
             <div class="project--thumbnail">
-              <img src="./assets/images/thumbnail.png" alt="프로젝트 썸네일">
+              <img src="./assets/images/thumbnail.webp" alt="프로젝트 썸네일">
             </div>
             <div class="project--info">
               <h3 class="project--title">TYPE</h3>
@@ -303,6 +288,39 @@
               </div>
             </div>
           </article>
+
+          <article class="project--item">
+            <div class="project--thumbnail">
+              <img src="./assets/images/thumbnail-2.webp" alt="프로젝트 썸네일">
+            </div>
+            <div class="project--info">
+              <h3 class="project--title">기묘한 이야기 미니 게임</h3>
+              <p class="project--duration">2024.04 ~ 2024.07</p>
+              <p class="project--description">카드 짝 맞추기 게임</p>
+              <div class="project--tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+            </div>
+          </article>
+          
+
+          <div class="modal" id="projectModal">
+            <div class="modal--overlay"></div>
+            <button class="modal--close">
+              <i class="bi bi-x"></i>
+            </button>
+            <div class="modal--content">
+              <div class="modal--body">
+                <img class="modal--image" src="" alt="프로젝트 이미지">
+                <h3 class="modal--title"></h3>
+                <p class="modal--duration"></p>
+                <p class="modal--description"></p>
+                <div class="modal--tags"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -335,7 +353,9 @@
 
             <div class="form--group">
               <label for="from">Email</label>
-              <input type="email" id="from" name="reply_to" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" " required placeholder="이메일을 입력해주세요." class="form--input">
+              <input type="email" id="from" name="reply_to"
+                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" " required placeholder=" 이메일을 입력해주세요"
+                class="form--input">
             </div>
             <!-- 내용 -->
             <div class="form--group">
