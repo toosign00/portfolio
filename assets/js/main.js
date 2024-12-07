@@ -122,6 +122,54 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const projectItems = document.querySelectorAll('.project--item');
+  const modal = document.getElementById('projectModal');
+  const modalOverlay = modal.querySelector('.modal--overlay');
+  const modalClose = modal.querySelector('.modal--close');
+  
+  function openModal(projectData) {
+    // 모달 내용 업데이트
+    modal.querySelector('.modal--image').src = projectData.querySelector('img').src;
+    modal.querySelector('.modal--title').textContent = projectData.querySelector('.project--title').textContent;
+    modal.querySelector('.modal--duration').textContent = projectData.querySelector('.project--duration').textContent;
+    modal.querySelector('.modal--description').textContent = projectData.querySelector('.project--description').textContent;
+    
+    // 태그 복사
+    const tagsContainer = modal.querySelector('.modal--tags');
+    tagsContainer.innerHTML = '';
+    const tags = projectData.querySelectorAll('.tag');
+    tags.forEach(tag => {
+      const newTag = tag.cloneNode(true);
+      tagsContainer.appendChild(newTag);
+    });
+    
+    // 모달 표시
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // 스크롤 방지
+  }
+  
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // 스크롤 복원
+  }
+  
+  // 이벤트 리스너 등록
+  projectItems.forEach(item => {
+    item.addEventListener('click', () => openModal(item));
+  });
+  
+  modalClose.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', closeModal);
+  
+  // ESC 키로 모달 닫기
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+});
+
 // EmailJS 초기화
 emailjs.init("_fLh71BSAA_4dy3Bh");
 
