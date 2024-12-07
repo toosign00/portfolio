@@ -502,6 +502,7 @@ section {
 
 .project--duration {
   font-size: var(--font-caption);
+  font-weight: var(--font-weight-light);
   color: var(--black);
   opacity: 0.75;
 }
@@ -531,6 +532,31 @@ section {
 
 [data-theme="dark"] .tag {
   background-color: #222222;
+}
+
+.contact--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.contact--title {
+  font-size: var(--font-heading);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 1rem;
+}
+
+.contact--description {
+  font-size: var(--font-caption);
+  font-weight: var(--font-weight-light);
+  line-height: var(--font-line-height-1-6);
+  text-align: center;
+}
+
+.contact--description i {
+  margin-right: 0.2rem;
 }
 
 .upload--container {
@@ -588,6 +614,10 @@ section {
   font-size: var(--font-caption);
   cursor: pointer;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .submit--btn:hover {
