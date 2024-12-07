@@ -115,29 +115,38 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// EmailJS 초기화 
-emailjs.init(process.env.EMAILJS_PUBLIC_KEY);
+// EmailJS 초기화
+emailjs.init(config.EMAILJS_PUBLIC_KEY);
 
 // 폼 제출 이벤트 처리
-document.getElementById('emailForm').addEventListener('submit', function (event) {
-  event.preventDefault();
+document.getElementById('emailForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // 전송 버튼 비활성화
+    const submitButton = document.querySelector('.submit--btn');
+    submitButton.disabled = true;
+    submitButton.textContent = '전송 중...';
 
-  // 전송 버튼 비활성화
-  document.querySelector('.submit--btn').disabled = true;
-
-  // EmailJS로 이메일 전송
-  emailjs.sendForm(process.env.EMAILJS_SERVICE_ID,
-    process.env.EMAILJS_TEMPLATE_ID, this, {
-    to_name: "노현수"
-  })
-    .then(function () {
-      alert('이메일이 성공적으로 전송되었습니다!');
-      document.getElementById('emailForm').reset();
-    }, function (error) {
-      alert('전송 실패: ' + error.text);
+    // EmailJS로 이메일 전송
+    emailjs.sendForm(
+        config.EMAILJS_SERVICE_ID,
+        config.EMAILJS_TEMPLATE_ID,
+        this,
+        {
+            to_name: "노현수"
+        }
+    )
+    .then(function() {
+        alert('이메일이 성공적으로 전송되었습니다!');
+        document.getElementById('emailForm').reset();
     })
-    .finally(function () {
-      // 전송 버튼 다시 활성화
-      document.querySelector('.submit--btn').disabled = false;
+    .catch(function(error) {
+        alert('전송 실패: ' + error.text);
+        console.error('EmailJS error:', error);
+    })
+    .finally(function() {
+        // 전송 버튼 상태 복구
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send';
     });
 });
