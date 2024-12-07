@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 console.log("Public Key:", process.env.EMAILJS_PUBLIC_KEY);
 // EmailJS 초기화 
-emailjs.init("EMAILJS_PUBLIC_KEY");
+emailjs.init(process.env.EMAILJS_PUBLIC_KEY);
 
 // 폼 제출 이벤트 처리
 document.getElementById('emailForm').addEventListener('submit', function (event) {
@@ -127,9 +127,14 @@ document.getElementById('emailForm').addEventListener('submit', function (event)
   document.querySelector('.submit--btn').disabled = true;
 
   // EmailJS로 이메일 전송
-  emailjs.sendForm('EMAILJS_SERVICE_ID', 'EMAILJS_TEMPLATE_ID', this, {
-    to_name: "노현수"
-  })
+  emailjs.sendForm(
+    process.env.EMAILJS_SERVICE_ID,
+    process.env.EMAILJS_TEMPLATE_ID,
+    this,
+    {
+      to_name: "노현수"
+    }
+  )
     .then(function () {
       alert('이메일이 성공적으로 전송되었습니다!');
       document.getElementById('emailForm').reset();
