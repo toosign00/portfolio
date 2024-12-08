@@ -119,6 +119,9 @@ section {
   left: 0;
   padding: 2rem 5%;
   z-index: 1000;
+  /* background-color: rgba(var(--white-bg), 0.8);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); */
 }
 
 .nav {
@@ -254,6 +257,7 @@ section {
 .about--container {
   display: flex;
   width: 80%;
+  max-width: 75rem;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
@@ -368,9 +372,9 @@ section {
 
 .skills--section-content {
   width: 80%;
-  max-width: 1200px;
+  max-width: 75rem;
   display: grid;
-  grid-template-columns: 45% 55%;
+  grid-template-columns: 4.5fr 5.5fr;
   gap: 8.5rem;
   margin: 0 auto;
 }
@@ -467,7 +471,7 @@ section {
   gap: 1rem;
   background-color: var(--white-bg);
   box-shadow: 0 0 0.625rem rgb(from var(--black) r g b / 0.1);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   overflow: hidden;
   transition: scale var(--transition-speed-medium);
 }
@@ -485,7 +489,7 @@ section {
 .project--thumbnail {
   width: 100%;
   aspect-ratio: 16/9;
-  border-radius: 0.5rem;
+  border-radius: 0.5rem 0.5rem 0 0;
   overflow: hidden;
 }
 
@@ -580,7 +584,8 @@ section {
 }
 
 .modal.active .modal--content {
-  transform: translate(-50%, -50%) scale(1);  /* 원래 크기로 */
+  transform: translate(-50%, -50%) scale(1);
+  /* 원래 크기로 */
   opacity: 1;
 }
 
