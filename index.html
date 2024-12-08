@@ -2,25 +2,33 @@
 <html lang="ko" data-theme="light">
 
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QPSZDNEFC"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-
-      gtag('config', 'G-1QPSZDNEFC');
-    </script>
+    <!-- 필수 메타 태그 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Google Search Console -->
-    <meta name="google-site-verification" content="Xs97WEO81rhax5GdXYKdDXSzQ3IaEdXmTM3fSXpHuMQ" />
+    <title>노현수 | 프론트엔드 포트폴리오</title>
 
     <!-- SEO 메타 태그 -->
+    <link rel="canonical" href="https://hyunsoo-portfolio.vercel.app" />
     <meta name="description" content="프론트엔드 개발자 노현수의 포트폴리오입니다.">
-    <meta name="keywords" content="프론트엔드, 개발자, 포트폴리오, HTML, CSS, JavaScript, React, Git, GitHub, 노현수">
+    <meta name="keywords" content="프론트엔드, 개발자, 웹개발, UI/UX, 반응형웹, 포트폴리오, HTML, CSS, JavaScript, React, Git, GitHub, 노현수">
     <meta name="author" content="노현수">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+
+    <!-- 파비콘 -->
+    <link rel="icon" href="#" type="image/x-icon">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" as="style" crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link rel="stylesheet" href="./assets/css/normalize.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- External Libraries -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <!-- Open Graph 메타 태그 (소셜 미디어 공유용) -->
     <meta property="og:title" content="노현수 | 프론트엔드 포트폴리오">
@@ -35,17 +43,24 @@
     <meta name="twitter:description" content="프론트엔드 개발자 노현수의 포트폴리오입니다.">
     <meta name="twitter:image" content="https://hyunsoo-portfolio.vercel.app/assets/images/meta-thumbnail.png">
 
-    <!-- 모바일 최적화 -->
+    <!-- 추가 메타 태그 -->
     <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- 파비콘 -->
-    <link rel="icon" href="#" type="image/x-icon">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="Xs97WEO81rhax5GdXYKdDXSzQ3IaEdXmTM3fSXpHuMQ" />
 
-    <!-- 검색엔진 관련 -->
-    <meta name="robots" content="index,follow">
-    <meta name="googlebot" content="index,follow">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QPSZDNEFC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-1QPSZDNEFC');
+    </script>
+
+    <!-- Blocking JS -->
     <script>
       // 페이지 로드 전에 즉시 테마 적용
       (function () {
@@ -53,13 +68,6 @@
         document.documentElement.setAttribute('data-theme', savedTheme);
       })();
     </script>
-    <title>노현수 | 프론트엔드 포트폴리오</title>
-    <link rel="stylesheet" as="style" crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-    <link rel="stylesheet" href="./assets/css/normalize.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   </head>
 
   <body>
@@ -111,7 +119,7 @@
 
         <div class="about--container">
           <div class="about--container-image">
-            <img src="./assets/images/profile.png" alt="증명사진">
+            <img src="./assets/images/profile.png" alt="노현수 프론트엔드 개발자 프로필 사진">
           </div>
           <div class="about--container-info">
             <p class="about--title">노현수<br>
@@ -176,6 +184,7 @@
               </div>
             </div>
           </div>
+        </div>
       </section>
 
       <section id="skills">
@@ -240,9 +249,6 @@
                   <p class="skill--box-text">Adobe Illustrator</p>
                 </div>
                 <div class="skill--box design-box">
-                  <p class="skill--box-text">Adobe Photoshop</p>
-                </div>
-                <div class="skill--box design-box">
                   <p class="skill--box-text">Adobe Premiere Pro</p>
                 </div>
               </div>
@@ -304,7 +310,7 @@
               </div>
             </div>
           </article>
-          
+
 
           <div class="modal" id="projectModal">
             <div class="modal--overlay"></div>
@@ -342,7 +348,7 @@
         </div>
 
         <div class="upload--container">
-          <form id="emailForm" class="upload--form">
+          <form id="emailForm">
             <!-- 받는 사람, 숨김처리 -->
             <input type="hidden" name="to_name" value="노현수">
             <!-- 보내는 사람 -->
@@ -353,7 +359,7 @@
 
             <div class="form--group">
               <label for="from">Email</label>
-              <input type="email" id="from" name="reply_to"
+              <input type="email" id="email" name="reply_to"
                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" " required placeholder=" 이메일을 입력해주세요"
                 class="form--input">
             </div>
