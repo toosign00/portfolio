@@ -215,3 +215,37 @@ document.getElementById('emailForm').addEventListener('submit', async function (
     submitButton.innerHTML = '보내기 <i class="bi bi-send"></i>';
   }
 });
+
+
+// const tags = document.querySelectorAll('.project--tags');
+
+// tags.forEach(tag => {
+//   let isDown = false;
+//   let startX;
+//   let scrollLeft;
+
+//   tag.addEventListener('mousedown', (e) => {
+//     isDown = true;
+//     tag.style.cursor = 'grabbing';
+//     startX = e.pageX - tag.offsetLeft;
+//     scrollLeft = tag.scrollLeft;
+//   });
+
+//   tag.addEventListener('mouseleave', () => {
+//     isDown = false;
+//     tag.style.cursor = 'grab';
+//   });
+
+//   tag.addEventListener('mouseup', () => {
+//     isDown = false;
+//     tag.style.cursor = 'grab';
+//   });
+
+//   tag.addEventListener('mousemove', (e) => {
+//     if(!isDown) return;
+//     e.preventDefault();
+//     const x = e.pageX - tag.offsetLeft;
+//     const walk = (x - startX);
+//     tag.scrollLeft = scrollLeft - walk;
+//   });
+// });

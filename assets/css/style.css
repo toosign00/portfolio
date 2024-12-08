@@ -529,6 +529,9 @@ section {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 0.5rem;
+  /* overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none; */
 }
 
 .tag {
