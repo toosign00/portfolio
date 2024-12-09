@@ -123,42 +123,59 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 필요한 DOM 요소들 선택
   const projectItems = document.querySelectorAll('.project--item');
   const modal = document.getElementById('projectModal');
   const modalOverlay = modal.querySelector('.modal--overlay');
   const modalClose = modal.querySelector('.modal--close');
 
   function openModal(projectData) {
-    // 모달 내용 업데이트
+    // 이미지 업데이트
     modal.querySelector('.modal--image').src = projectData.querySelector('img').src;
+
+    // 타이틀 래퍼에 프로젝트 클래스 추가
+    const modalTitleWrapper = modal.querySelector('.modal--title-wrapper');
+    modalTitleWrapper.classList.add('project--title-wrapper');
+
+    // 타이틀과 타입에 프로젝트 클래스 추가
+    modal.querySelector('.modal--title').classList.add('project--title');
+    modal.querySelector('.modal--type').classList.add('project--type');
+
+    // 각 요소의 내용 업데이트
     modal.querySelector('.modal--title').textContent = projectData.querySelector('.project--title').textContent;
+    modal.querySelector('.modal--type').textContent = projectData.querySelector('.project--type').textContent;
     modal.querySelector('.modal--duration').textContent = projectData.querySelector('.project--duration').textContent;
     modal.querySelector('.modal--description').textContent = projectData.querySelector('.project--description').textContent;
 
     // 태그 복사
     const tagsContainer = modal.querySelector('.modal--tags');
-    tagsContainer.innerHTML = '';
+    tagsContainer.innerHTML = '';  // 기존 태그 삭제
     const projectTags = projectData.querySelector('.project--tags');
     if (projectTags) {
-      // project--tags의 내용을 그대로 복사
       const newTags = projectTags.cloneNode(true);
       tagsContainer.appendChild(newTags);
     }
 
-    // 모달 표시
+    // 모달 활성화
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // 스크롤 방지
+    document.body.style.overflow = 'hidden';  // 배경 스크롤 방지
   }
 
   function closeModal() {
     modal.classList.remove('active');
-    document.body.style.overflow = ''; // 스크롤 복원
+    document.body.style.overflow = '';  // 스크롤 복원
+
+    // 모달 닫을 때 추가했던 프로젝트 클래스들 제거
+    modal.querySelector('.modal--title-wrapper').classList.remove('project--title-wrapper');
+    modal.querySelector('.modal--title').classList.remove('project--title');
+    modal.querySelector('.modal--type').classList.remove('project--type');
   }
 
-  // 이벤트 리스너 등록
+  // 이벤트 리스너 설정
   projectItems.forEach(item => {
     item.addEventListener('click', () => openModal(item));
   });
+
   modalClose.addEventListener('click', closeModal);
   modalOverlay.addEventListener('click', closeModal);
 
