@@ -526,7 +526,6 @@ section {
 
 .project--tags {
   display: flex;
-  flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 0.5rem;
   /* overflow-x: auto;
@@ -534,13 +533,32 @@ section {
   scrollbar-width: none; */
 }
 
-.tag {
+.project--tags > img {
+  width: 1.7rem;
+  height: 1.7rem;
+  line-height: 1;
+  object-fit: contain;
+}
+
+/* 모달 안의 태그 스타일 따로 지정 */
+.modal--tags .project--tags {
+  gap: 1rem;
+}
+
+.modal--tags .project--tags > img {
+  width: 2.4rem;
+  height: 2.4rem;
+  line-height: 1;
+  object-fit: contain;
+}
+
+/* .tag {
   font-size: var(--font-caption);
   padding: 0.1rem 0.75rem;
   background-color: var(--white-bg);
   border: 1px solid var(--black);
   border-radius: 9999rem;
-}
+} */
 
 [data-theme="dark"] .tag {
   background-color: #222222;
