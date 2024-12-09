@@ -72,54 +72,76 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 설명 텍스트 객체 생성
-  const skillsMap = {
+  // 각 스킬 박스에 대한 설명을 담은 객체 생성
+  const skillDescriptions = {
     'html-box': 'HTML5 문서 구조를 이해하며, 시멘틱 코드를 사용하고, SEO 적용을 고려하여 최적화한 경험이 있습니다.',
     'css-box': 'Media Query, CSS3, Flex-box와 CSS Grid에 능숙하며, CSS 방법론을 사용해 재사용성과 유지보수성을 고려한 코드를 작성할 수 있습니다.',
     'js-box': 'JavaScript ES6 이상 문법과 DOM 조작을 활용해 동적 웹페이지를 구현하며, Stack, Queue, Event Loop, Heap 등의 동작 원리와 비동기 처리(Callback, async/await, Promise)에 대한 이해를 갖추고 있습니다.',
     'node-box': 'Node.js와 Express.js를 활용해 서버를 구축하고, npm으로 라이브러리를 관리하며, MongoDB와의 연동이 가능합니다.',
     'git-box': 'Git을 활용한 버전 관리와 branch, merge, rebase를 통한 협업에 능숙하며, 다양한 브랜치 전략(Git flow, Trunk-based)을 적용할 수 있습니다.',
-    'github-box': 'GitHub를 사용해 원격 저장소를 관리하고, Pull Request 기반의 코드 리뷰와 브랜치 보호 규칙 설정을 통해 협업 프로세스를 최적화한 경험이 있습니다.'
+    'github-box': 'GitHub를 사용해 원격 저장소를 관리하고, Pull Request 기반의 코드 리뷰와 브랜치 보호 규칙 설정을 통해 협업 프로세스를 최적화한 경험이 있습니다.',
+    'design': 'Figma와 Adobe 디자인 툴을 활용하며, UI/UX 디자인 프로세스에 대한 이해를 바탕으로 사용자 중심의 디자인을 구현할 수 있습니다.'
   };
 
-  // 타이핑 효과 함수
-  const resultsText = document.getElementById('results--text');
-  let typingTimeout;
-
-  const typeWriter = text => {
-    if (resultsText.textContent === text) return;
-
-    // 타이핑 중인 경우 타이핑 중지
-    clearTimeout(typingTimeout);
-    resultsText.textContent = '';
-    let index = 0;
-
-    // 타이핑 효과
-    const type = () => {
-      if (index < text.length) {
-        resultsText.textContent += text.charAt(index);
-        index++;
-        typingTimeout = setTimeout(type, 10);
-      }
-    };
-
-    // 타이핑 시작
-    type();
-  };
-
-  // 개별 스킬 박스 이벤트 리스너
-  Object.keys(skillsMap).forEach(id => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.addEventListener('click', () => typeWriter(skillsMap[id]));
+  // 타이핑 효과를 구현하는 클래스
+  class TypeWriter {
+    // 생성자: 텍스트를 표시할 DOM 요소와 타이핑 timeout ID 초기화
+    constructor(element) {
+      this.element = element;
+      this.typingTimeout = null;
     }
-  });
 
-  // 디자인 박스 공통 이벤트 리스너
-  const designText = 'Figma와 Adobe 디자인 툴을 활용하며, UI/UX 디자인 프로세스에 대한 이해를 바탕으로 사용자 중심의 디자인을 구현할 수 있습니다.';
-  document.querySelectorAll('.design-box').forEach(box => {
-    box.addEventListener('click', () => typeWriter(designText));
-  });
+    // 텍스트를 타이핑 효과로 출력하는 메서드
+    type(text, speed = 10) {
+      // 같은 텍스트가 이미 있다면 지우고 다시 시작
+      if (this.element.textContent === text) {
+        this.element.textContent = '';
+      }
+
+      // 진행 중인 타이핑이 있다면 중지
+      clearTimeout(this.typingTimeout);
+      this.element.textContent = '';
+
+      // 타이핑할 현재 문자의 위치
+      let index = 0;
+
+      // 한 글자씩 타이핑하는 함수
+      const typeChar = () => {
+        if (index < text.length) {
+          this.element.textContent += text.charAt(index);
+          index++;
+          this.typingTimeout = setTimeout(typeChar, speed);
+        }
+      };
+
+      // 타이핑 시작
+      typeChar();
+    }
+  }
+
+  // 설명 텍스트를 표시할 요소에 대한 타이핑 인스턴스 생성
+  const typewriter = new TypeWriter(document.querySelector('.skill--description-text'));
+
+  // 모든 스킬 박스에 클릭 이벤트 설정하는 함수
+  const initializeSkillBoxes = () => {
+    // 일반 스킬 박스들 이벤트 설정
+    Object.keys(skillDescriptions).forEach(id => {
+      if (id === 'design') return; // 디자인은 따로 처리
+
+      const element = document.getElementById(id);
+      if (element) {
+        element.addEventListener('click', () => typewriter.type(skillDescriptions[id]));
+      }
+    });
+
+    // 디자인 스킬 박스들 이벤트 설정
+    document.querySelectorAll('.design-box').forEach(box => {
+      box.addEventListener('click', () => typewriter.type(skillDescriptions['design']));
+    });
+  };
+
+  // 페이지 로드 시 초기화 실행
+  initializeSkillBoxes();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -164,6 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';  // 스크롤 복원
+
+    // 스크롤 위치 초기화
+    modal.querySelector('.modal--content').scrollTop = 0;
 
     // 모달 닫을 때 추가했던 프로젝트 클래스들 제거
     modal.querySelector('.modal--title-wrapper').classList.remove('project--title-wrapper');
