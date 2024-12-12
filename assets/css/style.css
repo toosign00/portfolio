@@ -135,10 +135,18 @@ section {
 }
 
 .nav-logo {
-  width: 75px;
-  height: 20px;
-  background-color: var(--primary-color);
+  height: 2rem;
 }
+
+[data-theme="dark"] .nav-logo  {
+  filter: brightness(0) saturate(100%) invert(44%) sepia(9%) saturate(1222%) hue-rotate(338deg) brightness(97%) contrast(85%);
+}
+
+.nav--logo:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 
 .nav--list {
   display: flex;
