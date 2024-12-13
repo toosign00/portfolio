@@ -145,6 +145,30 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 프로젝트별 링크 데이터
+  const projectLinks = {
+    '오라, 궁': {
+      github: 'https://github.com/toosign00/ora-gung',
+      deploy: 'https://ora-gung.vercel.app'
+    },
+    'TYPE': {
+      github: 'https://github.com/toosign00/typography',
+      deploy: 'https://toosign00.github.io/typography'
+    },
+    '올리': {
+      github: 'https://github.com/toosign00/OLLY',
+      deploy: 'https://toosign00.github.io/OLLY'
+    },
+    '기묘한 이야기 미니게임': {
+      github: 'https://github.com/toosign00/minigame',
+      deploy: 'https://toosign00.github.io/minigame'
+    },
+    'Film Magazine': {
+      github: 'https://github.com/toosign00/film_magazine',
+      deploy: 'https://toosign00.github.io/film_magazine'
+    }
+  };
+
   // 필요한 DOM 요소들 선택
   const projectItems = document.querySelectorAll('.project--item');
   const modal = document.getElementById('projectModal');
@@ -164,32 +188,50 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.querySelector('.modal--type').classList.add('project--type');
 
     // 각 요소의 내용 업데이트
-    modal.querySelector('.modal--title').textContent = projectData.querySelector('.project--title').textContent;
+    const projectTitle = projectData.querySelector('.project--title').textContent;
+    modal.querySelector('.modal--title').textContent = projectTitle;
     modal.querySelector('.modal--type').textContent = projectData.querySelector('.project--type').textContent;
     modal.querySelector('.modal--duration').textContent = projectData.querySelector('.project--duration').textContent;
     modal.querySelector('.modal--description').textContent = projectData.querySelector('.project--description').textContent;
 
     // 태그 복사
     const tagsContainer = modal.querySelector('.modal--tags');
-    tagsContainer.innerHTML = '';  // 기존 태그 삭제
+    tagsContainer.innerHTML = ''; // 기존 태그 삭제
     const projectTags = projectData.querySelector('.project--tags');
     if (projectTags) {
       const newTags = projectTags.cloneNode(true);
       tagsContainer.appendChild(newTags);
     }
 
+    // 링크 업데이트
+    const links = projectLinks[projectTitle] || {};
+    const modalGithubLink = modal.querySelector('.modal--links .github-link');
+    const modalDeployLink = modal.querySelector('.modal--links .deploy-link');
+
+    if (links.github) {
+      modalGithubLink.href = links.github;
+      modalGithubLink.style.display = 'inline-flex';
+    } else {
+      modalGithubLink.style.display = 'none';
+    }
+
+    if (links.deploy) {
+      modalDeployLink.href = links.deploy;
+      modalDeployLink.style.display = 'inline-flex';
+    } else {
+      modalDeployLink.style.display = 'none';
+    }
+
     // 모달 활성화
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden';  // 배경 스크롤 방지
+    document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
   }
 
   function closeModal() {
     modal.classList.remove('active');
-    document.body.style.overflow = '';  // 스크롤 복원
-
+    document.body.style.overflow = ''; // 스크롤 복원
     // 스크롤 위치 초기화
     modal.querySelector('.modal--content').scrollTop = 0;
-
     // 모달 닫을 때 추가했던 프로젝트 클래스들 제거
     modal.querySelector('.modal--title-wrapper').classList.remove('project--title-wrapper');
     modal.querySelector('.modal--title').classList.remove('project--title');
@@ -200,7 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
   projectItems.forEach(item => {
     item.addEventListener('click', () => openModal(item));
   });
-
   modalClose.addEventListener('click', closeModal);
   modalOverlay.addEventListener('click', closeModal);
 
