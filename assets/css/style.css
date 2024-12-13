@@ -624,7 +624,7 @@ section {
   background-color: var(--white);
   padding: 4rem 2rem 2rem 2rem;
   border-radius: 1rem;
-  width: 80%;
+  width: 60%;
   max-height: 90vh;
   overflow-y: scroll;
   scrollbar-width: none;
@@ -695,6 +695,40 @@ section {
 .modal--description {
   font-size: var(--font-body);
   white-space: normal;
+}
+
+.modal--links {
+  display: flex;
+  gap: 1rem;
+}
+
+.modal--links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--black);
+  transition: color 0.2s ease;
+}
+
+/* 다크모드 기본 색상 */
+[data-theme="dark"] .modal--links a {
+  color: var(--white);
+}
+
+/* 호버 효과 */
+.modal--links a:hover {
+  color: #666666;
+}
+
+[data-theme="dark"] .modal--links a:hover {
+  color: #999999;
+}
+
+/* 아이콘 크기 */
+.modal--links .bi {
+  font-size: var(--font-heading);
 }
 
 .contact--container {
