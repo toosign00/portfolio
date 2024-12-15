@@ -286,7 +286,7 @@ const projects = {
       techStack.javascript
     ],
     summary: "치매 도우미 앱 올리 소개 웹사이트",
-    description: "올리",
+    description: "올리 서비스의 기획 일부분과 서비스 소개 웹사이트 제작을 담당했습니다. AOS 스크롤 애니메이션 라이브러리를 활용하여 스크롤에 따라 요소가 나타나고 사라지는 효과를 구현했습니다. 제30회 국제커뮤니케이션공모전에서 디지털미디어디자인 분야 우수상을 수상한 프로젝트입니다.",
     github: "https://github.com/toosign00/OLLY",
     deploy: "https://toosign00.github.io/OLLY"
   },
@@ -314,7 +314,7 @@ const projects = {
       techStack.javascript
     ],
     summary: "필름 매거진 컨셉의 웹사이트",
-    description: "필름 매거진 컨셉의 웹사이트",
+    description: "필름 매거진 컨셉의 웹사이트입니다. 시멘틱 마크업과 Flexbox 레이아웃을 사용하여 웹을 디자인 하였으며, 반응형 구현을 위해 미디어 쿼리를 사용하였습니다. 또한 JavaScript를 활용하여 스크롤 이벤트, 모달 창 등의 인터렉션을 구현 했습니다.",
     github: "https://github.com/toosign00/film_magazine",
     deploy: "https://toosign00.github.io/film_magazine"
   }
