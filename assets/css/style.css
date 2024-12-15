@@ -571,6 +571,10 @@ header {
   padding: 0.1rem 0.5rem;
 }
 
+[data-theme="dark"] .project--type {
+  color: var(--black);
+}
+
 .project--duration {
   font-size: var(--font-caption);
   font-weight: var(--font-weight-light);

@@ -361,7 +361,7 @@ document.getElementById("emailForm").addEventListener("submit", async function (
   submitButton.innerHTML = '<i class="bi bi-hourglass"></i> 전송중...';
 
   try {
-    await emailjs.sendForm("환경변수", "환경변수", this, "_fLh71BSAA_4dy3Bh");
+    await emailjs.sendForm("Portfolio_Email_Form", "환경변수", this, "환경변수");
     alert("이메일이 성공적으로 전송되었습니다!");
     this.reset();
   } catch (error) {
