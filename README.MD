@@ -41,4 +41,7 @@ Lighthouse 평가에서 모두 100점을 받았습니다.
 <br>
 <br>
 
-##
+## 주요 기능
+
+<img src="https://github.com/user-attachments/assets/9aac5ef3-b005-4768-ad3e-f37bedbb590b
+">
