@@ -1,4 +1,7 @@
-## 프론트엔드 개발자 노현수 포트폴리오
+# 프론트엔드 개발자 노현수 포트폴리오
+
+<br>
+<br>
 
 ## 프로젝트 소개
 
@@ -6,39 +9,34 @@
 개인 포트폴리오 웹사이트입니다. 헤더 메뉴 클릭 시 스크롤 이동이 되도록  
 구현하였으며, 스킬 버튼 클릭 시 해당 스킬을 어느정도 사용할 수 있는지  
 타이핑 되면서 나오도록 구현했습니다. 프로젝트 모달 창을 클릭하면 프로젝트  
-상세 설명을 확인할 수 있습니다.  
+상세 설명을 확인할 수 있습니다.
 
 성능 최적화, 접근성, SEO 최적화를 위해 노력하여 개발하였으며, Google
 Lighthouse 평가에서 모두 100점을 받았습니다.
 
 [🌐 웹사이트 보러가기](https://toosign.kr/)
 
+<br>
+<br>
+
 ## 프로젝트 개요
 
-- **프로젝트 기간**: 
-- **기술 스택**: 
-  <img alt="Static Badge_html5" height="23px" src="https://img.shields.io/badge/HTML5-%23E33F26?style=flat&logo=HTML5&logoColor=%23fff">
-  <img alt="Static Badge_css3" height="23px" src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=%23fff">
-  <img alt="Static Badge_javascript" height="23px" src="https://img.shields.io/badge/JavaScript-%23F7DF1E?style=flat&logo=JavaScript&logoColor=%23000">
+프로젝트 기간 : `202412` ~ 진행 중
 
-- **역할 및 기여도**: 프로젝트에서 맡은 역할과 기여한 부분
-- **프로젝트 링크**: 프로젝트의 GitHub 저장소 또는 배포된 웹사이트 링크
+인원 : 개인 
 
-### 주요 프로젝트
+프로젝트 목적 : 개인 포트폴리오
 
-1. **프로젝트 A**
-  - **기술 스택**: React, Redux, Node.js, Express
-  - **역할 및 기여도**: 프론트엔드 개발, 상태 관리 구현
-  - **프로젝트 링크**: [GitHub](https://github.com/username/project-a)
+<br>
+<br>
 
-2. **프로젝트 B**
-  - **기술 스택**: Vue.js, Vuex, Firebase
-  - **역할 및 기여도**: 전체 프로젝트 설계 및 구현
-  - **프로젝트 링크**: [GitHub](https://github.com/username/project-b)
+## 기술 스택
 
-3. **프로젝트 C**
-  - **기술 스택**: Angular, NgRx, Node.js, MongoDB
-  - **역할 및 기여도**: 백엔드 API 개발, 데이터베이스 설계
-  - **프로젝트 링크**: [GitHub](https://github.com/username/project-c)
+  <img src="https://img.shields.io/badge/HTML5-%23E33F26?style=flat&logo=HTML5&logoColor=white">
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-%23F7DF1E?style=flat&logo=JavaScript&logoColor=black">
 
-각 프로젝트의 상세 내용은 해당 링크를 통해 확인하실 수 있습니다.
+<br>
+<br>
+
+##
