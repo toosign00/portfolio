@@ -149,52 +149,52 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeSkillBoxes();
 });
 
-// ======= Projects 섹션 모달 창 =======
-// 모달 창 스킬 아이콘 객체 정의
+// ======= Projects 섹션  =======
+// 기술 스택 객체 정의
 const techStack = {
   html: {
     name: "HTML5",
-    imgSrc: "/assets/images/html-5-icon.svg",
+    imgSrc: "./assets/images/html-5-icon.svg",
     alt: "HTML5"
   },
   css: {
     name: "CSS3",
-    imgSrc: "/assets/images/css-3-icon.svg",
+    imgSrc: "./assets/images/css-3-icon.svg",
     alt: "CSS3"
   },
   javascript: {
     name: "JavaScript",
-    imgSrc: "/assets/images/js-icon.svg",
+    imgSrc: "./assets/images/js-icon.svg",
     alt: "JavaScript"
   },
   nodejs: {
     name: "Node.js",
-    imgSrc: "/assets/images/nodejs-icon.svg",
+    imgSrc: "./assets/images/nodejs-icon.svg",
     alt: "Node.js"
   },
   ejs: {
     name: "EJS",
-    imgSrc: "/assets/images/ejs-icon.svg",
+    imgSrc: "./assets/images/ejs-icon.svg",
     alt: "EJS"
   },
   mongodb: {
     name: "MongoDB",
-    imgSrc: "/assets/images/mongodb-icon.svg",
+    imgSrc: "./assets/images/mongodb-icon.svg",
     alt: "MongoDB"
   },
   gsap: {
     name: "GSAP",
-    imgSrc: "/assets/images/gsap-icon.svg",
+    imgSrc: "./assets/images/gsap-icon.svg",
     alt: "GSAP"
   },
   jquery: {
-    name: "Jquery",
-    imgSrc: "/assets/images/jquery-icon.svg",
-    alt: "Jquery"
+    name: "jQuery",
+    imgSrc: "./assets/images/jquery-icon.svg",
+    alt: "jQuery"
   },
   git: {
     name: "Git",
-    imgSrc: "/assets/images/git-icon.svg",
+    imgSrc: "./assets/images/git-icon.svg",
     alt: "Git"
   }
 };
@@ -203,44 +203,51 @@ const techStack = {
 const projects = {
   'portfolio': {
     title: "포트폴리오",
+    type: "Personal",
     duration: "2024.12 ~ 진행 중",
     technologies: [
       techStack.html,
       techStack.css,
       techStack.javascript
     ],
+    summary: "프론트엔드 개발자 노현수의 포트폴리오",
     description: "개인 포트폴리오 웹사이트로, HTML, CSS, JavaScript를 사용해 제작했습니다. 라이트/다크 모드 전환 기능과 EmailJS API를 사용하여 이메일 전송 기능을 구현했습니다.",
     github: "https://github.com/toosign00/toosign00.github.io",
     deploy: "https://toosign.kr/"
   },
   'meme-archive': {
     title: "짤방 저장소",
+    type: "Personal",
     duration: "2024.10 ~ 2024.12",
     technologies: [
       techStack.html,
       techStack.css,
       techStack.javascript,
       techStack.nodejs,
-      techStack.ejs,
       techStack.mongodb,
+      techStack.ejs
     ],
-    description: "개인 블로그 웹사이트로, 사용자가 자신의 이야기를 공유하고, 다른 사용자의 이야기를 읽을 수 있는 커뮤니티 기능을 제공합니다. Firebase Firestore를 사용해 데이터베이스를 구축하고, Firebase Authentication을 통해 사용자 인증을 구현했습니다. 또한, Firebase Storage를 활용하여 이미지 업로드 기능을 추가했습니다.",
-    github: "https://github.com/toosign00/my-life-story"
+    summary: "세상의 모든 짤을 모으기",
+    description: "Node.js와 MongoDB를 활용한 이미지 공유 플랫폼입니다. 사용자들이 자유롭게 이미지를 업로드하고 공유할 수 있으며, 커뮤니티 기능을 통해 소통할 수 있습니다.",
+    github: "https://github.com/toosign00/meme-archive"
   },
   'my-life-story': {
     title: "나의 인생 일대기",
+    type: "Personal",
     duration: "2024.10 ~ 2024.12",
     technologies: [
       techStack.html,
       techStack.css,
-      techStack.javascript,
+      techStack.javascript
     ],
+    summary: "9가지 취미로 알아보는 나의 인생 일대기",
     description: "개인 블로그 웹사이트로, 사용자가 자신의 이야기를 공유하고, 다른 사용자의 이야기를 읽을 수 있는 커뮤니티 기능을 제공합니다. Firebase Firestore를 사용해 데이터베이스를 구축하고, Firebase Authentication을 통해 사용자 인증을 구현했습니다. 또한, Firebase Storage를 활용하여 이미지 업로드 기능을 추가했습니다.",
     github: "https://github.com/toosign00/my-life-story",
     deploy: "https://my-life-story.vercel.app/"
   },
   'ora-gung': {
     title: "오라, 궁",
+    type: "Team",
     duration: "2024.09 ~ 2024.12",
     technologies: [
       techStack.html,
@@ -250,79 +257,159 @@ const projects = {
       techStack.jquery,
       techStack.git
     ],
+    summary: "서울 4대 궁궐 투어 앱 오라, 궁 소개 웹사이트",
     description: "계원예술대학교 디지털미디어디자인과 졸업전시에서 서울 4대 궁궐 투어 앱 '오라, 궁' 서비스의 소개 웹사이트 개발을 담당했습니다. GSAP 라이브러리를 활용한 부드러운 가로 스크롤 애니메이션과 Transform, Intersection Observer API를 활용한 인터랙티브 3D 캐러셀을 구현했습니다. feature 브랜치 전략을 활용한 Git 버전 관리와 pull request를 통한 코드 리뷰로 팀 협업을 진행했습니다.",
     github: "https://github.com/toosign00/ora-gung",
     deploy: "https://ora-gung.vercel.app"
   },
   'type': {
     title: "TYPE",
+    type: "Personal",
     duration: "2024.05 ~ 2024.07",
     technologies: [
       techStack.html,
       techStack.css,
       techStack.javascript
     ],
+    summary: "타이포그래피 소개 웹사이트",
     description: "타이포그래피를 소개하는 웹사이트를 제작했습니다. JavaScript의 이벤트 시스템과 DOM 조작을 활용하여 사용자가 자간, 행간, 크기, 무게를 실시간으로 조절할 수 있는 인터랙티브한 인터페이스를 구현했습니다. 라이트/다크 모드 전환 기능을 추가하고, sessionStorage를 통해 사용자 설정값을 효율적으로 관리했습니다. 또한 미디어 쿼리를 활용한 반응형 웹 디자인을 적용하여 다양한 디바이스에서의 일관된 사용자 경험을 제공했습니다.",
     github: "https://github.com/toosign00/typography",
     deploy: "https://toosign00.github.io/typography"
   },
   'olly': {
     title: "올리",
+    type: "Team",
     duration: "2024.03 ~ 2024.07",
     technologies: [
       techStack.html,
       techStack.css,
       techStack.javascript
     ],
+    summary: "치매 도우미 앱 올리 소개 웹사이트",
     description: "올리",
     github: "https://github.com/toosign00/OLLY",
     deploy: "https://toosign00.github.io/OLLY"
   },
   'minigame': {
-    title: "카드 짝 맞추기 게임",
+    title: "기묘한 이야기 미니게임",
+    type: "Personal",
     duration: "2024.05 ~ 2024.07",
     technologies: [
       techStack.html,
       techStack.css,
       techStack.javascript
     ],
+    summary: "카드 짝 맞추기 게임",
     description: "JavaScript로 구현한 카드 짝 맞추기 게임입니다. 기묘한 이야기 컨셉으로 제작했습니다. 카드 매칭 로직, 타이머 기능, 애니메이션을 구현했습니다. DOM 조작을 통해 동적으로 카드를 생성하고 Math.random()으로 무작위 배치했으며, localStorage로 사용자의 게임 기록을 저장하고 단계별 난이도 시스템을 적용했습니다.",
     github: "https://github.com/toosign00/minigame",
     deploy: "https://toosign00.github.io/minigame"
   },
   'film-magazine': {
     title: "Film Magazine",
+    type: "Personal",
     duration: "2023.09 ~ 2024.12",
     technologies: [
       techStack.html,
       techStack.css,
       techStack.javascript
     ],
+    summary: "필름 매거진 컨셉의 웹사이트",
     description: "필름 매거진 컨셉의 웹사이트",
     github: "https://github.com/toosign00/film_magazine",
     deploy: "https://toosign00.github.io/film_magazine"
   }
 };
 
-// 모달 창 관련 스크립트
-document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('projectModal');
-  const modalClose = modal.querySelector('.modal--close');
-  const modalOverlay = modal.querySelector('.modal--overlay');
+// ProjectsManager 클래스 정의
+class ProjectsManager {
+  constructor() {
+    this.projectsGrid = document.querySelector('.projects--grid');
+  }
 
-  // 모달 창 열기 함수
-  function openModal(projectId) {
-    // 프로젝트 정보가 없는 경우 함수 종료
+  createProjectCard(projectId, project) {
+    return `
+      <article class="project--item" data-project-id="${projectId}">
+        <div class="project--thumbnail">
+          <img src="./assets/images/thumbnail-${projectId}.webp" alt="${project.title} 프로젝트 썸네일" loading="lazy">
+        </div>
+        <div class="project--info">
+          <div class="project--title-wrapper">
+            <h3 class="project--title">${project.title}</h3>
+            <p class="project--type">${project.type}</p>
+          </div>
+          <p class="project--duration">${project.duration}</p>
+          <p class="project--description">${project.summary}</p>
+          <div class="project--tags">
+            ${this.createTechnologyTags(project.technologies)}
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  createTechnologyTags(technologies) {
+    return technologies
+      .map(tech => `<img src="${tech.imgSrc}" alt="${tech.alt}" title="${tech.name}">`)
+      .join('');
+  }
+
+  renderProjects() {
+    const projectsHTML = Object.entries(projects)
+      .map(([id, project]) => this.createProjectCard(id, project))
+      .join('');
+
+    this.projectsGrid.innerHTML = projectsHTML;
+  }
+}
+
+// ProjectModal 클래스 정의
+class ProjectModal {
+  constructor() {
+    this.modal = document.getElementById('projectModal');
+    this.modalClose = this.modal.querySelector('.modal--close');
+    this.modalOverlay = this.modal.querySelector('.modal--overlay');
+    this.bindEvents();
+  }
+
+  bindEvents() {
+    this.modalClose.addEventListener('click', () => this.close());
+    this.modalOverlay.addEventListener('click', () => this.close());
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.isActive()) {
+        this.close();
+      }
+    });
+  }
+
+  open(projectId) {
     const project = projects[projectId];
     if (!project) return;
 
-    // 모달 내용 업데이트
-    modal.querySelector('.modal--title').textContent = project.title;
-    modal.querySelector('.modal--duration').textContent = project.duration;
+    this.updateContent(project);
+    this.modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 
-    // 기술 스택 이미지로 업데이트
-    const techContainer = modal.querySelector('.modal--technologies');
-    techContainer.innerHTML = project.technologies
+  close() {
+    this.modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  isActive() {
+    return this.modal.classList.contains('active');
+  }
+
+  updateContent(project) {
+    this.modal.querySelector('.modal--title').textContent = project.title;
+    this.modal.querySelector('.modal--duration').textContent = project.duration;
+    this.updateTechnologies(project.technologies);
+    this.modal.querySelector('.modal--description').textContent = project.description;
+    this.updateLinks(project);
+  }
+
+  updateTechnologies(technologies) {
+    const techContainer = this.modal.querySelector('.modal--technologies');
+    techContainer.innerHTML = technologies
       .map(tech => `
         <img 
           class="modal--tech-img" 
@@ -332,55 +419,41 @@ document.addEventListener('DOMContentLoaded', () => {
         >
       `)
       .join('');
+  }
 
-    modal.querySelector('.modal--description').textContent = project.description;
-
-    // 링크 업데이트
-    const githubLink = modal.querySelector('.github-link');
-    const deployLink = modal.querySelector('.deploy-link');
+  updateLinks(project) {
+    const githubLink = this.modal.querySelector('.github-link');
+    const deployLink = this.modal.querySelector('.deploy-link');
 
     githubLink.href = project.github;
 
-    // deploy 링크가 있는 경우에만 보이게 처리
-    // 짤방 저장소는 Node.js 프로젝트라 deploy 링크가 없음, 추후 AWS 활용하여 배포 예정
     if (project.deploy) {
       deployLink.style.display = 'inline-block';
       deployLink.href = project.deploy;
     } else {
       deployLink.style.display = 'none';
     }
-
-    // 모달 표시
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
   }
+}
 
-  // 모달 창 닫기 함수
-  function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
+// 초기화
+document.addEventListener('DOMContentLoaded', () => {
+  const projectsManager = new ProjectsManager();
+  projectsManager.renderProjects();
 
-  // 이벤트 리스너
-  modalClose.addEventListener('click', closeModal);
-  modalOverlay.addEventListener('click', closeModal);
+  const modal = new ProjectModal();
 
-  // ESC 키로 모달 닫기
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
+  // 프로젝트 클릭 이벤트 위임
+  document.querySelector('.projects--grid').addEventListener('click', (e) => {
+    const projectItem = e.target.closest('.project--item');
+    if (projectItem) {
+      modal.open(projectItem.dataset.projectId);
     }
-  });
-
-  // 프로젝트 아이템 클릭 이벤트
-  document.querySelectorAll('.project--item').forEach(item => {
-    item.addEventListener('click', () => {
-      const projectId = item.dataset.projectId;
-      openModal(projectId);
-    });
   });
 });
 
+
+// ======= Contact 섹션 =======
 // EmailJS 초기화
 emailjs.init("_fLh71BSAA_4dy3Bh");
 
