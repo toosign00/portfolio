@@ -213,7 +213,7 @@ const projects = {
       techStack.javascript
     ],
     summary: "프론트엔드 개발자 노현수의 포트폴리오",
-    description: "개인 포트폴리오 웹사이트로, HTML, CSS, JavaScript를 사용해 제작했습니다. 라이트/다크 모드 전환 기능과 Skills 섹션에서 스킬 박스를 클릭하면 해당 기술에 대한 설명을 타이핑 효과로 출력하는 기능을 구현했습니다. Project 섹션에서 프로젝트 데이터를 객체로 분리하고 ProjectsManager와 ProjectModal 클래스를 구현하여 프로젝트 카드와 모달을 동적으로 생성하도록 리팩토링했습니다. 또한, 이메일을 보내는 기능을 구현하기 위해 EmailJS API를 사용했습니다.",
+    description: "개인 포트폴리오 웹사이트입니다. 라이트/다크 모드 전환 기능과 Skills 섹션에서 스킬 박스를 클릭하면 해당 기술에 대한 설명을 타이핑 효과로 출력하는 기능을 구현했습니다. Project 섹션에서 프로젝트 데이터를 객체로 분리하고 ProjectsManager와 ProjectModal 클래스를 구현하여 프로젝트 카드와 모달을 동적으로 생성하도록 리팩토링했습니다. 또한, 이메일을 보내는 기능을 구현하기 위해 EmailJS API를 사용했습니다. 최적화, 접근성, SEO를 고려하여 개발했습니다.",
     github: {
       url: "https://github.com/toosign00/toosign00.github.io",
       ariaLabel: "GitHub 저장소 링크"
