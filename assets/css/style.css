@@ -839,3 +839,7 @@ footer {
   line-height: 1.5;
   text-align: center;
 }
+
+[data-theme="dark"] .footer--text {
+  color: #BBB;
+}
