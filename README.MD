@@ -77,17 +77,16 @@
 
 `EmailJS`를 사용하여 간편하게 이메일을 보낼 수 있도록 구현하였습니다.
 
-<img alt="스크린샷 2024-12-16 04 01 50" src="https://github.com/user-attachments/assets/69b5be56-1b11-4965-8e79-b98656404d2b" />
+<img width="600" alt="스크린샷 2024-12-16 04 01 50" src="https://github.com/user-attachments/assets/69b5be56-1b11-4965-8e79-b98656404d2b" />
 
 <br>
 <br>
 
 ## 주요 코드
 
-라이트 / 다크모드 구현
+### 라이트 / 다크모드 구현
 
 ```javascript
-
 document.addEventListener('DOMContentLoaded', function () {
   const savedTheme = localStorage.getItem('theme') || 'light';
   const buttonText = document.querySelector(".nav--button-text");
@@ -116,3 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 ```
+
+### 
+
