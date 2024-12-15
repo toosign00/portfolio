@@ -377,7 +377,7 @@ document.getElementById("emailForm").addEventListener("submit", async function (
 
 ## 총평
 
-### 잘된점
+### 잘된 점
 
 - 라이트 / 다크모드 사용 중 새로고침 시 깜빡거리는 현상을 방지하여 사용자 경험 향상
 - 성능 최적화, 웹표준, 접근성, SEO 최적화를 고려하여 개발
