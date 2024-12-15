@@ -215,7 +215,7 @@ const projects = {
     github: "https://github.com/toosign00/toosign00.github.io",
     deploy: "https://toosign.kr/"
   },
-  'meme-archive': {
+  'meme-repository': {
     title: "짤방 저장소",
     type: "Personal",
     duration: "2024.10 ~ 2024.12",
@@ -229,7 +229,7 @@ const projects = {
     ],
     summary: "세상의 모든 짤을 모으기",
     description: "Node.js와 MongoDB를 사용해 짤을 올릴 수 있는 웹사이트를 제작했습니다. Express 프레임워크를 사용하여 서버를 구축하고, EJS 템플릿 엔진을 사용하여 동적인 페이지를 렌더링했습니다. JWT 토큰을 사용한 사용자 인증 시스템을 구축하고, 이미지 업로드를 위한 Multer 미들웨어와 MongoDB를 연동하여 사용자가 업로드한 짤을 저장하고 조회할 수 있도록 구현했습니다.",
-    github: "https://github.com/toosign00/meme-archive"
+    github: "https://github.com/toosign00/meme-repository"
   },
   'my-life-story': {
     title: "나의 인생 일대기",
