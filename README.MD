@@ -9,7 +9,7 @@
 헤더 메뉴 클릭 시 스크롤 이동 기능을 구현하였고, 스킬 버튼을 클릭하면 해당 스킬의 숙련도를 타이핑 효과로 표시합니다.
 또한, 프로젝트 모달 창을 통해 상세 설명을 확인할 수 있습니다.
 
-성능 최적화, 접근성, SEO 최적화를 고려하여 개발하였으며, Google Lighthouse 평가에서 모든 항목에서 100점을 기록하였습니다.
+성능 최적화, 웹표준, 접근성, SEO 최적화를 고려하여 개발하였으며, Google Lighthouse 평가에서 모든 항목에서 100점을 기록하였습니다.
 
 [🌐 웹사이트 보러가기](https://toosign.kr/)
 
@@ -77,6 +77,19 @@
 `EmailJS`를 사용하여 간편하게 이메일을 보낼 수 있도록 구현하였습니다.
 
 <img width="600" alt="스크린샷 2024-12-16 04 01 50" src="https://github.com/user-attachments/assets/69b5be56-1b11-4965-8e79-b98656404d2b" />
+<br>
+
+### 성능 최적화, 웹표준, 접근성, SEO 최적화
+
+성능 최적화를 위해 다양한 `loading="lazy"` 등 다양한 방법을 고려하고 적용하였으며, 시멘틱 태그를 활용하여 웹표준을 준수했습니다.
+
+ `alt`, `aria-label` 을 사용하여 접근성도 고려했습니다.
+ 
+ 또한 `Meta Data`, ` Open graph`, `robots.text` 그리고 `Sitemap.xml`를 적용하여 SEO 최적화를 위해 노력했습니다.
+
+<img width="600" alt="스크린샷 2024-12-16 04 32 44 1"
+src="https://github.com/user-attachments/assets/c0f0a929-13d1-4ce3-8127-b5c6da9703c4" />
+
 
 <br>
 <br>
@@ -356,3 +369,17 @@ document.getElementById("emailForm").addEventListener("submit", async function (
   }
 });
 ```
+
+
+## 총평
+
+### 잘된점
+
+- 라이트 / 다크모드 사용 중 새로고침 시 깜빡거리는 현상을 방지하여 사용자 경험 향상
+- 성능 최적화, 웹표준, 접근성, SEO 최적화를 고려하여 개발
+- 프로젝트, 모달 데이터를 동적으로 생성
+
+
+### 아쉬운 점
+- 반응형 개발을 하지 못함
+- 시간이 부족하여 프로젝트 섹션 설명 부족
