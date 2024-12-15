@@ -577,7 +577,7 @@ section {
   z-index: 1000;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0.3s, opacity 0.3s;
+  transition: visibility 0.4s, opacity 0.4s;
 }
 
 .modal.active {
@@ -603,7 +603,7 @@ section {
   width: 90%;
   max-width: 62.5rem;
   text-align: center;
-  transition: transform 0.3s;
+  transition: transform 0.4s;
 }
 
 .modal.active .modal--content {
