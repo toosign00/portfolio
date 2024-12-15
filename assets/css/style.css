@@ -138,7 +138,7 @@ section {
   height: 2rem;
 }
 
-[data-theme="dark"] .nav-logo  {
+[data-theme="dark"] .nav-logo {
   filter: brightness(0) saturate(100%) invert(44%) sepia(9%) saturate(1222%) hue-rotate(338deg) brightness(97%) contrast(85%);
 }
 
@@ -568,29 +568,6 @@ section {
 }
 
 /* 모달 안의 태그 스타일 따로 지정 */
-.modal--tags .project--tags {
-  gap: 1rem;
-}
-
-.modal--tags .project--tags>img {
-  width: 2.4rem;
-  height: 2.4rem;
-  line-height: 1;
-  object-fit: contain;
-}
-
-/* .tag {
-  font-size: var(--font-caption);
-  padding: 0.1rem 0.75rem;
-  background-color: var(--white);
-  border: 1px solid var(--black);
-  border-radius: 9999rem;
-} */
-
-[data-theme="dark"] .tag {
-  background-color: #222222;
-}
-
 .modal {
   position: fixed;
   top: 0;
@@ -604,7 +581,6 @@ section {
 }
 
 .modal.active {
-  display: block;
   visibility: visible;
   opacity: 1;
 }
@@ -622,53 +598,39 @@ section {
   left: 50%;
   transform: translate(-50%, -50%) scale(0.2);
   background-color: var(--white);
-  padding: 4rem 2rem 2rem 2rem;
+  padding: 3rem 2rem;
   border-radius: 1rem;
-  width: 60%;
-  max-height: 90vh;
-  overflow-y: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  transition: transform var(--transition-speed-medium);
+  width: 90%;
+  max-width: 62.5rem;
+  text-align: center;
+  transition: transform 0.3s;
 }
 
 .modal.active .modal--content {
   transform: translate(-50%, -50%) scale(1);
-  /* 원래 크기로 */
-  opacity: 1;
 }
-
 
 [data-theme="dark"] .modal--content {
   background-color: #222222;
 }
 
 .modal--close {
-  position: fixed;
+  position: absolute;
   top: 1rem;
   right: 1rem;
   width: 2.5rem;
   height: 2.5rem;
-  transform: scale(0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--white);
-  border: 0.06rem solid var(--black);
-  border-radius: 50%;
+  background: transparent;
+  border: none;
   cursor: pointer;
   color: var(--black);
-  transition: all 0.2s ease;
-  z-index: 1001;
 }
-
-.modal.active .modal--close {
-  transform: scale(1);
-}
-
 
 .modal--close .bi-x {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .modal--body {
@@ -677,58 +639,55 @@ section {
   gap: 1rem;
 }
 
-.modal--image {
-  width: 100%;
-  border-radius: 0.5rem;
-}
-
 .modal--title {
-  font-size: var(--font-sub-heading);
-  font-weight: var(--font-weight-medium);
+  font-size: var(--font-heading);
+  font-weight: 600;
 }
 
 .modal--duration {
   font-size: var(--font-caption);
+  color: var(--black);
   opacity: 0.75;
 }
 
+.modal--technologies {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.modal--technologies > img {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.modal--tech-tag {
+  background-color: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+}
+
 .modal--description {
-  font-size: var(--font-body);
-  white-space: normal;
+  width: 70%;
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--font-line-height-1-6);
+  text-align: center;
+  margin: 0 auto;
+  color: var(--black);
 }
 
 .modal--links {
   display: flex;
   gap: 1rem;
+  justify-content: center;
 }
 
 .modal--links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.4rem;
-  height: 2.4rem;
   color: var(--black);
-  transition: color 0.2s ease;
-}
-
-/* 다크모드 기본 색상 */
-[data-theme="dark"] .modal--links a {
-  color: var(--white);
-}
-
-/* 호버 효과 */
-.modal--links a:hover {
-  color: #666666;
-}
-
-[data-theme="dark"] .modal--links a:hover {
-  color: #999999;
-}
-
-/* 아이콘 크기 */
-.modal--links .bi {
-  font-size: var(--font-heading);
+  font-size: 1.75rem;
 }
 
 .contact--container {

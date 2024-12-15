@@ -1,4 +1,5 @@
-// 페이지 로드 시 실행 
+// ======= 라이트 모드 / 다크 모드 토글 =======
+
 document.addEventListener('DOMContentLoaded', function () {
   const savedTheme = localStorage.getItem('theme') || 'light';
   const buttonText = document.querySelector(".nav--button-text");
@@ -27,7 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// 헤더 높이만큼 section padding-top 조정
+
+// ======= 헤더 높이만큼 섹션 패딩을 동적으로 조정 =======
 document.addEventListener("DOMContentLoaded", () => {
   let header = document.querySelector(".site-header");
   let introSection = document.querySelector(".intro--section");
@@ -43,7 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-// 네비게이션 메뉴 클릭 시 해당 section으로 이동
+
+// ======= 메뉴 클릭시 해당 섹션 이동 =======
 document.addEventListener("DOMContentLoaded", () => {
   // nav--link 클래스를 가진 모든 요소를 선택
   const navLinks = document.querySelectorAll(".nav--link");
@@ -71,6 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+// ======= SKills 섹션 스킬 박스 클릭시 해당 스킬 설명을 타이핑 효과로 출력 =======
 document.addEventListener('DOMContentLoaded', () => {
   // 각 스킬 박스에 대한 설명을 담은 객체 생성
   const skillDescriptions = {
@@ -144,104 +149,153 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeSkillBoxes();
 });
 
+// ======= Projects 섹션 모달 창 =======
+// 모달 창 스킬 아이콘 객체 정의
+const techStack = {
+  html: {
+    name: "HTML5",
+    imgSrc: "/assets/images/html-5-icon.svg",
+    alt: "HTML5"
+  },
+  css: {
+    name: "CSS3",
+    imgSrc: "/assets/images/css-3-icon.svg",
+    alt: "CSS3"
+  },
+  javascript: {
+    name: "JavaScript",
+    imgSrc: "/assets/images/js-icon.svg",
+    alt: "JavaScript"
+  },
+  gsap: {
+    name: "GSAP",
+    imgSrc: "/assets/images/gsap-icon.svg",
+    alt: "GSAP"
+  },
+  jquery: {
+    name: "Jquery",
+    imgSrc: "/assets/images/jquery-icon.svg",
+    alt: "Jquery"
+  },
+  git: {
+    name: "Git",
+    imgSrc: "/assets/images/git-icon.svg",
+    alt: "Git"
+  }
+};
+
+// 프로젝트 정보 배열 정의
+const projects = [
+  {
+    title: "오라, 궁",
+    duration: "2024.09 ~ 2024.12",
+    technologies: [
+      techStack.html,
+      techStack.css,
+      techStack.javascript,
+      techStack.gsap,
+      techStack.jquery,
+      techStack.git
+    ],
+    description: "계원예술대학교 디지털미디어디자인과 졸업전시에서 서울 4대 궁궐 투어 '앱 오라, 궁' 서비스의 소개 웹사이트 개발을 담당했습니다. GSAP 라이브러리를 활용한 부드러운 가로 스크롤 애니메이션과 Transform, Intersection Observer API를 활용한 인터랙티브 3D 캐러셀을 구현했습니다. feature 브랜치 전략을 활용한 Git 버전 관리와 pull request를 통한 코드 리뷰로 팀 협업을 진행했습니다.",
+    github: "https://github.com/toosign00/ora-gung",
+    deploy: "https://ora-gung.vercel.app"
+  },
+  {
+    title: "TYPE",
+    duration: "2024.05 ~ 2024.07",
+    technologies: [
+      techStack.html,
+      techStack.css,
+      techStack.javascript
+    ],
+    description: "타이포그래피를 소개하는 웹사이트를 제작했습니다. JavaScript의 이벤트 시스템과 DOM 조작을 활용하여 사용자가 자간, 행간, 크기, 무게를 실시간으로 조절할 수 있는 인터랙티브한 인터페이스를 구현했습니다. 라이트/다크 모드 전환 기능을 추가하고, sessionStorage를 통해 사용자 설정값을 효율적으로 관리했습니다. 또한 미디어 쿼리를 활용한 반응형 웹 디자인을 적용하여 다양한 디바이스에서의 일관된 사용자 경험을 제공했습니다.",
+    github: "https://github.com/toosign00/typography",
+    deploy: "https://toosign00.github.io/typography"
+  },
+  {
+    title: "올리",
+    duration: "2024.03 ~ 2024.07",
+    technologies: [
+      techStack.html,
+      techStack.css,
+      techStack.javascript
+    ],
+    description: "올리",
+    github: "https://github.com/toosign00/OLLY",
+    deploy: "https://toosign00.github.io/OLLY"
+  },
+  {
+    title: "카드 짝 맞추기 게임",
+    duration: "2024.05 ~ 2024.07",
+    technologies: [
+      techStack.html,
+      techStack.css,
+      techStack.javascript
+    ],
+    description: "JavaScript로 구현한 카드 짝 맞추기 게임입니다. 기묘한 이야기 컨셉으로 제작했습니다. 카드 매칭 로직, 타이머 기능, 애니메이션을 구현했습니다. DOM 조작을 통해 동적으로 카드를 생성하고 Math.random()으로 무작위 배치했으며, localStorage로 사용자의 게임 기록을 저장하고 단계별 난이도 시스템을 적용했습니다.",
+    github: "https://github.com/toosign00/minigame",
+    deploy: "https://toosign00.github.io/minigame"
+  },
+  {
+    title: "Film Magazine",
+    duration: "2023.03 ~ 2024.05",
+    technologies: [
+      techStack.html,
+      techStack.css,
+      techStack.javascript
+    ],
+    description: "필름 매거진 컨셉의 웹사이트",
+    github: "https://github.com/toosign00/film_magazine",
+    deploy: "https://toosign00.github.io/film_magazine"
+  }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
-  // 프로젝트별 링크 데이터
-  const projectLinks = {
-    '오라, 궁': {
-      github: 'https://github.com/toosign00/ora-gung',
-      deploy: 'https://ora-gung.vercel.app'
-    },
-    'TYPE': {
-      github: 'https://github.com/toosign00/typography',
-      deploy: 'https://toosign00.github.io/typography'
-    },
-    '올리': {
-      github: 'https://github.com/toosign00/OLLY',
-      deploy: 'https://toosign00.github.io/OLLY'
-    },
-    '기묘한 이야기 미니게임': {
-      github: 'https://github.com/toosign00/minigame',
-      deploy: 'https://toosign00.github.io/minigame'
-    },
-    'Film Magazine': {
-      github: 'https://github.com/toosign00/film_magazine',
-      deploy: 'https://toosign00.github.io/film_magazine'
-    }
-  };
-
-  // 필요한 DOM 요소들 선택
-  const projectItems = document.querySelectorAll('.project--item');
   const modal = document.getElementById('projectModal');
-  const modalOverlay = modal.querySelector('.modal--overlay');
   const modalClose = modal.querySelector('.modal--close');
+  const modalOverlay = modal.querySelector('.modal--overlay');
 
-  function openModal(projectData) {
-    // 이미지 업데이트
-    modal.querySelector('.modal--image').src = projectData.querySelector('img').src;
+  function openModal(projectIndex) {
+    const project = projects[projectIndex];
 
-    // 타이틀 래퍼에 프로젝트 클래스 추가
-    const modalTitleWrapper = modal.querySelector('.modal--title-wrapper');
-    modalTitleWrapper.classList.add('project--title-wrapper');
+    // 모달 내용 업데이트
+    modal.querySelector('.modal--title').textContent = project.title;
+    modal.querySelector('.modal--duration').textContent = project.duration;
 
-    // 타이틀과 타입에 프로젝트 클래스 추가
-    modal.querySelector('.modal--title').classList.add('project--title');
-    modal.querySelector('.modal--type').classList.add('project--type');
+    // 기술 스택 이미지로 업데이트
+    const techContainer = modal.querySelector('.modal--technologies');
+    techContainer.innerHTML = project.technologies
+      .map(tech => `
+        <img 
+          class="modal--tech-img" 
+          src="${tech.imgSrc}" 
+          alt="${tech.name}"
+          title="${tech.name}"
+        >
+      `)
+      .join('');
 
-    // 각 요소의 내용 업데이트
-    const projectTitle = projectData.querySelector('.project--title').textContent;
-    modal.querySelector('.modal--title').textContent = projectTitle;
-    modal.querySelector('.modal--type').textContent = projectData.querySelector('.project--type').textContent;
-    modal.querySelector('.modal--duration').textContent = projectData.querySelector('.project--duration').textContent;
-    modal.querySelector('.modal--description').textContent = projectData.querySelector('.project--description').textContent;
-
-    // 태그 복사
-    const tagsContainer = modal.querySelector('.modal--tags');
-    tagsContainer.innerHTML = ''; // 기존 태그 삭제
-    const projectTags = projectData.querySelector('.project--tags');
-    if (projectTags) {
-      const newTags = projectTags.cloneNode(true);
-      tagsContainer.appendChild(newTags);
-    }
+    modal.querySelector('.modal--description').textContent = project.description;
 
     // 링크 업데이트
-    const links = projectLinks[projectTitle] || {};
-    const modalGithubLink = modal.querySelector('.modal--links .github-link');
-    const modalDeployLink = modal.querySelector('.modal--links .deploy-link');
+    const githubLink = modal.querySelector('.github-link');
+    const deployLink = modal.querySelector('.deploy-link');
 
-    if (links.github) {
-      modalGithubLink.href = links.github;
-      modalGithubLink.style.display = 'inline-flex';
-    } else {
-      modalGithubLink.style.display = 'none';
-    }
+    githubLink.href = project.github;
+    deployLink.href = project.deploy;
 
-    if (links.deploy) {
-      modalDeployLink.href = links.deploy;
-      modalDeployLink.style.display = 'inline-flex';
-    } else {
-      modalDeployLink.style.display = 'none';
-    }
-
-    // 모달 활성화
+    // 모달 표시
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+    document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
     modal.classList.remove('active');
-    document.body.style.overflow = ''; // 스크롤 복원
-    // 스크롤 위치 초기화
-    modal.querySelector('.modal--content').scrollTop = 0;
-    // 모달 닫을 때 추가했던 프로젝트 클래스들 제거
-    modal.querySelector('.modal--title-wrapper').classList.remove('project--title-wrapper');
-    modal.querySelector('.modal--title').classList.remove('project--title');
-    modal.querySelector('.modal--type').classList.remove('project--type');
+    document.body.style.overflow = '';
   }
 
-  // 이벤트 리스너 설정
-  projectItems.forEach(item => {
-    item.addEventListener('click', () => openModal(item));
-  });
+  // 이벤트 리스너
   modalClose.addEventListener('click', closeModal);
   modalOverlay.addEventListener('click', closeModal);
 
@@ -250,6 +304,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
       closeModal();
     }
+  });
+
+  // 프로젝트 아이템 클릭 이벤트
+  document.querySelectorAll('.project--item').forEach((item, index) => {
+    item.addEventListener('click', () => openModal(index));
   });
 });
 
@@ -298,37 +357,3 @@ document.getElementById('emailForm').addEventListener('submit', async function (
     submitButton.innerHTML = '보내기 <i class="bi bi-send"></i>';
   }
 });
-
-
-// const tags = document.querySelectorAll('.project--tags');
-
-// tags.forEach(tag => {
-//   let isDown = false;
-//   let startX;
-//   let scrollLeft;
-
-//   tag.addEventListener('mousedown', (e) => {
-//     isDown = true;
-//     tag.style.cursor = 'grabbing';
-//     startX = e.pageX - tag.offsetLeft;
-//     scrollLeft = tag.scrollLeft;
-//   });
-
-//   tag.addEventListener('mouseleave', () => {
-//     isDown = false;
-//     tag.style.cursor = 'grab';
-//   });
-
-//   tag.addEventListener('mouseup', () => {
-//     isDown = false;
-//     tag.style.cursor = 'grab';
-//   });
-
-//   tag.addEventListener('mousemove', (e) => {
-//     if(!isDown) return;
-//     e.preventDefault();
-//     const x = e.pageX - tag.offsetLeft;
-//     const walk = (x - startX);
-//     tag.scrollLeft = scrollLeft - walk;
-//   });
-// });
