@@ -81,7 +81,7 @@
 `EmailJS`를 사용하여 간편하게 이메일을 보낼 수 있도록 구현하였습니다.
 
 <img width="600" alt="스크린샷 2024-12-16 04 01 50" src="https://github.com/user-attachments/assets/69b5be56-1b11-4965-8e79-b98656404d2b" />
-
+<br>
 <br>
 
 ### 성능 최적화, 웹표준, 접근성, SEO 최적화
