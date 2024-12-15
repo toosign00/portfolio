@@ -50,12 +50,14 @@
 
 ![2024-12-1604 04 40-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/f89a2951-e02f-4c74-bc3e-5b0a334c92b4)
 <br>
+<br>
 
 ### 부드러운 스크롤
 
 헤더 메뉴 클릭 시 스크롤 이동 기능을 구현하였습니다.
 
 ![scroll](https://github.com/user-attachments/assets/c4bc9a4c-c9e6-4ec4-b943-08db38fffd79)
+<br>
 <br>
 
 ### 타이핑 효과
@@ -64,6 +66,7 @@
 
 ![2024-12-1603 51 17-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/94a7cc23-967e-4137-89d1-452e034ef3fd)
 <br>
+<br>
 
 ### 모달창 팝업 효과
 
@@ -71,12 +74,14 @@
 
 ![2024-12-1603 56 23-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c442fdac-a917-4d2f-99c0-88c12c85a682)
 <br>
+<br>
 
 ### 이메일 폼
 
 `EmailJS`를 사용하여 간편하게 이메일을 보낼 수 있도록 구현하였습니다.
 
 <img width="600" alt="스크린샷 2024-12-16 04 01 50" src="https://github.com/user-attachments/assets/69b5be56-1b11-4965-8e79-b98656404d2b" />
+
 <br>
 
 ### 성능 최적화, 웹표준, 접근성, SEO 최적화
