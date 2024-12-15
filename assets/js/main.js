@@ -167,6 +167,21 @@ const techStack = {
     imgSrc: "/assets/images/js-icon.svg",
     alt: "JavaScript"
   },
+  nodejs: {
+    name: "Node.js",
+    imgSrc: "/assets/images/nodejs-icon.svg",
+    alt: "Node.js"
+  },
+  ejs: {
+    name: "EJS",
+    imgSrc: "/assets/images/ejs-icon.svg",
+    alt: "EJS"
+  },
+  mongodb: {
+    name: "MongoDB",
+    imgSrc: "/assets/images/mongodb-icon.svg",
+    alt: "MongoDB"
+  },
   gsap: {
     name: "GSAP",
     imgSrc: "/assets/images/gsap-icon.svg",
@@ -184,9 +199,47 @@ const techStack = {
   }
 };
 
-// 프로젝트 정보 배열 정의
-const projects = [
-  {
+// 프로젝트 정보 객체 정의
+const projects = {
+  'portfolio': {
+    title: "포트폴리오",
+    duration: "2024.12 ~ 진행 중",
+    technologies: [
+      techStack.html,
+      techStack.css,
+      techStack.javascript
+    ],
+    description: "개인 포트폴리오 웹사이트로, HTML, CSS, JavaScript를 사용해 제작했습니다. 라이트/다크 모드 전환 기능과 EmailJS API를 사용하여 이메일 전송 기능을 구현했습니다.",
+    github: "https://github.com/toosign00/toosign00.github.io",
+    deploy: "https://toosign.kr/"
+  },
+  'meme-archive': {
+    title: "짤방 저장소",
+    duration: "2024.10 ~ 2024.12",
+    technologies: [
+      techStack.html,
+      techStack.css,
+      techStack.javascript,
+      techStack.nodejs,
+      techStack.ejs,
+      techStack.mongodb,
+    ],
+    description: "개인 블로그 웹사이트로, 사용자가 자신의 이야기를 공유하고, 다른 사용자의 이야기를 읽을 수 있는 커뮤니티 기능을 제공합니다. Firebase Firestore를 사용해 데이터베이스를 구축하고, Firebase Authentication을 통해 사용자 인증을 구현했습니다. 또한, Firebase Storage를 활용하여 이미지 업로드 기능을 추가했습니다.",
+    github: "https://github.com/toosign00/my-life-story"
+  },
+  'my-life-story': {
+    title: "나의 인생 일대기",
+    duration: "2024.10 ~ 2024.12",
+    technologies: [
+      techStack.html,
+      techStack.css,
+      techStack.javascript,
+    ],
+    description: "개인 블로그 웹사이트로, 사용자가 자신의 이야기를 공유하고, 다른 사용자의 이야기를 읽을 수 있는 커뮤니티 기능을 제공합니다. Firebase Firestore를 사용해 데이터베이스를 구축하고, Firebase Authentication을 통해 사용자 인증을 구현했습니다. 또한, Firebase Storage를 활용하여 이미지 업로드 기능을 추가했습니다.",
+    github: "https://github.com/toosign00/my-life-story",
+    deploy: "https://my-life-story.vercel.app/"
+  },
+  'ora-gung': {
     title: "오라, 궁",
     duration: "2024.09 ~ 2024.12",
     technologies: [
@@ -197,11 +250,11 @@ const projects = [
       techStack.jquery,
       techStack.git
     ],
-    description: "계원예술대학교 디지털미디어디자인과 졸업전시에서 서울 4대 궁궐 투어 '앱 오라, 궁' 서비스의 소개 웹사이트 개발을 담당했습니다. GSAP 라이브러리를 활용한 부드러운 가로 스크롤 애니메이션과 Transform, Intersection Observer API를 활용한 인터랙티브 3D 캐러셀을 구현했습니다. feature 브랜치 전략을 활용한 Git 버전 관리와 pull request를 통한 코드 리뷰로 팀 협업을 진행했습니다.",
+    description: "계원예술대학교 디지털미디어디자인과 졸업전시에서 서울 4대 궁궐 투어 앱 '오라, 궁' 서비스의 소개 웹사이트 개발을 담당했습니다. GSAP 라이브러리를 활용한 부드러운 가로 스크롤 애니메이션과 Transform, Intersection Observer API를 활용한 인터랙티브 3D 캐러셀을 구현했습니다. feature 브랜치 전략을 활용한 Git 버전 관리와 pull request를 통한 코드 리뷰로 팀 협업을 진행했습니다.",
     github: "https://github.com/toosign00/ora-gung",
     deploy: "https://ora-gung.vercel.app"
   },
-  {
+  'type': {
     title: "TYPE",
     duration: "2024.05 ~ 2024.07",
     technologies: [
@@ -213,7 +266,7 @@ const projects = [
     github: "https://github.com/toosign00/typography",
     deploy: "https://toosign00.github.io/typography"
   },
-  {
+  'olly': {
     title: "올리",
     duration: "2024.03 ~ 2024.07",
     technologies: [
@@ -225,7 +278,7 @@ const projects = [
     github: "https://github.com/toosign00/OLLY",
     deploy: "https://toosign00.github.io/OLLY"
   },
-  {
+  'minigame': {
     title: "카드 짝 맞추기 게임",
     duration: "2024.05 ~ 2024.07",
     technologies: [
@@ -237,9 +290,9 @@ const projects = [
     github: "https://github.com/toosign00/minigame",
     deploy: "https://toosign00.github.io/minigame"
   },
-  {
+  'film-magazine': {
     title: "Film Magazine",
-    duration: "2023.03 ~ 2024.05",
+    duration: "2023.09 ~ 2024.12",
     technologies: [
       techStack.html,
       techStack.css,
@@ -249,15 +302,19 @@ const projects = [
     github: "https://github.com/toosign00/film_magazine",
     deploy: "https://toosign00.github.io/film_magazine"
   }
-];
+};
 
+// 모달 창 관련 스크립트
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('projectModal');
   const modalClose = modal.querySelector('.modal--close');
   const modalOverlay = modal.querySelector('.modal--overlay');
 
-  function openModal(projectIndex) {
-    const project = projects[projectIndex];
+  // 모달 창 열기 함수
+  function openModal(projectId) {
+    // 프로젝트 정보가 없는 경우 함수 종료
+    const project = projects[projectId];
+    if (!project) return;
 
     // 모달 내용 업데이트
     modal.querySelector('.modal--title').textContent = project.title;
@@ -283,13 +340,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const deployLink = modal.querySelector('.deploy-link');
 
     githubLink.href = project.github;
-    deployLink.href = project.deploy;
+
+    // deploy 링크가 있는 경우에만 보이게 처리
+    // 짤방 저장소는 Node.js 프로젝트라 deploy 링크가 없음, 추후 AWS 활용하여 배포 예정
+    if (project.deploy) {
+      deployLink.style.display = 'inline-block';
+      deployLink.href = project.deploy;
+    } else {
+      deployLink.style.display = 'none';
+    }
 
     // 모달 표시
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 
+  // 모달 창 닫기 함수
   function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
@@ -307,8 +373,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 프로젝트 아이템 클릭 이벤트
-  document.querySelectorAll('.project--item').forEach((item, index) => {
-    item.addEventListener('click', () => openModal(index));
+  document.querySelectorAll('.project--item').forEach(item => {
+    item.addEventListener('click', () => {
+      const projectId = item.dataset.projectId;
+      openModal(projectId);
+    });
   });
 });
 
