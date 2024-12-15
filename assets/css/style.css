@@ -94,7 +94,6 @@ ol {
 body {
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   width: 100%;
-  max-width: 2560px;
   height: auto;
   background-color: var(--white);
   color: var(--black);
@@ -104,6 +103,7 @@ body {
 }
 
 main {
+  container-type: inline-size;
   position: relative;
   background-color: var(--white);
   color: var(--black);
@@ -476,6 +476,31 @@ section {
   gap: 3rem;
   width: 100%;
 }
+
+@container (min-width: 1920px) {
+  .projects--grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@container (min-width: 1025px) and (max-width: 1919px) {
+  .projects--grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@container (max-width: 1024px) {
+  .projects--grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@container (max-width: 768px) {
+  .projects--grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 .project--item {
   display: flex;
