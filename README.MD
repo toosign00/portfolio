@@ -23,7 +23,7 @@ Lighthouse 평가에서 모두 100점을 받았습니다.
 
 프로젝트 기간 : `202412` ~ 진행 중
 
-인원 : 개인 
+인원 : 개인
 
 프로젝트 목적 : 개인 포트폴리오
 
@@ -32,9 +32,11 @@ Lighthouse 평가에서 모두 100점을 받았습니다.
 
 ## 기술 스택
 
+<div>
   <img src="https://img.shields.io/badge/HTML5-%23E33F26?style=flat&logo=HTML5&logoColor=white">
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white">
 <img src="https://img.shields.io/badge/JavaScript-%23F7DF1E?style=flat&logo=JavaScript&logoColor=black">
+</div>
 
 <br>
 <br>
