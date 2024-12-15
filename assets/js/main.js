@@ -211,7 +211,7 @@ const projects = {
       techStack.javascript
     ],
     summary: "프론트엔드 개발자 노현수의 포트폴리오",
-    description: "개인 포트폴리오 웹사이트로, HTML, CSS, JavaScript를 사용해 제작했습니다. 라이트/다크 모드 전환 기능과 EmailJS API를 사용하여 이메일 전송 기능을 구현했습니다.",
+    description: "개인 포트폴리오 웹사이트로, HTML, CSS, JavaScript를 사용해 제작했습니다. 라이트/다크 모드 전환 기능과 Skills 섹션에서 스킬 박스를 클릭하면 해당 기술에 대한 설명을 타이핑 효과로 출력하는 기능을 구현했습니다. Project 섹션에서 프로젝트 데이터를 객체로 분리하고 ProjectsManager와 ProjectModal 클래스를 구현하여 프로젝트 카드와 모달을 동적으로 생성하도록 리팩토링했습니다. 또한, 이메일을 보내는 기능을 구현하기 위해 EmailJS API를 사용했습니다.",
     github: "https://github.com/toosign00/toosign00.github.io",
     deploy: "https://toosign.kr/"
   },
@@ -228,7 +228,7 @@ const projects = {
       techStack.ejs
     ],
     summary: "세상의 모든 짤을 모으기",
-    description: "Node.js와 MongoDB를 활용한 이미지 공유 플랫폼입니다. 사용자들이 자유롭게 이미지를 업로드하고 공유할 수 있으며, 커뮤니티 기능을 통해 소통할 수 있습니다.",
+    description: "Node.js와 MongoDB를 사용해 짤을 올릴 수 있는 웹사이트를 제작했습니다. Express 프레임워크를 사용하여 서버를 구축하고, EJS 템플릿 엔진을 사용하여 동적인 페이지를 렌더링했습니다. JWT 토큰을 사용한 사용자 인증 시스템을 구축하고, 이미지 업로드를 위한 Multer 미들웨어와 MongoDB를 연동하여 사용자가 업로드한 짤을 저장하고 조회할 수 있도록 구현했습니다.",
     github: "https://github.com/toosign00/meme-archive"
   },
   'my-life-story': {
@@ -241,7 +241,7 @@ const projects = {
       techStack.javascript
     ],
     summary: "9가지 취미로 알아보는 나의 인생 일대기",
-    description: "개인 블로그 웹사이트로, 사용자가 자신의 이야기를 공유하고, 다른 사용자의 이야기를 읽을 수 있는 커뮤니티 기능을 제공합니다. Firebase Firestore를 사용해 데이터베이스를 구축하고, Firebase Authentication을 통해 사용자 인증을 구현했습니다. 또한, Firebase Storage를 활용하여 이미지 업로드 기능을 추가했습니다.",
+    description: "나의 인생 일대기를 9가지의 취미로 표현한 웹사이트입니다. 각 취미마다 다양한 인터렉션을 적용하여 사용자가 즐겁게 경험할 수 있도록 구현했습니다.",
     github: "https://github.com/toosign00/my-life-story",
     deploy: "https://my-life-story.vercel.app/"
   },
@@ -257,7 +257,7 @@ const projects = {
       techStack.jquery,
       techStack.git
     ],
-    summary: "서울 4대 궁궐 투어 앱 오라, 궁 소개 웹사이트",
+    summary: "서울 4대 궁궐 투어 앱 '오라, 궁' 소개 웹사이트",
     description: "계원예술대학교 디지털미디어디자인과 졸업전시에서 서울 4대 궁궐 투어 앱 '오라, 궁' 서비스의 소개 웹사이트 개발을 담당했습니다. GSAP 라이브러리를 활용한 부드러운 가로 스크롤 애니메이션과 Transform, Intersection Observer API를 활용한 인터랙티브 3D 캐러셀을 구현했습니다. feature 브랜치 전략을 활용한 Git 버전 관리와 pull request를 통한 코드 리뷰로 팀 협업을 진행했습니다.",
     github: "https://github.com/toosign00/ora-gung",
     deploy: "https://ora-gung.vercel.app"
