@@ -48,30 +48,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ======= 메뉴 클릭시 해당 섹션 이동 =======
 document.addEventListener("DOMContentLoaded", () => {
-  // nav--link 클래스를 가진 모든 요소를 선택
+  // 네비게이션 링크와 로고 링크 선택
   const navLinks = document.querySelectorAll(".nav--link");
-  const headerOffset = document.querySelector(".site-header").offsetHeight; // 헤더 높이 저장
+  const logoLink = document.getElementById("logo-link");
+  const headerOffset = document.querySelector("header").offsetHeight;
+
+  // 부드러운 스크롤 함수
+  const smoothScroll = (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute("href").substring(1);
+    const targetSection = document.getElementById(targetId);
+
+    if (targetSection) {
+      window.scrollTo({
+        top: targetSection.offsetTop - headerOffset,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  // 네비게이션 링크들에 이벤트 리스너 추가
   navLinks.forEach(link => {
-    link.addEventListener("click", e => {
-      // 링크의 기본 동작(URL 변경) 방지
-      e.preventDefault();
-
-      // href 속성값에서 '#'을 제거하여 id값만 추출
-      const targetId = e.target.getAttribute("href").substring(1);
-
-      // 추출한 id를 가진 섹션 요소 선택
-      const targetSection = document.getElementById(targetId);
-
-      // 해당 섹션이 존재하는 경우에만 스크롤 실행
-      if (targetSection) {
-        window.scrollTo({
-          // 헤더 높이만큼 뺀 위치로 스크롤
-          top: targetSection.offsetTop - headerOffset,
-          behavior: "smooth"
-        });
-      }
-    });
+    link.addEventListener("click", smoothScroll);
   });
+
+  // 로고 링크에 이벤트 리스너 추가
+  logoLink.addEventListener("click", smoothScroll);
 });
 
 

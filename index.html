@@ -75,10 +75,13 @@
   </head>
 
   <body>
-    <main>
-      <header class="site-header">
+
+    <header>
+      <div class="header-container">
         <nav class="nav">
-          <img src="./assets/images/logo.svg" alt="로고" class="nav-logo">
+          <a href="#intro" id="logo-link" aria-label="홈으로 가기">
+            <img src="./assets/images/logo.svg" alt="로고" class="nav-logo">
+          </a>
           <ul class="nav--list">
             <li class="nav--item">
               <a href="#intro" class="nav--link">Home</a>
@@ -96,14 +99,15 @@
               <a href="#contact" class="nav--link">Contact</a>
             </li>
           </ul>
-
           <button class="nav--button" id="theme-toggle" aria-label="라이트 모드로 전환">
             <img src="./assets/images/light-mode-icon.svg" class="nav--button-icon" alt="라이트 모드 아이콘">
             <span class="nav--button-text">Light</span>
           </button>
         </nav>
-      </header>
+      </div>
+    </header>
 
+    <main>
       <section class="intro--section" id="intro">
 
 
@@ -136,7 +140,7 @@
             </p>
             <div class="link--icon-container">
               <a href="./assets/pdf/CV.pdf" download="CV.pdf" target="_blank">
-                <button class="cv--button">
+                <button class="cv--button" aria-label="이력서 다운로드">
                   <span>이력서</span>
                   <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
                     stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -265,11 +269,11 @@
       <section id="projects">
         <h2 class="section--heading">Projects</h2>
         <div class="projects--grid"></div>
-        
+
         <div class="modal" id="projectModal">
           <div class="modal--overlay"></div>
           <div class="modal--content">
-            <button class="modal--close">
+            <button class="modal--close" aria-label="모달 닫기">
               <i class="bi bi-x"></i>
             </button>
             <div class="modal--body">
@@ -308,7 +312,7 @@
         </div>
 
         <div class="upload--container">
-          <form id="emailForm">
+          <form id="emailForm" aria-label="문의하기 폼">
             <!-- 받는 사람, 숨김처리 -->
             <input type="hidden" name="to_name" value="노현수">
             <!-- 보내는 사람 -->
@@ -321,17 +325,20 @@
               <label for="from">Email</label>
               <input type="email" id="email" name="reply_to"
                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" " required placeholder=" 이메일을 입력해주세요"
-                class="form--input">
+                class="form--input"
+                aria-label="이메일 입력">
             </div>
             <!-- 내용 -->
             <div class="form--group">
               <label for="message">Message</label>
               <textarea id="message" name="message" rows="10" required placeholder="내용을 입력하세요"
-                class="form--input"></textarea>
+                class="form--input"
+                aria-label="문의 내용 입력"></textarea>
             </div>
             <!-- 제출 버튼 -->
             <div class="form--actions">
-              <button type="submit" class="submit--btn">보내기
+              <button type="submit" class="submit--btn">
+                보내기
                 <i class="bi bi-send"></i>
               </button>
             </div>
@@ -339,12 +346,13 @@
         </div>
       </section>
 
-      <footer>
-        <div class="footer--container">
-          <p class="footer--text">© 2024. Ro HyunSoo. All rights reserved.</p>
-        </div>
-      </footer>
     </main>
+
+    <footer>
+      <div class="footer--container">
+        <p class="footer--text">© 2024. Ro HyunSoo. All rights reserved.</p>
+      </div>
+    </footer>
 
     <!-- 메인 스크립트 -->
     <script src="./assets/js/main.js"></script>

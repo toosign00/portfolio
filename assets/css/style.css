@@ -94,6 +94,7 @@ ol {
 body {
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   width: 100%;
+  max-width: 1920px;
   height: auto;
   background-color: var(--white);
   color: var(--black);
@@ -115,23 +116,33 @@ section {
   margin-bottom: 12.5rem;
 }
 
-.site-header {
+header {
   width: 100%;
-  height: auto;
   position: fixed;
   top: 0;
   left: 0;
-  padding: 2rem 5%;
   z-index: 1000;
   background-color: rgba(var(--white), 0.8);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
 
+.header-container {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 5%;
+}
+
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+#logo-link:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .nav-logo {
@@ -501,7 +512,6 @@ section {
   }
 }
 
-
 .project--item {
   display: flex;
   flex-direction: column;
@@ -611,7 +621,8 @@ section {
 }
 
 .modal--overlay {
-  position: absolute;
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
