@@ -83,7 +83,7 @@ GitHub : [저장소 링크](https://github.com/toosign00/toosign00.github.io)
 ## ✨ 주요 기능
 | 기능 | 설명 |
 |:---:|---|
-| <img src="https://github.com/user-attachments/assets/f89a2951-e02f-4c74-bc3e-5b0a334c92b4" width="100%" style="max-width: 500px" alt="라이트/다크모드"/> | **🌗 라이트/다크 모드** <br><br> • `data-theme` 속성을 이용한 테마 전환 구현 <br> • `localStorage`로 사용자 테마 설정 유지 <br> • DOM 로드 전 테마 적용으로 깜빡임 현상 방지 <br><br> 👉 [코드 보기](#라이트--다크모드-구현) |
+| <img src="https://github.com/user-attachments/assets/f89a2951-e02f-4c74-bc3e-5b0a334c92b4" width="100%"  alt="라이트/다크모드"/> | **🌗 라이트/다크 모드** <br><br> • `data-theme` 속성을 이용한 테마 전환 구현 <br> • `localStorage`로 사용자 테마 설정 유지 <br> • DOM 로드 전 테마 적용으로 깜빡임 현상 방지 <br><br> 👉 [코드 보기](#라이트--다크모드-구현) |
 | <img src="https://github.com/user-attachments/assets/c4bc9a4c-c9e6-4ec4-b943-08db38fffd79" width="100%" style="max-width: 500px" alt="스크롤"/> | **📜 부드러운 스크롤** <br><br> • 헤더 메뉴 클릭 시 부드러운 스크롤 이동 <br> • CSS `scroll-behavior: smooth` 활용 <br> • 사용자 경험 향상을 위한 자연스러운 애니메이션 <br><br> 👉 [코드 보기](#부드러운-스크롤) |
 | <img src="https://github.com/user-attachments/assets/94a7cc23-967e-4137-89d1-452e034ef3fd" width="100%" style="max-width: 500px" alt="타이핑"/> | **⌨️ 타이핑 효과** <br><br> • 스킬 버튼 클릭 시 타이핑 애니메이션 구현 <br> • TypeWriter 클래스를 활용한 모듈화 <br> • 중복 클릭 방지 로직 구현 <br><br> 👉 [코드 보기](#타이핑-효과) |
 | <img src="https://github.com/user-attachments/assets/c442fdac-a917-4d2f-99c0-88c12c85a682" width="100%" style="max-width: 500px" alt="모달"/> | **🔲 모달창 팝업** <br><br> • ProjectModal 클래스로 동적 생성 <br> • 키보드 접근성 고려 (ESC 키 지원) <br> • 프로젝트 정보 동적 렌더링 <br><br> 👉 [코드 보기](#모달창-팝업-효과) |
