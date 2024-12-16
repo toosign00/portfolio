@@ -441,7 +441,7 @@ class TypeWriter {
 
 <table>
   <tr>
-    <th>✨ 잘된 점</th>
+    <th>😀 잘된 점</th>
     <th>🤔 아쉬운 점</th>
   </tr>
   <tr>
