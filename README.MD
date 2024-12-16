@@ -87,7 +87,6 @@ GitHub : [저장소 링크](https://github.com/toosign00/toosign00.github.io)
 | <img src="https://github.com/user-attachments/assets/c4bc9a4c-c9e6-4ec4-b943-08db38fffd79" width="100%" style="max-width: 500px" alt="스크롤"/> | **📜 부드러운 스크롤** <br><br> • 헤더 메뉴 클릭 시 부드러운 스크롤 이동 <br> • CSS `scroll-behavior: smooth` 활용 <br> • 사용자 경험 향상을 위한 자연스러운 애니메이션 <br><br> 👉 [코드 보기](#부드러운-스크롤) |
 | <img src="https://github.com/user-attachments/assets/94a7cc23-967e-4137-89d1-452e034ef3fd" width="100%" style="max-width: 500px" alt="타이핑"/> | **⌨️ 타이핑 효과** <br><br> • 스킬 버튼 클릭 시 타이핑 애니메이션 구현 <br> • TypeWriter 클래스를 활용한 모듈화 <br> • 중복 클릭 방지 로직 구현 <br><br> 👉 [코드 보기](#타이핑-효과) |
 | <img src="https://github.com/user-attachments/assets/c442fdac-a917-4d2f-99c0-88c12c85a682" width="100%" style="max-width: 500px" alt="모달"/> | **🔲 모달창 팝업** <br><br> • ProjectModal 클래스로 동적 생성 <br> • 키보드 접근성 고려 (ESC 키 지원) <br> • 프로젝트 정보 동적 렌더링 <br><br> 👉 [코드 보기](#모달창-팝업-효과) |
-🚀 성능 최적화 & 웹 표준
 | <div style="padding: 0"><img src="https://github.com/user-attachments/assets/c0f0a929-13d1-4ce3-8127-b5c6da9703c4" width="100%" alt="Lighthouse 점수"/></div> | 📊 성능 최적화 <br><br> • loading="lazy" 속성을 통한 이미지 지연 로딩<br> • 시멘틱 태그를 활용한 웹표준 준수 <br> • alt, aria-label 적용으로 접근성 개선 <br> • Meta Data, Open Graph, robots.txt, sitemap.xml 적용<br><br> 👉 Google Lighthouse 전 항목 100점 달성 |
 
 <br>
