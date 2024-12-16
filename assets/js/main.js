@@ -95,12 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // 생성자: 텍스트를 표시할 DOM 요소와 타이핑 timeout ID 초기화
     constructor(element) {
       this.element = element;
-      this.typingTimeout = null;
+      this.typingTimeout = null; // timeout ID 관리 추가
     }
 
-    // 텍스트를 타이핑 효과로 출력하는 메서드
     type(text, speed = 10) {
-      // 같은 텍스트가 이미 있다면 지우고 다시 시작
+      // 진행 중인 타이핑이 있다면 중지
       if (this.element.textContent === text) {
         this.element.textContent = '';
       }
