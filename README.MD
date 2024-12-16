@@ -81,66 +81,14 @@ GitHub : [저장소 링크](https://github.com/toosign00/toosign00.github.io)
 <br>
 
 ## ✨ 주요 기능
-| <div style="padding: 0">기능</div> | 설명 |
+| 기능 | 설명 |
 |:---:|---|
-| <div style="padding: 0"><img src="https://github.com/user-attachments/assets/f89a2951-e02f-4c74-bc3e-5b0a334c92b4" width="100%" alt="라이트/다크모드"/></div> | **🌗 라이트/다크 모드** <br><br> • `data-theme` 속성을 이용한 테마 전환 구현 <br> • `localStorage`로 사용자 테마 설정 유지 <br> • DOM 로드 전 테마 적용으로 깜빡임 현상 방지 <br><br> 👉 [코드 보기](#라이트--다크모드-구현) |
-| <div style="padding: 0"><img src="https://github.com/user-attachments/assets/c4bc9a4c-c9e6-4ec4-b943-08db38fffd79" width="100%" alt="스크롤"/></div> | **📜 부드러운 스크롤** <br><br> • 헤더 메뉴 클릭 시 부드러운 스크롤 이동 <br> • CSS `scroll-behavior: smooth` 활용 <br> • 사용자 경험 향상을 위한 자연스러운 애니메이션 <br><br> 👉 [코드 보기](#부드러운-스크롤) |
-
-## ✨ 주요 기능
-
-### 라이트 / 다크모드 구현
-
-`data-theme`속성을 이용하여 라이트 / 다크모드를 구현했습니다
-
-`localStorage`를 이용하여 사용자가 설정한 테마 정보를 저장하여, 페이지를 이동하거나 닫은 후 다시 접속하더라도 모드 값이 유지되도록 했습니다.
-
-또한 head 내에 로컬 저장소에 적용된 테마 정보 값에 따라 즉시 테마를 적용하는 스크립트를 배치하여 `Blocking`하고, DOM이 로드되기전에 미리 테마를 적용하여 페이지 새로고침 시에 깜빡이는 현상을 막았습니다.
-
-![2024-12-1604 04 40-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/f89a2951-e02f-4c74-bc3e-5b0a334c92b4)
-<br>
-<br>
-
-### 부드러운 스크롤
-
-헤더 메뉴 클릭 시 스크롤 이동 기능을 구현하였습니다.
-
-![scroll](https://github.com/user-attachments/assets/c4bc9a4c-c9e6-4ec4-b943-08db38fffd79)
-<br>
-<br>
-
-### 타이핑 효과
-
-스킬 버튼을 클릭 시 해당 스킬의 숙련도를 타이핑 효과로 나타내는 기능을 구현하였습니다.
-
-![2024-12-1603 51 17-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/94a7cc23-967e-4137-89d1-452e034ef3fd)
-<br>
-<br>
-
-### 모달창 팝업 효과
-
-모달 창 클릭 시 팝업 효과를 구현하였습니다. 프로젝트 정보를 객체로 정의하고 `ProjectModal class`를 이용해 동적으로 생성되도록 하였습니다.
-
-![2024-12-1603 56 23-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c442fdac-a917-4d2f-99c0-88c12c85a682)
-<br>
-<br>
-
-### 이메일 폼
-
-`EmailJS`를 사용하여 간편하게 이메일을 보낼 수 있도록 구현하였습니다.
-
-<img width="600" alt="스크린샷 2024-12-16 04 01 50" src="https://github.com/user-attachments/assets/69b5be56-1b11-4965-8e79-b98656404d2b" />
-<br>
-<br>
-
-### 성능 최적화, 웹표준, 접근성, SEO 최적화
-
-성능 최적화를 위해 `loading="lazy"` 등 다양한 방법을 고려하고 적용하였으며, 시멘틱 태그를 활용하여 웹표준을 준수했습니다. `alt`, `aria-label` 을 사용하여 접근성도 고려했습니다.
- 
- 또한 `Meta Data`, ` Open graph`, `robots.text` 그리고 `Sitemap.xml`를 적용하여 SEO 최적화를 위해 노력했습니다.
-
-<img width="600" alt="스크린샷 2024-12-16 04 32 44 1"
-src="https://github.com/user-attachments/assets/c0f0a929-13d1-4ce3-8127-b5c6da9703c4" />
-
+| <img src="https://github.com/user-attachments/assets/f89a2951-e02f-4c74-bc3e-5b0a334c92b4" width="100%" style="max-width: 500px" alt="라이트/다크모드"/> | **🌗 라이트/다크 모드** <br><br> • `data-theme` 속성을 이용한 테마 전환 구현 <br> • `localStorage`로 사용자 테마 설정 유지 <br> • DOM 로드 전 테마 적용으로 깜빡임 현상 방지 <br><br> 👉 [코드 보기](#라이트--다크모드-구현) |
+| <img src="https://github.com/user-attachments/assets/c4bc9a4c-c9e6-4ec4-b943-08db38fffd79" width="100%" style="max-width: 500px" alt="스크롤"/> | **📜 부드러운 스크롤** <br><br> • 헤더 메뉴 클릭 시 부드러운 스크롤 이동 <br> • CSS `scroll-behavior: smooth` 활용 <br> • 사용자 경험 향상을 위한 자연스러운 애니메이션 <br><br> 👉 [코드 보기](#부드러운-스크롤) |
+| <img src="https://github.com/user-attachments/assets/94a7cc23-967e-4137-89d1-452e034ef3fd" width="100%" style="max-width: 500px" alt="타이핑"/> | **⌨️ 타이핑 효과** <br><br> • 스킬 버튼 클릭 시 타이핑 애니메이션 구현 <br> • TypeWriter 클래스를 활용한 모듈화 <br> • 중복 클릭 방지 로직 구현 <br><br> 👉 [코드 보기](#타이핑-효과) |
+| <img src="https://github.com/user-attachments/assets/c442fdac-a917-4d2f-99c0-88c12c85a682" width="100%" style="max-width: 500px" alt="모달"/> | **🔲 모달창 팝업** <br><br> • ProjectModal 클래스로 동적 생성 <br> • 키보드 접근성 고려 (ESC 키 지원) <br> • 프로젝트 정보 동적 렌더링 <br><br> 👉 [코드 보기](#모달창-팝업-효과) |
+🚀 성능 최적화 & 웹 표준
+| <div style="padding: 0"><img src="https://github.com/user-attachments/assets/c0f0a929-13d1-4ce3-8127-b5c6da9703c4" width="100%" alt="Lighthouse 점수"/></div> | 📊 성능 최적화 <br><br> • loading="lazy" 속성을 통한 이미지 지연 로딩<br> • 시멘틱 태그를 활용한 웹표준 준수 <br> • alt, aria-label 적용으로 접근성 개선 <br> • Meta Data, Open Graph, robots.txt, sitemap.xml 적용<br><br> 👉 Google Lighthouse 전 항목 100점 달성 |
 
 <br>
 <br>
@@ -186,6 +134,41 @@ document.addEventListener('DOMContentLoaded', function () {
       ? "./assets/images/dark-mode-icon.svg"
       : "./assets/images/light-mode-icon.svg";
   }
+});
+```
+
+<br>
+
+### 부드러운 스크롤
+
+```javascript
+document.addEventListener("DOMContentLoaded", () => {
+  // 네비게이션 링크와 로고 링크 선택
+  const navLinks = document.querySelectorAll(".nav--link");
+  const logoLink = document.getElementById("logo-link");
+  const headerOffset = document.querySelector("header").offsetHeight;
+
+  // 부드러운 스크롤 함수
+  const smoothScroll = (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute("href").substring(1);
+    const targetSection = document.getElementById(targetId);
+
+    if (targetSection) {
+      window.scrollTo({
+        top: targetSection.offsetTop - headerOffset,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  // 네비게이션 링크들에 이벤트 리스너 추가
+  navLinks.forEach(link => {
+    link.addEventListener("click", smoothScroll);
+  });
+
+  // 로고 링크에 이벤트 리스너 추가
+  logoLink.addEventListener("click", smoothScroll);
 });
 ```
 
@@ -369,57 +352,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 ```
 
-<br>
-
-### 이메일 폼
-
-```javascript
-// EmailJS 초기화
-emailjs.init("환경변수");
-
-// 이메일 유효성 검사 함수
-function isValidEmail(email) {
-  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return pattern.test(email);
-}
-
-// 폼 제출 이벤트에 대한 핸들러 등록
-document.getElementById("emailForm").addEventListener("submit", async function (event) {
-  // 폼의 기본 제출 동작 방지
-  event.preventDefault();
-
-  // 입력 필드와 버튼 선택
-  const emailInput = this.querySelector('[name="reply_to"]');
-  const submitButton = document.querySelector(".submit--btn");
-  const email = emailInput.value;
-
-  // 이메일 유효성 검사
-  if (!isValidEmail(email)) {
-    emailInput.setCustomValidity("올바른 이메일 형식이 아닙니다.");
-    // 브라우저의 기본 검증 UI로 오류 표시
-    emailInput.reportValidity();
-    return;
-  }
-
-  // 이메일이 유효한 경우 이전 오류 메시지 초기화
-  emailInput.setCustomValidity(""); // 유효성 메시지 초기화
-
-  // Loading 상태 표시
-  submitButton.disabled = true;
-  submitButton.innerHTML = '<i class="bi bi-hourglass"></i> 전송중...';
-
-  try {
-    await emailjs.sendForm("Portfolio_Email_Form", "환경변수", this, "환경변수");
-    alert("이메일이 성공적으로 전송되었습니다!");
-    this.reset();
-  } catch (error) {
-    alert("전송 실패: " + error.text);
-  } finally {
-    submitButton.disabled = false;
-    submitButton.innerHTML = '보내기 <i class="bi bi-send"></i>';
-  }
-});
-```
 <br>
 <br>
 
