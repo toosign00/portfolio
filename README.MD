@@ -3,17 +3,19 @@
 <br>
 <br>
 
-- [프로젝트 소개](#프로젝트-소개)
-- [기술 스택](#기술-스택)
-- [프로젝트 구조](#프로젝트-구조)
-- [주요 기능](#주요-기능)
-- [문제 해결](#문제-해결)
-- [회고](#회고)
+## 📚 목차
+  - [📝 프로젝트 소개](#프로젝트-소개)
+  - [🛠 기술 스택](#기술-스택)
+  - [🗂 프로젝트 구조](#프로젝트-구조)
+  - [✨ 주요 기능](#주요-기능)
+  - [💻 주요 코드](#주요-기능)
+  - [💡 문제 해결](#문제-해결)
+  - [📊 회고](#회고)
 
 <br>
 <br>
 
-## 프로젝트 소개
+## 📝 프로젝트 소개
 
 계원예술대학교 디지털미디어디자인 2학년 2학기 포트폴리오 수업에서 제작한 개인 포트폴리오 웹사이트입니다.
 헤더 메뉴 클릭 시 스크롤 이동 기능을 구현하였고, 스킬 버튼을 클릭하면 해당 스킬의 숙련도를 타이핑 효과로 표시합니다.
@@ -38,16 +40,24 @@ GitHub : [저장소 링크](https://github.com/toosign00/toosign00.github.io)
 <br>
 <br>
 
-## 기술 스택
+## 🛠 기술 스택
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://html.spec.whatwg.org/)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+### Front-end
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+### Tools & Deployment
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+
+### Development Environment
+![Visual Studio Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 <br>
 <br>
 
-## 프로젝트 구조
+## 🗂 프로젝트 구조
 
 ```
 📦 포트폴리오
@@ -70,7 +80,15 @@ GitHub : [저장소 링크](https://github.com/toosign00/toosign00.github.io)
 <br>
 <br>
 
-## 주요 기능
+## ✨ 주요 기능
+| 기능 | 설명 |
+|:---:|---|
+| <img src="https://github.com/user-attachments/assets/f89a2951-e02f-4c74-bc3e-5b0a334c92b4" width="100%" style="max-width: 500px" alt="라이트/다크모드"/> | **🌗 라이트/다크 모드** <br><br> • `data-theme` 속성을 이용한 테마 전환 구현 <br> • `localStorage`로 사용자 테마 설정 유지 <br> • DOM 로드 전 테마 적용으로 깜빡임 현상 방지 <br><br> 👉 [코드 보기](#라이트--다크모드-구현) |
+| <img src="https://github.com/user-attachments/assets/c4bc9a4c-c9e6-4ec4-b943-08db38fffd79" width="100%" style="max-width: 500px" alt="스크롤"/> | **📜 부드러운 스크롤** <br><br> • 헤더 메뉴 클릭 시 부드러운 스크롤 이동 <br> • CSS `scroll-behavior: smooth` 활용 <br> • 사용자 경험 향상을 위한 자연스러운 애니메이션 <br><br> 👉 [코드 보기](#부드러운-스크롤) |
+| <img src="https://github.com/user-attachments/assets/94a7cc23-967e-4137-89d1-452e034ef3fd" width="100%" style="max-width: 500px" alt="타이핑"/> | **⌨️ 타이핑 효과** <br><br> • 스킬 버튼 클릭 시 타이핑 애니메이션 구현 <br> • TypeWriter 클래스를 활용한 모듈화 <br> • 중복 클릭 방지 로직 구현 <br><br> 👉 [코드 보기](#타이핑-효과) |
+| <img src="https://github.com/user-attachments/assets/c442fdac-a917-4d2f-99c0-88c12c85a682" width="100%" style="max-width: 500px" alt="모달"/> | **🔲 모달창 팝업** <br><br> • ProjectModal 클래스로 동적 생성 <br> • 키보드 접근성 고려 (ESC 키 지원) <br> • 프로젝트 정보 동적 렌더링 <br><br> 👉 [코드 보기](#모달창-팝업-효과) |
+
+## ✨ 주요 기능
 
 ### 라이트 / 다크모드 구현
 
@@ -129,7 +147,7 @@ src="https://github.com/user-attachments/assets/c0f0a929-13d1-4ce3-8127-b5c6da97
 <br>
 <br>
 
-## 주요 코드
+## 💻 주요 코드
 
 ### 라이트 / 다크모드 구현
 
@@ -407,7 +425,7 @@ document.getElementById("emailForm").addEventListener("submit", async function (
 <br>
 <br>
 
-## 문제 해결
+## 💡 문제 해결
 
 ### 1. 테마 전환 시 깜빡임 현상 (FOUC)
 
@@ -490,15 +508,22 @@ class TypeWriter {
 이러한 문제 해결 과정을 통해 사용자 경험을 개선하고, 코드의 안정성과 유지보수성을 향상시켰습니다.
 
 
-## 회고
+## 📝 회고
 
-### 잘된 점
-
-- 라이트 / 다크모드 사용 중 새로고침 시 깜빡거리는 현상을 방지하여 사용자 경험 향상
-- 성능 최적화, 웹표준, 접근성, SEO 최적화를 고려하여 개발
-- 프로젝트, 모달 데이터를 동적으로 생성
-
-
-### 아쉬운 점
-- 반응형 개발을 하지 못함
-- 시간이 부족하여 프로젝트 섹션 설명 부족
+<table>
+  <tr>
+    <th>✨ 잘된 점</th>
+    <th>🤔 아쉬운 점</th>
+  </tr>
+  <tr>
+    <td>
+      • 라이트/다크모드 깜빡임 현상 방지<br>
+      • 성능, 웹표준, 접근성 최적화<br>
+      • 동적 데이터 처리
+    </td>
+    <td>
+      • 반응형 디자인 미구현<br>
+      • 프로젝트 설명 부족
+    </td>
+  </tr>
+</table>
