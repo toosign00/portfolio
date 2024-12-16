@@ -646,8 +646,8 @@ header {
   background-color: var(--white);
   padding: 3rem 2rem;
   border-radius: 1rem;
-  width: 90%;
-  max-width: 62.5rem;
+  width: 50%;
+  /* max-width: 62.5rem; */
   text-align: center;
   transition: transform 0.4s;
 }
@@ -716,7 +716,6 @@ header {
 }
 
 .modal--description {
-  width: 70%;
   font-size: 1.1rem;
   font-weight: var(--font-weight-regular);
   line-height: var(--font-line-height-1-6);
