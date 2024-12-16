@@ -647,9 +647,23 @@ header {
   padding: 3rem 2rem;
   border-radius: 1rem;
   width: 50%;
-  /* max-width: 62.5rem; */
+  max-width: 62.5rem;
+  height: 80%;
   text-align: center;
   transition: transform 0.4s;
+  overflow-y: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Webkit (Chrome, Safari, etc) 스크롤바 숨기기 */
+.modal--content::-webkit-scrollbar {
+  display: none;
+}
+
+/* 모달이 활성화될 때의 스타일 */
+.modal.active .modal--content {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .modal.active .modal--content {
@@ -685,6 +699,20 @@ header {
   gap: 1rem;
 }
 
+.modal--header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal--title-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
 .modal--title {
   font-size: var(--font-heading);
   font-weight: 600;
@@ -703,7 +731,7 @@ header {
   flex-wrap: wrap;
 }
 
-.modal--technologies > img {
+.modal--technologies>img {
   width: 1.75rem;
   height: 1.75rem;
 }
@@ -733,6 +761,96 @@ header {
 .modal--links a {
   color: var(--black);
   font-size: 1.75rem;
+}
+
+.modal--slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.slider--container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: var(--white);
+}
+
+.slider--slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slider--slide.active {
+  opacity: 1;
+}
+
+.slider--slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider--prev,
+.slider--next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 1;
+}
+
+.slider--prev:hover,
+.slider--next:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.slider--prev {
+  left: 10px;
+}
+
+.slider--next {
+  right: 10px;
+}
+
+.slider--dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+}
+
+.slider--dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slider--dot.active {
+  background: white;
 }
 
 .contact--container {

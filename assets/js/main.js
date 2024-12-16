@@ -220,7 +220,10 @@ const projects = {
     deploy: {
       url: "https://toosign.kr/",
       ariaLabel: "배포된 웹사이트 링크"
-    }
+    },
+    images: [
+      { url: '/assets/images/thumbnail-portfolio.webp', alt: '메인 화면' }
+    ]
   },
   'meme-repository': {
     title: "짤방 저장소",
@@ -239,7 +242,10 @@ const projects = {
     github: {
       url: "https://github.com/toosign00/meme-repository",
       ariaLabel: "GitHub 저장소 링크"
-    }
+    },
+    images: [
+      { url: '/assets/images/thumbnail-meme-repository.webp', alt: '메인 화면' }
+    ]
   },
   'my-life-story': {
     title: "나의 인생 일대기",
@@ -258,7 +264,10 @@ const projects = {
     },
     deploy: {
       url: "https://my-life-story.vercel.app/"
-    }
+    },
+    images: [
+      { url: '/assets/images/thumbnail-my-life-story.webp ', alt: '메인 화면' }
+    ]
   },
   'ora-gung': {
     title: "오라, 궁",
@@ -281,7 +290,10 @@ const projects = {
     deploy: {
       url: "https://ora-gung.vercel.app",
       ariaLabel: "배포된 웹사이트 링크"
-    }
+    },
+    images: [
+      { url: '/assets/images/thumbnail-ora-gung.webp', alt: '메인 화면' }
+    ]
   },
   'type': {
     title: "TYPE",
@@ -301,7 +313,10 @@ const projects = {
     deploy: {
       url: "https://toosign00.github.io/typography",
       ariaLabel: "배포된 웹사이트 링크"
-    }
+    },
+    images: [
+      { url: '/assets/images/thumbnail-type.webp', alt: '메인 화면' }
+    ]
   },
   'olly': {
     title: "올리",
@@ -321,7 +336,10 @@ const projects = {
     deploy: {
       url: "https://toosign00.github.io/OLLY",
       ariaLabel: "배포된 웹사이트 링크"
-    }
+    },
+    images: [
+      { url: '/assets/images/thumbnail-olly.webp', alt: '메인 화면' }
+    ]
   },
   'minigame': {
     title: "기묘한 이야기 미니게임",
@@ -341,7 +359,10 @@ const projects = {
     deploy: {
       url: "https://toosign00.github.io/minigame",
       ariaLabel: "배포된 웹사이트 링크"
-    }
+    },
+    images: [
+      { url: '/assets/images/thumbnail-minigame.webp', alt: '메인 화면' }
+    ]
   },
   'film-magazine': {
     title: "Film Magazine",
@@ -361,7 +382,10 @@ const projects = {
     deploy: {
       url: "https://toosign00.github.io/film_magazine",
       ariaLabel: "배포된 웹사이트 링크"
-    }
+    },
+    images: [
+      { url: '/assets/images/thumbnail-film-magazine.webp', alt: '메인 화면' }
+    ]
   }
 };
 
@@ -413,6 +437,8 @@ class ProjectModal {
     this.modal = document.getElementById('projectModal');
     this.modalClose = this.modal.querySelector('.modal--close');
     this.modalOverlay = this.modal.querySelector('.modal--overlay');
+    this.currentSlide = 0;
+    this.slideInterval = null;
     this.bindEvents();
   }
 
@@ -436,12 +462,43 @@ class ProjectModal {
   }
 
   close() {
+    this.stopAutoSlide();
     this.modal.classList.remove('active');
     document.body.style.overflow = '';
+
+    // 슬라이더 제거
+    const slider = this.modal.querySelector('.modal--slider');
+    if (slider) {
+      slider.remove();
+    }
   }
 
   isActive() {
     return this.modal.classList.contains('active');
+  }
+
+  createSlider(images) {
+    if (!images || images.length === 0) return '';
+
+    return `
+      <div class="modal--slider">
+        <div class="slider--container">
+          ${images.map((image, index) => `
+            <div class="slider--slide ${index === 0 ? 'active' : ''}">
+              <img src="${image.url}" alt="${image.alt}" loading="lazy">
+            </div>
+          `).join('')}
+        </div>
+        ${images.length > 1 ? `
+          <button class="slider--prev" aria-label="이전 이미지">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button class="slider--next" aria-label="다음 이미지">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        ` : ''}
+      </div>
+    `;
   }
 
   updateContent(project) {
@@ -450,6 +507,25 @@ class ProjectModal {
     this.updateTechnologies(project.technologies);
     this.modal.querySelector('.modal--description').textContent = project.description;
     this.updateLinks(project);
+
+    const sliderContainer = this.modal.querySelector('.modal--slider-container');
+    const sliderHTML = this.createSlider(project.images);
+
+    // 기존 슬라이더 제거
+    sliderContainer.innerHTML = '';
+
+    // 새 슬라이더 추가
+    if (project.images && project.images.length > 0) {
+      sliderContainer.innerHTML = sliderHTML;
+    }
+
+    this.currentSlide = 0;
+    this.stopAutoSlide();
+
+    if (project.images && project.images.length > 1) {
+      this.initializeSlider();
+      this.startAutoSlide();
+    }
   }
 
   updateTechnologies(technologies) {
@@ -473,13 +549,68 @@ class ProjectModal {
     githubLink.href = project.github.url;
     githubLink.setAttribute('aria-label', project.github.ariaLabel);
 
-    // 배포 링크가 없는 경우 숨김 처리, 있으면 보이도록 설정 node.js 프로젝트는 deploy 링크가 없음, 추후 AWS를 사용하여 배포 후 링크 추가 예정
     if (project.deploy) {
       deployLink.style.display = 'inline-block';
       deployLink.href = project.deploy.url;
       deployLink.setAttribute('aria-label', project.deploy.ariaLabel);
     } else {
       deployLink.style.display = 'none';
+    }
+  }
+
+  initializeSlider() {
+    const container = this.modal.querySelector('.slider--container');
+    const slides = this.modal.querySelectorAll('.slider--slide');
+    const prevBtn = this.modal.querySelector('.slider--prev');
+    const nextBtn = this.modal.querySelector('.slider--next');
+
+    const updateSlide = (index) => {
+      slides.forEach(slide => slide.classList.remove('active'));
+
+      slides[index].classList.add('active');
+      this.currentSlide = index;
+    };
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        const newIndex = (this.currentSlide - 1 + slides.length) % slides.length;
+        updateSlide(newIndex);
+        this.stopAutoSlide();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const newIndex = (this.currentSlide + 1) % slides.length;
+        updateSlide(newIndex);
+        this.stopAutoSlide();
+      });
+    }
+
+    container.addEventListener('mouseenter', () => this.stopAutoSlide());
+    container.addEventListener('mouseleave', () => this.startAutoSlide());
+  }
+
+  startAutoSlide() {
+    this.stopAutoSlide();
+    this.slideInterval = setInterval(() => {
+      const slides = this.modal.querySelectorAll('.slider--slide');
+      const newIndex = (this.currentSlide + 1) % slides.length;
+      const dots = this.modal.querySelectorAll('.slider--dot');
+
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+
+      slides[newIndex].classList.add('active');
+      dots[newIndex].classList.add('active');
+      this.currentSlide = newIndex;
+    }, 5000);
+  }
+
+  stopAutoSlide() {
+    if (this.slideInterval) {
+      clearInterval(this.slideInterval);
+      this.slideInterval = null;
     }
   }
 }
@@ -491,7 +622,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const modal = new ProjectModal();
 
-  // 프로젝트 클릭 이벤트 위임
   document.querySelector('.projects--grid').addEventListener('click', (e) => {
     const projectItem = e.target.closest('.project--item');
     if (projectItem) {
@@ -499,6 +629,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
 
 
 // ======= Contact 섹션 =======
