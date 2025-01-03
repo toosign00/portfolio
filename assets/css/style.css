@@ -288,12 +288,10 @@ header {
   align-items: flex-start;
   justify-content: flex-end;
   min-height: calc(100vh - var(--header-height, 0px));
-  padding-bottom: 4.375rem;
+  padding-bottom: 83px;
 }
 
 .intro--title {
-  container-type: inline-size;
-  container-name: intro;
   width: 100%;
   display: flex;
   flex-direction: column;
