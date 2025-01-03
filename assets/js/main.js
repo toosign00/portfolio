@@ -45,6 +45,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+document.querySelector('.nav--hamburger').addEventListener('click', () => {
+  document.querySelector('.nav--list').classList.toggle('active');
+});
+
+// 메뉴 항목 클릭시 자동으로 닫히도록
+document.querySelectorAll('.nav--link').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.nav--list').classList.remove('active');
+  });
+});
+
 
 // ======= 메뉴 클릭시 해당 섹션 이동 =======
 document.addEventListener("DOMContentLoaded", () => {
