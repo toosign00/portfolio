@@ -205,20 +205,21 @@ const projects = {
   'portfolio': {
     title: "포트폴리오",
     type: "Personal",
+    role: "프로젝트 전과정 담당",
+    summary: "프론트엔드 개발자 노현수의 포트폴리오",
+    description: "개인 포트폴리오 웹사이트입니다. 계원예술대학교 디지털미디어디자인 2학년 2학기 포트폴리오 수업에서 제작한 개인 포트폴리오 웹사이트입니다. 헤더 메뉴 클릭 시 스크롤 이동 기능을 구현하였고, 스킬 버튼을 클릭하면 해당 스킬의 숙련도를 타이핑 효과로 표시합니다. 또한, 프로젝트 모달 창을 통해 상세 설명을 확인할 수 있습니다. 성능 최적화, 웹표준, 접근성, SEO 최적화를 고려하여 개발하였으며, Google Lighthouse 평가에서 모든 항목에서 100점을 기록하였습니다.",
     duration: "2024.12 ~ 진행 중",
     technologies: [
       techStack.html,
       techStack.css,
       techStack.javascript
     ],
-    summary: "프론트엔드 개발자 노현수의 포트폴리오",
-    description: "개인 포트폴리오 웹사이트입니다. 계원예술대학교 디지털미디어디자인 2학년 2학기 포트폴리오 수업에서 제작한 개인 포트폴리오 웹사이트입니다. 헤더 메뉴 클릭 시 스크롤 이동 기능을 구현하였고, 스킬 버튼을 클릭하면 해당 스킬의 숙련도를 타이핑 효과로 표시합니다. 또한, 프로젝트 모달 창을 통해 상세 설명을 확인할 수 있습니다. 성능 최적화, 웹표준, 접근성, SEO 최적화를 고려하여 개발하였으며, Google Lighthouse 평가에서 모든 항목에서 100점을 기록하였습니다.",
     github: {
       url: "https://github.com/toosign00/toosign00.github.io",
       ariaLabel: "GitHub 저장소 링크"
     },
     deploy: {
-      url: "https://toosign.kr/",
+      url: "https://toosign.kr",
       ariaLabel: "배포된 웹사이트 링크"
     },
     images: [
@@ -228,6 +229,9 @@ const projects = {
   'meme-repository': {
     title: "짤방 저장소",
     type: "Personal",
+    role: "프로젝트 전과정 담당",
+    summary: "세상의 모든 짤을 모으기",
+    description: "Node.js와 MongoDB를 사용해 짤을 올릴 수 있는 웹사이트를 제작했습니다. Express 프레임워크를 사용하여 서버를 구축하고, EJS 템플릿 엔진을 사용하여 동적인 페이지를 렌더링했습니다. JWT 토큰을 사용한 사용자 인증 시스템을 구축하고, 이미지 업로드를 위한 Multer 미들웨어와 MongoDB를 연동하여 사용자가 업로드한 짤을 저장하고 조회할 수 있도록 구현했습니다.",
     duration: "2024.10 ~ 2024.12",
     technologies: [
       techStack.html,
@@ -237,8 +241,6 @@ const projects = {
       techStack.ejs,
       techStack.mongodb
     ],
-    summary: "세상의 모든 짤을 모으기",
-    description: "Node.js와 MongoDB를 사용해 짤을 올릴 수 있는 웹사이트를 제작했습니다. Express 프레임워크를 사용하여 서버를 구축하고, EJS 템플릿 엔진을 사용하여 동적인 페이지를 렌더링했습니다. JWT 토큰을 사용한 사용자 인증 시스템을 구축하고, 이미지 업로드를 위한 Multer 미들웨어와 MongoDB를 연동하여 사용자가 업로드한 짤을 저장하고 조회할 수 있도록 구현했습니다.",
     github: {
       url: "https://github.com/toosign00/meme-repository",
       ariaLabel: "GitHub 저장소 링크"
@@ -250,14 +252,15 @@ const projects = {
   'my-life-story': {
     title: "나의 인생 일대기",
     type: "Personal",
+    role: "프로젝트 전과정 담당",
+    summary: "9가지 취미로 알아보는 나의 인생 일대기",
+    description: "나의 인생 일대기를 9가지의 취미로 표현한 웹사이트입니다. 각 취미마다 다양한 인터렉션을 적용하여 사용자가 즐겁게 경험할 수 있도록 구현했습니다.",
     duration: "2024.10 ~ 2024.12",
     technologies: [
       techStack.html,
       techStack.css,
       techStack.javascript
     ],
-    summary: "9가지 취미로 알아보는 나의 인생 일대기",
-    description: "나의 인생 일대기를 9가지의 취미로 표현한 웹사이트입니다. 각 취미마다 다양한 인터렉션을 적용하여 사용자가 즐겁게 경험할 수 있도록 구현했습니다.",
     github: {
       url: "https://github.com/toosign00/my-life-story",
       ariaLabel: "GitHub 저장소 링크"
@@ -272,6 +275,8 @@ const projects = {
   'ora-gung': {
     title: "오라, 궁",
     type: "Team",
+    teamDetail: "Team : 기획 2명 / 디자인 2명 / 개발 2명",
+    role: "개발 총괄 / 환경 구성 / 웹사이트 구현 / Git 관리",
     duration: "2024.09 ~ 2024.12",
     technologies: [
       techStack.html,
@@ -298,14 +303,15 @@ const projects = {
   'type': {
     title: "TYPE",
     type: "Personal",
+    role: "프로젝트 전과정 담당",
+    summary: "타이포그래피 소개 웹사이트",
+    description: "타이포그래피를 소개하는 웹사이트를 제작했습니다. JavaScript의 이벤트 시스템과 DOM 조작을 활용하여 사용자가 자간, 행간, 크기, 무게를 실시간으로 조절할 수 있는 인터랙티브한 인터페이스를 구현했습니다. 라이트/다크 모드 전환 기능을 추가하고, sessionStorage를 통해 사용자 설정값을 효율적으로 관리했습니다. 또한 미디어 쿼리를 활용한 반응형 웹 디자인을 적용하여 다양한 디바이스에서의 일관된 사용자 경험을 제공했습니다.",
     duration: "2024.05 ~ 2024.07",
     technologies: [
       techStack.html,
       techStack.css,
       techStack.javascript
     ],
-    summary: "타이포그래피 소개 웹사이트",
-    description: "타이포그래피를 소개하는 웹사이트를 제작했습니다. JavaScript의 이벤트 시스템과 DOM 조작을 활용하여 사용자가 자간, 행간, 크기, 무게를 실시간으로 조절할 수 있는 인터랙티브한 인터페이스를 구현했습니다. 라이트/다크 모드 전환 기능을 추가하고, sessionStorage를 통해 사용자 설정값을 효율적으로 관리했습니다. 또한 미디어 쿼리를 활용한 반응형 웹 디자인을 적용하여 다양한 디바이스에서의 일관된 사용자 경험을 제공했습니다.",
     github: {
       url: "https://github.com/toosign00/typography",
       ariaLabel: "GitHub 저장소 링크"
@@ -321,14 +327,16 @@ const projects = {
   'olly': {
     title: "올리",
     type: "Team",
+    teamDetail: "Team : 디자인 2명 / 개발 2명",
+    role: "서비스 기획 / 웹사이트 구현",
+    summary: "치매 도우미 앱 올리 소개 웹사이트",
+    description: "올리 서비스의 기획 일부분과 서비스 소개 웹사이트 제작을 담당했습니다. AOS 스크롤 애니메이션 라이브러리를 활용하여 스크롤에 따라 요소가 나타나고 사라지는 효과를 구현했습니다. 제30회 국제커뮤니케이션공모전에서 디지털미디어디자인 분야 우수상을 수상한 프로젝트입니다.",
     duration: "2024.03 ~ 2024.07",
     technologies: [
       techStack.html,
       techStack.css,
       techStack.javascript
     ],
-    summary: "치매 도우미 앱 올리 소개 웹사이트",
-    description: "올리 서비스의 기획 일부분과 서비스 소개 웹사이트 제작을 담당했습니다. AOS 스크롤 애니메이션 라이브러리를 활용하여 스크롤에 따라 요소가 나타나고 사라지는 효과를 구현했습니다. 제30회 국제커뮤니케이션공모전에서 디지털미디어디자인 분야 우수상을 수상한 프로젝트입니다.",
     github: {
       url: "https://github.com/toosign00/OLLY",
       ariaLabel: "GitHub 저장소 링크"
@@ -344,14 +352,15 @@ const projects = {
   'minigame': {
     title: "기묘한 이야기 미니게임",
     type: "Personal",
+    role: "프로젝트 전과정 담당",
+    summary: "카드 짝 맞추기 게임",
+    description: "JavaScript로 구현한 카드 짝 맞추기 게임입니다. 기묘한 이야기 컨셉으로 제작했습니다. 카드 매칭 로직, 타이머 기능, 애니메이션을 구현했습니다. DOM 조작을 통해 동적으로 카드를 생성하고 Math.random()으로 무작위 배치했으며, localStorage로 사용자의 게임 기록을 저장하고 단계별 난이도 시스템을 적용했습니다.",
     duration: "2024.05 ~ 2024.07",
     technologies: [
       techStack.html,
       techStack.css,
       techStack.javascript
     ],
-    summary: "카드 짝 맞추기 게임",
-    description: "JavaScript로 구현한 카드 짝 맞추기 게임입니다. 기묘한 이야기 컨셉으로 제작했습니다. 카드 매칭 로직, 타이머 기능, 애니메이션을 구현했습니다. DOM 조작을 통해 동적으로 카드를 생성하고 Math.random()으로 무작위 배치했으며, localStorage로 사용자의 게임 기록을 저장하고 단계별 난이도 시스템을 적용했습니다.",
     github: {
       url: "https://github.com/toosign00/minigame",
       ariaLabel: "GitHub 저장소 링크"
@@ -367,14 +376,15 @@ const projects = {
   'film-magazine': {
     title: "Film Magazine",
     type: "Personal",
+    role: "프로젝트 전과정 담당",
+    summary: "필름 매거진 컨셉의 웹사이트",
+    description: "필름 매거진 컨셉의 웹사이트입니다. 시멘틱 마크업과 Flexbox 레이아웃을 사용하여 웹을 디자인 하였으며, 반응형 구현을 위해 미디어 쿼리를 사용하였습니다. 또한 JavaScript를 활용하여 스크롤 이벤트, 모달 창 등의 인터렉션을 구현 했습니다.",
     duration: "2023.09 ~ 2024.12",
     technologies: [
       techStack.html,
       techStack.css,
       techStack.javascript
     ],
-    summary: "필름 매거진 컨셉의 웹사이트",
-    description: "필름 매거진 컨셉의 웹사이트입니다. 시멘틱 마크업과 Flexbox 레이아웃을 사용하여 웹을 디자인 하였으며, 반응형 구현을 위해 미디어 쿼리를 사용하였습니다. 또한 JavaScript를 활용하여 스크롤 이벤트, 모달 창 등의 인터렉션을 구현 했습니다.",
     github: {
       url: "https://github.com/toosign00/film_magazine",
       ariaLabel: "GitHub 저장소 링크"
@@ -389,10 +399,151 @@ const projects = {
   }
 };
 
+// ProjectModal 클래스 정의
+class ProjectModal {
+  constructor() {
+    this.modal = null;
+    this.overlay = null;
+    this.scrollPosition = 0;
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
+  create(projectId) {
+    const project = projects[projectId];
+
+    // Overlay 생성
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+
+    // Modal 생성
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.id = 'projectModal';
+
+    modal.innerHTML = `
+      <div class="modal--header">
+        <p class="modal--title">${project.title} <span class="modal--text-date">${project.duration}</span></p>
+        <div class="modal--buttons">
+          ${project.github ? `
+            <a href="${project.github.url}" target="_blank" class="modal--button" aria-label="${project.github.ariaLabel}">
+              <i class="bi bi-github"></i>
+            </a>
+          ` : ''}
+          ${project.deploy ? `
+            <a href="${project.deploy.url}" target="_blank" class="modal--button" aria-label="${project.deploy.ariaLabel}">
+              <i class="bi bi-link-45deg"></i>
+            </a>
+          ` : ''}
+          <button class="modal--button" aria-label="모달 닫기">
+            <i class="bi bi-x"></i>
+          </button>
+        </div>
+      </div>
+      <img src="./assets/images/thumbnail-${projectId}.webp" alt="${project.images[0].alt}" class="modal--image">
+      <div class="modal--skills">
+        ${project.technologies.map(tech =>
+      `<img src="${tech.imgSrc}" alt="${tech.alt} 아이콘" class="modal--skill-icon">`
+    ).join('')}
+      </div>
+      <div class="modal--content">
+        <div class="modal--row">
+          <p class="modal--label">Type</p>
+          <p class="modal--desc">${project.type === 'Team' ? project.teamDetail : project.type}</p>
+        </div>
+        <div class="modal--row">
+          <p class="modal--label">Role</p>
+          <p class="modal--desc">${project.role}</p>
+        </div>
+        <div class="modal--row">
+          <p class="modal--label">Details</p>
+          <p class="modal--desc">${project.description}</p>
+        </div>
+      </div>
+    `;
+
+    this.modal = modal;
+    this.overlay = overlay;
+
+    // 현재 스크롤 위치 저장
+    this.scrollPosition = window.scrollY;
+
+    // body 스크롤 방지 (스크롤바 유지)
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${this.scrollPosition}px`;
+
+    // DOM에 추가
+    document.body.appendChild(overlay);
+    document.body.appendChild(modal);
+
+    // 트랜지션을 위해 약간의 지연 후 open 클래스 추가
+    requestAnimationFrame(() => {
+      overlay.classList.add('open');
+      modal.classList.add('open');
+    });
+
+    // 이벤트 리스너 추가
+    document.addEventListener('keydown', this.handleKeyDown);
+    this.addEventListeners();
+  }
+
+  handleKeyDown(e) {
+    if (e.key === 'Escape') {
+      this.close();
+    }
+  }
+
+  addEventListeners() {
+    const closeButton = this.modal.querySelector('.bi-x').parentElement;
+    closeButton.addEventListener('click', () => this.close());
+
+    // Overlay 클릭 시 모달 닫기
+    this.overlay.addEventListener('click', (e) => {
+      if (e.target === this.overlay) {
+        this.close();
+      }
+    });
+  }
+
+  close() {
+    if (this.modal) {
+      // 닫힐 때 애니메이션을 위한 클래스 제거
+      this.modal.classList.remove('open');
+      this.overlay.classList.remove('open');
+
+      // 트랜지션이 끝난 후 요소 제거
+      setTimeout(() => {
+        this.modal.remove();
+        this.overlay.remove();
+
+        // 스크롤 위치 복원
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        window.scrollTo(0, this.scrollPosition);
+
+        // 이벤트 리스너 제거
+        document.removeEventListener('keydown', this.handleKeyDown);
+        this.modal = null;
+        this.overlay = null;
+      }, 300); // CSS 트랜지션 시간과 동일하게 설정
+    }
+  }
+
+  open(projectId) {
+    if (this.modal) {
+      this.close();
+    }
+    this.create(projectId);
+  }
+}
+
 // ProjectsManager 클래스 정의
 class ProjectsManager {
   constructor() {
     this.projectsGrid = document.querySelector('.projects--grid');
+    this.projectModal = new ProjectModal();
+    this.setupEventListeners();
   }
 
   createProjectCard(projectId, project) {
@@ -404,7 +555,7 @@ class ProjectsManager {
         <div class="project--info">
           <div class="project--title-wrapper">
             <h3 class="project--title">${project.title}</h3>
-            <p class="project--type">${project.type}</p>
+            <p class="project--type-icon">${project.type}</p>
           </div>
           <p class="project--duration">${project.duration}</p>
           <p class="project--description">${project.summary}</p>
@@ -429,189 +580,15 @@ class ProjectsManager {
 
     this.projectsGrid.innerHTML = projectsHTML;
   }
-}
 
-// ProjectModal 클래스 정의
-class ProjectModal {
-  constructor() {
-    this.modal = document.getElementById('projectModal');
-    this.modalClose = this.modal.querySelector('.modal--close');
-    this.modalOverlay = this.modal.querySelector('.modal--overlay');
-    this.currentSlide = 0;
-    this.slideInterval = null;
-    this.bindEvents();
-  }
-
-  bindEvents() {
-    this.modalClose.addEventListener('click', () => this.close());
-    this.modalOverlay.addEventListener('click', () => this.close());
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.isActive()) {
-        this.close();
+  setupEventListeners() {
+    this.projectsGrid.addEventListener('click', (e) => {
+      const projectItem = e.target.closest('.project--item');
+      if (projectItem) {
+        const projectId = projectItem.dataset.projectId;
+        this.projectModal.open(projectId);
       }
     });
-  }
-
-  open(projectId) {
-    const project = projects[projectId];
-    if (!project) return;
-
-    this.updateContent(project);
-    this.modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  close() {
-    this.stopAutoSlide();
-    this.modal.classList.remove('active');
-    document.body.style.overflow = '';
-
-    // 슬라이더 제거
-    const slider = this.modal.querySelector('.modal--slider');
-    if (slider) {
-      slider.remove();
-    }
-  }
-
-  isActive() {
-    return this.modal.classList.contains('active');
-  }
-
-  createSlider(images) {
-    if (!images || images.length === 0) return '';
-
-    return `
-      <div class="modal--slider">
-        <div class="slider--container">
-          ${images.map((image, index) => `
-            <div class="slider--slide ${index === 0 ? 'active' : ''}">
-              <img src="${image.url}" alt="${image.alt}" loading="lazy">
-            </div>
-          `).join('')}
-        </div>
-        ${images.length > 1 ? `
-          <button class="slider--prev" aria-label="이전 이미지">
-            <i class="bi bi-chevron-left"></i>
-          </button>
-          <button class="slider--next" aria-label="다음 이미지">
-            <i class="bi bi-chevron-right"></i>
-          </button>
-        ` : ''}
-      </div>
-    `;
-  }
-
-  updateContent(project) {
-    this.modal.querySelector('.modal--title').textContent = project.title;
-    this.modal.querySelector('.modal--duration').textContent = project.duration;
-    this.updateTechnologies(project.technologies);
-    this.modal.querySelector('.modal--description').textContent = project.description;
-    this.updateLinks(project);
-
-    const sliderContainer = this.modal.querySelector('.modal--slider-container');
-    const sliderHTML = this.createSlider(project.images);
-
-    // 기존 슬라이더 제거
-    sliderContainer.innerHTML = '';
-
-    // 새 슬라이더 추가
-    if (project.images && project.images.length > 0) {
-      sliderContainer.innerHTML = sliderHTML;
-    }
-
-    this.currentSlide = 0;
-    this.stopAutoSlide();
-
-    if (project.images && project.images.length > 1) {
-      this.initializeSlider();
-      this.startAutoSlide();
-    }
-  }
-
-  updateTechnologies(technologies) {
-    const techContainer = this.modal.querySelector('.modal--technologies');
-    techContainer.innerHTML = technologies
-      .map(tech => `
-        <img 
-          class="modal--tech-img" 
-          src="${tech.imgSrc}" 
-          alt="${tech.name}"
-          title="${tech.name}"
-        >
-      `)
-      .join('');
-  }
-
-  updateLinks(project) {
-    const githubLink = this.modal.querySelector('.github-link');
-    const deployLink = this.modal.querySelector('.deploy-link');
-
-    githubLink.href = project.github.url;
-    githubLink.setAttribute('aria-label', project.github.ariaLabel);
-
-    if (project.deploy) {
-      deployLink.style.display = 'inline-block';
-      deployLink.href = project.deploy.url;
-      deployLink.setAttribute('aria-label', project.deploy.ariaLabel);
-    } else {
-      deployLink.style.display = 'none';
-    }
-  }
-
-  initializeSlider() {
-    const container = this.modal.querySelector('.slider--container');
-    const slides = this.modal.querySelectorAll('.slider--slide');
-    const prevBtn = this.modal.querySelector('.slider--prev');
-    const nextBtn = this.modal.querySelector('.slider--next');
-
-    const updateSlide = (index) => {
-      slides.forEach(slide => slide.classList.remove('active'));
-
-      slides[index].classList.add('active');
-      this.currentSlide = index;
-    };
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        const newIndex = (this.currentSlide - 1 + slides.length) % slides.length;
-        updateSlide(newIndex);
-        this.stopAutoSlide();
-      });
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        const newIndex = (this.currentSlide + 1) % slides.length;
-        updateSlide(newIndex);
-        this.stopAutoSlide();
-      });
-    }
-
-    container.addEventListener('mouseenter', () => this.stopAutoSlide());
-    container.addEventListener('mouseleave', () => this.startAutoSlide());
-  }
-
-  startAutoSlide() {
-    this.stopAutoSlide();
-    this.slideInterval = setInterval(() => {
-      const slides = this.modal.querySelectorAll('.slider--slide');
-      const newIndex = (this.currentSlide + 1) % slides.length;
-      const dots = this.modal.querySelectorAll('.slider--dot');
-
-      slides.forEach(slide => slide.classList.remove('active'));
-      dots.forEach(dot => dot.classList.remove('active'));
-
-      slides[newIndex].classList.add('active');
-      dots[newIndex].classList.add('active');
-      this.currentSlide = newIndex;
-    }, 5000);
-  }
-
-  stopAutoSlide() {
-    if (this.slideInterval) {
-      clearInterval(this.slideInterval);
-      this.slideInterval = null;
-    }
   }
 }
 
@@ -619,19 +596,7 @@ class ProjectModal {
 document.addEventListener('DOMContentLoaded', () => {
   const projectsManager = new ProjectsManager();
   projectsManager.renderProjects();
-
-  const modal = new ProjectModal();
-
-  document.querySelector('.projects--grid').addEventListener('click', (e) => {
-    const projectItem = e.target.closest('.project--item');
-    if (projectItem) {
-      modal.open(projectItem.dataset.projectId);
-    }
-  });
 });
-
-
-
 
 // ======= Contact 섹션 =======
 // EmailJS 초기화
