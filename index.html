@@ -19,6 +19,10 @@
     <link rel="icon" type="image/svg+xml" href="./assets/images/favicon/favicon.svg">
     <link rel="icon" type="image/png" href="./assets/images/favicon/favicon.png">
 
+    <!-- Preload -->
+    <link rel="preload" as="image" href="./assets/images/light-mode-icon.svg">
+    <link rel="preload" as="image" href="./assets/images/dark-mode-icon.svg">
+
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="pretendard" crossorigin
@@ -66,10 +70,22 @@
 
     <!-- head 태그 내에 Blocking JS 적용 -->
     <script>
-      // 페이지 로드 전에 즉시 테마 적용
       (function () {
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
+        const theme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        
+        
+        const themeToggleButtonHTML = `
+          <button class="nav--button" id="theme-toggle" aria-label="테마 모드 전환">
+            <img src="./assets/images/${theme}-mode-icon.svg" class="nav--button-icon" alt="테마 모드 아이콘">
+            <span class="nav--button-text">${theme === 'dark' ? 'Dark' : 'Light'}</span>
+          </button>
+        `;
+        
+        // DOMContentLoaded를 기다리지 않고 즉시 삽입
+        document.addEventListener('DOMContentLoaded', function() {
+          document.getElementById('theme-toggle-container').innerHTML = themeToggleButtonHTML;
+        });
       })();
     </script>
   </head>
@@ -99,10 +115,9 @@
               <a href="#contact" class="nav--link">Contact</a>
             </li>
           </ul>
-          <button class="nav--button" id="theme-toggle" aria-label="라이트 모드로 전환">
-            <img src="./assets/images/light-mode-icon.svg" class="nav--button-icon" alt="라이트 모드 아이콘">
-            <span class="nav--button-text">Light</span>
-          </button>
+          <div id="theme-toggle-container">
+            <!-- 테마 값에 따라 버튼 동적 생성 -->
+          </div>
         </nav>
       </div>
     </header>
@@ -273,37 +288,6 @@
       <section id="projects">
         <h2 class="section--heading">Projects</h2>
         <div class="projects--grid"></div>
-
-        <div class="modal" id="projectModal">
-          <div class="modal--overlay"></div>
-          <div class="modal--content">
-            <button class="modal--close" aria-label="모달 닫기">
-              <i class="bi bi-x"></i>
-            </button>
-            <div class="modal--body">
-              <!-- 이 부분을 추가 -->
-              <div class="modal--slider-container"></div>
-
-              <div class="modal--header">
-                <div class="modal--title-wrap">
-                  <div class="modal--title"></div>
-                  <div class="modal--duration"></div>
-                </div>
-                <div class="modal--technologies"></div>
-              </div>
-              <p class="modal--description"></p>
-              <div class="modal--links">
-                <a href="" class="github-link" target="_blank">
-                  <i class="bi bi-github"></i>
-                </a>
-                <a href="" class="deploy-link" target="_blank">
-                  <i class="bi bi-link-45deg"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </section>
 
       <section id="contact">
