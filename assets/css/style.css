@@ -577,7 +577,6 @@ header {
   padding: 0.1rem 0.5rem;
 }
 
-
 .project--duration {
   font-size: 0.9rem;
   font-weight: 400;
@@ -597,9 +596,6 @@ header {
   display: flex;
   gap: 0.5rem;
   margin-top: 0.5rem;
-  /* overflow-x: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none; */
 }
 
 .project--tags>img {
