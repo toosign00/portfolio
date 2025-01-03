@@ -507,6 +507,9 @@ class ProjectModal {
 
   close() {
     if (this.modal) {
+      // 스크롤 위치를 변수에 저장
+      const scrollPosition = this.scrollPosition;
+
       // 닫힐 때 애니메이션을 위한 클래스 제거
       this.modal.classList.remove('open');
       this.overlay.classList.remove('open');
@@ -516,17 +519,24 @@ class ProjectModal {
         this.modal.remove();
         this.overlay.remove();
 
-        // 스크롤 위치 복원
+        // body 스타일 초기화
         document.body.style.position = '';
         document.body.style.width = '';
         document.body.style.top = '';
-        window.scrollTo(0, this.scrollPosition);
+
+        // requestAnimationFrame을 사용하여 다음 프레임에서 스크롤 위치 복원
+        requestAnimationFrame(() => {
+          window.scrollTo({
+            top: scrollPosition,
+            behavior: 'instant' // 즉시 스크롤하도록 설정
+          });
+        });
 
         // 이벤트 리스너 제거
         document.removeEventListener('keydown', this.handleKeyDown);
         this.modal = null;
         this.overlay = null;
-      }, 300); // CSS 트랜지션 시간과 동일하게 설정
+      }, 300);
     }
   }
 
