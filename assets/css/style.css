@@ -703,8 +703,10 @@ header {
   transform: translate(-50%, -50%) scale(0.75);
   width: 45vw;
   height: 45vw;
-  min-width: 600px;
-  min-height: 600px;
+  min-width: min(600px, 90vw);
+  min-height: min(600px, 90vw);
+  max-width: min(600px, 90vw);
+  max-height: min(45vw, 600px);
   background-color: var(--white);
   color: var(--black);
   border-radius: 1rem;
