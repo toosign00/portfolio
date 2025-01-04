@@ -288,7 +288,14 @@ header {
   align-items: flex-start;
   justify-content: flex-end;
   min-height: calc(100vh - var(--header-height, 0px));
-  padding-bottom: 83px;
+  padding-bottom: 5rem;
+}
+
+@media screen and (max-width: 710px) {
+  .intro--section {
+    justify-content: center;
+  }
+  
 }
 
 .intro--title {
