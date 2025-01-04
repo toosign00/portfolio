@@ -294,6 +294,7 @@ header {
 @media screen and (max-width: 710px) {
   .intro--section {
     min-height: calc(75vh - var(--header-height, 0px));
+    padding-bottom: 0;
   }
 }
 
