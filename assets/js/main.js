@@ -1,3 +1,4 @@
+
 // ======= 라이트 모드 / 다크 모드 토글 =======
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -45,15 +46,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-document.querySelector('.nav--hamburger').addEventListener('click', () => {
-  document.querySelector('.nav--list').classList.toggle('active');
+
+// ======= 네비게이션 메뉴 햄버거 버튼 클릭시 메뉴 토글 =======
+const navHamburger = document.querySelector('.nav--hamburger');
+const navList = document.querySelector('.nav--list');
+const navLinks = document.querySelectorAll('.nav--link');
+
+// 햄버거 메뉴 클릭 시 active 클래스 토글
+navHamburger.addEventListener('click', () => {
+  navList.classList.toggle('active');
 });
 
-// 메뉴 항목 클릭시 자동으로 닫히도록
-document.querySelectorAll('.nav--link').forEach(link => {
+// 메뉴 항목 클릭 시 active 클래스 제거
+navLinks.forEach(link => {
   link.addEventListener('click', () => {
-    document.querySelector('.nav--list').classList.remove('active');
+    navList.classList.remove('active');
   });
+});
+
+// 화면 크기 변경 시 active 클래스 제거
+window.addEventListener('resize', function () {
+  if (window.innerWidth > 710) {
+    navList.style.transition = 'none';
+    navList.style.display = 'none';
+    navList.classList.remove('active');
+    
+    setTimeout(() => {
+      navList.style.transition = '';
+      navList.style.display = '';
+    }, 500);
+  }
 });
 
 
