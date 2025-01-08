@@ -69,7 +69,7 @@ window.addEventListener('resize', function () {
     navList.style.transition = 'none';
     navList.style.display = 'none';
     navList.classList.remove('active');
-
+    
     setTimeout(() => {
       navList.style.transition = '';
       navList.style.display = '';
@@ -235,8 +235,8 @@ class ProjectModal {
       <img src="./assets/images/thumbnail-${projectId}.webp" alt="${project.images[0].alt}" class="modal--image">
       <div class="modal--skills">
         ${project.technologies.map(tech =>
-      `<img src="${tech.imgSrc}" alt="${tech.alt} 아이콘" class="modal--skill-icon">`
-    ).join('')}
+          `<img src="${tech.imgSrc}" alt="${tech.alt} 아이콘" class="modal--skill-icon">`
+        ).join('')}
       </div>
       <div class="modal--content">
         <div class="modal--row">
