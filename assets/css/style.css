@@ -811,7 +811,9 @@ header {
 .modal--desc {
   font-size: var(--font-caption);
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.65;
+  text-align: left;
+  word-break: break-all;
 }
 
 .contact--container {
