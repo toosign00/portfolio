@@ -108,12 +108,11 @@
     <!-- External Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-    <!-- 테마 관련 블로킹 JS -->
+    
     <script>
       (function () {
         const theme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', theme);
-        // 버튼 생성 코드는 제거하고 theme 값만 설정
       })();
     </script>
 
