@@ -1,38 +1,37 @@
+import { techStack, projects } from './data.js';
+
 // ======= 라이트 모드 / 다크 모드 토글 =======
 
 document.addEventListener('DOMContentLoaded', function () {
   const savedTheme = localStorage.getItem('theme') || 'light';
-  const buttonText = document.querySelector(".nav--button-text");
-  const buttonIcon = document.querySelector(".nav--button-icon");
+  const buttonText = document.querySelector('.nav--button-text');
+  const buttonIcon = document.querySelector('.nav--button-icon');
 
   // UI 요소만 업데이트
   updateThemeUI(savedTheme);
 
   // 테마 전환 버튼 이벤트 리스너
-  document.getElementById("theme-toggle").addEventListener("click", function () {
-    const currentTheme = document.documentElement.getAttribute("data-theme");
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
     // 테마 속성 설정 및 로컬 스토리지에 저장
-    document.documentElement.setAttribute("data-theme", newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeUI(newTheme);
   });
 
   // UI 업데이트 함수
   function updateThemeUI(theme) {
-    buttonText.textContent = theme === "dark" ? "Dark" : "Light";
-    buttonIcon.src = theme === "dark"
-      ? "./assets/images/dark-mode-icon.svg"
-      : "./assets/images/light-mode-icon.svg";
+    buttonText.textContent = theme === 'dark' ? 'Dark' : 'Light';
+    buttonIcon.src = theme === 'dark' ? '/src/assets/images/dark-mode-icon.svg' : '/src/assets/images/light-mode-icon.svg';
   }
 });
 
-
 // ======= 헤더 높이만큼 섹션 패딩을 동적으로 조정 =======
-document.addEventListener("DOMContentLoaded", () => {
-  let header = document.querySelector("header");
-  let introSection = document.querySelector(".intro--section");
+document.addEventListener('DOMContentLoaded', () => {
+  let header = document.querySelector('header');
+  let introSection = document.querySelector('.intro--section');
 
   let adjustSectionPadding = () => {
     let headerHeight = header.offsetHeight;
@@ -41,10 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 함수 실행 및 윈도우 리사이즈 이벤트 발생 시 함수 실행
   adjustSectionPadding();
-  window.addEventListener("resize", adjustSectionPadding);
-
+  window.addEventListener('resize', adjustSectionPadding);
 });
-
 
 // ======= 네비게이션 메뉴 햄버거 버튼 클릭시 메뉴 토글 =======
 const navHamburger = document.querySelector('.nav--hamburger');
@@ -57,7 +54,7 @@ navHamburger.addEventListener('click', () => {
 });
 
 // 메뉴 항목 클릭 시 active 클래스 제거
-navLinks.forEach(link => {
+navLinks.forEach((link) => {
   link.addEventListener('click', () => {
     navList.classList.remove('active');
   });
@@ -69,7 +66,7 @@ window.addEventListener('resize', function () {
     navList.style.transition = 'none';
     navList.style.display = 'none';
     navList.classList.remove('active');
-    
+
     setTimeout(() => {
       navList.style.transition = '';
       navList.style.display = '';
@@ -77,37 +74,35 @@ window.addEventListener('resize', function () {
   }
 });
 
-
 // ======= 메뉴 클릭시 해당 섹션 이동 =======
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   // 네비게이션 링크와 로고 링크 선택
-  const navLinks = document.querySelectorAll(".nav--link");
-  const logoLink = document.getElementById("logo-link");
-  const headerOffset = document.querySelector("header").offsetHeight;
+  const navLinks = document.querySelectorAll('.nav--link');
+  const logoLink = document.getElementById('logo-link');
+  const headerOffset = document.querySelector('header').offsetHeight;
 
   // 부드러운 스크롤 함수
   const smoothScroll = (e) => {
     e.preventDefault();
-    const targetId = e.currentTarget.getAttribute("href").substring(1);
+    const targetId = e.currentTarget.getAttribute('href').substring(1);
     const targetSection = document.getElementById(targetId);
 
     if (targetSection) {
       window.scrollTo({
         top: targetSection.offsetTop - headerOffset,
-        behavior: "smooth"
+        behavior: 'smooth',
       });
     }
   };
 
   // 네비게이션 링크들에 이벤트 리스너 추가
-  navLinks.forEach(link => {
-    link.addEventListener("click", smoothScroll);
+  navLinks.forEach((link) => {
+    link.addEventListener('click', smoothScroll);
   });
 
   // 로고 링크에 이벤트 리스너 추가
-  logoLink.addEventListener("click", smoothScroll);
+  logoLink.addEventListener('click', smoothScroll);
 });
-
 
 // ======= SKills 섹션 스킬 박스 클릭시 해당 스킬 설명을 타이핑 효과로 출력 =======
 document.addEventListener('DOMContentLoaded', () => {
@@ -115,11 +110,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const skillDescriptions = {
     'html-box': 'HTML5 문서 구조를 이해하며, 시멘틱 코드를 사용하고, SEO 적용을 고려하여 최적화한 경험이 있습니다.',
     'css-box': 'Media Query, CSS3, Flex-box와 CSS Grid에 능숙하며, CSS 방법론을 사용해 재사용성과 유지보수성을 고려한 코드를 작성할 수 있습니다.',
-    'js-box': 'JavaScript ES6 이상 문법과 DOM 조작을 활용해 동적 웹페이지를 구현하며, Stack, Queue, Event Loop, Heap 등의 동작 원리와 비동기 처리(Callback, async/await, Promise)에 대한 이해를 갖추고 있습니다.',
+    'js-box':
+      'JavaScript ES6 이상 문법과 DOM 조작을 활용해 동적 웹페이지를 구현하며, Stack, Queue, Event Loop, Heap 등의 동작 원리와 비동기 처리(Callback, async/await, Promise)에 대한 이해를 갖추고 있습니다.',
     'node-box': 'Node.js와 Express.js를 활용해 서버를 구축하고, npm으로 라이브러리를 관리하며, MongoDB와의 연동이 가능합니다.',
-    'git-box': 'Git을 활용한 버전 관리와 branch, merge, rebase를 통한 협업에 능숙하며, 다양한 브랜치 전략(Git flow, Trunk-based)을 적용할 수 있습니다.',
-    'github-box': 'GitHub를 사용해 원격 저장소를 관리하고, Pull Request 기반의 코드 리뷰와 브랜치 보호 규칙 설정을 통해 협업 프로세스를 최적화한 경험이 있습니다.',
-    'design': 'Figma와 Adobe 디자인 툴을 활용하며, UI/UX 디자인 프로세스에 대한 이해를 바탕으로 사용자 중심의 디자인을 구현할 수 있습니다.'
+    'git-box':
+      'Git을 활용한 버전 관리와 branch, merge, rebase를 통한 협업에 능숙하며, 다양한 브랜치 전략(Git flow, Trunk-based)을 적용할 수 있습니다.',
+    'github-box':
+      'GitHub를 사용해 원격 저장소를 관리하고, Pull Request 기반의 코드 리뷰와 브랜치 보호 규칙 설정을 통해 협업 프로세스를 최적화한 경험이 있습니다.',
+    design: 'Figma와 Adobe 디자인 툴을 활용하며, UI/UX 디자인 프로세스에 대한 이해를 바탕으로 사용자 중심의 디자인을 구현할 수 있습니다.',
   };
 
   // 타이핑 효과를 구현하는 클래스
@@ -163,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 모든 스킬 박스에 클릭 이벤트 설정하는 함수
   const initializeSkillBoxes = () => {
     // 일반 스킬 박스들 이벤트 설정
-    Object.keys(skillDescriptions).forEach(id => {
+    Object.keys(skillDescriptions).forEach((id) => {
       if (id === 'design') return; // 디자인은 따로 처리
 
       const element = document.getElementById(id);
@@ -173,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 디자인 스킬 박스들 이벤트 설정
-    document.querySelectorAll('.design-box').forEach(box => {
+    document.querySelectorAll('.design-box').forEach((box) => {
       box.addEventListener('click', () => typewriter.type(skillDescriptions['design']));
     });
   };
@@ -183,8 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ======= Projects 섹션  =======
-
-import { techStack, projects } from './data.js';
 
 // ProjectModal 클래스 정의
 class ProjectModal {
@@ -217,26 +213,32 @@ class ProjectModal {
           <span class="modal--text-date">${project.duration}</span>
         </h2>
         <div class="modal--buttons">
-          ${project.github ? `
+          ${
+            project.github
+              ? `
             <a href="${project.github.url}" target="_blank" class="modal--button" aria-label="${project.github.ariaLabel}">
               <i class="bi bi-github"></i>
             </a>
-          ` : ''}
-          ${project.deploy ? `
+          `
+              : ''
+          }
+          ${
+            project.deploy
+              ? `
             <a href="${project.deploy.url}" target="_blank" class="modal--button" aria-label="${project.deploy.ariaLabel}">
               <i class="bi bi-link-45deg"></i>
             </a>
-          ` : ''}
+          `
+              : ''
+          }
           <button class="modal--button" aria-label="모달 닫기">
             <i class="bi bi-x"></i>
           </button>
         </div>
       </div>
-      <img src="./assets/images/thumbnail-${projectId}.webp" alt="${project.images[0].alt}" class="modal--image">
+      <img src="/src/assets/images/thumbnail-${projectId}.webp" alt="${project.images[0].alt}" class="modal--image">
       <div class="modal--skills">
-        ${project.technologies.map(tech =>
-          `<img src="${tech.imgSrc}" alt="${tech.alt} 아이콘" class="modal--skill-icon">`
-        ).join('')}
+        ${project.technologies.map((tech) => `<img src="${tech.imgSrc}" alt="${tech.alt} 아이콘" class="modal--skill-icon">`).join('')}
       </div>
       <div class="modal--content">
         <div class="modal--row">
@@ -314,7 +316,7 @@ class ProjectModal {
       requestAnimationFrame(() => {
         window.scrollTo({
           top: scrollPosition,
-          behavior: 'instant'
+          behavior: 'instant',
         });
       });
 
@@ -344,7 +346,7 @@ class ProjectsManager {
     return `
       <article class="project--item" data-project-id="${projectId}" tabindex="0">
         <div class="project--thumbnail">
-          <img src="./assets/images/thumbnail-${projectId}.webp" alt="${project.title} 프로젝트 썸네일" loading="lazy">
+          <img src="/src/assets/images/thumbnail-${projectId}.webp" alt="${project.title} 프로젝트 썸네일" loading="lazy">
         </div>
         <div class="project--info">
           <div class="project--title-wrapper">
@@ -362,9 +364,7 @@ class ProjectsManager {
   }
 
   createTechnologyTags(technologies) {
-    return technologies
-      .map(tech => `<img src="${tech.imgSrc}" alt="${tech.alt}" title="${tech.name}">`)
-      .join('');
+    return technologies.map((tech) => `<img src="${tech.imgSrc}" alt="${tech.alt}" title="${tech.name}">`).join('');
   }
 
   renderProjects() {
@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ======= Contact 섹션 =======
 // EmailJS 초기화
-emailjs.init("_fLh71BSAA_4dy3Bh");
+emailjs.init('_fLh71BSAA_4dy3Bh');
 
 // 이메일 유효성 검사 함수
 function isValidEmail(email) {

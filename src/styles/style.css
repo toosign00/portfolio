@@ -1,6 +1,6 @@
 :root {
   /* Light theme (default) */
-  --white: #FDFFF6;
+  --white: #fdfff6;
   --black: #1a1a1a;
   --primary-color: #472918;
   --main-padding: 0 5%;
@@ -29,10 +29,10 @@
 }
 
 /* Dark theme */
-[data-theme="dark"] {
+[data-theme='dark'] {
   --white: #1a1a1a;
-  --black: #FDFFF6;
-  --primary-color: #8B6D5C;
+  --black: #fdfff6;
+  --primary-color: #8b6d5c;
 }
 
 *,
@@ -105,7 +105,22 @@ ol {
 }
 
 body {
-  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family:
+    'Pretendard Variable',
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    'Helvetica Neue',
+    'Segoe UI',
+    'Apple SD Gothic Neo',
+    'Noto Sans KR',
+    'Malgun Gothic',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    sans-serif;
   width: 100%;
   max-width: 1920px;
   height: auto;
@@ -113,7 +128,9 @@ body {
   color: var(--black);
   padding: var(--main-padding);
   margin: 0 auto;
-  transition: background-color var(--transition-speed-fast), color var(--transition-speed-fast);
+  transition:
+    background-color var(--transition-speed-fast),
+    color var(--transition-speed-fast);
   overflow-y: scroll;
 }
 
@@ -123,7 +140,9 @@ main {
   background-color: var(--white);
   color: var(--black);
   flex: 1;
-  transition: background-color var(--transition-speed-fast), color var(--transition-speed-fast);
+  transition:
+    background-color var(--transition-speed-fast),
+    color var(--transition-speed-fast);
 }
 
 section {
@@ -164,7 +183,7 @@ header {
   height: 2rem;
 }
 
-[data-theme="dark"] .nav-logo {
+[data-theme='dark'] .nav-logo {
   filter: brightness(0) saturate(100%) invert(44%) sepia(9%) saturate(1222%) hue-rotate(338deg) brightness(97%) contrast(85%);
 }
 
@@ -258,7 +277,9 @@ header {
     border-radius: 0 0 0 1rem;
     background-color: none;
     opacity: 0;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transition:
+      transform 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
     pointer-events: none;
   }
 
@@ -341,7 +362,7 @@ header {
 }
 
 .intro--text::after {
-  content: "";
+  content: '';
   display: block;
   width: 100%;
   height: 0.05rem;
@@ -473,7 +494,7 @@ header {
   transition: fill var(--transition-speed-fast);
 }
 
-[data-theme="dark"] .link--icon svg path {
+[data-theme='dark'] .link--icon svg path {
   fill: #1a1a1a;
 }
 
@@ -613,7 +634,7 @@ header {
   transition: scale var(--transition-speed-medium);
 }
 
-[data-theme="dark"] .project--item {
+[data-theme='dark'] .project--item {
   background-color: #222222;
   box-shadow: none;
 }
@@ -683,7 +704,7 @@ header {
   margin-top: 0.5rem;
 }
 
-.project--tags>img {
+.project--tags > img {
   width: 1.7rem;
   height: 1.7rem;
   line-height: 1;
@@ -851,7 +872,7 @@ header {
   box-shadow: 0 0 0.625rem rgb(from var(--black) r g b / 0.1);
 }
 
-[data-theme="dark"] .upload--container {
+[data-theme='dark'] .upload--container {
   background-color: #222222;
   box-shadow: none;
 }
@@ -926,6 +947,6 @@ footer {
   text-align: center;
 }
 
-[data-theme="dark"] .footer--text {
-  color: #BBB;
+[data-theme='dark'] .footer--text {
+  color: #bbb;
 }
