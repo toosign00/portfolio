@@ -58,20 +58,20 @@ GitHub : [저장소 링크](https://github.com/toosign00/toosign00.github.io)
 
 ```
 📦 포트폴리오
- ┣ 📂.vercel              # Vercel 배포 설정
- ┣ 📂.vscode              # VS Code 설정
- ┃ ┗ 📜settings.json
- ┣ 📂assets              # 정적 자원 관리
- ┃ ┣ 📂css               # 스타일시트 파일
- ┃ ┣ 📂images            # 이미지 파일
- ┃ ┣ 📂js                # 자바스크립트 파일
- ┃ ┗ 📂pdf               # PDF 문서
- ┣ 📜.gitignore          # Git 제외 파일 설정
- ┣ 📜index.html          # 메인 HTML 파일
- ┣ 📜project.json        # 프로젝트 설정
- ┣ 📜README.md           # 프로젝트 문서
- ┣ 📜robots.txt          # 검색 엔진 크롤링 설정
- ┗ 📜sitemap.xml         # 사이트맵
+ ┣ 📂public          # 정적 파일
+ ┃ ┣ 📜favicon.svg   # 파비콘
+ ┃ ┣ 📂pdf           # PDF 문서
+ ┃ ┣ 📜robots.txt    # 크롤링 설정
+ ┃ ┗ 📜sitemap.xml   # 사이트맵
+ ┣ 📂src             # 소스 코드
+ ┃ ┣ 📂assets        # 리소스 파일
+ ┃ ┃ ┗ 📂images      # 이미지
+ ┃ ┣ 📂script        # 스크립트
+ ┃ ┗ 📂styles        # 스타일
+ ┃   ┣ 📂common      # 공통 스타일
+ ┃   ┗ 📜style.css   # 메인 스타일
+ ┣ 📜package.json    # 프로젝트 설정
+ ┗ 📜vite.config.js  # Vite 설정
 ```
 
 <br>
@@ -93,16 +93,6 @@ GitHub : [저장소 링크](https://github.com/toosign00/toosign00.github.io)
 ## 💻 주요 코드
 
 ### 라이트 / 다크모드 구현
-
-```html
-<!-- head 태그 내에 Blocking JS 적용 -->
-    <script>
-      // 페이지 로드 전에 즉시 테마 적용
-      (function () {
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-      })();
-```
 
 ```javascript
 document.addEventListener('DOMContentLoaded', function () {
@@ -127,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // UI 업데이트 함수
   function updateThemeUI(theme) {
     buttonText.textContent = theme === 'dark' ? 'Dark' : 'Light';
-    buttonIcon.src = theme === 'dark' ? './assets/images/dark-mode-icon.svg' : './assets/images/light-mode-icon.svg';
+    buttonIcon.src = theme === 'dark' ? darkModeIcon : lightModeIcon;
   }
 });
 ```
@@ -257,97 +247,154 @@ document.addEventListener('DOMContentLoaded', () => {
 // ProjectModal 클래스 정의
 class ProjectModal {
   constructor() {
-    this.modal = document.getElementById('projectModal');
-    this.modalClose = this.modal.querySelector('.modal--close');
-    this.modalOverlay = this.modal.querySelector('.modal--overlay');
-    this.bindEvents();
+    this.modal = null;
+    this.overlay = null;
+    this.scrollPosition = 0;
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  bindEvents() {
-    this.modalClose.addEventListener('click', () => this.close());
-    this.modalOverlay.addEventListener('click', () => this.close());
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.isActive()) {
+  create(projectId) {
+    const project = projects[projectId];
+
+    // Overlay 생성
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+
+    // Modal 생성
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.id = 'projectModal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'modalTitle');
+
+    modal.innerHTML = `
+      <div class="modal--header">
+        <h2 class="modal--title" id="modalTitle">
+          ${project.title} 
+          <span class="modal--text-date">${project.duration}</span>
+        </h2>
+        <div class="modal--buttons">
+          ${
+            project.github
+              ? `
+            <a href="${project.github.url}" target="_blank" class="modal--button" aria-label="${project.github.ariaLabel}">
+              <i class="bi bi-github"></i>
+            </a>
+          `
+              : ''
+          }
+          ${
+            project.deploy
+              ? `
+            <a href="${project.deploy.url}" target="_blank" class="modal--button" aria-label="${project.deploy.ariaLabel}">
+              <i class="bi bi-link-45deg"></i>
+            </a>
+          `
+              : ''
+          }
+          <button class="modal--button" aria-label="모달 닫기">
+            <i class="bi bi-x"></i>
+          </button>
+        </div>
+      </div>
+      <img src="${project.images[0].url}" alt="${project.images[0].alt}" class="modal--image">
+      <div class="modal--skills">
+        ${project.technologies.map((tech) => `<img src="${tech.imgSrc}" alt="${tech.alt} 아이콘" class="modal--skill-icon">`).join('')}
+      </div>
+      <div class="modal--content">
+        <div class="modal--row">
+          <p class="modal--label">Type</p>
+          <p class="modal--desc">${project.type === 'Team' ? project.teamDetail : project.type}</p>
+        </div>
+        <div class="modal--row">
+          <p class="modal--label">Role</p>
+          <p class="modal--desc">${project.role}</p>
+        </div>
+        <div class="modal--row">
+          <p class="modal--label">Details</p>
+          <p class="modal--desc">${project.description}</p>
+        </div>
+      </div>
+    `;
+
+    this.modal = modal;
+    this.overlay = overlay;
+
+    // 스크롤 위치 저장
+    this.scrollPosition = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${this.scrollPosition}px`;
+
+    // DOM에 추가
+    document.body.appendChild(overlay);
+    document.body.appendChild(modal);
+
+    // 트랜지션을 위한 타이밍
+    requestAnimationFrame(() => {
+      overlay.classList.add('open');
+      modal.classList.add('open');
+    });
+
+    // 이벤트 리스너 추가
+    document.addEventListener('keydown', this.handleKeyDown);
+    this.addEventListeners();
+  }
+
+  handleKeyDown(e) {
+    if (e.key === 'Escape') {
+      this.close();
+    }
+  }
+
+  addEventListeners() {
+    const closeButton = this.modal.querySelector('.bi-x').parentElement;
+    closeButton.addEventListener('click', () => this.close());
+
+    this.overlay.addEventListener('click', (e) => {
+      if (e.target === this.overlay) {
         this.close();
       }
     });
   }
 
-  open(projectId) {
-    const project = projects[projectId];
-    if (!project) return;
-
-    this.updateContent(project);
-    this.modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
   close() {
-    this.modal.classList.remove('active');
-    document.body.style.overflow = '';
+    if (!this.modal) return;
+
+    const scrollPosition = this.scrollPosition;
+
+    this.modal.classList.remove('open');
+    this.overlay.classList.remove('open');
+
+    setTimeout(() => {
+      this.modal.remove();
+      this.overlay.remove();
+
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+
+      requestAnimationFrame(() => {
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: 'instant',
+        });
+      });
+
+      document.removeEventListener('keydown', this.handleKeyDown);
+      this.modal = null;
+      this.overlay = null;
+    }, 300);
   }
 
-  isActive() {
-    return this.modal.classList.contains('active');
-  }
-
-  updateContent(project) {
-    this.modal.querySelector('.modal--title').textContent = project.title;
-    this.modal.querySelector('.modal--duration').textContent = project.duration;
-    this.updateTechnologies(project.technologies);
-    this.modal.querySelector('.modal--description').textContent = project.description;
-    this.updateLinks(project);
-  }
-
-  updateTechnologies(technologies) {
-    const techContainer = this.modal.querySelector('.modal--technologies');
-    techContainer.innerHTML = technologies
-      .map(
-        (tech) => `
-        <img 
-          class="modal--tech-img" 
-          src="${tech.imgSrc}" 
-          alt="${tech.name}"
-          title="${tech.name}"
-        >
-      `
-      )
-      .join('');
-  }
-
-  updateLinks(project) {
-    const githubLink = this.modal.querySelector('.github-link');
-    const deployLink = this.modal.querySelector('.deploy-link');
-
-    githubLink.href = project.github.url;
-    githubLink.setAttribute('aria-label', project.github.ariaLabel);
-
-    // 배포 링크가 없는 경우 숨김 처리, 있으면 보이도록 설정 node.js 프로젝트는 deploy 링크가 없음, 추후 AWS를 사용하여 배포 후 링크 추가 예정
-    if (project.deploy) {
-      deployLink.style.display = 'inline-block';
-      deployLink.href = project.deploy.url;
-      deployLink.setAttribute('aria-label', project.deploy.ariaLabel);
-    } else {
-      deployLink.style.display = 'none';
+  open(projectId) {
+    if (this.modal) {
+      this.close();
     }
+    this.create(projectId);
   }
 }
-
-// 초기화
-document.addEventListener('DOMContentLoaded', () => {
-  const projectsManager = new ProjectsManager();
-  projectsManager.renderProjects();
-
-  const modal = new ProjectModal();
-
-  // 프로젝트 클릭 이벤트 위임
-  document.querySelector('.projects--grid').addEventListener('click', (e) => {
-    const projectItem = e.target.closest('.project--item');
-    if (projectItem) {
-      modal.open(projectItem.dataset.projectId);
-    }
-  });
-});
 ```
 
 <br>
@@ -365,7 +412,6 @@ document.addEventListener('DOMContentLoaded', () => {
 #### 해결 방법
 
 ```html
-<!-- head 태그 내에 Blocking JS 적용 -->
 <script>
   (function () {
     const savedTheme = localStorage.getItem('theme') || 'light';
@@ -374,9 +420,8 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 ```
 
-- DOM 로드 전에 즉시 실행되는 Blocking JS 구현
+- DOM 로드 전에 즉시 실행되는 JS를 `<head>` 내에 삽입
 - localStorage에서 사용자가 설정한 테마 정보를 가져와 즉시 적용
-- head 태그 내에 스크립트를 배치하여 페이지 렌더링 전에 테마 적용
 
 #### 개선 결과
 
