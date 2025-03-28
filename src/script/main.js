@@ -1,4 +1,49 @@
+// 테마 모드 아이콘 임포트
+import darkModeIcon from '../assets/images/dark-mode-icon.svg';
+import lightModeIcon from '../assets/images/light-mode-icon.svg';
+
 import { techStack, projects } from './data.js';
+
+// ======= 테마 토글 버튼 초기화 =======
+(function createThemeToggle() {
+  // DOM이 준비되었는지 확인하는 함수
+  const isDOMReady = () => {
+    return document.getElementById('theme-toggle-container') !== null;
+  };
+
+  // 버튼 생성 함수
+  const createButton = () => {
+    const theme = document.documentElement.getAttribute('data-theme');
+    const container = document.getElementById('theme-toggle-container');
+
+    if (!container) return false; // 컨테이너가 없으면 실패
+
+    // 버튼 HTML 생성
+    const buttonHTML = `
+      <button class="nav--button" id="theme-toggle" aria-label="테마 모드 전환">
+        <img src="${theme === 'dark' ? darkModeIcon : lightModeIcon}" class="nav--button-icon" alt="테마 모드 아이콘">
+        <span class="nav--button-text">${theme === 'dark' ? 'Dark' : 'Light'}</span>
+      </button>
+    `;
+
+    // 버튼 삽입
+    container.innerHTML = buttonHTML;
+    return true; // 버튼 생성 성공
+  };
+
+  // DOM이 준비되었는지 확인하고 버튼 생성
+  if (isDOMReady()) {
+    // DOM이 이미 준비되었으면 즉시 버튼 생성
+    createButton();
+  } else {
+    // DOM이 아직 준비되지 않았으면 짧은 간격으로 체크하여 가능한 빨리 버튼 생성
+    const checkInterval = setInterval(() => {
+      if (isDOMReady() && createButton()) {
+        clearInterval(checkInterval); // 버튼 생성 성공 시 인터벌 정지
+      }
+    }, 10); // 10ms 간격으로 체크
+  }
+})();
 
 // ======= 라이트 모드 / 다크 모드 토글 =======
 
@@ -24,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // UI 업데이트 함수
   function updateThemeUI(theme) {
     buttonText.textContent = theme === 'dark' ? 'Dark' : 'Light';
-    buttonIcon.src = theme === 'dark' ? '/src/assets/images/dark-mode-icon.svg' : '/src/assets/images/light-mode-icon.svg';
+    buttonIcon.src = theme === 'dark' ? darkModeIcon : lightModeIcon;
   }
 });
 
@@ -236,7 +281,7 @@ class ProjectModal {
           </button>
         </div>
       </div>
-      <img src="/src/assets/images/thumbnail-${projectId}.webp" alt="${project.images[0].alt}" class="modal--image">
+      <img src="${project.images[0].url}" alt="${project.images[0].alt}" class="modal--image">
       <div class="modal--skills">
         ${project.technologies.map((tech) => `<img src="${tech.imgSrc}" alt="${tech.alt} 아이콘" class="modal--skill-icon">`).join('')}
       </div>
@@ -346,7 +391,7 @@ class ProjectsManager {
     return `
       <article class="project--item" data-project-id="${projectId}" tabindex="0">
         <div class="project--thumbnail">
-          <img src="/src/assets/images/thumbnail-${projectId}.webp" alt="${project.title} 프로젝트 썸네일" loading="lazy">
+          <img src="${project.images[0].url}" alt="${project.title} 프로젝트 썸네일" loading="lazy">
         </div>
         <div class="project--info">
           <div class="project--title-wrapper">

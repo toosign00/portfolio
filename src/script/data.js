@@ -1,47 +1,66 @@
+// 이미지 임포트
+import htmlIcon from '../assets/images/html-5-icon.svg';
+import cssIcon from '../assets/images/css-3-icon.svg';
+import jsIcon from '../assets/images/js-icon.svg';
+import nodejsIcon from '../assets/images/nodejs-icon.svg';
+import ejsIcon from '../assets/images/ejs-icon.svg';
+import mongodbIcon from '../assets/images/mongodb-icon.svg';
+import gsapIcon from '../assets/images/gsap-icon.svg';
+import jqueryIcon from '../assets/images/jquery-icon.svg';
+import gitIcon from '../assets/images/git-icon.svg';
+import portfolioThumb from '../assets/images/thumbnail-portfolio.webp';
+import memeRepoThumb from '../assets/images/thumbnail-meme-repository.webp';
+import myLifeStoryThumb from '../assets/images/thumbnail-my-life-story.webp';
+import oraGungThumb from '../assets/images/thumbnail-ora-gung.webp';
+import typeThumb from '../assets/images/thumbnail-type.webp';
+import ollyThumb from '../assets/images/thumbnail-olly.webp';
+import minigameThumb from '../assets/images/thumbnail-minigame.webp';
+import filmMagazineThumb from '../assets/images/thumbnail-film-magazine.webp';
+
 export const techStack = {
   html: {
     name: 'HTML5',
-    imgSrc: '/src/assets/images/html-5-icon.svg',
+    imgSrc: htmlIcon,
     alt: 'HTML5',
   },
   css: {
     name: 'CSS3',
-    imgSrc: '/src/assets/images/css-3-icon.svg',
+    imgSrc: cssIcon,
     alt: 'CSS3',
   },
   javascript: {
     name: 'JavaScript',
-    imgSrc: '/src/assets/images/js-icon.svg',
+    imgSrc: jsIcon,
     alt: 'JavaScript',
   },
   nodejs: {
     name: 'Node.js',
-    imgSrc: '/src/assets/images/nodejs-icon.svg',
+    imgSrc: nodejsIcon,
     alt: 'Node.js',
   },
   ejs: {
     name: 'EJS',
-    imgSrc: '/src/assets/images/ejs-icon.svg',
+    imgSrc: ejsIcon,
     alt: 'EJS',
   },
   mongodb: {
     name: 'MongoDB',
-    imgSrc: '/src/assets/images/mongodb-icon.svg',
+    imgSrc: mongodbIcon,
     alt: 'MongoDB',
   },
   gsap: {
     name: 'GSAP',
-    imgSrc: '/src/assets/images/gsap-icon.svg',
+    imgSrc: gsapIcon,
     alt: 'GSAP',
   },
   jquery: {
     name: 'jQuery',
-    imgSrc: '/src/assets/images/jquery-icon.svg',
+    imgSrc: jqueryIcon,
     alt: 'jQuery',
   },
   git: {
     name: 'Git',
-    imgSrc: '/src/assets/images/git-icon.svg',
+    imgSrc: gitIcon,
     alt: 'Git',
   },
 };
@@ -65,7 +84,7 @@ export const projects = {
       url: 'https://toosign.kr',
       ariaLabel: '배포된 웹사이트 링크',
     },
-    images: [{ url: '/src/assets/images/thumbnail-portfolio.webp', alt: '메인 화면' }],
+    images: [{ url: portfolioThumb, alt: '메인 화면' }],
   },
   'meme-repository': {
     title: '짤방 저장소',
@@ -80,7 +99,7 @@ export const projects = {
       url: 'https://github.com/toosign00/meme-repository',
       ariaLabel: 'GitHub 저장소 링크',
     },
-    images: [{ url: '/src/assets/images/thumbnail-meme-repository.webp', alt: '메인 화면' }],
+    images: [{ url: memeRepoThumb, alt: '메인 화면' }],
   },
   'my-life-story': {
     title: '나의 인생 일대기',
@@ -98,7 +117,7 @@ export const projects = {
     deploy: {
       url: 'https://my-life-story.vercel.app/',
     },
-    images: [{ url: '/src/assets/images/thumbnail-my-life-story.webp ', alt: '메인 화면' }],
+    images: [{ url: myLifeStoryThumb, alt: '메인 화면' }],
   },
   'ora-gung': {
     title: '오라, 궁',
@@ -118,7 +137,7 @@ export const projects = {
       url: 'https://ora-gung.vercel.app',
       ariaLabel: '배포된 웹사이트 링크',
     },
-    images: [{ url: '/src/assets/images/thumbnail-ora-gung.webp', alt: '메인 화면' }],
+    images: [{ url: oraGungThumb, alt: '메인 화면' }],
   },
   type: {
     title: 'TYPE',
@@ -137,7 +156,7 @@ export const projects = {
       url: 'https://toosign00.github.io/typography',
       ariaLabel: '배포된 웹사이트 링크',
     },
-    images: [{ url: '/src/assets/images/thumbnail-type.webp', alt: '메인 화면' }],
+    images: [{ url: typeThumb, alt: '메인 화면' }],
   },
   olly: {
     title: '올리',
@@ -157,7 +176,7 @@ export const projects = {
       url: 'https://toosign00.github.io/OLLY',
       ariaLabel: '배포된 웹사이트 링크',
     },
-    images: [{ url: '/src/assets/images/thumbnail-olly.webp', alt: '메인 화면' }],
+    images: [{ url: ollyThumb, alt: '메인 화면' }],
   },
   minigame: {
     title: '기묘한 이야기 미니게임',
@@ -176,7 +195,7 @@ export const projects = {
       url: 'https://toosign00.github.io/minigame',
       ariaLabel: '배포된 웹사이트 링크',
     },
-    images: [{ url: '/src/assets/images/thumbnail-minigame.webp', alt: '메인 화면' }],
+    images: [{ url: minigameThumb, alt: '메인 화면' }],
   },
   'film-magazine': {
     title: 'Film Magazine',
@@ -195,6 +214,6 @@ export const projects = {
       url: 'https://toosign00.github.io/film_magazine',
       ariaLabel: '배포된 웹사이트 링크',
     },
-    images: [{ url: '/src/assets/images/thumbnail-film-magazine.webp', alt: '메인 화면' }],
+    images: [{ url: filmMagazineThumb, alt: '메인 화면' }],
   },
 };
