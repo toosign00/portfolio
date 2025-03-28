@@ -108,8 +108,8 @@
     <!-- External Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-    
     <script>
+      // Dom 로드전에 실행되는 코드
       (function () {
         const theme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', theme);
@@ -281,6 +281,9 @@
                 </div>
                 <div class="skill--box" id="css-box">
                   <p class="skill--box-text">CSS3</p>
+                </div>
+                <div class="skill--box" id="tailwind-box">
+                  <p class="skill--box-text">Tailwind CSS</p>
                 </div>
                 <div class="skill--box" id="js-box">
                   <p class="skill--box-text">JavaScript</p>

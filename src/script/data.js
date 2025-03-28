@@ -4,6 +4,8 @@ import cssIcon from '../assets/images/css-3-icon.svg';
 import jsIcon from '../assets/images/js-icon.svg';
 import nodejsIcon from '../assets/images/nodejs-icon.svg';
 import ejsIcon from '../assets/images/ejs-icon.svg';
+import tailwindIcon from '../assets/images/tailwind-icon.svg';
+import reactIcon from '../assets/images/react-icon.svg';
 import mongodbIcon from '../assets/images/mongodb-icon.svg';
 import gsapIcon from '../assets/images/gsap-icon.svg';
 import jqueryIcon from '../assets/images/jquery-icon.svg';
@@ -11,12 +13,14 @@ import gitIcon from '../assets/images/git-icon.svg';
 import portfolioThumb from '../assets/images/thumbnail-portfolio.webp';
 import memeRepoThumb from '../assets/images/thumbnail-meme-repository.webp';
 import myLifeStoryThumb from '../assets/images/thumbnail-my-life-story.webp';
+import willieThumb from '../assets/images/thumbnail-willie-library.webp';
 import oraGungThumb from '../assets/images/thumbnail-ora-gung.webp';
 import typeThumb from '../assets/images/thumbnail-type.webp';
 import ollyThumb from '../assets/images/thumbnail-olly.webp';
 import minigameThumb from '../assets/images/thumbnail-minigame.webp';
 import filmMagazineThumb from '../assets/images/thumbnail-film-magazine.webp';
 
+// 기술 스택 객체 정의
 export const techStack = {
   html: {
     name: 'HTML5',
@@ -27,6 +31,11 @@ export const techStack = {
     name: 'CSS3',
     imgSrc: cssIcon,
     alt: 'CSS3',
+  },
+  tailwindCSS: {
+    name: 'Tailwind CSS',
+    imgSrc: tailwindIcon,
+    alt: 'Tailwind CSS',
   },
   javascript: {
     name: 'JavaScript',
@@ -67,6 +76,26 @@ export const techStack = {
 
 // 프로젝트 정보 객체 정의
 export const projects = {
+  'willie-library': {
+    title: '윌리의 서재',
+    type: 'Team',
+    teamDetail: 'Team : 프론트엔드 개발 4명',
+    role: '스크럼 마스터 / index 페이지 구현 / main title, button 컴포넌트 개발 / main 페이지 주요 섹션 제작 / 문서 정리',
+    summary: '밀리의 서재 클론 코딩',
+    description:
+      '밀리의 서재 클론 코딩 프로젝트입니다. HTML, CSS, Tailwind CSS, JavaScript로 반응형 웹사이트를 구현했습니다. 스크럼 마스터로서 일일 스크럼 회의를 주관하고 GitHub를 통해 프로젝트를 관리했습니다. index 페이지와 메인 타이틀, 버튼 컴포넌트를 개발하고 main 페이지의 주요 섹션을 제작했습니다. 또한 프로젝트 구조와 사용법에 관한 문서화를 담당했습니다. 이 협업을 통해 웹 개발의 다양한 측면을 경험할 수 있었습니다.',
+    duration: '2025.03.14 ~ 2025.25.25',
+    technologies: [techStack.html, techStack.css, techStack.tailwindCSS, techStack.javascript, techStack.git],
+    github: {
+      url: 'https://github.com/FRONTENDBOOTCAMP-13th/9RoDigital',
+      ariaLabel: 'GitHub 저장소 링크',
+    },
+    deploy: {
+      url: 'https://9rodigital-willie.netlify.app',
+      ariaLabel: '배포된 웹사이트 링크',
+    },
+    images: [{ url: willieThumb, alt: '메인 화면' }],
+  },
   portfolio: {
     title: '포트폴리오',
     type: 'Personal',
