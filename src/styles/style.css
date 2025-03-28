@@ -453,7 +453,7 @@ header {
   height: 2rem;
   background-color: var(--white);
   color: var(--black);
-  border: solid 0.06rem var(--black);
+  border: solid 0.09rem var(--black);
   border-radius: 9999rem;
   padding: 0 1.2rem;
 }
@@ -466,7 +466,7 @@ header {
 
 .cv--button span {
   font-size: 0.9rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .cv--button svg {
@@ -675,12 +675,12 @@ header {
 
 .project--type-icon {
   width: fit-content;
-  font-size: var(--font-caption);
+  font-size: var(--font-micro);
   font-weight: 300;
-  color: var(--white);
+  color: #fdfff6;
   background-color: var(--primary-color);
   border-radius: 999rem;
-  padding: 0.1rem 0.5rem;
+  padding: .25rem .5rem;
 }
 
 .project--duration {
