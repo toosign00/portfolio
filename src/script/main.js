@@ -3,6 +3,7 @@ import darkModeIcon from '../assets/images/dark-mode-icon.svg';
 import lightModeIcon from '../assets/images/light-mode-icon.svg';
 
 import { techStack, projects } from './data.js';
+import { formatDateForDatetime } from './date-utils.js';
 
 // ======= 테마 토글 버튼 초기화 =======
 (function createThemeToggle() {
@@ -103,20 +104,6 @@ navLinks.forEach((link) => {
   link.addEventListener('click', () => {
     navList.classList.remove('active');
   });
-});
-
-// 화면 크기 변경 시 active 클래스 제거
-window.addEventListener('resize', function () {
-  if (window.innerWidth > 710) {
-    navList.style.transition = 'none';
-    navList.style.display = 'none';
-    navList.classList.remove('active');
-
-    setTimeout(() => {
-      navList.style.transition = '';
-      navList.style.display = '';
-    }, 500);
-  }
 });
 
 // ======= 메뉴 클릭시 해당 섹션 이동 =======
@@ -256,7 +243,7 @@ class ProjectModal {
       <div class="modal--header">
         <h2 class="modal--title" id="modalTitle">
           ${project.title} 
-          <span class="modal--text-date">${project.duration}</span>
+          <time class="modal--text-date" datetime="${formatDateForDatetime(project.duration)}">${project.duration}</time>
         </h2>
         <div class="modal--buttons">
           ${
@@ -399,7 +386,7 @@ class ProjectsManager {
             <h3 class="project--title">${project.title}</h3>
             <p class="project--type-icon">${project.type}</p>
           </div>
-          <p class="project--duration">${project.duration}</p>
+          <time class="project--duration" datetime="${formatDateForDatetime(project.duration)}">${project.duration}</time>
           <p class="project--description">${project.summary}</p>
           <div class="project--tags">
             ${this.createTechnologyTags(project.technologies)}

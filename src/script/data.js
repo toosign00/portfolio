@@ -84,7 +84,7 @@ export const projects = {
     summary: '밀리의 서재 클론 코딩',
     description:
       '밀리의 서재 클론 코딩 프로젝트입니다. HTML, CSS, Tailwind CSS, JavaScript로 반응형 웹사이트를 구현했습니다. 스크럼 마스터로서 일일 스크럼 회의를 주관하고 GitHub를 통해 프로젝트를 관리했습니다. index 페이지와 메인 타이틀, 버튼 컴포넌트를 개발하고 main 페이지의 주요 섹션을 제작했습니다. 또한 프로젝트 구조와 사용법에 관한 문서화를 담당했습니다. 이 협업을 통해 웹 개발의 다양한 측면을 경험할 수 있었습니다.',
-    duration: '2025.03.14 ~ 2025.25.25',
+    duration: '2025.03.14 ~ 2025.03.25',
     technologies: [techStack.html, techStack.css, techStack.tailwindCSS, techStack.javascript, techStack.git],
     github: {
       url: 'https://github.com/FRONTENDBOOTCAMP-13th/9RoDigital',

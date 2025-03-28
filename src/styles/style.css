@@ -45,18 +45,18 @@
 
 /* Base font size */
 html {
-  font-size: 8px;
+  font-size: 12px;
 
   @media (min-width: 374px) {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   @media (min-width: 710px) {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   @media (min-width: 1024px) {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   @media (min-width: 1440px) {
@@ -237,6 +237,7 @@ header {
     border-radius: 0 0 0 1rem;
     background-color: none;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
   }
 
@@ -707,6 +708,7 @@ header {
 }
 
 .modal--title {
+  font-size: var(--font-heading);
   font-weight: 600;
   text-align: left;
 }
