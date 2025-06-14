@@ -1,12 +1,108 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
+    <!-- 필수 메타 태그 -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <meta name="description" content="프론트엔드 개발자 노현수의 포트폴리오입니다." />
+    <meta
+      name="keywords"
+      content="프론트엔드, 개발자, 웹개발, UI/UX, 반응형웹, 포트폴리오, HTML, CSS, TailwindCSS, SASS, JavaScript, TypeScript, React, Git, GitHub, 노현수"
+    />
+    <meta name="author" content="노현수" />
+    <meta name="robots" content="index,follow" />
+    <meta name="googlebot" content="index,follow" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#0e1623" />
+
+    <!-- 검색엔진 최적화 -->
+    <meta name="google-site-verification" content="41chZlV6pPStxcnZ523kFirsd3uA0hSWf-rsFl6Bx48" />
+    <meta name="naver-site-verification" content="516c1584b8a3a6ed2b645854119afdac37f4aeb1" />
+    <link rel="canonical" href="https://toosign.kr" />
+
+    <!-- 타이틀 -->
+    <title>노현수 | 프론트엔드 포트폴리오</title>
+
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- CSS -->
+    <link
+      rel="preload"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+
+    <!-- Open Graph 메타 태그 (소셜 미디어 공유용) -->
+    <meta property="og:title" content="노현수 | 프론트엔드 포트폴리오" />
+    <meta property="og:description" content="프론트엔드 개발자 노현수의 포트폴리오입니다." />
+    <meta property="og:image" content="https://toosign.kr/meta-thumbnail.webp" />
+    <meta property="og:url" content="https://toosign.kr" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="노현수 | 프론트엔드 포트폴리오" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:image:width" content="1300" />
+    <meta property="og:image:height" content="680" />
+
+    <!-- Twitter 카드 메타 태그 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="노현수 | 프론트엔드 포트폴리오" />
+    <meta name="twitter:description" content="프론트엔드 개발자 노현수의 포트폴리오입니다." />
+    <meta name="twitter:image" content="https://toosign.kr/meta-thumbnail.webp" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "노현수",
+        "jobTitle": "Front-End Developer",
+        "url": "https://toosign.kr",
+        "email": "kevinsoo1014@gmail.com",
+        "telephone": "+82 10-8514-8477",
+        "image": "https://toosign.kr/profile.webp",
+        "sameAs": [
+          "https://github.com/toosign00/",
+          "https://www.linkedin.com/in/hyunsoo-ro-97871431b/"
+        ],
+        "knowsAbout": [
+          "Front-end Development",
+          "HTML5",
+          "CSS3",
+          "JavaScript",
+          "Git",
+          "GitHub",
+          "Node.js",
+          "MongoDB",
+          "Figma",
+          "Adobe Photoshop",
+          "Adobe Illustrator",
+          "Adobe Premiere Pro"
+        ],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "계원예술대학교",
+          "department": "디지털미디어디자인과"
+        },
+        "description": "사용자 경험을 최우선으로 하며, 끈기와 소통으로 문제를 해결하고 팀과 함께 성장하는 프론트엔드 개발자입니다."
+      }
+    </script>
+
+    <!-- 분석 도구 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1QPSZDNEFC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-1QPSZDNEFC');
+    </script>
   </head>
-  <body class="bg-black">
+  <body class="font-pretendard bg-black">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
