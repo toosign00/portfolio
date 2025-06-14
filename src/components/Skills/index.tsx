@@ -1,10 +1,10 @@
 import { useState, useMemo } from 'react';
 import { skills, filters } from '@/data/skills';
+import { SectionLayout } from '@/layout/SectionLayout';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { SkillFilter } from './components/SkillFilter';
 import { SkillCounter } from './components/SkillCounter';
 import { SkillGrid } from './components/SkillGrid';
-import { SectionLayout } from '@/layout/SectionLayout';
 import type { SkillType } from '@/types/skills.type';
 
 export const Skills = () => {
