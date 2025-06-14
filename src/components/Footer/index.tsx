@@ -43,7 +43,7 @@ export const Footer = () => {
 
         <div className="border-gray mt-8 text-center">
           <p className="text-sm text-gray-400">
-            © {currentYear} Hyunsoo Kim. All rights reserved.
+            © {currentYear} Hyunsoo Roh. All rights reserved.
           </p>
         </div>
       </div>
