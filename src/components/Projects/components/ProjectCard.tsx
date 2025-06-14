@@ -1,5 +1,5 @@
 import type { Project } from '@/data/projectsData';
-import { colorClasses } from '@/components/Portfolio/constants/colors';
+import { colorClasses } from '@/components/Projects/constants/colors';
 
 interface ProjectCardProps {
   project: Project;

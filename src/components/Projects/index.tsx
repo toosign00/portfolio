@@ -17,10 +17,10 @@ export const Portfolio = () => {
   };
 
   return (
-    <SectionLayout id="portfolio">
+    <SectionLayout id="projects">
       <SectionHeader
-        title="프로젝트 포트폴리오"
-        description="다양한 기술 스택과 도메인에서의 프로젝트 경험을 소개합니다."
+        title="프로젝트"
+        description="새로운 기술을 학습하고 구현한 주요 프로젝트입니다."
       />
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
