@@ -9,13 +9,21 @@ export const usePreventScroll = () => {
     const currentScrollY = window.scrollY;
 
     const preventScroll = (e: Event) => {
-      e.preventDefault();
+      const target = e.target as HTMLElement;
+      // 모달 내부 요소가 아닌 경우에만 스크롤 방지
+      if (!target.closest('[data-modal-content]')) {
+        e.preventDefault();
+      }
     };
 
     const preventKeyboardScroll = (e: KeyboardEvent) => {
-      const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
-      if (scrollKeys.includes(e.key)) {
-        e.preventDefault();
+      const target = e.target as HTMLElement;
+      // 모달 내부 요소가 아닌 경우에만 키보드 스크롤 방지
+      if (!target.closest('[data-modal-content]')) {
+        const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
+        if (scrollKeys.includes(e.key)) {
+          e.preventDefault();
+        }
       }
     };
 
