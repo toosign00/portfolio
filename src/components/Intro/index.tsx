@@ -3,14 +3,23 @@ import { ProfileActions } from './components/ProfileActions';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants, textVariants } from '@/motion/intoAnimations';
 import { useEffect, useState } from 'react';
+import { throttle } from 'es-toolkit';
 
 export const Intro = () => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    // 스크롤 이벤트 성능 최적화: throttle 적용
+    const handleScroll = throttle(() => {
+      setScrollY(window.scrollY);
+    }, 100); // 100ms마다 실행
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      handleScroll.cancel(); // throttle 정리
+    };
   }, []);
 
   return (
