@@ -221,7 +221,7 @@ export const projects: Project[] = [
     memberCount: 1,
     period: '2024.05 ~ 2024.07',
     details: ['인터랙티브한 인터페이스의 구현', '라이트/다크 모드 전환 기능', '성능 최적화 방법'],
-    color: 'pink',
+    color: 'blue',
   },
   {
     id: 'olly',
@@ -247,7 +247,7 @@ export const projects: Project[] = [
     memberCount: 2,
     period: '2024.03 ~ 2024.07',
     details: ['AOS 스크롤 애니메이션의 구현', '서비스 소개 웹사이트의 디자인', '우수상 수상 경험'],
-    color: 'yellow',
+    color: 'pink',
   },
   {
     id: 'minigame',
@@ -272,7 +272,7 @@ export const projects: Project[] = [
     memberCount: 1,
     period: '2024.05 ~ 2024.07',
     details: ['카드 매칭 로직의 구현', '타이머 기능의 구현', '애니메이션의 구현'],
-    color: 'blue',
+    color: 'yellow',
   },
   {
     id: 'film-magazine',
