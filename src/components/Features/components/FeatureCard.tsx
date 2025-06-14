@@ -1,4 +1,4 @@
-import type { FeatureCardProps } from '../../../types/feature.types';
+import type { FeatureCardProps } from '@/types/feature.types';
 
 export const FeatureCard = ({ title, desc, icon }: FeatureCardProps) => {
   return (
