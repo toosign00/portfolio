@@ -8,7 +8,7 @@ export const SkillCounter = ({ count }: SkillCounterProps) => {
         key={count}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-sm text-gray"
+        className="text-gray text-sm"
       >
         {count}개의 기술 스택
       </motion.p>
