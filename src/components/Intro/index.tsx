@@ -15,7 +15,7 @@ export const Intro = () => {
     }, 100); // 100ms마다 실행
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       handleScroll.cancel(); // throttle 정리
