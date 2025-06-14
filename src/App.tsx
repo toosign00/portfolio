@@ -4,7 +4,7 @@ import { NavBar } from '@/components/NavBar';
 import { Intro } from '@/components/Intro';
 import { Features } from '@/components/Features';
 import { Skills } from '@/components/Skills';
-import { Portfolio } from '@/components/Portfolio';
+import { Portfolio } from '@/components/Projects';
 import { Education } from '@/components/Education';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
