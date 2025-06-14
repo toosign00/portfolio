@@ -7,7 +7,7 @@ export const FeatureCard = ({ title, desc, icon }: FeatureCardProps) => {
         <img
           src={icon}
           alt={title}
-          className="h-8 w-8 opacity-60 transition-all duration-500 [animation-duration:4s] group-hover:animate-spin group-hover:opacity-100"
+          className="h-8 w-8 transition-all duration-500 [animation-duration:4s] group-hover:animate-spin"
         />
       </div>
       <div className="flex flex-1 flex-col justify-between gap-4">
