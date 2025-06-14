@@ -25,7 +25,7 @@ export function CareerItem({ period, company, role, description, skills }: Caree
 
       <div className="flex flex-wrap gap-2">
         {skills.map((skill) => (
-          <Badge key={skill} variant="outline" className="border-gary bg-ui-background text-gray">
+          <Badge key={skill} variant="outline" className="border-gray bg-ui-background text-gray">
             {skill}
           </Badge>
         ))}
