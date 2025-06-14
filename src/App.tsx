@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import '@/assets/styles/global.css';
 import { NavBar } from '@/components/NavBar';
 import { Intro } from '@/components/Intro';
@@ -13,12 +14,15 @@ function App() {
     <>
       <NavBar />
       <Intro />
-      <Features />
-      <Skills />
-      <Portfolio />
-      <Education />
-      <Contact />
+      <main>
+        <Features />
+        <Skills />
+        <Portfolio />
+        <Education />
+        <Contact />
+      </main>
       <Footer />
+      <Analytics />
     </>
   );
 }
