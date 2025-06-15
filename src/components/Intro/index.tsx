@@ -23,7 +23,11 @@ export const Intro = () => {
   }, []);
 
   return (
-    <SectionLayout id="intro" className="flex min-h-screen items-center justify-center">
+    <SectionLayout
+      id="intro"
+      className="flex min-h-screen items-center justify-center"
+      useAnimation={false}
+    >
       <motion.div
         className="flex flex-col items-center"
         variants={containerVariants}
@@ -34,37 +38,19 @@ export const Intro = () => {
           className="mb-4 text-center text-4xl leading-tight font-extrabold text-white md:text-5xl"
           variants={textVariants}
         >
-          <motion.span variants={itemVariants}>안녕하세요,</motion.span>
+          안녕하세요,
           <br />
-          <motion.span variants={itemVariants} className="text-pink">
-            프론트엔드 개발자
-          </motion.span>
+          <span className="text-pink">프론트엔드 개발자</span>
           <br />
-          <motion.span variants={itemVariants} className="text-blue">
-            노현수
-          </motion.span>
-          <motion.span variants={itemVariants}>입니다.</motion.span>
+          <span className="text-blue">노현수</span>
+          입니다.
         </motion.h1>
         <motion.p className="text-gray mb-8 text-center text-lg md:text-xl" variants={textVariants}>
-          <motion.span variants={itemVariants}>
-            React를 기반으로 사용자 중심의 웹 애플리케이션을 개발합니다.
-          </motion.span>
+          React를 기반으로 사용자 중심의 웹 애플리케이션을 개발합니다.
           <br />
-          <motion.span variants={itemVariants}>
-            함께 성장할 수 있는 팀에서 가치 있는 서비스를 만들어가고 싶습니다.
-          </motion.span>
+          함께 성장할 수 있는 팀에서 가치 있는 서비스를 만들어가고 싶습니다.
         </motion.p>
-        <motion.div
-          variants={itemVariants}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: 1.2,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="transform-gpu"
-        >
+        <motion.div variants={itemVariants} className="transform-gpu">
           <ProfileActions />
         </motion.div>
       </motion.div>
