@@ -83,7 +83,7 @@ export const NavBar = () => {
             <a
               href={`#${item.sectionIds[0]}`}
               onClick={(e) => handleClick(e, item)}
-              className={`relative cursor-pointer rounded-full px-2 py-0.5 text-xs font-normal whitespace-nowrap transition-colors duration-150 sm:px-3 sm:text-sm md:text-base ${
+              className={`relative flex cursor-pointer items-center justify-center rounded-full px-2 py-0.5 text-xs font-normal whitespace-nowrap transition-colors duration-150 sm:px-3 sm:text-sm md:text-base ${
                 active === item.label ? 'text-white' : 'text-gray-300 hover:text-white'
               }`}
               aria-current={active === item.label ? 'page' : undefined}
@@ -93,7 +93,7 @@ export const NavBar = () => {
             </a>
             {active === item.label && (
               <motion.div
-                className="absolute inset-0 -z-10 rounded-full bg-[#0E1623]"
+                className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-[#0E1623]"
                 layoutId="activeNavItem"
                 transition={{
                   type: 'spring',
