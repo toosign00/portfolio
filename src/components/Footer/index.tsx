@@ -18,6 +18,7 @@ export const Footer = () => {
               href="https://github.com/toosign00"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub 프로필로 이동"
               className="hover:text-blue text-gray-400 transition-colors"
             >
               <FaGithub size={24} />
@@ -26,6 +27,7 @@ export const Footer = () => {
               href="https://www.linkedin.com/in/hyunsoo-roh-97871431b"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn 프로필로 이동"
               className="hover:text-blue text-gray-400 transition-colors"
             >
               <FaLinkedin size={24} />
@@ -34,6 +36,7 @@ export const Footer = () => {
               href="https://velog.io/@toosign00"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Velog 블로그로 이동"
               className="hover:text-blue text-gray-400 transition-colors"
             >
               <SiVelog size={24} />

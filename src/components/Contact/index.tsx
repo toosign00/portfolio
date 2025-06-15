@@ -47,22 +47,31 @@ export const Contact = () => {
         onSubmit={onSubmit}
         className="bg-ui-background-black mx-auto flex max-w-md flex-col gap-4 rounded-xl p-6 shadow-lg"
       >
-        <label className="text-left font-semibold text-white">이름</label>
+        <label htmlFor="user_name" className="text-left font-semibold text-white">
+          이름
+        </label>
         <input
+          id="user_name"
           type="text"
           name="user_name"
           required
           className="rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
-        <label className="text-left font-semibold text-white">이메일</label>
+        <label htmlFor="user_email" className="text-left font-semibold text-white">
+          이메일
+        </label>
         <input
+          id="user_email"
           type="email"
           name="user_email"
           required
           className="rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
-        <label className="text-left font-semibold text-white">메시지</label>
+        <label htmlFor="message" className="text-left font-semibold text-white">
+          메시지
+        </label>
         <textarea
+          id="message"
           name="message"
           required
           rows={5}
