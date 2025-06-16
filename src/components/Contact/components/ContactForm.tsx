@@ -20,8 +20,10 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
       message: formData.get('message') as string,
     };
 
-    await onSubmit(data);
-    form.current.reset();
+    const success = await onSubmit(data);
+    if (success) {
+      form.current.reset();
+    }
   };
 
   return (
