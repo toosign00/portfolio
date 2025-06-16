@@ -8,6 +8,11 @@ import { IoArrowBackOutline, IoSearch } from 'react-icons/io5';
 import { Button } from '@/components/common/Button';
 import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 
+// 썸네일 URL 생성 함수
+const getThumbnailUrl = (projectId: string): string => {
+  return `https://toosign.kr/images/${projectId}.webp`;
+};
+
 export const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -24,7 +29,7 @@ export const ProjectDetail = () => {
       : undefined,
     ogTitle: project ? `${project.title} - 프로젝트 상세` : undefined,
     ogDescription: project ? project.summary || project.description.substring(0, 160) : undefined,
-    ogImage: project?.images[0]?.url,
+    ogImage: id ? getThumbnailUrl(id) : undefined,
     ogUrl: `${window.location.origin}/project/${id}`,
     twitterCard: 'summary_large_image',
     canonical: `${window.location.origin}/project/${id}`,
@@ -37,7 +42,7 @@ export const ProjectDetail = () => {
           description: project.summary || project.description.substring(0, 160),
           author: {
             '@type': 'Person',
-            name: '개발자명', // 실제 이름으로 변경
+            name: '노현수',
           },
           dateCreated: project.period?.split(' - ')[0] || '',
           programmingLanguage: project.technologies,
