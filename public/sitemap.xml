@@ -2,7 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://toosign.kr</loc>
-    <lastmod>2025-01-04</lastmod>
+    <lastmod>2025-06-16</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://toosign.kr/projects/willie-library</loc>
+    <lastmod>2025-06-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toosign.kr/projects/portfolio</loc>
+    <lastmod>2025-06-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toosign.kr/projects/meme-repository</loc>
+    <lastmod>2025-06-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toosign.kr/projects/my-life-story</loc>
+    <lastmod>2025-06-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toosign.kr/projects/ora-gung</loc>
+    <lastmod>2025-06-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toosign.kr/projects/type</loc>
+    <lastmod>2025-06-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toosign.kr/projects/olly</loc>
+    <lastmod>2025-06-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toosign.kr/projects/minigame</loc>
+    <lastmod>2025-06-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://toosign.kr/projects/film-magazine</loc>
+    <lastmod>2025-06-16</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
