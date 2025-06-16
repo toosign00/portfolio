@@ -125,9 +125,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
             전송중...
           </span>
         ) : (
-          <span>
-            보내기 <i className="bi bi-send"></i>
-          </span>
+          <span>보내기</span>
         )}
       </button>
     </form>
