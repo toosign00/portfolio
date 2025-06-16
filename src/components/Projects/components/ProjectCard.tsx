@@ -12,7 +12,7 @@ export const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
 
   return (
     <div
-      className={`focus:ring-blue group bg-ui-background relative rounded-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 ${classes.bg} cursor-pointer`}
+      className={`focus:ring-blue group bg-ui-background relative overflow-hidden rounded-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 ${classes.bg} cursor-pointer`}
       onClick={() => onClick(project)}
       tabIndex={0}
       role="button"
