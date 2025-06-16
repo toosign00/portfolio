@@ -1,6 +1,6 @@
 export const PROFILE_CONSTANTS = {
   RESUME: {
-    PATH: '/src/assets/pdf/CV.pdf',
+    PATH: '/assets/documents/CV.pdf',
     FILENAME: '노현수_이력서.pdf',
   },
   SOCIAL: {
