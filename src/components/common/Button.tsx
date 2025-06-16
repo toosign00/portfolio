@@ -53,8 +53,16 @@ export const Button = ({
   };
 
   if (href) {
+    // download가 있으면 새 탭에서 열지 않음
+    const isDownload = !!download;
+    
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" download={download} {...commonProps}>
+      <a 
+        href={href} 
+        {...(!isDownload && { target: "_blank", rel: "noopener noreferrer" })}
+        download={download} 
+        {...commonProps}
+      >
         <span className="relative z-10">{children}</span>
         {variant === 'primary' && (
           <motion.div
