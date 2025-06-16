@@ -1,19 +1,18 @@
-import { useState } from 'react';
 import { SectionLayout } from '@/layout/SectionLayout';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { Button } from '@/components/common/Button';
-import { ProjectModal } from '../ProjectModal';
 import type { Project } from '@/data/projectsData';
-import { AnimatePresence } from 'framer-motion';
 import { ProjectCard } from './components/ProjectCard';
 import { useProjects } from '@/hooks/useProjects';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export const Portfolio = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const { displayedProjects, setShowAll, hasMoreProjects } = useProjects();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleCloseModal = () => {
-    setTimeout(() => setSelectedProject(null), 50);
+  const handleProjectClick = (project: Project) => {
+    navigate(`/projects/${project.id}`, { state: { background: location } });
   };
 
   return (
@@ -25,7 +24,11 @@ export const Portfolio = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {displayedProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} onClick={setSelectedProject} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onClick={() => handleProjectClick(project)}
+            />
           ))}
         </div>
         {hasMoreProjects && (
@@ -41,15 +44,6 @@ export const Portfolio = () => {
           </div>
         )}
       </div>
-      <AnimatePresence mode="wait">
-        {selectedProject && (
-          <ProjectModal
-            key={selectedProject.id}
-            project={selectedProject}
-            onClose={handleCloseModal}
-          />
-        )}
-      </AnimatePresence>
     </SectionLayout>
   );
 };
