@@ -10,7 +10,7 @@ import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 
 // 썸네일 URL 생성 함수
 const getThumbnailUrl = (projectId: string): string => {
-  return `https://toosign.kr/images/${projectId}.webp`;
+  return `https://toosign.kr/assets/images/${projectId}.webp`;
 };
 
 export const ProjectDetail = () => {
