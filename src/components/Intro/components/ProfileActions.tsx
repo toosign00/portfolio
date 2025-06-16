@@ -9,7 +9,7 @@ export const ProfileActions = () => {
         size={{ base: 'sm', md: 'md' }}
         variant="secondary"
         border={false}
-        download={PROFILE_CONSTANTS.RESUME.FILENAME}
+        download
       >
         이력서 다운로드
       </Button>
