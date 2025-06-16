@@ -10,7 +10,7 @@ interface ButtonProps {
   isActive?: boolean;
   type?: 'button' | 'submit' | 'reset';
   border?: boolean;
-  download?: string;
+  download?: string | boolean;
 }
 
 export const Button = ({
@@ -55,12 +55,12 @@ export const Button = ({
   if (href) {
     // download가 있으면 새 탭에서 열지 않음
     const isDownload = !!download;
-    
+
     return (
-      <a 
-        href={href} 
-        {...(!isDownload && { target: "_blank", rel: "noopener noreferrer" })}
-        download={download} 
+      <a
+        href={href}
+        {...(!isDownload && { target: '_blank', rel: 'noopener noreferrer' })}
+        {...(download && { download: typeof download === 'string' ? download : '' })}
         {...commonProps}
       >
         <span className="relative z-10">{children}</span>
