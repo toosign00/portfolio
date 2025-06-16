@@ -6,52 +6,11 @@ import { ProjectDetails } from './ProjectDetails';
 import { projects } from '@/data/projectsData';
 import { IoArrowBackOutline, IoSearch } from 'react-icons/io5';
 import { Button } from '@/components/common/Button';
-import { useDocumentMeta } from '@/hooks/useDocumentMeta';
-
-// 썸네일 URL 생성 함수
-const getThumbnailUrl = (projectId: string): string => {
-  return `https://toosign.kr/assets/images/${projectId}.webp`;
-};
 
 export const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const project = projects.find((p: Project) => p.id === id);
-
-  // SEO 메타데이터 설정
-  useDocumentMeta({
-    title: project ? `${project.title} - 프로젝트 상세` : '페이지를 찾을 수 없습니다 - 포트폴리오',
-    description: project
-      ? project.summary || project.description.substring(0, 160)
-      : '요청하신 프로젝트 페이지를 찾을 수 없습니다.',
-    keywords: project
-      ? `${project.title}, ${project.technologies.join(', ')}, 프로젝트, 포트폴리오`
-      : undefined,
-    ogTitle: project ? `${project.title} - 프로젝트 상세` : undefined,
-    ogDescription: project ? project.summary || project.description.substring(0, 160) : undefined,
-    ogImage: id ? getThumbnailUrl(id) : undefined,
-    ogUrl: `${window.location.origin}/project/${id}`,
-    twitterCard: 'summary_large_image',
-    canonical: `${window.location.origin}/project/${id}`,
-    robots: project ? 'index, follow' : 'noindex, nofollow',
-    structuredData: project
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'CreativeWork',
-          name: project.title,
-          description: project.summary || project.description.substring(0, 160),
-          author: {
-            '@type': 'Person',
-            name: '노현수',
-          },
-          dateCreated: project.period?.split(' - ')[0] || '',
-          programmingLanguage: project.technologies,
-          url: `${window.location.origin}/project/${id}`,
-          ...(project.github && { codeRepository: project.github }),
-          ...(project.deploy && { url: project.deploy.url }),
-        }
-      : undefined,
-  });
 
   // 404 페이지 처리
   if (!project) {
