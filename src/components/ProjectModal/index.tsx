@@ -1,23 +1,14 @@
 import type { Project } from '@/data/projectsData';
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useParams, useNavigate } from 'react-router-dom';
 import { ModalHeader } from './components/ModalHeader';
 import { TechnologyStack } from './components/TechnologyStack';
 import { ProjectInfo } from './components/ProjectInfo';
 import { ProjectDetails } from './components/ProjectDetails';
 import { useModalClose } from '@/hooks/useModalClose';
 import { usePreventScroll } from '@/hooks/usePreventScroll';
-
-/**
- * @interface ProjectModalProps
- * @description 프로젝트 모달 컴포넌트의 props 타입 정의
- * @property {Project} project - 표시할 프로젝트 정보
- * @property {() => void} onClose - 모달을 닫는 콜백 함수
- */
-interface ProjectModalProps {
-  project: Project;
-  onClose: () => void;
-}
+import { projects } from '@/data/projectsData';
 
 /**
  * @component ProjectModal
@@ -25,13 +16,26 @@ interface ProjectModalProps {
  * @param {ProjectModalProps} props - 컴포넌트 props
  * @returns {JSX.Element} 프로젝트 모달 컴포넌트
  */
-export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
-  const details = project.details;
+export const ProjectModal = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const project = projects.find((p: Project) => p.id === id);
   const modalRef = useRef<HTMLDivElement>(null);
-  const { isClosing, handleClose, handleOverlayClick } = useModalClose(onClose);
+
+  const handleClose = () => {
+    navigate(-1);
+  };
+
+  const { isClosing, handleOverlayClick } = useModalClose(handleClose);
 
   // 스크롤 방지 훅 사용
   usePreventScroll();
+
+  if (!project) {
+    return null;
+  }
+
+  const details = project.details;
 
   return (
     <motion.div
