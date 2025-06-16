@@ -62,12 +62,6 @@ export const skills: SkillItem[] = [
     color: '#ffffff',
   },
   {
-    name: 'Vercel',
-    type: 'devops',
-    iconName: 'SiVercel',
-    color: 'white',
-  },
-  {
     name: 'Git',
     type: 'devops',
     iconName: 'SiGit',
@@ -84,6 +78,12 @@ export const skills: SkillItem[] = [
     type: 'devops',
     iconName: 'viteLogo',
     isImage: true,
+  },
+  {
+    name: 'Vercel',
+    type: 'devops',
+    iconName: 'SiVercel',
+    color: 'white',
   },
   {
     name: 'Figma',

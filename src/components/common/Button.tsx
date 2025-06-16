@@ -26,7 +26,7 @@ export const Button = ({
   download,
 }: ButtonProps) => {
   const baseStyles =
-    'flex item-center justify-center text-center relative cursor-pointer overflow-hidden rounded-lg backdrop-blur-md transition-all duration-300';
+    'focus:ring-blue flex item-center justify-center text-center relative cursor-pointer overflow-hidden rounded-lg backdrop-blur-md transition-all duration-300 focus-visible:ring-2 focus:outline-none';
 
   const getSizeStyles = (size: ButtonProps['size']) => {
     if (typeof size === 'object') {

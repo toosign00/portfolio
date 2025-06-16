@@ -12,7 +12,7 @@ export const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
 
   return (
     <div
-      className={`group bg-ui-background relative overflow-hidden rounded-lg transition-all duration-300 ${classes.bg} cursor-pointer`}
+      className={`focus:ring-blue group bg-ui-background relative rounded-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 ${classes.bg} cursor-pointer`}
       onClick={() => onClick(project)}
       tabIndex={0}
       role="button"
@@ -25,7 +25,7 @@ export const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
         <img
           src={project.thumbnail}
           alt=""
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="z-20 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
       <div className="p-5">
