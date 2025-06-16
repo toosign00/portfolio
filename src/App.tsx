@@ -1,5 +1,4 @@
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { NavBar } from '@/components/NavBar';
 import { Intro } from '@/components/Intro';
 import { Features } from '@/components/Features';
@@ -8,23 +7,58 @@ import { Portfolio } from '@/components/Projects';
 import { Education } from '@/components/Education';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
+import { ProjectModal } from '@/components/ProjectModal';
+import { ProjectDetail } from '@/components/ProjectModal/components/ProjectDetail';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+
+function AppRoutes() {
+  const location = useLocation();
+  const state = location.state as { background?: Location };
+  const isProjectDetail = (state?.background || location).pathname.startsWith('/projects/');
+
+  return (
+    <>
+      {!isProjectDetail && <NavBar />}
+      <main>
+        <Routes location={state?.background || location}>
+          <Route
+            path="/"
+            element={
+              <>
+                <Intro />
+                <Features />
+                <Skills />
+                <Portfolio />
+                <Education />
+                <Contact />
+              </>
+            }
+          />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
+        </Routes>
+        {state?.background && (
+          <Routes>
+            <Route path="/projects/:id" element={<ProjectModal />} />
+          </Routes>
+        )}
+      </main>
+      {!isProjectDetail && <Footer />}
+      {!isProjectDetail && (
+        <>
+          <Analytics />
+          <SpeedInsights />
+        </>
+      )}
+    </>
+  );
+}
 
 function App() {
   return (
-    <>
-      <NavBar />
-      <main>
-        <Intro />
-        <Features />
-        <Skills />
-        <Portfolio />
-        <Education />
-        <Contact />
-      </main>
-      <Footer />
-      <Analytics />
-      <SpeedInsights />
-    </>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
 
