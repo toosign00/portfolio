@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import type { CSSProperties } from 'react';
 
-export const BackgroundParallax: React.FC = () => {
+export function BackgroundParallax() {
   const { scrollYProgress } = useScroll();
 
   const backgroundY = useSpring(useTransform(scrollYProgress, [0, 1], ['0%', '50%']), {
@@ -26,4 +26,4 @@ export const BackgroundParallax: React.FC = () => {
       <div className="absolute inset-0 bg-black bg-gradient-to-br" />
     </motion.div>
   );
-};
+}

@@ -9,14 +9,14 @@ import {
   buttonContainerVariants,
 } from '@/motion/intoAnimations';
 
-export const IntroContent: React.FC = () => {
+export function IntroContent() {
   const transformStyle: CSSProperties = {
     willChange: 'transform',
   };
 
   return (
     <motion.div
-      className="flex flex-col items-center px-4"
+      className="flex flex-col items-center"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -65,4 +65,4 @@ export const IntroContent: React.FC = () => {
       </motion.div>
     </motion.div>
   );
-};
+}
