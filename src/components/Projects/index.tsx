@@ -21,7 +21,7 @@ export const Portfolio = () => {
         title="프로젝트"
         description="새로운 기술을 학습하고 구현한 주요 프로젝트입니다."
       />
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {displayedProjects.map((project) => (
             <ProjectCard
