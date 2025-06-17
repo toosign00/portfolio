@@ -2,12 +2,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import type { Project } from '@/data/projectsData';
 import { TechnologyStack } from './TechnologyStack';
 import { ProjectInfo } from './ProjectInfo';
-import { ProjectDetails } from './ProjectDetails';
+import { ProjectDetailList } from './ProjectDetailList';
 import { projects } from '@/data/projectsData';
 import { IoArrowBackOutline, IoSearch } from 'react-icons/io5';
 import { Button } from '@/components/common/Button';
 
-export const ProjectDetail = () => {
+export const ProjectPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const project = projects.find((p: Project) => p.id === id);
@@ -56,7 +56,7 @@ export const ProjectDetail = () => {
 
           <TechnologyStack technologies={project.technologies} />
           <ProjectInfo project={project} />
-          <ProjectDetails details={details} />
+          <ProjectDetailList details={details} />
         </article>
       </div>
     </div>
