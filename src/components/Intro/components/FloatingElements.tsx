@@ -31,7 +31,7 @@ const FLOATING_CONFIG: FloatingElementConfig[] = [
   },
 ];
 
-export const FloatingElements: React.FC = () => {
+export function FloatingElements() {
   const elements = useMemo<FloatingElementConfig[]>(() => FLOATING_CONFIG, []);
 
   const motionStyle: CSSProperties = {
@@ -53,4 +53,4 @@ export const FloatingElements: React.FC = () => {
       ))}
     </>
   );
-};
+}
