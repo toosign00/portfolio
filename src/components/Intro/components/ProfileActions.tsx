@@ -3,10 +3,10 @@ import { PROFILE_CONSTANTS } from '@/components/Intro/constants/profile.constant
 
 export const ProfileActions = () => {
   return (
-    <div className="flex gap-4">
+    <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
       <Button
         href={PROFILE_CONSTANTS.RESUME.PATH}
-        size={{ base: 'sm', md: 'md' }}
+        size={{ base: 'md', md: 'lg' }}
         variant="secondary"
         border={false}
         download
@@ -15,7 +15,7 @@ export const ProfileActions = () => {
       </Button>
       <Button
         href={PROFILE_CONSTANTS.SOCIAL.GITHUB}
-        size={{ base: 'sm', md: 'md' }}
+        size={{ base: 'md', md: 'lg' }}
         variant="secondary"
         border={false}
       >

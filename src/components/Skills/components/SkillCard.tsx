@@ -14,7 +14,7 @@ export const SkillCard = ({ skill, filter }: SkillCardProps) => {
     >
       <Tooltip content={skill.name}>
         <motion.div
-          className="focus:ring-blue border-gray bg-ui-background flex h-16 w-16 cursor-pointer flex-col items-center justify-center rounded-2xl border backdrop-blur-md transition-all duration-300 focus:outline-none focus-visible:ring-2 md:h-20 md:w-20"
+          className="focus:ring-blue border-gray bg-ui-background flex h-16 w-16 flex-col items-center justify-center rounded-2xl border backdrop-blur-md transition-all duration-300 focus:outline-none focus-visible:ring-2 md:h-20 md:w-20"
           whileTap={{ scale: 0.95 }}
           tabIndex={0}
           role="button"
