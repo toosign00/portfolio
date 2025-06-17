@@ -22,7 +22,7 @@ export const SectionLayout = ({
   );
 
   return (
-    <section id={id} className={`w-full bg-black px-4 py-24 ${className}`}>
+    <section id={id} className={`w-full bg-black px-8 py-24 ${className}`}>
       {content}
     </section>
   );
