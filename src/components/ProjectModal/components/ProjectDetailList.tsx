@@ -1,8 +1,8 @@
-interface ProjectDetailsProps {
+interface ProjectDetailListProps {
   details: string[] | undefined;
 }
 
-export const ProjectDetails = ({ details }: ProjectDetailsProps) => {
+export const ProjectDetailList = ({ details }: ProjectDetailListProps) => {
   if (!details || details.length === 0) return null;
   return (
     <div className="mb-2">

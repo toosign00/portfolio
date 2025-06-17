@@ -2,13 +2,13 @@ import type { Project } from '@/data/projectsData';
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ModalHeader } from './components/ModalHeader';
-import { TechnologyStack } from './components/TechnologyStack';
 import { ProjectInfo } from './components/ProjectInfo';
-import { ProjectDetails } from './components/ProjectDetails';
 import { useModalClose } from '@/hooks/useModalClose';
 import { usePreventScroll } from '@/hooks/usePreventScroll';
 import { projects } from '@/data/projectsData';
+import { ProjectDetailList } from './components/ProjectDetailList';
+import { ModalHeader } from './components/ModalHeader';
+import { TechnologyStack } from './components/TechnologyStack';
 
 /**
  * @component ProjectModal
@@ -66,7 +66,7 @@ export const ProjectModal = () => {
         <ModalHeader project={project} onClose={handleClose} />
         <TechnologyStack technologies={project.technologies} />
         <ProjectInfo project={project} />
-        <ProjectDetails details={details} />
+        <ProjectDetailList details={details} />
       </motion.div>
     </motion.div>
   );

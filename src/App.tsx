@@ -8,18 +8,18 @@ import { Education } from '@/components/Education';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 import { ProjectModal } from '@/components/ProjectModal';
-import { ProjectDetail } from '@/components/ProjectModal/components/ProjectDetail';
+import { ProjectPage } from '@/components/ProjectModal/components/ProjectPage';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
 function AppRoutes() {
   const location = useLocation();
   const state = location.state as { background?: Location };
-  const isProjectDetail = (state?.background || location).pathname.startsWith('/projects/');
+  const isProjectPage = (state?.background || location).pathname.startsWith('/projects/');
 
   return (
     <>
-      {!isProjectDetail && <NavBar />}
+      {!isProjectPage && <NavBar />}
       <main>
         <Routes location={state?.background || location}>
           <Route
@@ -35,7 +35,7 @@ function AppRoutes() {
               </>
             }
           />
-          <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route path="/projects/:id" element={<ProjectPage />} />
         </Routes>
         {state?.background && (
           <Routes>
@@ -43,8 +43,8 @@ function AppRoutes() {
           </Routes>
         )}
       </main>
-      {!isProjectDetail && <Footer />}
-      {!isProjectDetail && (
+      {!isProjectPage && <Footer />}
+      {!isProjectPage && (
         <>
           <Analytics />
           <SpeedInsights />
