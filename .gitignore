@@ -1,3 +1,7 @@
+### 로컬 개발 파일 ###
+# Local development files (Supabase setup, migration scripts, etc.)
+local-dev/
+
 ### macOS ###
 # General
 .DS_Store
