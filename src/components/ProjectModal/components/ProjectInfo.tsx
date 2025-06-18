@@ -20,7 +20,7 @@ export const ProjectInfo = ({ project }: ProjectInfoProps) => {
         {/* 기간 */}
         <div className="flex flex-1 flex-col">
           <div className="mb-1 text-xs font-semibold text-gray-400">기간</div>
-          <div className="text-sm font-normal text-white">{project.period}</div>
+          <div className="text-sm font-normal text-white">{project.timeFrame}</div>
         </div>
         {/* 관련 링크 */}
         <div className="flex flex-1 flex-col">

@@ -1,4 +1,4 @@
-import type { Project } from '@/types/projects.type';
+import type { Project, ProjectDetail } from '@/types/projects.type';
 
 export interface ModalHeaderProps {
   project: Project;
@@ -6,7 +6,7 @@ export interface ModalHeaderProps {
 }
 
 export interface ProjectDetailListProps {
-  details: string[] | undefined;
+  details: ProjectDetail[] | undefined;
 }
 
 export interface ProjectInfoProps {
