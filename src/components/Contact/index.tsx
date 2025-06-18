@@ -3,11 +3,7 @@ import { SectionHeader } from '@/layout/SectionHeader';
 import { useContactForm } from '@/hooks/useContactForm';
 import { ContactInfo } from './components/ContactInfo';
 import { ContactForm } from './components/ContactForm';
-
-const contactInfo = {
-  phone: '+82 10-8514-8477',
-  email: 'kevinsoo1014@gmail.com',
-};
+import { contactInfo } from '@/data/contact.data';
 
 export const Contact = () => {
   const { loading, handleSubmit } = useContactForm();

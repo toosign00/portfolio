@@ -1,5 +1,5 @@
 import { useScrollSection } from '@/hooks/useScrollSection';
-import { navItems, type NavItem } from './constants/navigation.constants';
+import { navItems, type NavItem } from '../../constants/navigation.constants';
 import { motion } from 'framer-motion';
 
 export const NavBar = () => {

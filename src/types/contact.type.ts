@@ -8,3 +8,12 @@ export interface ContactInfoData {
   phone: string;
   email: string;
 }
+
+export interface ContactInfoProps {
+  info: ContactInfoData;
+}
+
+export interface ContactFormProps {
+  loading: boolean;
+  onSubmit: (data: ContactFormData) => Promise<boolean>;
+}

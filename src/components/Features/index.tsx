@@ -1,7 +1,7 @@
 import { SectionLayout } from '@/layout/SectionLayout';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { FeatureCard } from './components/FeatureCard';
-import { features } from './constants/features.constants';
+import { features } from '@/constants/features.constants';
 import { motion } from 'framer-motion';
 import { featureContainerVariants, featureItemVariants } from '@/motion/featureAnimations';
 import { useViewportAmount } from '@/hooks/useViewportAmount';

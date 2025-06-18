@@ -1,12 +1,5 @@
 import { Badge } from './Badge';
-
-interface CareerItemProps {
-  period: string;
-  company: string;
-  role: string;
-  description: string[];
-  skills: string[];
-}
+import type { CareerItemProps } from '@/types/career.type';
 
 export function CareerItem({ period, company, role, description, skills }: CareerItemProps) {
   return (

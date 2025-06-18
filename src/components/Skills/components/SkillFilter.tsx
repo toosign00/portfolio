@@ -1,5 +1,5 @@
 import type { SkillFilterProps } from '@/types/skills.type';
-import { Button } from '@/components/common/Button';
+import { Button } from '@/components/Button/Button';
 
 export const SkillFilter = ({ filters, currentFilter, onFilterChange }: SkillFilterProps) => {
   return (

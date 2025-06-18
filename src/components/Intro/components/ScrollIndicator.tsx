@@ -1,9 +1,6 @@
 import { motion } from 'framer-motion';
 import type { CSSProperties } from 'react';
-
-interface ScrollIndicatorProps {
-  show: boolean;
-}
+import type { ScrollIndicatorProps } from '@/types/intro.type';
 
 export function ScrollIndicator({ show }: ScrollIndicatorProps) {
   if (!show) return null;

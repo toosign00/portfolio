@@ -1,10 +1,11 @@
 import { SectionLayout } from '@/layout/SectionLayout';
 import { SectionHeader } from '@/layout/SectionHeader';
-import { Button } from '@/components/common/Button';
+import { Button } from '@/components/Button/Button';
 import type { Project } from '@/data/projectsData';
 import { ProjectCard } from './components/ProjectCard';
 import { useProjects } from '@/hooks/useProjects';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { getProjectPath } from '@/constants/routes.constants';
 
 export const Portfolio = () => {
   const { displayedProjects, setShowAll, hasMoreProjects } = useProjects();
@@ -12,7 +13,7 @@ export const Portfolio = () => {
   const location = useLocation();
 
   const handleProjectClick = (project: Project) => {
-    navigate(`/projects/${project.id}`, { state: { background: location } });
+    navigate(getProjectPath(project.id), { state: { background: location } });
   };
 
   return (
