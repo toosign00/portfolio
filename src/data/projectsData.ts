@@ -34,6 +34,11 @@ interface Link {
   ariaLabel?: string;
 }
 
+export interface ProjectDetail {
+  title: string;
+  description: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -51,7 +56,7 @@ export interface Project {
   memberCount?: number;
   period?: string;
   blogLink?: string;
-  details?: string[];
+  details?: ProjectDetail[];
   color?: 'blue' | 'pink' | 'yellow';
 }
 
@@ -81,9 +86,31 @@ export const projects: Project[] = [
     memberCount: 4,
     period: '2024.03',
     details: [
-      '프로젝트 진행 중 발생한 문제점',
-      '스크럼 마스터의 역할과 중요성',
-      '팀원들과의 원활한 커뮤니케이션 방법',
+      {
+        title: '스크럼 마스터로서 팀원 간의 소통과 일정 관리를 주도',
+        description:
+          '매일 아침 스크럼 회의를 진행하며 팀원들의 진행 상황을 파악하고, 일정이 지연될 경우 즉각적으로 대응하여 프로젝트가 원활하게 진행될 수 있도록 조율했습니다.',
+      },
+      {
+        title: 'index 페이지 및 주요 UI 컴포넌트 개발',
+        description:
+          '메인 타이틀, 버튼 등 재사용 가능한 UI 컴포넌트를 설계하고, index 페이지의 구조와 스타일을 직접 구현하여 일관된 사용자 경험을 제공했습니다.',
+      },
+      {
+        title: 'Tailwind CSS를 활용한 반응형 레이아웃 설계',
+        description:
+          'Tailwind CSS의 유틸리티 클래스를 적극 활용하여 다양한 디바이스에서 최적화된 레이아웃을 구현했습니다.',
+      },
+      {
+        title: '프로젝트 구조 및 사용법 문서화',
+        description:
+          '프로젝트의 폴더 구조, 컴포넌트 사용법, 협업 규칙 등을 Notion과 README에 정리하여 팀원들이 쉽게 이해하고 기여할 수 있도록 했습니다.',
+      },
+      {
+        title: 'GitHub를 통한 협업 및 코드 리뷰 경험',
+        description:
+          'GitHub의 Pull Request와 코드 리뷰 기능을 활용하여 팀원들과 효율적으로 협업하고, 코드 품질을 높였습니다.',
+      },
     ],
     color: 'blue',
   },
@@ -110,9 +137,31 @@ export const projects: Project[] = [
     memberCount: 1,
     period: '2024.12 ~',
     details: [
-      '프로젝트 진행 중 발생한 문제점',
-      '스킬 타이핑 효과의 구현 방법',
-      'SEO 최적화를 위한 최적의 코드 작성',
+      {
+        title: '헤더 메뉴 클릭 시 부드러운 스크롤 이동 구현',
+        description:
+          '스크롤 이동 애니메이션을 구현하여 사용자에게 부드러운 탐색 경험을 제공했습니다.',
+      },
+      {
+        title: '스킬 숙련도 타이핑 효과 및 애니메이션',
+        description:
+          '스킬 버튼을 클릭할 때 타이핑 효과와 함께 애니메이션을 적용하여 인터랙티브한 사용자 경험을 제공했습니다.',
+      },
+      {
+        title: 'SEO, 웹표준, 접근성 최적화',
+        description:
+          '웹사이트를 웹표준과 접근성을 준수하도록 설계하고, SEO를 최적화하여 검색 엔진 최적화를 달성했습니다.',
+      },
+      {
+        title: 'Google Lighthouse 100점 달성',
+        description:
+          'Google Lighthouse를 사용하여 웹사이트의 성능을 평가하고 100점을 달성했습니다.',
+      },
+      {
+        title: '프로젝트 모달 창을 통한 상세 설명 제공',
+        description:
+          '프로젝트의 상세 설명을 모달 창을 통해 제공하여 사용자가 프로젝트를 더 자세히 이해할 수 있도록 했습니다.',
+      },
     ],
     color: 'yellow',
   },
@@ -135,9 +184,28 @@ export const projects: Project[] = [
     memberCount: 1,
     period: '2024.10 ~ 2024.12',
     details: [
-      '데이터베이스 연동 과정에서의 문제점',
-      'JWT 토큰을 활용한 보안 문제',
-      '이미지 업로드 기능의 구현',
+      {
+        title: 'Express와 EJS를 활용한 서버 및 템플릿 구축',
+        description:
+          'Express 프레임워크와 EJS 템플릿 엔진을 사용하여 서버를 구축하고 동적인 페이지를 렌더링했습니다.',
+      },
+      {
+        title: 'JWT 토큰 기반 사용자 인증 시스템 구현',
+        description: 'JWT 토큰을 사용한 사용자 인증 시스템을 구축하여 보안을 강화했습니다.',
+      },
+      {
+        title: 'Multer와 MongoDB 연동 이미지 업로드 기능',
+        description:
+          'Multer 미들웨어와 MongoDB를 연동하여 사용자가 이미지를 업로드하고 저장할 수 있도록 했습니다.',
+      },
+      {
+        title: '짤방 데이터베이스 설계 및 조회 기능',
+        description: '데이터베이스를 설계하고 짤방을 조회할 수 있는 기능을 구현했습니다.',
+      },
+      {
+        title: '보안 및 에러 핸들링 강화',
+        description: '보안을 강화하고 에러를 핸들링하는 방법을 적용했습니다.',
+      },
     ],
     color: 'pink',
   },
@@ -162,7 +230,20 @@ export const projects: Project[] = [
     images: [{ url: myLifeStoryThumb, alt: '메인 화면' }],
     memberCount: 1,
     period: '2024.10 ~ 2024.12',
-    details: ['취미 표현의 다양성', '인터렉션의 구현 방법', '웹사이트의 활용성 향상'],
+    details: [
+      {
+        title: '취미 표현의 다양성',
+        description: '다양한 취미를 표현하는 방법을 제공했습니다.',
+      },
+      {
+        title: '인터렉션의 구현 방법',
+        description: '인터렉션을 구현하는 방법을 설명했습니다.',
+      },
+      {
+        title: '웹사이트의 활용성 향상',
+        description: '웹사이트를 더 효과적으로 활용할 수 있는 방법을 제공했습니다.',
+      },
+    ],
     color: 'yellow',
   },
   {
@@ -195,7 +276,20 @@ export const projects: Project[] = [
     images: [{ url: oraGungThumb, alt: '메인 화면' }],
     memberCount: 4,
     period: '2024.09 ~ 2024.12',
-    details: ['팀원들과의 원활한 커뮤니케이션', '3D 캐러셀의 구현 방법', 'Git 버전 관리 전략'],
+    details: [
+      {
+        title: '팀원들과의 원활한 커뮤니케이션',
+        description: '팀원들과의 원활한 커뮤니케이션을 위한 방법을 제공했습니다.',
+      },
+      {
+        title: '3D 캐러셀의 구현 방법',
+        description: '3D 캐러셀을 구현하는 방법을 설명했습니다.',
+      },
+      {
+        title: 'Git 버전 관리 전략',
+        description: 'Git을 활용한 효율적인 버전 관리 전략을 제공했습니다.',
+      },
+    ],
     color: 'blue',
   },
   {
@@ -220,7 +314,20 @@ export const projects: Project[] = [
     images: [{ url: typeThumb, alt: '메인 화면' }],
     memberCount: 1,
     period: '2024.05 ~ 2024.07',
-    details: ['인터랙티브한 인터페이스의 구현', '라이트/다크 모드 전환 기능', '성능 최적화 방법'],
+    details: [
+      {
+        title: '인터랙티브한 인터페이스의 구현',
+        description: '인터랙티브한 인터페이스를 구현하는 방법을 설명했습니다.',
+      },
+      {
+        title: '라이트/다크 모드 전환 기능',
+        description: '라이트와 다크 모드를 전환할 수 있는 기능을 제공했습니다.',
+      },
+      {
+        title: '성능 최적화 방법',
+        description: '웹사이트의 성능을 최적화하는 방법을 설명했습니다.',
+      },
+    ],
     color: 'blue',
   },
   {
@@ -246,7 +353,20 @@ export const projects: Project[] = [
     images: [{ url: ollyThumb, alt: '메인 화면' }],
     memberCount: 2,
     period: '2024.03 ~ 2024.07',
-    details: ['AOS 스크롤 애니메이션의 구현', '서비스 소개 웹사이트의 디자인', '우수상 수상 경험'],
+    details: [
+      {
+        title: 'AOS 스크롤 애니메이션의 구현',
+        description: 'AOS 스크롤 애니메이션을 구현하는 방법을 설명했습니다.',
+      },
+      {
+        title: '서비스 소개 웹사이트의 디자인',
+        description: '서비스 소개 웹사이트의 디자인을 설명했습니다.',
+      },
+      {
+        title: '우수상 수상 경험',
+        description: '제30회 국제커뮤니케이션공모전에서 우수상을 수상한 경험을 설명했습니다.',
+      },
+    ],
     color: 'pink',
   },
   {
@@ -271,7 +391,20 @@ export const projects: Project[] = [
     images: [{ url: minigameThumb, alt: '메인 화면' }],
     memberCount: 1,
     period: '2024.05 ~ 2024.07',
-    details: ['카드 매칭 로직의 구현', '타이머 기능의 구현', '애니메이션의 구현'],
+    details: [
+      {
+        title: '카드 매칭 로직의 구현',
+        description: '카드 매칭 로직을 구현하는 방법을 설명했습니다.',
+      },
+      {
+        title: '타이머 기능의 구현',
+        description: '타이머 기능을 구현하는 방법을 설명했습니다.',
+      },
+      {
+        title: '애니메이션의 구현',
+        description: '애니메이션을 구현하는 방법을 설명했습니다.',
+      },
+    ],
     color: 'yellow',
   },
   {
@@ -296,7 +429,20 @@ export const projects: Project[] = [
     images: [{ url: filmMagazineThumb, alt: '메인 화면' }],
     memberCount: 1,
     period: '2023.09 ~ 2024.12',
-    details: ['시멘틱 마크업의 사용', 'Flexbox 레이아웃의 사용', '반응형 웹 디자인'],
+    details: [
+      {
+        title: '시멘틱 마크업의 사용',
+        description: '시멘틱 마크업을 사용하는 방법을 설명했습니다.',
+      },
+      {
+        title: 'Flexbox 레이아웃의 사용',
+        description: 'Flexbox 레이아웃을 사용하는 방법을 설명했습니다.',
+      },
+      {
+        title: '반응형 웹 디자인',
+        description: '반응형 웹 디자인을 적용하는 방법을 설명했습니다.',
+      },
+    ],
     color: 'pink',
   },
 ];

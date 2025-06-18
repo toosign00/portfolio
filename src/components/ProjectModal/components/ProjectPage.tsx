@@ -5,7 +5,7 @@ import { ProjectInfo } from './ProjectInfo';
 import { ProjectDetailList } from './ProjectDetailList';
 import { projects } from '@/data/projectsData';
 import { IoArrowBackOutline, IoSearch } from 'react-icons/io5';
-import { Button } from '@/components/common/Button';
+import { Button } from '@/components/Button/Button';
 
 export const ProjectPage = () => {
   const { id } = useParams();

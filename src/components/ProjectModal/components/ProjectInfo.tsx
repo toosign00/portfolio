@@ -1,8 +1,4 @@
-import type { Project } from '@/data/projectsData';
-
-interface ProjectInfoProps {
-  project: Project;
-}
+import type { ProjectInfoProps } from '@/types/project-modal.type';
 
 export const ProjectInfo = ({ project }: ProjectInfoProps) => {
   // 인원/팀구성

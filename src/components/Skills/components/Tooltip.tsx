@@ -1,10 +1,6 @@
-import React, { useState } from 'react';
+import type { TooltipProps } from '@/types/skills.type';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-interface TooltipProps {
-  children: React.ReactNode;
-  content: string;
-}
 
 export const Tooltip = ({ children, content }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);

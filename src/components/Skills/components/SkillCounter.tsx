@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
 import type { SkillCounterProps } from '@/types/skills.type';
+import { motion } from 'framer-motion';
 
 export const SkillCounter = ({ count }: SkillCounterProps) => {
   return (

@@ -1,5 +1,5 @@
-import { Button } from '@/components/common/Button';
-import { PROFILE_CONSTANTS } from '@/components/Intro/constants/profile.constants';
+import { Button } from '@/components/Button/Button';
+import { PROFILE_CONSTANTS } from '@/constants/profile.constants';
 
 export const ProfileActions = () => {
   return (

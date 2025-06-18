@@ -5,10 +5,7 @@ import { IntroContent } from './components/IntroContent';
 import { ScrollIndicator } from './components/ScrollIndicator';
 import { useScrollOptimized } from '@/hooks/useScrollOptimized';
 import { useMemo } from 'react';
-
-interface IntroProps {
-  className?: string;
-}
+import type { IntroProps } from '@/types/intro.type';
 
 export function Intro({ className }: IntroProps) {
   const scrollY = useScrollOptimized();

@@ -1,10 +1,6 @@
 import { HiOutlinePhone } from 'react-icons/hi';
 import { MdOutlineEmail } from 'react-icons/md';
-import type { ContactInfoData } from '@/types/contact.type';
-
-interface ContactInfoProps {
-  info: ContactInfoData;
-}
+import type { ContactInfoProps } from '@/types/contact.type';
 
 export const ContactInfo = ({ info }: ContactInfoProps) => {
   return (

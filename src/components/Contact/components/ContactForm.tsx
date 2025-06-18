@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import type { ContactFormData } from '@/types/contact.type';
+import type { ContactFormData, ContactFormProps } from '@/types/contact.type';
 import xss from 'xss';
 
 const sanitizeInput = (value: string) => {
@@ -9,11 +9,6 @@ const sanitizeInput = (value: string) => {
     stripIgnoreTagBody: ['script'], // script 태그 내용 제거
   });
 };
-
-interface ContactFormProps {
-  loading: boolean;
-  onSubmit: (data: ContactFormData) => Promise<boolean>;
-}
 
 export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
   const {

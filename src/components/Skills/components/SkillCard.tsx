@@ -1,8 +1,8 @@
+import type { SkillCardProps } from '@/types/skills.type';
 import { motion } from 'framer-motion';
 import { Tooltip } from './Tooltip';
 import { SkillIcon } from './SkillIcon';
 import { skillItemVariants } from '@/motion/skillAnimations';
-import type { SkillCardProps } from '@/types/skills.type';
 
 export const SkillCard = ({ skill, filter }: SkillCardProps) => {
   return (

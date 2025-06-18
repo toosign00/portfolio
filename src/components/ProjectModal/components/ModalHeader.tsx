@@ -1,9 +1,4 @@
-import type { Project } from '@/data/projectsData';
-
-interface ModalHeaderProps {
-  project: Project;
-  onClose: () => void;
-}
+import type { ModalHeaderProps } from '@/types/project-modal.type';
 
 export const ModalHeader = ({ project, onClose }: ModalHeaderProps) => {
   return (

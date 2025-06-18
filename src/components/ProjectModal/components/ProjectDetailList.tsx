@@ -1,8 +1,6 @@
-interface ProjectDetailListProps {
-  details: string[] | undefined;
-}
+import type { ProjectDetail } from '@/data/projectsData';
 
-export const ProjectDetailList = ({ details }: ProjectDetailListProps) => {
+export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) => {
   if (!details || details.length === 0) return null;
   return (
     <div className="mb-2">
@@ -19,7 +17,8 @@ export const ProjectDetailList = ({ details }: ProjectDetailListProps) => {
             className="leading-relaxed tracking-normal"
             style={{ lineHeight: '1.7', letterSpacing: '0.01em' }}
           >
-            {item}
+            <div className="font-semibold text-white">{item.title}</div>
+            <div className="text-gray-400">{item.description}</div>
           </li>
         ))}
       </ul>

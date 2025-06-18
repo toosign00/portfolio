@@ -21,9 +21,9 @@ export interface SkillHeaderProps {
 }
 
 export interface SkillFilterProps {
-  filters: FilterOption[];
-  currentFilter: SkillType | 'all';
-  onFilterChange: (filter: SkillType | 'all') => void;
+  filters: Array<{ value: string; label: string }>;
+  currentFilter: string;
+  onFilterChange: (filter: string) => void;
 }
 
 export interface SkillCounterProps {
@@ -31,17 +31,29 @@ export interface SkillCounterProps {
 }
 
 export interface SkillGridProps {
-  skills: SkillItem[];
-  filter: SkillType | 'all';
+  skills: Array<{
+    name: string;
+    iconName: string;
+    color: string;
+  }>;
+  filter: string;
 }
 
 export interface SkillCardProps {
-  skill: SkillItem;
-  filter: SkillType | 'all';
+  skill: {
+    name: string;
+    iconName: string;
+    color: string;
+  };
+  filter: string;
 }
 
 export interface SkillIconProps {
-  skill: SkillItem;
+  skill: {
+    name: string;
+    iconName: string;
+    color: string;
+  };
 }
 
 export interface TooltipProps {

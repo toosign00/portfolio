@@ -1,7 +1,7 @@
+import type { SkillGridProps } from '@/types/skills.type';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SkillCard } from './SkillCard';
 import { skillContainerVariants } from '@/motion/skillAnimations';
-import type { SkillGridProps } from '@/types/skills.type';
 
 export const SkillGrid = ({ skills, filter }: SkillGridProps) => {
   return (
