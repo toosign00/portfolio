@@ -14,6 +14,7 @@ export default defineConfig({
       { find: '@styles', replacement: '/src/styles' },
       { find: '@types', replacement: '/src/types' },
       { find: '@motion', replacement: '/src/motion' },
+      { find: '@constants', replacement: '/src/constants' },
     ],
   },
 });

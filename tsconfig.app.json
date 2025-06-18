@@ -32,7 +32,8 @@
       "@data/*": ["src/data/*"],
       "@styles/*": ["src/styles/*"],
       "@types/*": ["src/types/*"],
-      "@motion/*": ["src/motion/*"]
+      "@motion/*": ["src/motion/*"],
+      "@constants/*": ["src/constants/*"]
     }
   },
   "include": ["src"]
