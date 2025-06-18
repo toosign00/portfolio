@@ -5,7 +5,7 @@ interface Image {
 
 export interface ProjectDetail {
   title: string;
-  description: string;
+  description: string | string[];
 }
 
 export interface Project {
@@ -16,7 +16,7 @@ export interface Project {
   role: string;
   summary: string;
   description: string;
-  duration: string;
+  timeFrame: string;
   technologies: string[];
   githubUrl: string;
   githubAriaLabel?: string;
@@ -25,8 +25,6 @@ export interface Project {
   thumbnail: string;
   images: Image[];
   memberCount?: number;
-  period?: string;
-  blogLink?: string;
   details?: ProjectDetail[];
   color?: 'blue' | 'pink' | 'yellow';
   createdAt?: string;
