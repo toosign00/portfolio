@@ -1,4 +1,4 @@
-import type { Project } from '@/data/projects.data';
+import type { Project } from '@/types/projects.type';
 
 export interface ModalHeaderProps {
   project: Project;
