@@ -3,8 +3,15 @@ import { useEffect } from 'react';
 /**
  * 스크롤바 너비를 계산하는 함수
  */
+let scrollbarWidthCache: number | null = null;
+
 const getScrollbarWidth = (): number => {
-  return window.innerWidth - document.documentElement.offsetWidth;
+  if (scrollbarWidthCache !== null) {
+    return scrollbarWidthCache;
+  }
+
+  scrollbarWidthCache = window.innerWidth - document.documentElement.offsetWidth;
+  return scrollbarWidthCache;
 };
 
 /**
@@ -16,10 +23,13 @@ const blockBodyScroll = (): void => {
 
   if (isBlocked) return;
 
+  // 필요한 경우에만 스크롤바 너비 계산
   const scrollbarWidth = getScrollbarWidth();
 
   if (scrollbarWidth > 0) {
-    document.documentElement.style.width = `calc(100vw - ${scrollbarWidth}px)`;
+    // CSS 커스텀 프로퍼티 사용으로 리플로우 최소화
+    document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+    document.documentElement.style.setProperty('width', `calc(100vw - var(--scrollbar-width))`);
   }
 
   document.body.classList.add(className);
@@ -34,18 +44,25 @@ const unblockBodyScroll = (): void => {
 
   if (!isBlocked) return;
 
+  // 배치로 스타일 정리
   document.body.classList.remove(className);
   document.documentElement.style.removeProperty('width');
+  document.documentElement.style.removeProperty('--scrollbar-width');
 };
 
 /**
  * @function usePreventScroll
- * @description 모달이 열려있는 동안 배경 스크롤을 방지하는 커스텀 훅 (레이아웃 시프트 방지)
+ * @description 모달이 열려있는 동안 배경 스크롤을 방지하는 최적화된 커스텀 훅
  */
 export const usePreventScroll = () => {
   useEffect(() => {
-    blockBodyScroll();
+    // 비동기 작업 최소화
+    const timeoutId = setTimeout(() => {
+      blockBodyScroll();
+    }, 0);
+
     return () => {
+      clearTimeout(timeoutId);
       unblockBodyScroll();
     };
   }, []);

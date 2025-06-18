@@ -8,6 +8,7 @@ import { ProjectPageSkeleton } from '@/components/Skeleton/ProjectPageSkeleton';
 import { useProject } from '@/hooks/useProjectsQuery';
 import { useProjectSkeletonLoading } from '@/hooks/useSkeletonLoading';
 import { normalizeErrorMessage, isNotFoundError } from '@/utils/errorUtils';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export const ProjectPage = () => {
   const { id } = useParams();
@@ -23,23 +24,21 @@ export const ProjectPage = () => {
     error,
   });
 
-  // 로딩 상태
-  if (showSkeleton) {
-    return <ProjectPageSkeleton onBack={() => navigate('/')} />;
-  }
-
-  // 에러 상태
+  // 에러 상태 - NOT_FOUND 에러인 경우 NotFoundPage 렌더링
   if (hasError) {
     const isNotFound = isNotFoundError(error);
+
+    if (isNotFound) {
+      return <NotFoundPage />;
+    }
+
     const errorMessage = normalizeErrorMessage(error);
 
     return (
       <div className="bg-project-background flex min-h-screen flex-col items-center justify-center">
         <div className="flex flex-col items-center">
           <IoSearch className="mx-auto mb-4 text-6xl text-gray-400" />
-          <h1 className="mb-4 text-2xl font-bold text-white">
-            {isNotFound ? '프로젝트를 찾을 수 없습니다' : '오류가 발생했습니다'}
-          </h1>
+          <h1 className="mb-4 text-2xl font-bold text-white">오류가 발생했습니다</h1>
           <p className="mb-8 text-gray-400">{errorMessage}</p>
           <Button variant="secondary" size="md" onClick={() => navigate('/')}>
             메인으로 돌아가기
@@ -49,22 +48,14 @@ export const ProjectPage = () => {
     );
   }
 
-  // 404 페이지 처리 (프로젝트가 없는 경우)
+  // 로딩 상태
+  if (showSkeleton) {
+    return <ProjectPageSkeleton onBack={() => navigate('/')} />;
+  }
+
+  // 프로젝트가 없는 경우 메인으로 리다이렉트
   if (!project) {
-    return (
-      <div className="bg-project-background flex min-h-screen flex-col items-center justify-center">
-        <div className="flex flex-col items-center">
-          <IoSearch className="mx-auto mb-4 text-6xl text-gray-400" />
-          <h1 className="mb-4 text-2xl font-bold text-white">프로젝트를 찾을 수 없습니다</h1>
-          <p className="mb-8 text-gray-400">
-            요청하신 프로젝트가 존재하지 않거나 삭제되었을 수 있습니다.
-          </p>
-          <Button variant="secondary" size="md" onClick={() => navigate('/')}>
-            메인으로 돌아가기
-          </Button>
-        </div>
-      </div>
-    );
+    return;
   }
 
   const details = project.details;

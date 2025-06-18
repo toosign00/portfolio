@@ -21,8 +21,8 @@ export function useProjectSkeletonLoading({
   // 프로젝트 데이터 유효성 검사
   const { isValid: isProjectDataComplete } = useProjectValidation(project);
 
-  // 스켈레톤 표시 조건
-  const shouldShowSkeleton = isPending || !isProjectDataComplete;
+  // 스켈레톤 표시 조건 - 에러가 있으면 스켈레톤을 표시하지 않음
+  const shouldShowSkeleton = (isPending || !isProjectDataComplete) && !error;
 
   useEffect(() => {
     if (shouldShowSkeleton) {
@@ -32,29 +32,29 @@ export function useProjectSkeletonLoading({
       }
       setShowSkeleton(true);
     } else {
-      // 데이터 로딩 완료
+      // 데이터 로딩 완료 또는 에러 발생
       if (loadingStartTime) {
         const elapsedTime = Date.now() - loadingStartTime;
         const remainingTime = Math.max(0, minDuration - elapsedTime);
 
-        if (remainingTime > 0) {
-          // 최소 표시 시간이 남아있으면 타이머 설정
+        if (remainingTime > 0 && !error) {
+          // 최소 표시 시간이 남아있고 에러가 없으면 타이머 설정
           const timer = setTimeout(() => {
             setShowSkeleton(false);
             setLoadingStartTime(null);
           }, remainingTime);
           return () => clearTimeout(timer);
         } else {
-          // 최소 표시 시간이 지났으면 즉시 숨김
+          // 최소 표시 시간이 지났거나 에러가 있으면 즉시 숨김
           setShowSkeleton(false);
           setLoadingStartTime(null);
         }
       } else {
-        // 캐시된 데이터인 경우 즉시 표시
+        // 캐시된 데이터이거나 에러인 경우 즉시 표시
         setShowSkeleton(false);
       }
     }
-  }, [shouldShowSkeleton, loadingStartTime, minDuration]);
+  }, [shouldShowSkeleton, loadingStartTime, minDuration, error]);
 
   return {
     showSkeleton,

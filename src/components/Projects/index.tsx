@@ -31,7 +31,7 @@ export const Portfolio = () => {
           </div>
         ) : error ? (
           <div className="flex flex-col items-center justify-center py-12">
-            <p className="mb-4 text-red-400">프로젝트를 불러오는데 실패했습니다</p>
+            <p className="mb-4 text-red-500">프로젝트를 불러오는데 실패했습니다</p>
             <p className="text-sm text-gray-400">{error}</p>
           </div>
         ) : (
