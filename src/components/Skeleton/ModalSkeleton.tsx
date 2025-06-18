@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
-interface ModalSkeletonContentProps {
+interface ModalSkeletonProps {
   onClose?: () => void;
 }
 
-export function ModalSkeletonContent({ onClose }: ModalSkeletonContentProps) {
+export function ModalSkeleton({ onClose }: ModalSkeletonProps) {
   return (
     <>
       {/* 닫기 버튼: 실제 모달과 동일하게 최상위 컨테이너 기준 */}

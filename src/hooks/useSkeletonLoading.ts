@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { Project } from '@/data/projects.data';
+import type { Project } from '@/types/projects.type';
 import { useProjectValidation } from '@/hooks/useProjectsQuery';
 
 interface UseProjectSkeletonLoadingProps {

@@ -1,11 +1,10 @@
-import { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { HomePage } from '@/pages/HomePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ErrorBoundary } from '@/routes/ErrorBoundary';
-import { LazyProjectPage } from '@/routes/lazyComponents';
+import { ProjectPage } from '@/components/ProjectModal/components/ProjectPage';
 import { ProjectModal } from '@/components/ProjectModal';
 import { useProjectPageDetection } from '@/hooks/useProjectPageDetection';
 import { ROUTES } from '@/constants/routes.constants';
@@ -29,20 +28,7 @@ export function AppRoutes() {
               </>
             }
           />
-          <Route
-            path={ROUTES.PROJECT_DETAIL}
-            element={
-              <Suspense
-                fallback={
-                  <div className="flex min-h-screen items-center justify-center bg-black text-white">
-                    로딩 중...
-                  </div>
-                }
-              >
-                <LazyProjectPage />
-              </Suspense>
-            }
-          />
+          <Route path={ROUTES.PROJECT_DETAIL} element={<ProjectPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
 

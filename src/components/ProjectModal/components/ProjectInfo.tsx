@@ -1,12 +1,12 @@
-import type { ProjectInfoProps } from '@/types/project-modal.type';
+import type { ProjectInfoProps } from '@/types/projectModal.type';
 
 export const ProjectInfo = ({ project }: ProjectInfoProps) => {
   // 인원/팀구성
   const memberInfo =
-    project.type === 'Team' && project.teamDetail
-      ? project.teamDetail
-      : project.memberCount
-        ? `${project.memberCount}명`
+    project.type === 'Team' && project.team_detail
+      ? project.team_detail
+      : project.member_count
+        ? `${project.member_count}명`
         : '';
 
   return (
@@ -27,16 +27,16 @@ export const ProjectInfo = ({ project }: ProjectInfoProps) => {
           <div className="mb-1 text-xs font-semibold text-gray-400">관련 링크</div>
           <div className="text-sm font-normal text-white">
             <a
-              href={project.github.url}
+              href={project.github_url}
               target="_blank"
               rel="noopener noreferrer"
               className="underline transition-colors hover:text-blue-400"
             >
               깃허브
             </a>
-            {project.deploy && (
+            {project.deploy_url && (
               <a
-                href={project.deploy.url}
+                href={project.deploy_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ml-4 underline transition-colors hover:text-white"
