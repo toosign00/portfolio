@@ -1,4 +1,4 @@
-import type { ProjectDetail } from '@/data/projectsData';
+import type { ProjectDetail } from '@/data/projects.data';
 
 export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) => {
   if (!details || details.length === 0) return null;
