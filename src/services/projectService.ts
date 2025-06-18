@@ -29,7 +29,16 @@ export const fetchProjects = async (): Promise<ProjectCardData[]> => {
     // snake_case를 camelCase로 변환
     const convertedData = convertProjectsData(data || []) as ProjectCardData[];
 
-    return convertedData;
+    // id가 'portfolio'인 프로젝트를 맨 앞으로 이동
+    const sortedData = (() => {
+      if (!convertedData.length) return convertedData;
+      const idx = convertedData.findIndex((item) => item.id === 'portfolio');
+      if (idx === -1) return convertedData;
+      const [portfolioProject] = convertedData.splice(idx, 1);
+      return [portfolioProject, ...convertedData];
+    })();
+
+    return sortedData;
   } catch (error) {
     console.error('프로젝트 목록 조회 중 오류:', error);
     if (error instanceof ProjectServiceError) {
