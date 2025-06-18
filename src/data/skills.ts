@@ -56,10 +56,10 @@ export const skills: SkillItem[] = [
     color: '#0cd45b',
   },
   {
-    name: 'Pocketbase',
+    name: 'Supabase',
     type: 'backend',
-    iconName: 'SiPocketbase',
-    color: '#ffffff',
+    iconName: 'SiSupabase',
+    color: '#3ecf8e',
   },
   {
     name: 'Git',
