@@ -1,4 +1,4 @@
-import type { TechnologyStackProps } from '@/types/project-modal.type';
+import type { TechnologyStackProps } from '@/types/projectModal.type';
 
 export const TechnologyStack = ({ technologies }: TechnologyStackProps) => {
   return (

@@ -1,21 +1,58 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import type { Project } from '@/data/projectsData';
 import { TechnologyStack } from './TechnologyStack';
 import { ProjectInfo } from './ProjectInfo';
 import { ProjectDetailList } from './ProjectDetailList';
-import { projects } from '@/data/projectsData';
 import { IoArrowBackOutline, IoSearch } from 'react-icons/io5';
 import { Button } from '@/components/Button/Button';
+import { ProjectPageSkeleton } from '@/components/Skeleton/ProjectPageSkeleton';
+import { useProject } from '@/hooks/useProjectsQuery';
+import { useProjectSkeletonLoading } from '@/hooks/useSkeletonLoading';
+import { normalizeErrorMessage, isNotFoundError } from '@/utils/errorUtils';
 
 export const ProjectPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const project = projects.find((p: Project) => p.id === id);
 
-  // 404 페이지 처리
+  // React Query를 사용한 프로젝트 데이터 조회
+  const { data: project, isPending, error } = useProject(id);
+
+  // 스켈레톤 UI 로직
+  const { showSkeleton, hasError } = useProjectSkeletonLoading({
+    isPending,
+    project,
+    error,
+  });
+
+  // 로딩 상태
+  if (showSkeleton) {
+    return <ProjectPageSkeleton onBack={() => navigate('/')} />;
+  }
+
+  // 에러 상태
+  if (hasError) {
+    const isNotFound = isNotFoundError(error);
+    const errorMessage = normalizeErrorMessage(error);
+
+    return (
+      <div className="bg-project-background flex min-h-screen flex-col items-center justify-center">
+        <div className="flex flex-col items-center">
+          <IoSearch className="mx-auto mb-4 text-6xl text-gray-400" />
+          <h1 className="mb-4 text-2xl font-bold text-white">
+            {isNotFound ? '프로젝트를 찾을 수 없습니다' : '오류가 발생했습니다'}
+          </h1>
+          <p className="mb-8 text-gray-400">{errorMessage}</p>
+          <Button variant="secondary" size="md" onClick={() => navigate('/')}>
+            메인으로 돌아가기
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  // 404 페이지 처리 (프로젝트가 없는 경우)
   if (!project) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-[#0a101a]">
+      <div className="bg-project-background flex min-h-screen flex-col items-center justify-center">
         <div className="flex flex-col items-center">
           <IoSearch className="mx-auto mb-4 text-6xl text-gray-400" />
           <h1 className="mb-4 text-2xl font-bold text-white">프로젝트를 찾을 수 없습니다</h1>
@@ -33,7 +70,7 @@ export const ProjectPage = () => {
   const details = project.details;
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#0a101a]">
+    <div className="bg-project-background flex min-h-screen flex-col items-center justify-center">
       <div className="w-full max-w-xl px-8 py-4">
         <button
           className="hover:text-blue mb-8 flex cursor-pointer items-center gap-0.5 text-sm text-gray-400"
@@ -44,14 +81,13 @@ export const ProjectPage = () => {
         </button>
 
         <article className="flex flex-col items-start gap-6">
-          <h1 className="mb-1 text-2xl font-bold text-white">{project.title}</h1>
-
-          <div className="text-gray mb-1 text-sm font-semibold" style={{ lineHeight: '1.5' }}>
-            {project.summary}
+          <div>
+            <h1 className="mb-1 text-2xl font-bold text-white sm:text-3xl">{project.title}</h1>
+            <p className="text-gray text-sm">{project.summary}</p>
           </div>
 
-          <div className="mb-2 text-base font-normal text-white" style={{ lineHeight: '1.7' }}>
-            {project.description}
+          <div className="w-full space-y-2">
+            <p className="text-gray text-sm leading-relaxed">{project.description}</p>
           </div>
 
           <TechnologyStack technologies={project.technologies} />

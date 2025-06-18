@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase';
-import type { Project } from '@/data/projects.data';
+import type { Project } from '@/types/projects.type';
 import type { ProjectCardData } from '@/types/projectCard.type';
 
 // 에러 타입 정의
