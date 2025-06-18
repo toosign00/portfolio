@@ -1,4 +1,4 @@
-import type { Project } from '@/data/projects.data';
+import type { Project } from '@/types/projects.type';
 import type { ProjectCardData } from '@/types/projectCard.type';
 
 // 쿼리 결과 타입
