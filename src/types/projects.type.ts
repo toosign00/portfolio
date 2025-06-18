@@ -3,11 +3,6 @@ interface Image {
   alt: string;
 }
 
-interface Link {
-  url: string;
-  ariaLabel?: string;
-}
-
 export interface ProjectDetail {
   title: string;
   description: string;
@@ -23,8 +18,10 @@ export interface Project {
   description: string;
   duration: string;
   technologies: string[];
-  github: Link;
-  deploy?: Link;
+  githubUrl: string;
+  githubAriaLabel?: string;
+  deployUrl?: string;
+  deployAriaLabel?: string;
   thumbnail: string;
   images: Image[];
   memberCount?: number;
@@ -32,4 +29,6 @@ export interface Project {
   blogLink?: string;
   details?: ProjectDetail[];
   color?: 'blue' | 'pink' | 'yellow';
+  createdAt?: string;
+  updatedAt?: string;
 }

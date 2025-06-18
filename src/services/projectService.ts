@@ -1,6 +1,7 @@
 import { supabase } from '@/lib/supabase';
 import type { Project } from '@/types/projects.type';
 import type { ProjectCardData } from '@/types/projectCard.type';
+import { convertProjectData, convertProjectsData } from '@/utils/caseConverter';
 
 // 에러 타입 정의
 export class ProjectServiceError extends Error {
@@ -16,8 +17,6 @@ export class ProjectServiceError extends Error {
 // 프로젝트 목록 조회 (기본 정보만)
 export const fetchProjects = async (): Promise<ProjectCardData[]> => {
   try {
-    console.log('📦 프로젝트 목록 조회 시작');
-
     const { data, error } = await supabase
       .from('projects')
       .select('id, title, type, summary, technologies, thumbnail, color')
@@ -27,10 +26,12 @@ export const fetchProjects = async (): Promise<ProjectCardData[]> => {
       throw new ProjectServiceError(`프로젝트 목록 조회 실패: ${error.message}`, error.code);
     }
 
-    console.log(`✅ 프로젝트 목록 조회 완료: ${data?.length || 0}개`);
-    return data || [];
+    // snake_case를 camelCase로 변환
+    const convertedData = convertProjectsData(data || []) as ProjectCardData[];
+
+    return convertedData;
   } catch (error) {
-    console.error('❌ 프로젝트 목록 조회 중 오류:', error);
+    console.error('프로젝트 목록 조회 중 오류:', error);
     if (error instanceof ProjectServiceError) {
       throw error;
     }
@@ -47,8 +48,6 @@ export const fetchProjectById = async (id: string): Promise<Project> => {
       throw new ProjectServiceError('프로젝트 ID가 필요합니다.');
     }
 
-    console.log(`📦 프로젝트 상세 조회 시작: ${id}`);
-
     const { data, error } = await supabase.from('projects').select('*').eq('id', id).single();
 
     if (error) {
@@ -62,10 +61,12 @@ export const fetchProjectById = async (id: string): Promise<Project> => {
       throw new ProjectServiceError(`프로젝트를 찾을 수 없습니다: ${id}`, 'NOT_FOUND');
     }
 
-    console.log(`✅ 프로젝트 상세 조회 완료: ${id}`);
-    return data;
+    // snake_case를 camelCase로 변환
+    const convertedData = convertProjectData(data) as Project;
+
+    return convertedData;
   } catch (error) {
-    console.error(`❌ 프로젝트 상세 조회 중 오류 (${id}):`, error);
+    console.error(`프로젝트 상세 조회 중 오류 (${id}):`, error);
     if (error instanceof ProjectServiceError) {
       throw error;
     }
