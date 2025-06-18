@@ -1,0 +1,1 @@
+export { ModalSkeletonContent } from './ModalSkeleton';
