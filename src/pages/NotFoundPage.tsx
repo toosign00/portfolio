@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button/Button';
+import { Button } from '@/components/Button/index';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ export function NotFoundPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-black text-white">
-      <div className="text-center p-8">
+      <div className="p-8 text-center">
         <h1 className="mb-4 text-6xl font-bold text-red-500">404</h1>
         <h2 className="mb-4 text-2xl font-semibold">페이지를 찾을 수 없습니다</h2>
         <p className="mb-8 text-gray-400">
