@@ -15,7 +15,7 @@ export function ScrollIndicator({ show }: ScrollIndicatorProps) {
 
   return (
     <motion.div
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
+      className="absolute bottom-16 left-1/2 -translate-x-1/2 transform"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
