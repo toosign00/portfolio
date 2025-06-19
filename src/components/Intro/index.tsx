@@ -1,15 +1,13 @@
 import { SectionLayout } from '@/layout/SectionLayout';
 import { BackgroundParallax } from './components/BackgroundParallax';
 import { FloatingElements } from './components/FloatingElements';
-import { IntroContent } from './components/IntroContent';
 import { ScrollIndicator } from './components/ScrollIndicator';
+import { IntroContent } from './components/IntroContent';
 import { useScrollOptimized } from '@/hooks/useScrollOptimized';
-import { useMemo } from 'react';
 import type { IntroProps } from '@/types/intro.type';
 
 export function Intro({ className }: IntroProps) {
   const scrollY = useScrollOptimized();
-  const showScrollIndicator = useMemo<boolean>(() => scrollY <= 50, [scrollY]);
 
   return (
     <SectionLayout
@@ -20,7 +18,7 @@ export function Intro({ className }: IntroProps) {
       <BackgroundParallax />
       <FloatingElements />
       <IntroContent />
-      <ScrollIndicator show={showScrollIndicator} />
+      <ScrollIndicator scrollY={scrollY} />
     </SectionLayout>
   );
 }
