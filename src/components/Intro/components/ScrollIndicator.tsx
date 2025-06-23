@@ -13,8 +13,8 @@ interface ScrollIndicatorProps {
 export const ScrollIndicator = React.memo(function ScrollIndicator({
   scrollY,
 }: ScrollIndicatorProps) {
-  /** 100px 이하일 때만 인디케이터 표시 */
-  const isVisible = scrollY <= 100;
+  /** 50px 이하일 때만 인디케이터 표시 */
+  const isVisible = scrollY <= 50;
 
   /** 컨테이너 애니메이션 variants */
   const containerVariants = useMemo(
