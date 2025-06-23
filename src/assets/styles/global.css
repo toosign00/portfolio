@@ -26,3 +26,37 @@
     'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 }
+
+/* 스크롤 인디케이터 반응형 위치 조정 */
+.scroll-indicator {
+  /* 기본 위치 (데스크탑) */
+  bottom: max(1rem, env(safe-area-inset-bottom, 1rem) + 0.5rem);
+}
+
+/* 모바일 (768px 이하) */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    bottom: max(0.75rem, env(safe-area-inset-bottom, 0.5rem) + 0.375rem);
+  }
+}
+
+/* 태블릿 (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .scroll-indicator {
+    bottom: max(1rem, env(safe-area-inset-bottom, 1rem) + 0.5rem);
+  }
+}
+
+/* 데스크탑 (1025px 이상) */
+@media (min-width: 1025px) {
+  .scroll-indicator {
+    bottom: 1rem;
+  }
+}
+
+/* iOS Safari 하단 바 대응 */
+@supports (padding: max(0px)) {
+  .scroll-indicator {
+    bottom: max(1rem, env(safe-area-inset-bottom, 1rem) + 0.5rem);
+  }
+}

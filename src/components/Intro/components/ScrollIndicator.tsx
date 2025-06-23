@@ -106,11 +106,13 @@ export const ScrollIndicator = React.memo(function ScrollIndicator({
 
   return (
     <motion.div
-      className="pointer-events-none absolute bottom-16 left-1/2 -translate-x-1/2 transform"
+      className="scroll-indicator pointer-events-none fixed left-1/2 -translate-x-1/2 transform"
+      style={{
+        willChange: 'transform, opacity',
+      }}
       variants={containerVariants}
       initial="initial"
       animate={isVisible ? 'visible' : 'hidden'}
-      style={{ willChange: 'transform, opacity' }}
     >
       <motion.div
         className="flex flex-col items-center"
@@ -128,7 +130,7 @@ export const ScrollIndicator = React.memo(function ScrollIndicator({
         </motion.span>
 
         <motion.div
-          className="relative flex h-12 w-7 justify-center rounded-full border-2 border-gray-400/60 bg-transparent"
+          className="relative flex h-10 w-6 justify-center rounded-full border-2 border-gray-400/60 bg-transparent"
           whileHover={{
             scale: 1.1,
             borderColor: 'rgb(156 163 175)',
@@ -137,7 +139,7 @@ export const ScrollIndicator = React.memo(function ScrollIndicator({
           style={{ willChange: 'transform' }}
         >
           <motion.div
-            className="absolute top-2 h-2 w-1.5 rounded-full bg-gray-400"
+            className="absolute top-1.5 h-1.5 w-1 rounded-full bg-gray-400"
             variants={dotVariants}
             animate="animate"
             style={{ willChange: 'transform, opacity' }}
