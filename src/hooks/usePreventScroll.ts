@@ -53,17 +53,20 @@ const unblockBodyScroll = (): void => {
 /**
  * @function usePreventScroll
  * @description 모달이 열려있는 동안 배경 스크롤을 방지하는 최적화된 커스텀 훅
+ * @param {boolean} shouldPrevent - 스크롤을 막을지 여부
  */
-export const usePreventScroll = () => {
+export const usePreventScroll = (shouldPrevent: boolean = true) => {
   useEffect(() => {
-    // 비동기 작업 최소화
-    const timeoutId = setTimeout(() => {
-      blockBodyScroll();
-    }, 0);
+    if (shouldPrevent) {
+      // 비동기 작업 최소화
+      const timeoutId = setTimeout(() => {
+        blockBodyScroll();
+      }, 0);
 
-    return () => {
-      clearTimeout(timeoutId);
-      unblockBodyScroll();
-    };
-  }, []);
+      return () => {
+        clearTimeout(timeoutId);
+        unblockBodyScroll();
+      };
+    }
+  }, [shouldPrevent]);
 };
