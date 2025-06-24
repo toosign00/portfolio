@@ -3,7 +3,7 @@ import { TechnologyStack } from './TechnologyStack';
 import { ProjectInfo } from './ProjectInfo';
 import { ProjectDetailList } from './ProjectDetailList';
 import { IoArrowBackOutline, IoSearch } from 'react-icons/io5';
-import { Button } from '@/components/Button/index';
+import { Button } from '@/components/Button';
 import { ProjectPageSkeleton } from '@/components/Skeleton/ProjectPageSkeleton';
 import { useProject } from '@/hooks/useProjectsQuery';
 import { useProjectSkeletonLoading } from '@/hooks/useSkeletonLoading';
