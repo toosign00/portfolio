@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button/index';
+import { Button } from '@/components/Button';
 import { PROFILE_CONSTANTS } from '@/constants/profile.constants';
 
 export const ProfileActions = () => {

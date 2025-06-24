@@ -1,6 +1,6 @@
 import { SectionLayout } from '@/layout/SectionLayout';
 import { SectionHeader } from '@/layout/SectionHeader';
-import { Button } from '@/components/Button/index';
+import { Button } from '@/components/Button';
 import type { ProjectCardData } from '@/types/projectCard.type';
 import { ProjectCard } from './components/ProjectCard';
 import { useProjectsWithUI } from '@/hooks/useProjectsQuery';

@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button/index';
+import { Button } from '@/components/Button';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 

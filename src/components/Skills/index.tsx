@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { skills, filters } from '@/data/skills';
+import { skills, filters } from '@/data/skills.data';
 import { SectionLayout } from '@/layout/SectionLayout';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { SkillFilter } from './components/SkillFilter';
