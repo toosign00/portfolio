@@ -32,7 +32,9 @@ export const sendContactEmail = async (formData: EmailParams) => {
       error:
         typeof error === 'object' && error !== null && 'text' in error
           ? (error as { text: string }).text
-          : '알 수 없는 오류가 발생했습니다.',
+          : error instanceof Error
+            ? error.message
+            : '알 수 없는 오류가 발생했습니다.',
     };
   }
 };
