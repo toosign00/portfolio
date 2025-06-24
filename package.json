@@ -9,9 +9,10 @@
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "compile": "run-s clean build preview",
-    "check-all": "run-s type-check lint format",
+    "check-all": "run-s type-check lint format:check",
     "fix-all": "run-s lint:fix format",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "type-check": "tsc --noEmit"
