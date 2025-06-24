@@ -7,9 +7,7 @@ export const Badge = ({ variant = 'outline', className = '', children, ...props 
   const solid = 'bg-black border-black text-white';
   return (
     <span
-      className={
-        base + ' ' + (variant === 'outline' ? outline : solid) + (className ? ' ' + className : '')
-      }
+      className={`${base} ${variant === 'outline' ? outline : solid}${className ? ` ${className}` : ''}`}
       {...props}
     >
       {children}
