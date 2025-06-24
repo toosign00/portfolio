@@ -16,18 +16,10 @@ export function AppRoutes() {
 
   return (
     <ErrorBoundary>
+      <NavBar />
       <main>
         <Routes location={currentLocation}>
-          <Route
-            path={ROUTES.HOME}
-            element={
-              <>
-                <NavBar />
-                <HomePage />
-                <Footer />
-              </>
-            }
-          />
+          <Route path={ROUTES.HOME} element={<HomePage />} />
           <Route path={ROUTES.PROJECT_DETAIL} element={<ProjectPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
@@ -39,6 +31,7 @@ export function AppRoutes() {
           </Routes>
         )}
       </main>
+      <Footer />
 
       {/* Analytics는 항상 렌더링하되 내부에서 처리 */}
       <Analytics />
