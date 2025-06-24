@@ -1,6 +1,6 @@
-import { Routes, Route } from 'react-router-dom';
-import { NavBar } from '@/components/NavBar';
-import { Footer } from '@/components/Footer';
+import { Routes, Route, Outlet } from 'react-router-dom';
+import DefaultLayout from '@/layout/DefaultLayout';
+import MinimalLayout from '@/layout/MinimalLayout';
 import { HomePage } from '@/pages/HomePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ErrorBoundary } from '@/routes/ErrorBoundary';
@@ -16,24 +16,38 @@ export function AppRoutes() {
 
   return (
     <ErrorBoundary>
-      <NavBar />
-      <main>
-        <Routes location={currentLocation}>
+      <Routes location={currentLocation}>
+        {/* 헤더/푸터 포함 레이아웃 */}
+        <Route
+          element={
+            <DefaultLayout>
+              <Outlet />
+            </DefaultLayout>
+          }
+        >
           <Route path={ROUTES.HOME} element={<HomePage />} />
+        </Route>
+
+        {/* 프로젝트 상세, 404: MinimalLayout */}
+        <Route
+          element={
+            <MinimalLayout>
+              <Outlet />
+            </MinimalLayout>
+          }
+        >
           <Route path={ROUTES.PROJECT_DETAIL} element={<ProjectPage />} />
           <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+
+      {/* 모달 라우트는 기존대로 */}
+      {hasBackground && (
+        <Routes>
+          <Route path={ROUTES.PROJECT_DETAIL} element={<ProjectModal />} />
         </Routes>
+      )}
 
-        {/* 모달 라우트 */}
-        {hasBackground && (
-          <Routes>
-            <Route path={ROUTES.PROJECT_DETAIL} element={<ProjectModal />} />
-          </Routes>
-        )}
-      </main>
-      <Footer />
-
-      {/* Analytics는 항상 렌더링하되 내부에서 처리 */}
       <Analytics />
       <SpeedInsights />
     </ErrorBoundary>
