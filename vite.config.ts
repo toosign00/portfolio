@@ -1,9 +1,24 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
+import { visualizer } from 'rollup-plugin-visualizer';
 
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
+export default defineConfig(({ mode }: { mode: string }) => ({
+  plugins: [
+    react(),
+    tailwindcss(),
+    ...(mode === 'analyze'
+      ? [
+          visualizer({
+            filename: 'dist/stats.html',
+            open: true,
+            gzipSize: true,
+            brotliSize: true,
+          }),
+        ]
+      : []),
+  ],
+
   resolve: {
     alias: [
       { find: '@', replacement: '/src' },
@@ -17,7 +32,9 @@ export default defineConfig({
       { find: '@constants', replacement: '/src/constants' },
     ],
   },
+
   build: {
+    sourcemap: mode === 'development',
     rollupOptions: {
       output: {
         manualChunks: {
@@ -25,9 +42,10 @@ export default defineConfig({
           'ui-vendor': ['framer-motion', 'react-icons'],
           'data-vendor': ['@tanstack/react-query', '@supabase/supabase-js'],
           'form-vendor': ['react-hook-form', '@emailjs/browser'],
+          'utils-vendor': ['es-toolkit', 'xss'],
         },
       },
     },
     chunkSizeWarningLimit: 500,
   },
-});
+}));
