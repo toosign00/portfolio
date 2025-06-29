@@ -26,14 +26,18 @@ export default defineConfig(({ mode }: { mode: string }) => ({
       { find: '@assets', replacement: '/src/assets' },
       { find: '@config', replacement: '/src/config' },
       { find: '@data', replacement: '/src/data' },
-      { find: '@styles', replacement: '/src/styles' },
       { find: '@types', replacement: '/src/types' },
       { find: '@motion', replacement: '/src/motion' },
       { find: '@constants', replacement: '/src/constants' },
+      { find: '@hooks', replacement: '/src/hooks' },
+      { find: '@utils', replacement: '/src/utils' },
+      { find: '@services', replacement: '/src/services' },
+      { find: '@lib', replacement: '/src/lib' },
     ],
   },
 
   build: {
+    target: 'modules',
     rollupOptions: {
       output: {
         manualChunks: {
@@ -43,8 +47,47 @@ export default defineConfig(({ mode }: { mode: string }) => ({
           'form-vendor': ['react-hook-form', '@emailjs/browser'],
           'utils-vendor': ['es-toolkit', 'xss'],
         },
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          const name = assetInfo.names?.[0] || '';
+          const info = name.split('.');
+          const ext = info[info.length - 1];
+          if (/\.(css)$/.test(name)) {
+            return 'assets/css/[name]-[hash].css';
+          }
+          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico|webp)$/i.test(name)) {
+            return 'assets/images/[name]-[hash].[ext]';
+          }
+          if (/\.(woff2?|eot|ttf|otf)$/i.test(name)) {
+            return 'assets/fonts/[name]-[hash].[ext]';
+          }
+          return `assets/${ext}/[name]-[hash].[ext]`;
+        },
       },
     },
     chunkSizeWarningLimit: 500,
+    assetsInlineLimit: 4096,
+  },
+
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'framer-motion',
+      '@tanstack/react-query',
+      'react-hook-form',
+    ],
+  },
+
+  server: {
+    port: 3000,
+    open: false,
+  },
+
+  preview: {
+    port: 4173,
+    open: false,
   },
 }));
