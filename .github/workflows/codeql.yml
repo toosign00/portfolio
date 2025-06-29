@@ -1,4 +1,4 @@
-name: "CodeQL Advanced with Smart PR Comments"
+name: "CodeQL Advanced with PR Comments"
 
 on:
   push:
