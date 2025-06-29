@@ -78,6 +78,8 @@ export default defineConfig(({ mode }: { mode: string }) => ({
       'framer-motion',
       '@tanstack/react-query',
       'react-hook-form',
+      'xss',
+      '@supabase/supabase-js',
     ],
   },
 
