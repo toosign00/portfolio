@@ -1,0 +1,286 @@
+name: "CodeQL Advanced with Smart PR Comments"
+
+on:
+  push:
+    branches: [ "develop", "main" ]
+  pull_request:
+    branches: [ "develop", "main" ]
+  schedule:
+    - cron: '0 0 * * 1'  # 매주 월요일 한국시간 09:00
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
+      pull-requests: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - language: javascript-typescript
+          build-mode: none
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        build-mode: ${{ matrix.build-mode }}
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{matrix.language}}"
+        upload: true
+
+    # PR에만 스마트 코멘트 추가
+    - name: Add smart comment to PR
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          // 유틸리티 함수들
+          const createApiCall = async (apiCall, fallback = null) => {
+            try {
+              return await apiCall();
+            } catch (error) {
+              console.log(`API 호출 실패: ${error.message}`);
+              return fallback;
+            }
+          };
+
+          // 병렬로 데이터 수집
+          const [alertsResult, filesResult, prResult] = await Promise.allSettled([
+            createApiCall(() => github.rest.codeScanning.listAlertsForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            })),
+            createApiCall(() => github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            })),
+            createApiCall(() => github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            }))
+          ]);
+
+          // 데이터 추출 및 fallback 처리
+          const alerts = alertsResult.status === 'fulfilled' ? alertsResult.value?.data || [] : [];
+          const files = filesResult.status === 'fulfilled' ? filesResult.value?.data || [] : [];
+          const prData = prResult.status === 'fulfilled' ? prResult.value?.data : null;
+
+          // 스캔 요약 계산
+          const scanSummary = alerts.reduce((acc, alert) => {
+            const severity = alert.rule?.severity || 'note';
+            acc[severity] = (acc[severity] || 0) + 1;
+            acc.total++;
+            return acc;
+          }, { critical: 0, high: 0, medium: 0, low: 0, note: 0, total: 0 });
+
+          // 파일 통계 계산
+          const fileStats = files.reduce((acc, file) => {
+            acc.total++;
+            if (file.status === 'added') acc.added++;
+            else if (file.status === 'modified') acc.modified++;
+            else if (file.status === 'removed') acc.deleted++;
+            return acc;
+          }, { added: 0, modified: 0, deleted: 0, total: 0 });
+
+          // 코드 변경량
+          const codeChanges = {
+            additions: prData?.additions || 0,
+            deletions: prData?.deletions || 0,
+            total: (prData?.additions || 0) + (prData?.deletions || 0)
+          };
+
+          // 코멘트 레벨 결정
+          const getCommentLevel = () => {
+            if (scanSummary.critical > 0 || scanSummary.high > 0) return 'CRITICAL';
+            if (codeChanges.total > 1000 || fileStats.total > 50) return 'DETAILED';
+            if (scanSummary.total > 0) return 'SUMMARY';
+            return 'MINIMAL';
+          };
+
+          const commentLevel = getCommentLevel();
+
+          // 보안 상태 결정
+          const getSecurityStatus = () => {
+            if (scanSummary.critical > 0 || scanSummary.high > 0) {
+              return { emoji: '🚨', status: 'CRITICAL', color: '🔴', 
+                      message: '즉시 수정이 필요한 심각한 보안 이슈가 발견되었습니다.' };
+            } else if (scanSummary.medium > 0) {
+              return { emoji: '⚠️', status: 'WARNING', color: '🟡', 
+                      message: '주의가 필요한 보안 이슈가 발견되었습니다.' };
+            } else if (scanSummary.low > 0 || scanSummary.note > 0) {
+              return { emoji: '💡', status: 'INFO', color: '🔵', 
+                      message: '경미한 보안 권장사항이 있습니다.' };
+            } else {
+              return { emoji: '✅', status: 'SECURE', color: '🟢', 
+                      message: '보안 검사를 통과했습니다!' };
+            }
+          };
+
+          const securityStatus = getSecurityStatus();
+
+          // 액션 버튼 생성
+          const getActionButtons = () => {
+            const actions = [];
+            
+            if (scanSummary.critical > 0 || scanSummary.high > 0) {
+              actions.push(`🚨 [Critical 이슈 확인](https://github.com/${context.repo.owner}/${context.repo.repo}/security/code-scanning?query=is%3Aopen+severity%3Acritical%2Chigh)`);
+            }
+            
+            if (scanSummary.medium > 0) {
+              actions.push(`⚠️ [Medium 이슈 검토](https://github.com/${context.repo.owner}/${context.repo.repo}/security/code-scanning?query=is%3Aopen+severity%3Amedium)`);
+            }
+            
+            if (scanSummary.total > 0) {
+              actions.push(`📊 [전체 보안 대시보드](https://github.com/${context.repo.owner}/${context.repo.repo}/security)`);
+            }
+            
+            // React/JavaScript 특화 액션
+            actions.push(`🔍 \`npm audit\` | 🛠️ \`npm audit --fix\` | ⚡ \`pnpm check\``);
+            
+            return actions.length > 0 ? actions.join(' | ') : '';
+          };
+
+          // 위험 점수 계산
+          const calculateRiskScore = () => {
+            return Math.min(100, 
+              (scanSummary.critical * 25) + 
+              (scanSummary.high * 15) + 
+              (scanSummary.medium * 5) + 
+              (scanSummary.low * 1)
+            );
+          };
+
+          // 레벨별 코멘트 생성
+          const generateComment = () => {
+            const riskScore = calculateRiskScore();
+            
+            // 공통 헤더
+            let comment = `# ${securityStatus.emoji} CodeQL 보안 스캔 결과\n\n`;
+            comment += `## ${securityStatus.color} **${securityStatus.status}** | 위험도: **${riskScore}/100**\n`;
+            comment += `${securityStatus.message}\n\n`;
+
+            if (commentLevel === 'MINIMAL') {
+              // 최소 정보만 표시
+              comment += `✨ **변경 요약**: ${fileStats.total}개 파일, ${codeChanges.total}줄 변경\n`;
+              comment += `🛡️ **보안**: 이슈 없음, 안전한 변경입니다!\n\n`;
+              
+            } else if (commentLevel === 'SUMMARY') {
+              // 요약 정보
+              comment += `### 📋 요약\n`;
+              comment += `| 항목 | 값 |\n|------|----|\n`;
+              comment += `| 보안 이슈 | **${scanSummary.total}개** (${scanSummary.medium}🟡 ${scanSummary.low}🔵 ${scanSummary.note}ℹ️) |\n`;
+              comment += `| 변경 파일 | **${fileStats.total}개** (${fileStats.added}➕ ${fileStats.modified}📝 ${fileStats.deleted}➖) |\n`;
+              comment += `| 코드 변경 | **${codeChanges.total}줄** (${codeChanges.additions}➕ ${codeChanges.deletions}➖) |\n\n`;
+              
+            } else {
+              // 상세 정보 (DETAILED 또는 CRITICAL)
+              comment += `### 📊 상세 분석\n`;
+              comment += `| 항목 | 값 | 상세 |\n|------|----|----|`;
+              comment += `| **보안 이슈** | **${scanSummary.total}개** | ${scanSummary.critical}🔴 ${scanSummary.high}🟠 ${scanSummary.medium}🟡 ${scanSummary.low}🔵 ${scanSummary.note}ℹ️ |\n`;
+              comment += `| **위험 점수** | **${riskScore}/100** | ${riskScore > 50 ? '높음 🚨' : riskScore > 20 ? '보통 ⚠️' : '낮음 ✅'} |\n`;
+              comment += `| **변경 규모** | **${codeChanges.total}줄** | ${fileStats.total}개 파일 (${codeChanges.additions}➕ ${codeChanges.deletions}➖) |\n\n`;
+
+              // Critical/High 이슈가 있을 때만 상위 취약점 표시
+              if (scanSummary.critical > 0 || scanSummary.high > 0) {
+                const criticalAlerts = alerts
+                  .filter(alert => ['critical', 'high'].includes(alert.rule?.severity))
+                  .slice(0, 3);
+                
+                if (criticalAlerts.length > 0) {
+                  comment += `### 🚨 긴급 수정 필요\n`;
+                  comment += `| 심각도 | 규칙 | 파일 |\n|--------|------|------|\n`;
+                  
+                  criticalAlerts.forEach(alert => {
+                    const severity = alert.rule?.severity === 'critical' ? '🔴 CRITICAL' : '🟠 HIGH';
+                    const ruleName = alert.rule?.name || 'Unknown';
+                    const fileName = alert.most_recent_instance?.location?.path || 'Unknown';
+                    comment += `| ${severity} | \`${ruleName}\` | \`${fileName}\` |\n`;
+                  });
+                  comment += `\n`;
+                }
+              }
+            }
+
+            // 액션 버튼은 항상 표시 (이슈가 있을 때만)
+            if (scanSummary.total > 0) {
+              comment += `### ⚡ 빠른 액션\n${getActionButtons()}\n\n`;
+            }
+
+            // React/JS 특화 권장사항
+            if (scanSummary.total > 0) {
+              comment += `### 🔒 React/JavaScript 보안 체크리스트\n`;
+              comment += `- [ ] XSS 방지: dangerouslySetInnerHTML 사용 검토\n`;
+              comment += `- [ ] 의존성 검사: \`npm audit\` 실행\n`;
+              comment += `- [ ] 환경변수: 민감정보 하드코딩 확인\n`;
+              comment += `- [ ] API 보안: 인증/인가 로직 검증\n\n`;
+            }
+
+            // 푸터
+            comment += `---\n`;
+            comment += `<details><summary>🔍 스캔 상세 정보</summary>\n\n`;
+            comment += `- **스캔 시간**: ${new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })}\n`;
+            comment += `- **커밋**: \`${context.sha.substring(0, 7)}\`\n`;
+            comment += `- **브랜치**: \`${context.ref.replace('refs/heads/', '')}\`\n`;
+            comment += `- **실행 ID**: \`${context.runId}\`\n\n`;
+            comment += `</details>\n\n`;
+            comment += `*🤖 자동 생성됨 | 마지막 업데이트: ${new Date().toISOString()}*`;
+
+            return comment;
+          };
+
+          const finalComment = generateComment();
+
+          // 기존 봇 코멘트 찾기
+          const existingComment = await createApiCall(async () => {
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            
+            return comments.data.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('CodeQL 보안 스캔 결과')
+            );
+          });
+
+          // 코멘트 업데이트 또는 생성
+          try {
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body: finalComment
+              });
+              console.log('기존 코멘트를 업데이트했습니다.');
+            } else {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: finalComment
+              });
+              console.log('새 코멘트를 생성했습니다.');
+            }
+          } catch (error) {
+            console.log('코멘트 생성/업데이트 실패:', error.message);
+          }
