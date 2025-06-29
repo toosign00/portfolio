@@ -75,7 +75,7 @@ export const fetchProjectById = async (id: string): Promise<Project> => {
 
     return convertedData;
   } catch (error) {
-    console.error(`프로젝트 상세 조회 중 오류 (${id}):`, error);
+    console.error('프로젝트 상세 조회 중 오류:', { projectId: id }, error);
     if (error instanceof ProjectServiceError) {
       throw error;
     }
