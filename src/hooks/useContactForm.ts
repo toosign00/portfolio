@@ -21,7 +21,7 @@ export const useContactForm = () => {
   const showNotification = (
     title: string,
     message: string,
-    type: 'success' | 'error' = 'success',
+    type: 'success' | 'error' = 'success'
   ) => {
     setNotification({
       isOpen: true,
@@ -42,10 +42,9 @@ export const useContactForm = () => {
       if (result.success) {
         showNotification('성공!', '이메일이 성공적으로 전송되었습니다!', 'success');
         return true;
-      } else {
-        showNotification('전송 실패', `${result.error}`, 'error');
-        return false;
       }
+      showNotification('전송 실패', `${result.error}`, 'error');
+      return false;
     } finally {
       setLoading(false);
     }

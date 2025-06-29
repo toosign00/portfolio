@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import type { Project } from '@/types/projects.type';
+import { useEffect, useState } from 'react';
 import { useProjectValidation } from '@/hooks/useProjectsQuery';
+import type { Project } from '@/types/projects.type';
 
 interface UseProjectSkeletonLoadingProps {
   isPending: boolean;
@@ -44,11 +44,10 @@ export function useProjectSkeletonLoading({
             setLoadingStartTime(null);
           }, remainingTime);
           return () => clearTimeout(timer);
-        } else {
-          // 최소 표시 시간이 지났거나 에러가 있으면 즉시 숨김
-          setShowSkeleton(false);
-          setLoadingStartTime(null);
         }
+        // 최소 표시 시간이 지났거나 에러가 있으면 즉시 숨김
+        setShowSkeleton(false);
+        setLoadingStartTime(null);
       } else {
         // 캐시된 데이터이거나 에러인 경우 즉시 표시
         setShowSkeleton(false);

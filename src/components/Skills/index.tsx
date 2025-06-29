@@ -1,11 +1,11 @@
-import { useState, useMemo } from 'react';
-import { skills, filters } from '@/data/skills.data';
-import { SectionLayout } from '@/layout/SectionLayout';
+import { useMemo, useState } from 'react';
+import { filters, skills } from '@/data/skills.data';
 import { SectionHeader } from '@/layout/SectionHeader';
-import { SkillFilter } from './components/SkillFilter';
-import { SkillCounter } from './components/SkillCounter';
-import { SkillGrid } from './components/SkillGrid';
+import { SectionLayout } from '@/layout/SectionLayout';
 import type { SkillType } from '@/types/skills.type';
+import { SkillCounter } from './components/SkillCounter';
+import { SkillFilter } from './components/SkillFilter';
+import { SkillGrid } from './components/SkillGrid';
 
 export const Skills = () => {
   const [filter, setFilter] = useState<SkillType | 'all'>('all');
@@ -15,11 +15,11 @@ export const Skills = () => {
   }, [filter]);
 
   return (
-    <SectionLayout id="skills">
-      <div className="mx-auto max-w-6xl">
+    <SectionLayout id='skills'>
+      <div className='mx-auto max-w-6xl'>
         <SectionHeader
-          title="기술 스택 및 도구"
-          description="현재 사용할 수 있는 기술들과 학습 중인 기술들입니다."
+          title='기술 스택 및 도구'
+          description='현재 사용할 수 있는 기술들과 학습 중인 기술들입니다.'
         />
         <SkillFilter filters={filters} currentFilter={filter} onFilterChange={setFilter} />
         <SkillCounter count={filteredSkills.length} />

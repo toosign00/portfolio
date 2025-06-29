@@ -27,15 +27,15 @@ export class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="flex min-h-screen items-center justify-center bg-black text-white">
-          <div className="text-center">
-            <h1 className="mb-4 text-2xl font-bold">오류가 발생했습니다</h1>
-            <p className="mb-8 text-gray-400">페이지를 새로고침하거나 홈으로 돌아가주세요.</p>
-            <div className="flex justify-center gap-4">
-              <Button onClick={() => window.location.reload()} variant="primary" size="md">
+        <div className='flex min-h-screen items-center justify-center bg-black text-white'>
+          <div className='text-center'>
+            <h1 className='mb-4 text-2xl font-bold'>오류가 발생했습니다</h1>
+            <p className='mb-8 text-gray-400'>페이지를 새로고침하거나 홈으로 돌아가주세요.</p>
+            <div className='flex justify-center gap-4'>
+              <Button onClick={() => window.location.reload()} variant='primary' size='md'>
                 새로고침
               </Button>
-              <Button href="/" variant="secondary" size="md">
+              <Button href='/' variant='secondary' size='md'>
                 홈으로
               </Button>
             </div>

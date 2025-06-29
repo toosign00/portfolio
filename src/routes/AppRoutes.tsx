@@ -1,15 +1,15 @@
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Outlet, Route, Routes } from 'react-router-dom';
+import { ProjectModal } from '@/components/ProjectModal';
+import { ProjectPage } from '@/components/ProjectModal/components/ProjectPage';
+import { ROUTES } from '@/constants/routes.constants';
+import { useProjectPageDetection } from '@/hooks/useProjectPageDetection';
 import DefaultLayout from '@/layout/DefaultLayout';
 import MinimalLayout from '@/layout/MinimalLayout';
 import { HomePage } from '@/pages/HomePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ErrorBoundary } from '@/routes/ErrorBoundary';
-import { ProjectPage } from '@/components/ProjectModal/components/ProjectPage';
-import { ProjectModal } from '@/components/ProjectModal';
-import { useProjectPageDetection } from '@/hooks/useProjectPageDetection';
-import { ROUTES } from '@/constants/routes.constants';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/react';
 
 export function AppRoutes() {
   const { hasBackground, currentLocation } = useProjectPageDetection();
@@ -37,7 +37,7 @@ export function AppRoutes() {
           }
         >
           <Route path={ROUTES.PROJECT_DETAIL} element={<ProjectPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path='*' element={<NotFoundPage />} />
         </Route>
       </Routes>
 
