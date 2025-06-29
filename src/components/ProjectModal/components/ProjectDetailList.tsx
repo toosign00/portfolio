@@ -20,6 +20,7 @@ export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) =>
             style={{ lineHeight: '1.7', letterSpacing: '0.01em' }}
           >
             <h4 className='mb-3 text-lg font-semibold text-white'>{item.title}</h4>
+
             {Array.isArray(item.description) ? (
               <ul className='list-disc space-y-2 pl-5'>
                 {item.description.map((line, i) => (
@@ -36,6 +37,18 @@ export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) =>
                 <span className='absolute top-0 left-0'>•</span>
                 {item.description}
               </p>
+            )}
+
+            {/* 이미지가 있으면 표시 */}
+            {item.image && (
+              <div className='mt-4'>
+                <img
+                  src={item.image}
+                  alt={item.image_alt || item.title}
+                  className='w-full rounded-lg border border-gray-700 shadow-lg'
+                  loading='lazy'
+                />
+              </div>
             )}
           </li>
         ))}

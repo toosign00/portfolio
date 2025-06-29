@@ -6,6 +6,8 @@ interface Image {
 export interface ProjectDetail {
   title: string;
   description: string | string[];
+  image?: string;
+  image_alt?: string;
 }
 
 export interface Project {
