@@ -1,5 +1,5 @@
-import type { Project } from '@/types/projects.type';
 import type { ProjectCardData } from '@/types/projectCard.type';
+import type { Project } from '@/types/projects.type';
 
 // 쿼리 결과 타입
 export interface QueryResult<T> {

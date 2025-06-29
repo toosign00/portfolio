@@ -1,5 +1,5 @@
 // 📁 components/BackgroundParallax.tsx
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import type { CSSProperties } from 'react';
 
 export function BackgroundParallax() {
@@ -17,13 +17,13 @@ export function BackgroundParallax() {
 
   return (
     <motion.div
-      className="absolute inset-0 -z-10"
+      className='absolute inset-0 -z-10'
       style={{
         y: backgroundY,
         ...motionStyle,
       }}
     >
-      <div className="absolute inset-0 bg-black bg-gradient-to-br" />
+      <div className='absolute inset-0 bg-black bg-gradient-to-br' />
     </motion.div>
   );
 }

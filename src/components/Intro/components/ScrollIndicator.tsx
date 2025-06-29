@@ -1,6 +1,5 @@
-import React from 'react';
-import { motion, cubicBezier } from 'framer-motion';
-import { useMemo } from 'react';
+import { cubicBezier, motion } from 'framer-motion';
+import React, { useMemo } from 'react';
 
 interface ScrollIndicatorProps {
   /** 현재 스크롤 위치(px) */
@@ -44,7 +43,7 @@ export const ScrollIndicator = React.memo(function ScrollIndicator({
         },
       },
     }),
-    [],
+    []
   );
 
   /** 플로팅 애니메이션 variants */
@@ -60,7 +59,7 @@ export const ScrollIndicator = React.memo(function ScrollIndicator({
         },
       },
     }),
-    [],
+    []
   );
 
   /** 마우스 휠 내부 점 애니메이션 variants */
@@ -78,7 +77,7 @@ export const ScrollIndicator = React.memo(function ScrollIndicator({
         },
       },
     }),
-    [],
+    []
   );
 
   /** 텍스트 페이드 인 애니메이션 variants */
@@ -101,36 +100,36 @@ export const ScrollIndicator = React.memo(function ScrollIndicator({
         },
       },
     }),
-    [],
+    []
   );
 
   return (
     <motion.div
-      className="scroll-indicator pointer-events-none fixed left-1/2 -translate-x-1/2 transform"
+      className='scroll-indicator pointer-events-none fixed left-1/2 -translate-x-1/2 transform'
       style={{
         willChange: 'transform, opacity',
       }}
       variants={containerVariants}
-      initial="initial"
+      initial='initial'
       animate={isVisible ? 'visible' : 'hidden'}
     >
       <motion.div
-        className="flex flex-col items-center"
+        className='flex flex-col items-center'
         variants={floatingVariants}
-        animate="animate"
+        animate='animate'
         style={{ willChange: 'transform' }}
       >
         <motion.span
-          className="mb-3 text-sm font-light tracking-wide text-gray-400"
+          className='mb-3 text-sm font-light tracking-wide text-gray-400'
           variants={textVariants}
-          initial="initial"
+          initial='initial'
           animate={isVisible ? 'visible' : 'hidden'}
         >
           Scroll Down
         </motion.span>
 
         <motion.div
-          className="relative flex h-10 w-6 justify-center rounded-full border-2 border-gray-400/60 bg-transparent"
+          className='relative flex h-10 w-6 justify-center rounded-full border-2 border-gray-400/60 bg-transparent'
           whileHover={{
             scale: 1.1,
             borderColor: 'rgb(156 163 175)',
@@ -139,9 +138,9 @@ export const ScrollIndicator = React.memo(function ScrollIndicator({
           style={{ willChange: 'transform' }}
         >
           <motion.div
-            className="absolute top-1.5 h-1.5 w-1 rounded-full bg-gray-400"
+            className='absolute top-1.5 h-1.5 w-1 rounded-full bg-gray-400'
             variants={dotVariants}
-            animate="animate"
+            animate='animate'
             style={{ willChange: 'transform, opacity' }}
           />
         </motion.div>

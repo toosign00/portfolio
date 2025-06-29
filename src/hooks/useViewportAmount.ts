@@ -26,7 +26,7 @@ const defaultAmounts: ViewportAmounts = {
 
 export const useViewportAmount = (
   breakpoints: ViewportBreakpoints = defaultBreakpoints,
-  amounts: ViewportAmounts = defaultAmounts,
+  amounts: ViewportAmounts = defaultAmounts
 ) => {
   const [viewportAmount, setViewportAmount] = useState(amounts.desktop);
 

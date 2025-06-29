@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
 import { throttle } from 'es-toolkit';
+import { useEffect, useRef, useState } from 'react';
 
 type ThrottledFunction = {
   (): void;

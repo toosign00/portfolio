@@ -22,9 +22,8 @@ export const sendContactEmail = async (formData: EmailParams) => {
 
     if (response.status === 200) {
       return { success: true };
-    } else {
-      throw new Error('이메일 전송에 실패했습니다.');
     }
+    throw new Error('이메일 전송에 실패했습니다.');
   } catch (error: unknown) {
     console.error('이메일 전송 오류:', error);
     return {

@@ -20,7 +20,7 @@ export const useModalClose = (onClose: () => void) => {
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (e.target === e.currentTarget) handleClose();
     },
-    [handleClose],
+    [handleClose]
   );
 
   return {

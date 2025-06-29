@@ -1,5 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
+import type React from 'react';
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   children: React.ReactNode;
@@ -66,11 +66,11 @@ export const Button = ({
       {...(download ? { download: typeof download === 'string' ? download : '' } : {})}
       {...commonProps}
     >
-      <span className="relative z-10">{children}</span>
+      <span className='relative z-10'>{children}</span>
       {variant === 'primary' && (
         <motion.div
           layoutId={isActive ? 'activeFilter' : undefined}
-          className="from-blue/10 to-pink/10 absolute inset-0 bg-gradient-to-r"
+          className='from-blue/10 to-pink/10 absolute inset-0 bg-gradient-to-r'
           transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
         />
       )}

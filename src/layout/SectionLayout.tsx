@@ -11,8 +11,8 @@ export const SectionLayout = ({
   const content = useAnimation ? (
     <motion.div
       variants={sectionVariants}
-      initial="hidden"
-      whileInView="visible"
+      initial='hidden'
+      whileInView='visible'
       viewport={{ once: true, margin: '-50px' }}
     >
       {children}

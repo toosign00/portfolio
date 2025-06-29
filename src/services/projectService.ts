@@ -1,6 +1,6 @@
 import { supabase } from '@/lib/supabase';
-import type { Project } from '@/types/projects.type';
 import type { ProjectCardData } from '@/types/projectCard.type';
+import type { Project } from '@/types/projects.type';
 import { convertProjectData, convertProjectsData } from '@/utils/caseConverter';
 
 // 에러 타입 정의
@@ -45,7 +45,7 @@ export const fetchProjects = async (): Promise<ProjectCardData[]> => {
       throw error;
     }
     throw new ProjectServiceError(
-      error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.',
+      error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.'
     );
   }
 };
@@ -80,7 +80,7 @@ export const fetchProjectById = async (id: string): Promise<Project> => {
       throw error;
     }
     throw new ProjectServiceError(
-      error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.',
+      error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.'
     );
   }
 };

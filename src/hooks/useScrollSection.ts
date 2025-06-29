@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
 import { throttle } from 'es-toolkit';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface SectionPosition {
   top: number;
@@ -47,7 +47,7 @@ export const useScrollSection = (navItems: NavItem[]) => {
 
     // 현재 뷰포트에 보이는 섹션이 있는지 확인
     const visibleSections = sectionPositions.filter(
-      (section) => section.top <= viewportCenter && section.bottom >= viewportCenter,
+      (section) => section.top <= viewportCenter && section.bottom >= viewportCenter
     );
 
     // 보이는 섹션이 없으면 null 반환
@@ -93,7 +93,7 @@ export const useScrollSection = (navItems: NavItem[]) => {
         calculateActiveSection();
       }, SCROLL_ANIMATION_TIMEOUT);
     },
-    [calculateActiveSection],
+    [calculateActiveSection]
   );
 
   useEffect(() => {
