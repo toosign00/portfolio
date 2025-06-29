@@ -32,7 +32,8 @@
     "compile": "pnpm clean && pnpm build && pnpm preview",
     "lint": "biome lint --write",
     "format": "biome format --write",
-    "check": "biome check --write",
+    "check": "pnpm type-check && biome check --write",
+    "type-check": "tsc --noEmit --project tsconfig.app.json",
     "reporter": "biome check --reporter=summary"
   },
   "dependencies": {
