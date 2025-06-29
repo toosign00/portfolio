@@ -30,10 +30,13 @@
       "@assets/*": ["src/assets/*"],
       "@config/*": ["src/config/*"],
       "@data/*": ["src/data/*"],
-      "@styles/*": ["src/styles/*"],
       "@types/*": ["src/types/*"],
       "@motion/*": ["src/motion/*"],
-      "@constants/*": ["src/constants/*"]
+      "@constants/*": ["src/constants/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@utils/*": ["src/utils/*"],
+      "@services/*": ["src/services/*"],
+      "@lib/*": ["src/lib/*"]
     }
   },
   "include": ["src"]
