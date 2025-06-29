@@ -27,6 +27,7 @@ export const NavBar = () => {
       <div className='flex justify-center'>
         <motion.nav
           className='flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-2 py-1.5 shadow-lg backdrop-blur-md sm:gap-3 sm:px-4 sm:py-2'
+          role='navigation'
           aria-label='메인 네비게이션'
           initial={{ y: -20, opacity: 0, scale: 0.9 }}
           animate={{ y: 0, opacity: 1, scale: 1 }}
