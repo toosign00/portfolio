@@ -12,7 +12,7 @@ export const Tooltip = ({ children, content }: TooltipProps) => {
       onMouseLeave={() => setIsVisible(false)}
       onFocus={() => setIsVisible(true)}
       onBlur={() => setIsVisible(false)}
-      role='tooltip'
+      aria-describedby='tooltip-content'
     >
       {children}
       <AnimatePresence>
