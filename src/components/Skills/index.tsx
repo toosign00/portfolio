@@ -11,7 +11,12 @@ export const Skills = () => {
   const [filter, setFilter] = useState<SkillType | 'all'>('all');
 
   const filteredSkills = useMemo(() => {
-    return filter === 'all' ? skills : skills.filter((skill) => skill.type === filter);
+    const filtered = filter === 'all' ? skills : skills.filter((skill) => skill.type === filter);
+    return filtered.map((skill) => ({
+      name: skill.name,
+      iconName: skill.iconName,
+      color: skill.color || '#000000',
+    }));
   }, [filter]);
 
   return (
@@ -21,7 +26,11 @@ export const Skills = () => {
           title='기술 스택 및 도구'
           description='현재 사용할 수 있는 기술들과 학습 중인 기술들입니다.'
         />
-        <SkillFilter filters={filters} currentFilter={filter} onFilterChange={setFilter} />
+        <SkillFilter
+          filters={filters}
+          currentFilter={filter}
+          onFilterChange={(f) => setFilter(f as SkillType | 'all')}
+        />
         <SkillCounter count={filteredSkills.length} />
         <SkillGrid skills={filteredSkills} filter={filter} />
       </div>
