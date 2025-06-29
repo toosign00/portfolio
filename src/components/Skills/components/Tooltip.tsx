@@ -7,6 +7,8 @@ export const Tooltip = ({ children, content }: TooltipProps) => {
 
   return (
     <div
+      role='tooltip'
+      aria-label={content}
       className='relative'
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
