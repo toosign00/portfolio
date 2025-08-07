@@ -54,6 +54,7 @@ export const ProjectModal = () => {
         <motion.div
           ref={modalRef}
           data-modal-content
+          role='dialog'
           className='bg-ui-background relative mx-4 max-h-[85vh] w-full max-w-2xl overflow-y-scroll rounded-xl border border-white/10 px-4 py-10 shadow-2xl sm:mx-0 sm:px-8'
           tabIndex={-1}
           initial={{ opacity: 0, y: 70, scale: 0.95 }}
