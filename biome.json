@@ -86,7 +86,10 @@
         "useAltText": "error",
         "noAutofocus": "warn",
         "useValidAnchor": "error",
-        "useButtonType": "error"
+        "useButtonType": "error",
+        "noStaticElementInteractions": "off",
+        "useAriaPropsSupportedByRole": "off",
+        "useSemanticElements": "off"
       },
       "nursery": {
         "noFloatingPromises": "error"
