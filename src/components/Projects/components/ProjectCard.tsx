@@ -5,24 +5,38 @@ export const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
   const color = project.color ?? 'blue';
   const classes = colorClasses[color];
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      onClick(project);
+    }
+  };
+
   return (
-    <button
-      type='button'
+    <div
       className={`focus:ring-blue group bg-ui-background relative overflow-hidden rounded-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 ${classes.bg} cursor-pointer w-full text-left`}
       onClick={() => onClick(project)}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role='button'
       aria-label={`${project.title} 상세 보기`}
     >
       <div className='aspect-[16/9] overflow-hidden'>
         <img
           src={project.thumbnail}
           alt=''
-          className='z-20 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105'
+          className='z-20 h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105'
         />
       </div>
       <div className='p-5'>
-        <h3 className='mb-3 text-lg font-bold text-white transition-colors duration-300 group-hover:text-black'>
-          {project.title}
-        </h3>
+        <div className='mb-3 flex items-center justify-between'>
+          <h3 className='text-lg font-bold text-white transition-colors duration-300 group-hover:text-black'>
+            {project.title}
+          </h3>
+          <span className='text-xs px-2 py-0.5 rounded bg-white/5 text-gray group-hover:bg-black/10 group-hover:text-black'>
+            {project.type}
+          </span>
+        </div>
         <p className='text-gray mb-4 line-clamp-2 text-sm group-hover:text-black/80'>
           {project.summary}
         </p>
@@ -45,6 +59,6 @@ export const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
       <div
         className={`absolute -top-8 -right-8 h-16 w-16 rounded-full opacity-0 blur-xl transition-all duration-300 group-hover:opacity-30`}
       />
-    </button>
+    </div>
   );
 };

@@ -81,14 +81,4 @@ export default defineConfig(({ mode }: { mode: string }) => ({
       '@supabase/supabase-js',
     ],
   },
-
-  server: {
-    port: 3000,
-    open: false,
-  },
-
-  preview: {
-    port: 4173,
-    open: false,
-  },
 }));

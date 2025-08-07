@@ -20,7 +20,10 @@ export const ModalHeader = ({ project, onClose }: ModalHeaderProps) => {
       <div className='text-gray mb-1 text-sm font-semibold' style={{ lineHeight: '1.5' }}>
         {project.summary}
       </div>
-      <div className='mb-7 text-base font-normal text-white' style={{ lineHeight: '1.7' }}>
+      <div
+        className='mb-7 text-base font-normal text-white break-keep'
+        style={{ lineHeight: '1.7' }}
+      >
         {project.description}
       </div>
     </>

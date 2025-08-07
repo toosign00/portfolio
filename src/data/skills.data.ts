@@ -44,6 +44,12 @@ export const skills: SkillItem[] = [
     color: '#58c4dc',
   },
   {
+    name: 'Next.js',
+    type: 'frontend',
+    iconName: 'nextJsIcon',
+    color: '#000000',
+  },
+  {
     name: 'Node.js',
     type: 'backend',
     iconName: 'SiNodedotjs',
@@ -76,7 +82,7 @@ export const skills: SkillItem[] = [
   {
     name: 'Vite',
     type: 'devops',
-    iconName: 'viteLogo',
+    iconName: 'viteIcon',
     isImage: true,
   },
   {
@@ -88,7 +94,7 @@ export const skills: SkillItem[] = [
   {
     name: 'Figma',
     type: 'design',
-    iconName: 'figmaLogo',
+    iconName: 'figmaIcon',
     isImage: true,
   },
   {

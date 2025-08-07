@@ -20,14 +20,27 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
     mode: 'onTouched',
     reValidateMode: 'onChange',
     defaultValues: {
-      user_name: '',
-      user_email: '',
+      from_name: '',
+      from_email: '',
       message: '',
     },
   });
 
   const onSubmitForm = async (data: ContactFormData) => {
-    const success = await onSubmit(data);
+    const dataWithTime = {
+      ...data,
+      sent_time: new Date().toLocaleString('ko-KR', {
+        timeZone: 'Asia/Seoul',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      }),
+    };
+    const success = await onSubmit(dataWithTime);
     if (success) {
       reset();
     }
@@ -39,13 +52,13 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
       className='bg-ui-background-black mx-auto flex max-w-md flex-col gap-4 rounded-xl p-6 shadow-lg'
     >
       <div className='flex min-h-[5rem] flex-col gap-1'>
-        <label htmlFor='user_name' className='text-left font-semibold text-white'>
+        <label htmlFor='from_name' className='text-left font-semibold text-white'>
           이름
         </label>
         <input
-          id='user_name'
+          id='from_name'
           type='text'
-          {...register('user_name', {
+          {...register('from_name', {
             required: '이름을 입력해주세요',
             minLength: {
               value: 2,
@@ -55,17 +68,17 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
           })}
           className='focus:ring-blue rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus-visible:ring-2'
         />
-        <span className='min-h-[1.25rem] text-sm text-red-500'>{errors.user_name?.message}</span>
+        <span className='min-h-[1.25rem] text-sm text-red-500'>{errors.from_name?.message}</span>
       </div>
 
       <div className='flex min-h-[5rem] flex-col gap-1'>
-        <label htmlFor='user_email' className='text-left font-semibold text-white'>
+        <label htmlFor='from_email' className='text-left font-semibold text-white'>
           이메일
         </label>
         <input
-          id='user_email'
+          id='from_email'
           type='email'
-          {...register('user_email', {
+          {...register('from_email', {
             required: '이메일을 입력해주세요',
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -75,7 +88,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
           })}
           className='focus:ring-blue rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus-visible:ring-2'
         />
-        <span className='min-h-[1.25rem] text-sm text-red-500'>{errors.user_email?.message}</span>
+        <span className='min-h-[1.25rem] text-sm text-red-500'>{errors.from_email?.message}</span>
       </div>
 
       <div className='flex min-h-[7rem] flex-col gap-1'>

@@ -8,7 +8,7 @@ export const FeatureCard = ({ title, desc, icon }: FeatureCardProps) => {
       </div>
       <div className='flex flex-1 flex-col justify-between gap-4'>
         <h2 className='text-2xl font-bold text-white'>{title}</h2>
-        <p className='text-gray text-base'>{desc}</p>
+        <p className='text-gray text-base break-keep'>{desc}</p>
       </div>
     </div>
   );

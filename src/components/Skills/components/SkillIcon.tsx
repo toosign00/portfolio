@@ -17,9 +17,10 @@ import {
   SiTypescript,
   SiVercel,
 } from 'react-icons/si';
-import figmaLogo from '@/assets/icon/figma.svg';
 
-import viteLogo from '@/assets/icon/vite.svg';
+import figmaIcon from '@/assets/icon/figma.svg';
+import nextJsIcon from '@/assets/icon/nextjs.svg';
+import viteIcon from '@/assets/icon/vite.svg';
 import type { SkillIconProps } from '@/types/skills.type';
 
 export const SkillIcon = ({ skill }: SkillIconProps) => {
@@ -30,6 +31,7 @@ export const SkillIcon = ({ skill }: SkillIconProps) => {
     SiJavascript: <SiJavascript style={{ color: skill.color }} />,
     SiTypescript: <SiTypescript style={{ color: skill.color }} />,
     SiReact: <SiReact style={{ color: skill.color }} />,
+    nextJsIcon: <img src={nextJsIcon} alt='Next.js' className='h-7.5 w-7.5' />,
     SiTailwindcss: <SiTailwindcss style={{ color: skill.color }} />,
     SiNodedotjs: <SiNodedotjs style={{ color: skill.color }} />,
     SiMongodb: <SiMongodb style={{ color: skill.color }} />,
@@ -41,8 +43,8 @@ export const SkillIcon = ({ skill }: SkillIconProps) => {
     SiAdobeillustrator: <SiAdobeillustrator style={{ color: skill.color }} />,
     SiAdobeindesign: <SiAdobeindesign style={{ color: skill.color }} />,
     SiAdobepremierepro: <SiAdobepremierepro style={{ color: skill.color }} />,
-    viteLogo: <img src={viteLogo} alt='Vite' className='h-6 w-6' />,
-    figmaLogo: <img src={figmaLogo} alt='Figma' className='h-6 w-6' />,
+    viteIcon: <img src={viteIcon} alt='Vite' className='h-7.5 w-7.5' />,
+    figmaIcon: <img src={figmaIcon} alt='Figma' className='h-7.5 w-7.5' />,
   };
 
   return <>{iconMap[skill.iconName]}</>;
