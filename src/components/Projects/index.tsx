@@ -13,8 +13,8 @@ export const Portfolio = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleProjectClick = (project: ProjectCardData) => {
-    navigate(getProjectPath(project.id), { state: { background: location } });
+  const handleProjectClick = async (project: ProjectCardData) => {
+    await navigate(getProjectPath(project.id), { state: { background: location } });
   };
 
   return (

@@ -31,7 +31,10 @@ export const Education = () => {
                   <div className='mt-4 border-t border-white/5 pt-4'>
                     <ul className='space-y-1'>
                       {education.desc.map((item, idx) => (
-                        <li key={`${item.slice(0, 15)}-${idx}`} className='text-base text-white/80'>
+                        <li
+                          key={`${item.slice(0, 15)}-${idx}`}
+                          className='text-base text-white/80 break-keep'
+                        >
                           • {item}
                         </li>
                       ))}

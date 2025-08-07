@@ -33,8 +33,8 @@ export const ProjectModal = () => {
     error,
   });
 
-  const handleClose = () => {
-    navigate(-1);
+  const handleClose = async () => {
+    await navigate(-1);
   };
 
   const { isClosing, handleOverlayClick } = useModalClose(handleClose);
