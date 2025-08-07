@@ -1,7 +1,8 @@
 export interface ContactFormData {
-  user_name: string;
-  user_email: string;
+  from_name: string;
+  from_email: string;
   message: string;
+  sent_time: string;
 }
 
 export interface ContactInfoData {
