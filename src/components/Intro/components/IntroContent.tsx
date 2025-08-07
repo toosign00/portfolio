@@ -48,10 +48,10 @@ export function IntroContent() {
       </motion.div>
 
       <motion.p
-        className='mb-8 max-w-2xl text-center text-base leading-relaxed text-gray-300 md:mb-12 md:text-lg lg:text-xl'
+        className='mb-8 max-w-2xl text-center text-base leading-relaxed text-gray-300 md:mb-12 md:text-lg lg:text-xl break-keep'
         variants={descriptionVariants}
       >
-        React를 기반으로 사용자 중심의 웹 애플리케이션을 개발합니다.
+        React를 기반으로 사용자 중심의 웹 애플리케이션을 개발합니다.&nbsp;
         <br className='hidden sm:block' />
         함께 성장할 수 있는 팀에서 가치 있는 서비스를 만들어가고 싶습니다.
       </motion.p>
