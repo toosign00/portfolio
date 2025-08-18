@@ -79,7 +79,9 @@ export const ProjectPage = () => {
           </div>
 
           <div className='w-full space-y-2'>
-            <p className='text-gray text-sm leading-relaxed'>{project.description}</p>
+            <p className='text-gray text-md leading-relaxed whitespace-pre-line'>
+              {project.description}
+            </p>
           </div>
 
           <TechnologyStack technologies={project.technologies} />
