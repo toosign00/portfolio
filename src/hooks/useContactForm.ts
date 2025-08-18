@@ -1,39 +1,11 @@
 import { useState } from 'react';
 import { sendContactEmail } from '@/services/emailService';
-import type { ContactFormData } from '@/types/contact.type';
-
-interface NotificationState {
-  isOpen: boolean;
-  title: string;
-  message: string;
-  type: 'success' | 'error';
-}
+import type { ContactFormData } from '@/types/contact.types';
+import { useNotification } from './useNotification';
 
 export const useContactForm = () => {
   const [loading, setLoading] = useState(false);
-  const [notification, setNotification] = useState<NotificationState>({
-    isOpen: false,
-    title: '',
-    message: '',
-    type: 'success',
-  });
-
-  const showNotification = (
-    title: string,
-    message: string,
-    type: 'success' | 'error' = 'success'
-  ) => {
-    setNotification({
-      isOpen: true,
-      title,
-      message,
-      type,
-    });
-  };
-
-  const hideNotification = () => {
-    setNotification((prev) => ({ ...prev, isOpen: false }));
-  };
+  const { notification, showNotification, hideNotification } = useNotification();
 
   const handleSubmit = async (formData: ContactFormData) => {
     setLoading(true);
@@ -55,6 +27,5 @@ export const useContactForm = () => {
     handleSubmit,
     notification,
     hideNotification,
-    showNotification,
   };
 };
