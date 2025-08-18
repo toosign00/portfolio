@@ -3,5 +3,5 @@ export interface NotificationState {
   isOpen: boolean;
   title: string;
   message: string;
-  type: 'success' | 'error' | 'warning' | 'info';
+  type: 'success' | 'error';
 }
