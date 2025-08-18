@@ -22,7 +22,7 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
   };
 
   return (
-    <div className='bg-ui-background rounded-lg p-6 mb-8 border border-white/10'>
+    <div className='mb-8 rounded-lg border border-white/10 bg-ui-background p-6'>
       <form onSubmit={handleSubmit(handleFormSubmit)} className='space-y-4'>
         {/* 이름 입력란 */}
         <div>
@@ -35,7 +35,7 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
               },
             })}
             type='text'
-            className='w-full px-4 py-3 bg-black/50 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors'
+            className='w-full rounded-lg border border-white/20 bg-black/50 px-4 py-3 text-white placeholder-gray-400 transition-colors focus:border-blue-400 focus:outline-none'
             placeholder='이름을 입력하세요'
             disabled={loading}
             aria-label='이름 입력'
@@ -43,7 +43,7 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
             aria-invalid={!!errors.name}
           />
           {errors.name && (
-            <p id='name-error' className='mt-2 text-sm text-red-400' role='alert'>
+            <p id='name-error' className='mt-2 text-red-400 text-sm' role='alert'>
               {errors.name.message}
             </p>
           )}
@@ -60,7 +60,7 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
               },
             })}
             rows={GUESTBOOK_CONSTANTS.UI.FORM_ROWS}
-            className='w-full px-4 py-3 bg-black/50 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-all resize-none'
+            className='w-full resize-none rounded-lg border border-white/20 bg-black/50 px-4 py-3 text-white placeholder-gray-400 transition-all focus:border-blue-400 focus:outline-none'
             placeholder='방명록에 남길 메시지를 작성해주세요'
             disabled={loading}
             aria-label='메시지 입력'
@@ -68,7 +68,7 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
             aria-invalid={!!errors.message}
           />
           {errors.message && (
-            <p id='message-error' className='text-sm text-red-400' role='alert'>
+            <p id='message-error' className='text-red-400 text-sm' role='alert'>
               {errors.message.message}
             </p>
           )}
@@ -76,7 +76,7 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
 
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2'>
-            <span id='message-counter' className='text-sm text-gray-400' aria-live='polite'>
+            <span id='message-counter' className='text-gray-400 text-sm' aria-live='polite'>
               {message?.length || 0}/{GUESTBOOK_CONSTANTS.VALIDATION.MESSAGE_MAX_LENGTH}
             </span>
           </div>

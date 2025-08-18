@@ -52,17 +52,17 @@ export const NavBar = () => {
             }}
           >
             <motion.span
-              className='bg-blue block h-2 w-2 rounded-full sm:h-3 sm:w-3'
+              className='block h-2 w-2 rounded-full bg-blue sm:h-3 sm:w-3'
               whileHover={{ scale: 1.3, rotate: 10 }}
               transition={{ type: 'spring', stiffness: 600, damping: 12 }}
             />
             <motion.span
-              className='bg-pink block h-2 w-2 rounded-full sm:h-3 sm:w-3'
+              className='block h-2 w-2 rounded-full bg-pink sm:h-3 sm:w-3'
               whileHover={{ scale: 1.3, rotate: -10 }}
               transition={{ type: 'spring', stiffness: 600, damping: 12 }}
             />
             <motion.span
-              className='bg-yellow block h-2 w-2 rounded-full sm:h-3 sm:w-3'
+              className='block h-2 w-2 rounded-full bg-yellow sm:h-3 sm:w-3'
               whileHover={{ scale: 1.3, rotate: 10 }}
               transition={{ type: 'spring', stiffness: 600, damping: 12 }}
             />
@@ -85,7 +85,7 @@ export const NavBar = () => {
                 <a
                   href={`#${item.sectionIds[0]}`}
                   onClick={(e) => handleClick(e, item)}
-                  className={`focus:ring-blue relative flex cursor-pointer items-center justify-center rounded-full px-2 py-0.5 text-xs font-normal whitespace-nowrap transition-colors duration-150 focus:outline-none focus-visible:ring-2 sm:px-3 sm:text-sm md:text-base ${
+                  className={`relative flex cursor-pointer items-center justify-center whitespace-nowrap rounded-full px-2 py-0.5 font-normal text-xs transition-colors duration-150 focus:outline-none focus:ring-blue focus-visible:ring-2 sm:px-3 sm:text-sm md:text-base ${
                     active === item.label ? 'text-white' : 'text-gray-300 hover:text-white'
                   }`}
                   aria-current={active === item.label ? 'page' : undefined}
@@ -95,7 +95,7 @@ export const NavBar = () => {
                 </a>
                 {active === item.label && (
                   <motion.div
-                    className='pointer-events-none absolute inset-0 -z-10 rounded-full bg-[#0E1623]'
+                    className='-z-10 pointer-events-none absolute inset-0 rounded-full bg-[#0E1623]'
                     layoutId='activeNavItem'
                     transition={{
                       type: 'spring',
