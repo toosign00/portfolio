@@ -49,7 +49,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmitForm)}
-      className='bg-ui-background-black mx-auto flex max-w-md flex-col gap-4 rounded-xl p-6 shadow-lg'
+      className='mx-auto flex max-w-md flex-col gap-4 rounded-xl bg-ui-background-black p-6 shadow-lg'
     >
       <div className='flex min-h-[5rem] flex-col gap-1'>
         <label htmlFor='from_name' className='text-left font-semibold text-white'>
@@ -66,9 +66,9 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
             },
             setValueAs: (value: string) => sanitizeInput(value),
           })}
-          className='focus:ring-blue rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus-visible:ring-2'
+          className='rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus:ring-blue focus-visible:ring-2'
         />
-        <span className='min-h-[1.25rem] text-sm text-red-500'>{errors.from_name?.message}</span>
+        <span className='min-h-[1.25rem] text-red-500 text-sm'>{errors.from_name?.message}</span>
       </div>
 
       <div className='flex min-h-[5rem] flex-col gap-1'>
@@ -86,9 +86,9 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
             },
             setValueAs: (value: string) => sanitizeInput(value),
           })}
-          className='focus:ring-blue rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus-visible:ring-2'
+          className='rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus:ring-blue focus-visible:ring-2'
         />
-        <span className='min-h-[1.25rem] text-sm text-red-500'>{errors.from_email?.message}</span>
+        <span className='min-h-[1.25rem] text-red-500 text-sm'>{errors.from_email?.message}</span>
       </div>
 
       <div className='flex min-h-[7rem] flex-col gap-1'>
@@ -102,14 +102,14 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
             required: '메시지를 입력해주세요',
             setValueAs: (value: string) => sanitizeInput(value),
           })}
-          className='focus:ring-blue resize-none rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus-visible:ring-2'
+          className='resize-none rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus:ring-blue focus-visible:ring-2'
         />
-        <span className='min-h-[1.25rem] text-sm text-red-500'>{errors.message?.message}</span>
+        <span className='min-h-[1.25rem] text-red-500 text-sm'>{errors.message?.message}</span>
       </div>
 
       <button
         type='submit'
-        className='submit--btn bg-blue cursor-pointer rounded py-2 font-semibold text-black transition hover:opacity-80 disabled:opacity-60'
+        className='submit--btn cursor-pointer rounded bg-blue py-2 font-semibold text-black transition hover:opacity-80 disabled:opacity-60'
         disabled={loading}
       >
         {loading ? (

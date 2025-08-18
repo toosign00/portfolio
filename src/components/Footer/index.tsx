@@ -5,11 +5,11 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className='w-full border-t border-gray-800 bg-black px-4 py-12'>
+    <footer className='w-full border-gray-800 border-t bg-black px-4 py-12'>
       <div className='mx-auto max-w-7xl'>
         <div className='flex flex-col items-center justify-between gap-8 md:flex-row'>
           <div className='text-center md:text-left'>
-            <h3 className='text-xl font-bold text-white'>Hyunsoo Roh</h3>
+            <h3 className='font-bold text-white text-xl'>Hyunsoo Roh</h3>
             <p className='mt-2 text-gray-400'>Frontend Developer</p>
           </div>
 
@@ -19,7 +19,7 @@ export const Footer = () => {
               target='_blank'
               rel='noopener noreferrer'
               aria-label='GitHub 프로필로 이동'
-              className='hover:text-blue text-gray-400 transition-colors'
+              className='text-gray-400 transition-colors hover:text-blue'
             >
               <FaGithub size={24} />
             </a>
@@ -28,7 +28,7 @@ export const Footer = () => {
               target='_blank'
               rel='noopener noreferrer'
               aria-label='LinkedIn 프로필로 이동'
-              className='hover:text-blue text-gray-400 transition-colors'
+              className='text-gray-400 transition-colors hover:text-blue'
             >
               <FaLinkedin size={24} />
             </a>
@@ -37,15 +37,15 @@ export const Footer = () => {
               target='_blank'
               rel='noopener noreferrer'
               aria-label='Velog 블로그로 이동'
-              className='hover:text-blue text-gray-400 transition-colors'
+              className='text-gray-400 transition-colors hover:text-blue'
             >
               <SiVelog size={24} />
             </a>
           </div>
         </div>
 
-        <div className='border-gray mt-8 text-center'>
-          <p className='text-sm text-gray-400'>© {currentYear} Hyunsoo Roh. All rights reserved.</p>
+        <div className='mt-8 border-gray text-center'>
+          <p className='text-gray-400 text-sm'>© {currentYear} Hyunsoo Roh. All rights reserved.</p>
         </div>
       </div>
     </footer>

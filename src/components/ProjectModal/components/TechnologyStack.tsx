@@ -6,7 +6,7 @@ export const TechnologyStack = ({ technologies }: TechnologyStackProps) => {
       {technologies.map((tech) => (
         <span
           key={tech}
-          className='rounded-lg bg-[#2d3442] px-3 py-0.5 text-xs font-medium tracking-wide text-white shadow-sm'
+          className='rounded-lg bg-[#2d3442] px-3 py-0.5 font-medium text-white text-xs tracking-wide shadow-sm'
           style={{ letterSpacing: '0.04em' }}
         >
           {tech}

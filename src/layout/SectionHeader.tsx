@@ -10,7 +10,7 @@ export const SectionHeader = ({
 }: SectionHeaderProps) => {
   const content = (
     <div className={`mb-12 ${className} text-center`}>
-      <h2 className='text-blue mb-4 text-2xl font-bold md:text-3xl'>{title}</h2>
+      <h2 className='mb-4 font-bold text-2xl text-blue md:text-3xl'>{title}</h2>
       {description && <p className='text-base text-white md:text-lg'>{description}</p>}
     </div>
   );
@@ -27,7 +27,7 @@ export const SectionHeader = ({
       viewport={{ once: true, margin: '-50px', amount: 0.5 }}
       className={`mb-12 ${className} text-center`}
     >
-      <h2 className='text-blue mb-4 text-2xl font-bold md:text-3xl'>{title}</h2>
+      <h2 className='mb-4 font-bold text-2xl text-blue md:text-3xl'>{title}</h2>
       {description && <p className='text-base text-white md:text-lg'>{description}</p>}
     </motion.div>
   );

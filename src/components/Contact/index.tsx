@@ -30,7 +30,7 @@ export const Contact = () => {
             type='button'
             onClick={handleGuestbookNavigation}
             aria-label='방명록 페이지로 이동'
-            className='mt-8 bg-blue cursor-pointer rounded px-4 py-2 font-semibold text-black transition hover:opacity-80 disabled:opacity-60'
+            className='mt-8 cursor-pointer rounded bg-blue px-4 py-2 font-semibold text-black transition hover:opacity-80 disabled:opacity-60'
           >
             방명록 남기기
           </button>

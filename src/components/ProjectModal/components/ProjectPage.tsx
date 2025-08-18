@@ -35,10 +35,10 @@ export const ProjectPage = () => {
     const errorMessage = normalizeErrorMessage(error);
 
     return (
-      <div className='bg-project-background flex min-h-screen flex-col items-center justify-center'>
+      <div className='flex min-h-screen flex-col items-center justify-center bg-project-background'>
         <div className='flex flex-col items-center'>
           <IoSearch className='mx-auto mb-4 text-6xl text-gray-400' />
-          <h1 className='mb-4 text-2xl font-bold text-white'>오류가 발생했습니다</h1>
+          <h1 className='mb-4 font-bold text-2xl text-white'>오류가 발생했습니다</h1>
           <p className='mb-8 text-gray-400'>{errorMessage}</p>
           <Button variant='secondary' size='md' onClick={() => navigate('/')}>
             메인으로 돌아가기
@@ -61,11 +61,11 @@ export const ProjectPage = () => {
   const details = project.details;
 
   return (
-    <div className='bg-project-background flex min-h-screen flex-col items-center justify-center'>
+    <div className='flex min-h-screen flex-col items-center justify-center bg-project-background'>
       <div className='w-full max-w-xl px-8 py-4'>
         <button
           type='button'
-          className='hover:text-blue mb-8 flex cursor-pointer items-center gap-0.5 text-sm text-gray-400'
+          className='mb-8 flex cursor-pointer items-center gap-0.5 text-gray-400 text-sm hover:text-blue'
           onClick={() => navigate('/')}
           aria-label='메인페이지로 돌아가기'
         >
@@ -74,12 +74,12 @@ export const ProjectPage = () => {
 
         <article className='flex flex-col items-start gap-6'>
           <div>
-            <h1 className='mb-1 text-2xl font-bold text-white sm:text-3xl'>{project.title}</h1>
+            <h1 className='mb-1 font-bold text-2xl text-white sm:text-3xl'>{project.title}</h1>
             <p className='text-gray text-sm'>{project.summary}</p>
           </div>
 
           <div className='w-full space-y-2'>
-            <p className='text-gray text-md leading-relaxed whitespace-pre-line'>
+            <p className='whitespace-pre-line text-gray text-md leading-relaxed'>
               {project.description}
             </p>
           </div>
