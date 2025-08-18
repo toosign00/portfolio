@@ -55,7 +55,7 @@ export const ProjectModal = () => {
           ref={modalRef}
           data-modal-content
           role='dialog'
-          className='bg-ui-background relative mx-4 max-h-[85vh] w-full max-w-2xl overflow-y-scroll rounded-xl border border-white/10 px-4 py-10 shadow-2xl sm:mx-0 sm:px-8'
+          className='relative mx-4 max-h-[85vh] w-full max-w-2xl overflow-y-scroll rounded-xl border border-white/10 bg-ui-background px-4 py-10 shadow-2xl sm:mx-0 sm:px-8'
           tabIndex={-1}
           initial={{ opacity: 0, y: 70, scale: 0.95 }}
           animate={{
@@ -92,7 +92,7 @@ export const ProjectModal = () => {
         <motion.div
           ref={modalRef}
           data-modal-content
-          className='bg-ui-background relative mx-4 max-h-[80vh] w-full max-w-xl overflow-y-scroll rounded-xl border border-white/10 px-4 py-10 shadow-2xl sm:mx-0 sm:px-8'
+          className='relative mx-4 max-h-[80vh] w-full max-w-xl overflow-y-scroll rounded-xl border border-white/10 bg-ui-background px-4 py-10 shadow-2xl sm:mx-0 sm:px-8'
           tabIndex={-1}
           initial={{ opacity: 0, y: 70, scale: 0.95 }}
           animate={{
@@ -108,7 +108,7 @@ export const ProjectModal = () => {
           }}
         >
           <div className='text-center'>
-            <h2 className='mb-4 text-xl font-bold text-white'>
+            <h2 className='mb-4 font-bold text-white text-xl'>
               {isNotFound ? '프로젝트를 찾을 수 없습니다' : '오류가 발생했습니다'}
             </h2>
             <p className='mb-6 text-gray-400'>{errorMessage}</p>
@@ -142,7 +142,7 @@ export const ProjectModal = () => {
       <motion.div
         ref={modalRef}
         data-modal-content
-        className='bg-ui-background relative mx-4 max-h-[85vh] w-full max-w-2xl overflow-y-scroll rounded-xl border border-white/10 px-4 py-10 shadow-2xl sm:mx-0 sm:px-8'
+        className='relative mx-4 max-h-[85vh] w-full max-w-2xl overflow-y-scroll rounded-xl border border-white/10 bg-ui-background px-4 py-10 shadow-2xl sm:mx-0 sm:px-8'
         tabIndex={-1}
         initial={{ opacity: 0, y: 70, scale: 0.95 }}
         animate={{

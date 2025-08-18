@@ -14,18 +14,18 @@ export const ProjectInfo = ({ project }: ProjectInfoProps) => {
       <div className='flex w-full flex-col gap-3 md:flex-row md:gap-2'>
         {/* 참여인원 */}
         <div className='flex flex-1 flex-col'>
-          <div className='mb-1 text-xs font-semibold text-gray-400'>참여인원</div>
-          <div className='text-sm font-normal text-white'>{memberInfo}</div>
+          <div className='mb-1 font-semibold text-gray-400 text-xs'>참여인원</div>
+          <div className='font-normal text-sm text-white'>{memberInfo}</div>
         </div>
         {/* 기간 */}
         <div className='flex flex-1 flex-col'>
-          <div className='mb-1 text-xs font-semibold text-gray-400'>기간</div>
-          <div className='text-sm font-normal text-white'>{project.timeFrame}</div>
+          <div className='mb-1 font-semibold text-gray-400 text-xs'>기간</div>
+          <div className='font-normal text-sm text-white'>{project.timeFrame}</div>
         </div>
         {/* 관련 링크 */}
         <div className='flex flex-1 flex-col'>
-          <div className='mb-1 text-xs font-semibold text-gray-400'>관련 링크</div>
-          <div className='text-sm font-normal text-white'>
+          <div className='mb-1 font-semibold text-gray-400 text-xs'>관련 링크</div>
+          <div className='font-normal text-sm text-white'>
             <a
               href={project.githubUrl}
               target='_blank'

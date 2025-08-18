@@ -7,7 +7,7 @@ export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) =>
     <div className='mb-6'>
       <h3
         id='project-detail-list-title'
-        className='mb-4 text-xl font-bold tracking-tight text-white'
+        className='mb-4 font-bold text-white text-xl tracking-tight'
         style={{ letterSpacing: '-0.01em', lineHeight: '1.3' }}
       >
         상세 내용
@@ -19,21 +19,21 @@ export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) =>
             className='leading-relaxed tracking-normal'
             style={{ lineHeight: '1.7', letterSpacing: '0.01em' }}
           >
-            <h4 className='mb-3 text-lg font-semibold text-white'>{item.title}</h4>
+            <h4 className='mb-3 font-semibold text-lg text-white'>{item.title}</h4>
 
             {Array.isArray(item.description) ? (
               <ul className='list-disc space-y-2 pl-5'>
                 {item.description.map((line, i) => (
                   <li
                     key={`${line.slice(0, 20)}-${i}`}
-                    className='text-base leading-relaxed text-gray-400'
+                    className='text-base text-gray-400 leading-relaxed'
                   >
                     {line}
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className='relative pl-5 text-base leading-relaxed text-gray-400'>
+              <p className='relative pl-5 text-base text-gray-400 leading-relaxed'>
                 <span className='absolute top-0 left-0'>•</span>
                 {item.description}
               </p>

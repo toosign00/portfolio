@@ -12,11 +12,11 @@ export const GuestbookPage = () => {
 
   return (
     <>
-      <div className='min-h-screen bg-primary flex flex-col'>
+      <div className='flex min-h-screen flex-col bg-primary'>
         {/* 헤더 */}
-        <div className='p-6 border-b border-white/10'>
-          <div className='max-w-4xl mx-auto flex items-center justify-between'>
-            <h1 className='text-2xl font-bold text-white'>방명록</h1>
+        <div className='border-white/10 border-b p-6'>
+          <div className='mx-auto flex max-w-4xl items-center justify-between'>
+            <h1 className='font-bold text-2xl text-white'>방명록</h1>
             <Button variant='secondary' size='sm' onClick={() => navigate('/')}>
               메인으로 돌아가기
             </Button>
@@ -25,9 +25,9 @@ export const GuestbookPage = () => {
 
         {/* 메인 콘텐츠 */}
         <div className='flex-1 p-6'>
-          <div className='max-w-3xl mx-auto'>
+          <div className='mx-auto max-w-3xl'>
             <div className='mb-6'>
-              <p className='text-gray-400 text-center text-sm'>
+              <p className='text-center text-gray-400 text-sm'>
                 저에게 하고 싶은 말씀을 자유롭게 남겨주세요!
               </p>
             </div>

@@ -3,14 +3,14 @@ import { formatRelativeTime } from '@/utils/timeUtils';
 
 export const GuestbookEntry = ({ entry }: GuestbookEntryProps) => {
   return (
-    <div className='border-b border-white/5 pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0'>
-      <div className='flex items-center gap-2 mb-2'>
-        <span className='font-semibold text-white text-sm'>{entry.name}</span>
-        <span className='text-xs text-gray-400'>{formatRelativeTime(entry.created_at)}</span>
+    <div className='mb-4 border-white/5 border-b pb-4 last:mb-0 last:border-b-0 last:pb-0'>
+      <div className='mb-2 flex items-center gap-2'>
+        <span className='font-semibold text-sm text-white'>{entry.name}</span>
+        <span className='text-gray-400 text-xs'>{formatRelativeTime(entry.created_at)}</span>
       </div>
 
       {/* 메시지 */}
-      <div className='text-gray-200 leading-relaxed text-sm whitespace-pre-wrap break-words'>
+      <div className='whitespace-pre-wrap break-words text-gray-200 text-sm leading-relaxed'>
         {entry.message}
       </div>
     </div>

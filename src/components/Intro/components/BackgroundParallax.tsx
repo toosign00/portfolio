@@ -17,7 +17,7 @@ export function BackgroundParallax() {
 
   return (
     <motion.div
-      className='absolute inset-0 -z-10'
+      className='-z-10 absolute inset-0'
       style={{
         y: backgroundY,
         ...motionStyle,
