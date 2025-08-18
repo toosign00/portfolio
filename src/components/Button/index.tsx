@@ -7,7 +7,7 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   as?: React.ElementType;
   to?: string;
   size?: 'sm' | 'md' | 'lg' | { base: 'sm' | 'md' | 'lg'; md: 'sm' | 'md' | 'lg' };
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'shadow';
   className?: string;
   isActive?: boolean;
   border?: boolean;
@@ -44,8 +44,9 @@ export const Button = ({
   };
 
   const variantStyles = {
-    primary: `${border ? 'border border-blue/50' : ''} bg-blue/20 text-blue shadow-blue/25 shadow-lg hover:bg-blue/30`,
+    primary: `${border ? 'border border-blue/10' : ''} text-black bg-blue hover:opacity-80`,
     secondary: `${border ? 'border border-white/10' : ''} text-gray bg-white/5 hover:bg-white/10 hover:text-white`,
+    shadow: `${border ? 'border border-blue/50' : ''} bg-blue/20 text-blue shadow-blue/25 shadow-lg hover:bg-blue/30`,
   };
 
   const commonProps = {
