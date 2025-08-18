@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { skillItemVariants } from '@/motion/skillAnimations';
-import type { SkillCardProps } from '@/types/skills.type';
+import type { SkillCardProps } from '@/types/skills.types';
 import { SkillIcon } from './SkillIcon';
 import { Tooltip } from './Tooltip';
 

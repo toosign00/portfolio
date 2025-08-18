@@ -1,7 +1,7 @@
 // import { SectionLayout } from '@/layout/SectionLayout';
 
 import { useScrollOptimized } from '@/hooks/useScrollOptimized';
-import type { IntroProps } from '@/types/intro.type';
+import type { IntroProps } from '@/types/intro.types';
 import { BackgroundParallax } from './components/BackgroundParallax';
 import { FloatingElements } from './components/FloatingElements';
 import { IntroContent } from './components/IntroContent';

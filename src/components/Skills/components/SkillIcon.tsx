@@ -21,7 +21,7 @@ import {
 import figmaIcon from '@/assets/icon/figma.svg';
 import nextJsIcon from '@/assets/icon/nextjs.svg';
 import viteIcon from '@/assets/icon/vite.svg';
-import type { SkillIconProps } from '@/types/skills.type';
+import type { SkillIconProps } from '@/types/skills.types';
 
 export const SkillIcon = ({ skill }: SkillIconProps) => {
   const iconMap: Record<string, React.ReactNode> = {

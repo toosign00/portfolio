@@ -1,5 +1,5 @@
 import { colorClasses } from '@/constants/projectColors.constants';
-import type { ProjectCardProps } from '@/types/projectCard.type';
+import type { ProjectCardProps } from '@/types/projectCard.types';
 
 export const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
   const color = project.color ?? 'blue';

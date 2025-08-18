@@ -1,6 +1,6 @@
 import { supabase } from '@/lib/supabase';
-import type { ProjectCardData } from '@/types/projectCard.type';
-import type { Project } from '@/types/projects.type';
+import type { ProjectCardData } from '@/types/projectCard.types';
+import type { Project } from '@/types/projects.types';
 import { convertProjectData, convertProjectsData } from '@/utils/caseConverter';
 
 // 에러 타입 정의

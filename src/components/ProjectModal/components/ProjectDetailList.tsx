@@ -1,4 +1,4 @@
-import type { ProjectDetail } from '@/types/projects.type';
+import type { ProjectDetail } from '@/types/projects.types';
 
 export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) => {
   if (!details || details.length === 0) return null;
