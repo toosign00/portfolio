@@ -1,4 +1,4 @@
-import type { FilterOption, SkillItem } from '../types/skills.type';
+import type { FilterOption, SkillItem } from '../types/skills.types';
 
 export const skills: SkillItem[] = [
   {

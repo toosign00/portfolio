@@ -1,4 +1,4 @@
-import type { CareerItemProps } from '@/types/career.type';
+import type { CareerItemProps } from '@/types/career.types';
 import { Badge } from './Badge';
 
 export function CareerItem({ period, company, role, description, skills }: CareerItemProps) {

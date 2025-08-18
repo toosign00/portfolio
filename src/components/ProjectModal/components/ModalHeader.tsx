@@ -1,4 +1,4 @@
-import type { ModalHeaderProps } from '@/types/projectModal.type';
+import type { ModalHeaderProps } from '@/types/projectModal.types';
 
 export const ModalHeader = ({ project, onClose }: ModalHeaderProps) => {
   return (
@@ -21,7 +21,7 @@ export const ModalHeader = ({ project, onClose }: ModalHeaderProps) => {
         {project.summary}
       </div>
       <div
-        className='mb-7 text-base font-normal text-white break-keep'
+        className='mb-7 text-base font-normal text-white break-keep whitespace-pre-line'
         style={{ lineHeight: '1.7' }}
       >
         {project.description}
