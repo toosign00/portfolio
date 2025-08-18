@@ -1,4 +1,4 @@
-import type { ProjectInfoProps } from '@/types/projectModal.type';
+import type { ProjectInfoProps } from '@/types/projectModal.types';
 
 export const ProjectInfo = ({ project }: ProjectInfoProps) => {
   // 인원/팀구성

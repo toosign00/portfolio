@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { filters, skills } from '@/data/skills.data';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { SectionLayout } from '@/layout/SectionLayout';
-import type { SkillType } from '@/types/skills.type';
+import type { SkillType } from '@/types/skills.types';
 import { SkillCounter } from './components/SkillCounter';
 import { SkillFilter } from './components/SkillFilter';
 import { SkillGrid } from './components/SkillGrid';

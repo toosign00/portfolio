@@ -5,7 +5,7 @@ import { getProjectPath } from '@/constants/routes.constants';
 import { useProjectsWithUI } from '@/hooks/useProjectsQuery';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { SectionLayout } from '@/layout/SectionLayout';
-import type { ProjectCardData } from '@/types/projectCard.type';
+import type { ProjectCardData } from '@/types/projectCard.types';
 import { ProjectCard } from './components/ProjectCard';
 
 export const Portfolio = () => {

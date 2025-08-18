@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { headerVariants } from '@/motion/sectionHeaderAnimations';
-import type { SectionHeaderProps } from '@/types/section';
+import type { SectionHeaderProps } from '@/types/section.types';
 
 export const SectionHeader = ({
   title,

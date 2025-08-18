@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import xss from 'xss';
-import type { ContactFormData, ContactFormProps } from '@/types/contact.type';
+import type { ContactFormData, ContactFormProps } from '@/types/contact.types';
 
 const sanitizeInput = (value: string) => {
   return xss(value, {
@@ -37,7 +37,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
-        hour12: false
+        hour12: false,
       }),
     };
     const success = await onSubmit(dataWithTime);

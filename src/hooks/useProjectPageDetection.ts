@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import type { LocationState } from '@/types/routing.type';
+import type { LocationState } from '@/types/routing.types';
 
 export function useProjectPageDetection() {
   const location = useLocation();
