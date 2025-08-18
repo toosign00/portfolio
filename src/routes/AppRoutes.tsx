@@ -7,6 +7,7 @@ import { ROUTES } from '@/constants/routes.constants';
 import { useProjectPageDetection } from '@/hooks/useProjectPageDetection';
 import DefaultLayout from '@/layout/DefaultLayout';
 import MinimalLayout from '@/layout/MinimalLayout';
+import { GuestbookPage } from '@/pages/GuestbookPage';
 import { HomePage } from '@/pages/HomePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ErrorBoundary } from '@/routes/ErrorBoundary';
@@ -26,6 +27,17 @@ export function AppRoutes() {
           }
         >
           <Route path={ROUTES.HOME} element={<HomePage />} />
+        </Route>
+
+        {/* 방명록: MinimalLayout */}
+        <Route
+          element={
+            <MinimalLayout>
+              <Outlet />
+            </MinimalLayout>
+          }
+        >
+          <Route path={ROUTES.GUESTBOOK} element={<GuestbookPage />} />
         </Route>
 
         {/* 프로젝트 상세, 404: MinimalLayout */}
