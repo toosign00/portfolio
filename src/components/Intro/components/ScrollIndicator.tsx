@@ -105,7 +105,7 @@ export const ScrollIndicator = React.memo(function ScrollIndicator({
 
   return (
     <motion.div
-      className='scroll-indicator pointer-events-none fixed left-1/2 -translate-x-1/2 transform'
+      className='scroll-indicator -translate-x-1/2 pointer-events-none fixed left-1/2 transform'
       style={{
         willChange: 'transform, opacity',
       }}
@@ -120,7 +120,7 @@ export const ScrollIndicator = React.memo(function ScrollIndicator({
         style={{ willChange: 'transform' }}
       >
         <motion.span
-          className='mb-3 text-sm font-light tracking-wide text-gray-400'
+          className='mb-3 font-light text-gray-400 text-sm tracking-wide'
           variants={textVariants}
           initial='initial'
           animate={isVisible ? 'visible' : 'hidden'}

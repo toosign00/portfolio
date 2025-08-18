@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import type { CSSProperties } from 'react';
 import { useMemo } from 'react';
 import { floatingVariants } from '@/motion/intoAnimations';
-import type { FloatingElementConfig } from '@/types/intro.type';
+import type { FloatingElementConfig } from '@/types/intro.types';
 
 const FLOATING_CONFIG: FloatingElementConfig[] = [
   {

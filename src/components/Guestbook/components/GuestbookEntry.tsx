@@ -1,0 +1,18 @@
+import type { GuestbookEntryProps } from '@/types/guestbook.types';
+import { formatRelativeTime } from '@/utils/timeUtils';
+
+export const GuestbookEntry = ({ entry }: GuestbookEntryProps) => {
+  return (
+    <div className='mb-4 border-white/5 border-b pb-4 last:mb-0 last:border-b-0 last:pb-0'>
+      <div className='mb-2 flex items-center gap-2'>
+        <span className='font-semibold text-sm text-white'>{entry.name}</span>
+        <span className='text-gray-400 text-xs'>{formatRelativeTime(entry.created_at)}</span>
+      </div>
+
+      {/* 메시지 */}
+      <div className='whitespace-pre-wrap break-words text-gray-200 text-sm leading-relaxed'>
+        {entry.message}
+      </div>
+    </div>
+  );
+};

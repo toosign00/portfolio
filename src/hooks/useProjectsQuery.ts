@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useMemo, useState } from 'react';
 import { QUERY_KEYS } from '@/lib/queryClient';
 import { fetchProjectById, fetchProjects, ProjectServiceError } from '@/services/projectService';
-import type { Project } from '@/types/projects.type';
+import type { Project } from '@/types/projects.types';
 
 // 기본 프로젝트 목록 조회 훅 (화면에 표시할 기본 정보만)
 export const useProjects = () => {

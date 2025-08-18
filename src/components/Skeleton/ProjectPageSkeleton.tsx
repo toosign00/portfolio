@@ -13,7 +13,7 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
         {onBack && (
           <button
             type='button'
-            className='hover:text-blue mb-8 flex cursor-pointer items-center gap-0.5 text-sm text-gray-400'
+            className='mb-8 flex cursor-pointer items-center gap-0.5 text-gray-400 text-sm hover:text-blue'
             onClick={onBack}
             aria-label='메인페이지로 돌아가기'
           >

@@ -1,4 +1,4 @@
-import type { BadgeProps } from '@/types/skills.type';
+import type { BadgeProps } from '@/types/skills.types';
 
 export const Badge = ({ variant = 'outline', className = '', children, ...props }: BadgeProps) => {
   const base =

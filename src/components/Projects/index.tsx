@@ -5,7 +5,7 @@ import { getProjectPath } from '@/constants/routes.constants';
 import { useProjectsWithUI } from '@/hooks/useProjectsQuery';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { SectionLayout } from '@/layout/SectionLayout';
-import type { ProjectCardData } from '@/types/projectCard.type';
+import type { ProjectCardData } from '@/types/projectCard.types';
 import { ProjectCard } from './components/ProjectCard';
 
 export const Portfolio = () => {
@@ -32,7 +32,7 @@ export const Portfolio = () => {
         ) : error ? (
           <div className='flex flex-col items-center justify-center py-12'>
             <p className='mb-4 text-red-500'>프로젝트를 불러오는데 실패했습니다</p>
-            <p className='text-sm text-gray-400'>{error}</p>
+            <p className='text-gray-400 text-sm'>{error}</p>
           </div>
         ) : (
           <>

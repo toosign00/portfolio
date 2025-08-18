@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { sectionVariants } from '@/motion/commonAnimations';
-import type { SectionLayoutProps } from '@/types/section';
+import type { SectionLayoutProps } from '@/types/section.types';
 
 export const SectionLayout = ({
   children,

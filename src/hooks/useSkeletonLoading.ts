@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useProjectValidation } from '@/hooks/useProjectsQuery';
-import type { Project } from '@/types/projects.type';
+import type { Project } from '@/types/projects.types';
 
 interface UseProjectSkeletonLoadingProps {
   isPending: boolean;

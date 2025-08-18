@@ -1,5 +1,5 @@
 import { Button } from '@/components/Button';
-import type { SkillFilterProps } from '@/types/skills.type';
+import type { SkillFilterProps } from '@/types/skills.types';
 
 export const SkillFilter = ({ filters, currentFilter, onFilterChange }: SkillFilterProps) => {
   return (
@@ -8,7 +8,7 @@ export const SkillFilter = ({ filters, currentFilter, onFilterChange }: SkillFil
         <Button
           key={f.value}
           size='sm'
-          variant={currentFilter === f.value ? 'primary' : 'secondary'}
+          variant={currentFilter === f.value ? 'shadow' : 'secondary'}
           onClick={(e) => {
             e.preventDefault();
             onFilterChange(f.value);

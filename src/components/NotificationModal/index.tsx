@@ -63,7 +63,7 @@ export const NotificationModal = ({
         </Dialog.Overlay>
         <Dialog.Content asChild>
           <motion.div
-            className='border border-white/10 bg-ui-background fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-xl px-6 py-8 shadow-2xl'
+            className='-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 z-50 w-full max-w-md rounded-xl border border-white/10 bg-ui-background px-6 py-8 shadow-2xl'
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
@@ -74,12 +74,12 @@ export const NotificationModal = ({
             }}
           >
             <div className='text-center'>
-              <Dialog.Title className='mb-3 text-xl font-bold text-white'>{title}</Dialog.Title>
+              <Dialog.Title className='mb-3 font-bold text-white text-xl'>{title}</Dialog.Title>
               <Dialog.Description className='mb-6 text-gray-300'>{message}</Dialog.Description>
               <Dialog.Close asChild>
                 <button
                   type='button'
-                  className={`${styles.bgColor} focus-visible:ring-blue cursor-pointer rounded-lg px-6 py-2 font-semibold text-white transition-colors hover:opacity-90 focus:outline-none focus-visible:ring-2`}
+                  className={`${styles.bgColor} cursor-pointer rounded-lg px-6 py-2 font-semibold text-white transition-colors hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue`}
                 >
                   확인
                 </button>
