@@ -1,6 +1,5 @@
 import {
   SiAdobeillustrator,
-  SiAdobeindesign,
   SiAdobephotoshop,
   SiAdobepremierepro,
   SiCss3,
@@ -11,7 +10,6 @@ import {
   SiMongodb,
   SiNodedotjs,
   SiReact,
-  SiSass,
   SiSupabase,
   SiTailwindcss,
   SiTypescript,
@@ -27,7 +25,6 @@ export const SkillIcon = ({ skill }: SkillIconProps) => {
   const iconMap: Record<string, React.ReactNode> = {
     SiHtml5: <SiHtml5 style={{ color: skill.color }} />,
     SiCss3: <SiCss3 style={{ color: skill.color }} />,
-    SiSass: <SiSass style={{ color: skill.color }} />,
     SiJavascript: <SiJavascript style={{ color: skill.color }} />,
     SiTypescript: <SiTypescript style={{ color: skill.color }} />,
     SiReact: <SiReact style={{ color: skill.color }} />,
@@ -41,7 +38,6 @@ export const SkillIcon = ({ skill }: SkillIconProps) => {
     SiGithub: <SiGithub style={{ color: skill.color }} />,
     SiAdobephotoshop: <SiAdobephotoshop style={{ color: skill.color }} />,
     SiAdobeillustrator: <SiAdobeillustrator style={{ color: skill.color }} />,
-    SiAdobeindesign: <SiAdobeindesign style={{ color: skill.color }} />,
     SiAdobepremierepro: <SiAdobepremierepro style={{ color: skill.color }} />,
     viteIcon: <img src={viteIcon} alt='Vite' className='h-7.5 w-7.5' />,
     figmaIcon: <img src={figmaIcon} alt='Figma' className='h-7.5 w-7.5' />,

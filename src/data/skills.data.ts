@@ -14,12 +14,6 @@ export const skills: SkillItem[] = [
     color: '#264de4',
   },
   {
-    name: 'Sass',
-    type: 'frontend',
-    iconName: 'SiSass',
-    color: '#cc6699',
-  },
-  {
     name: 'Tailwind CSS',
     type: 'frontend',
     iconName: 'SiTailwindcss',
@@ -108,12 +102,6 @@ export const skills: SkillItem[] = [
     type: 'design',
     iconName: 'SiAdobeillustrator',
     color: '#ff9a00',
-  },
-  {
-    name: 'InDesign',
-    type: 'design',
-    iconName: 'SiAdobeindesign',
-    color: '#e749a0',
   },
   {
     name: 'Premiere Pro',
