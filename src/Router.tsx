@@ -4,15 +4,15 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 import { ProjectModal } from '@/components/ProjectModal';
 import { ProjectPage } from '@/components/ProjectModal/components/ProjectPage';
 import { ROUTES } from '@/constants/routes.constants';
+import { ErrorBoundary } from '@/error/ErrorBoundary';
 import { useProjectPageDetection } from '@/hooks/useProjectPageDetection';
 import DefaultLayout from '@/layout/DefaultLayout';
 import MinimalLayout from '@/layout/MinimalLayout';
 import { GuestbookPage } from '@/pages/GuestbookPage';
 import { HomePage } from '@/pages/HomePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
-import { ErrorBoundary } from '@/routes/ErrorBoundary';
 
-export function AppRoutes() {
+export function Router() {
   const { hasBackground, currentLocation } = useProjectPageDetection();
 
   return (
