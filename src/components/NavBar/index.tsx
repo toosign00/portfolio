@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useScrollSection } from '@/hooks/useScrollSection';
 import { type NavItem, navItems } from '../../constants/navigation.constants';
 
@@ -25,7 +25,7 @@ export const NavBar = () => {
   return (
     <header className='sticky top-4 z-50 w-full sm:w-auto'>
       <div className='flex justify-center'>
-        <motion.nav
+        <m.nav
           className='flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-2 py-1.5 shadow-lg backdrop-blur-md sm:gap-3 sm:px-4 sm:py-2'
           aria-label='메인 네비게이션'
           aria-current={active === '홈' ? 'page' : undefined}
@@ -39,7 +39,7 @@ export const NavBar = () => {
             delay: 0.1,
           }}
         >
-          <motion.div
+          <m.div
             className='mr-1 flex items-center gap-0.5 sm:mr-2 sm:gap-1'
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -51,25 +51,25 @@ export const NavBar = () => {
               delay: 0.3,
             }}
           >
-            <motion.span
+            <m.span
               className='block h-2 w-2 rounded-full bg-blue sm:h-3 sm:w-3'
               whileHover={{ scale: 1.3, rotate: 10 }}
               transition={{ type: 'spring', stiffness: 600, damping: 12 }}
             />
-            <motion.span
+            <m.span
               className='block h-2 w-2 rounded-full bg-pink sm:h-3 sm:w-3'
               whileHover={{ scale: 1.3, rotate: -10 }}
               transition={{ type: 'spring', stiffness: 600, damping: 12 }}
             />
-            <motion.span
+            <m.span
               className='block h-2 w-2 rounded-full bg-yellow sm:h-3 sm:w-3'
               whileHover={{ scale: 1.3, rotate: 10 }}
               transition={{ type: 'spring', stiffness: 600, damping: 12 }}
             />
-          </motion.div>
+          </m.div>
           <div className='flex items-center gap-1 sm:gap-2'>
             {navItems.map((item) => (
-              <motion.div
+              <m.div
                 key={item.label}
                 className='relative'
                 initial={false}
@@ -94,7 +94,7 @@ export const NavBar = () => {
                   {item.label}
                 </a>
                 {active === item.label && (
-                  <motion.div
+                  <m.div
                     className='-z-10 pointer-events-none absolute inset-0 rounded-full bg-[#0E1623]'
                     layoutId='activeNavItem'
                     transition={{
@@ -106,10 +106,10 @@ export const NavBar = () => {
                     style={{ willChange: 'transform' }}
                   />
                 )}
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.nav>
+        </m.nav>
       </div>
     </header>
   );

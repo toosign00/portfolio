@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import type { CSSProperties } from 'react';
 import { useMemo } from 'react';
 import { floatingVariants } from '@/motion/intoAnimations';
@@ -37,7 +37,7 @@ export function FloatingElements() {
   return (
     <>
       {elements.map((element: FloatingElementConfig, index: number) => (
-        <motion.div
+        <m.div
           key={`floating-${element.className.slice(0, 20)}-${index}`}
           className={element.className}
           variants={floatingVariants}
