@@ -1,11 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/projects/(.*)",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/((?!projects$|projects/).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
