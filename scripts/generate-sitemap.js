@@ -25,12 +25,6 @@ const generateSitemap = () => {
   
   const urls = [
     { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'weekly' },
-    { loc: `${baseUrl}/#intro`, priority: '0.9', changefreq: 'monthly' },
-    { loc: `${baseUrl}/#skills`, priority: '0.9', changefreq: 'monthly' },
-    { loc: `${baseUrl}/#projects`, priority: '0.9', changefreq: 'monthly' },
-    { loc: `${baseUrl}/#career`, priority: '0.9', changefreq: 'monthly' },
-    { loc: `${baseUrl}/#contact`, priority: '0.9', changefreq: 'monthly' },
-    { loc: `${baseUrl}/#guestbook`, priority: '0.9', changefreq: 'monthly' },
   ];
 
   // 프로젝트 URL들 (동적으로 추가 가능)
