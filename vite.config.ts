@@ -41,7 +41,7 @@ export default defineConfig(({ mode }: { mode: string }) => ({
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': ['framer-motion', 'react-icons'],
+          'ui-vendor': ['motion', 'react-icons'],
           'data-vendor': ['@tanstack/react-query', '@supabase/supabase-js'],
           'form-vendor': ['react-hook-form', '@emailjs/browser'],
           'utils-vendor': ['es-toolkit', 'xss'],
@@ -74,7 +74,7 @@ export default defineConfig(({ mode }: { mode: string }) => ({
       'react',
       'react-dom',
       'react-router-dom',
-      'framer-motion',
+      'motion',
       '@tanstack/react-query',
       'react-hook-form',
       'xss',
