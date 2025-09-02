@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from 'motion/react';
 import { useScrollSection } from '@/hooks/useScrollSection';
 import { type NavItem, navItems } from '../../constants/navigation.constants';
 
