@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from 'motion/react';
 import type { CSSProperties } from 'react';
 import { useMemo } from 'react';
 import { floatingVariants } from '@/motion/intoAnimations';

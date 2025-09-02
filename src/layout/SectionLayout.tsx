@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from 'motion/react';
 import { sectionVariants } from '@/motion/commonAnimations';
 import type { SectionLayoutProps } from '@/types/section.types';
 

@@ -1,4 +1,4 @@
-import type { Variants } from 'framer-motion';
+import type { Variants } from 'motion/react';
 
 // 살려두기
 export const skillContainerVariants: Variants = {

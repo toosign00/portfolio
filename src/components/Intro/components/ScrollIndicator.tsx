@@ -1,4 +1,4 @@
-import { cubicBezier, m } from 'framer-motion';
+import { cubicBezier, m } from 'motion/react';
 import React, { useMemo } from 'react';
 
 interface ScrollIndicatorProps {

@@ -1,4 +1,4 @@
-import { AnimatePresence, m } from 'framer-motion';
+import { AnimatePresence, m } from 'motion/react';
 import { skillContainerVariants } from '@/motion/skillAnimations';
 import type { SkillGridProps } from '@/types/skills.types';
 import { SkillCard } from './SkillCard';

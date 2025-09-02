@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from 'motion/react';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 interface ProjectPageSkeletonProps {

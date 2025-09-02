@@ -1,4 +1,4 @@
-import { AnimatePresence, m } from 'framer-motion';
+import { AnimatePresence, m } from 'motion/react';
 import { useState } from 'react';
 import type { TooltipProps } from '@/types/skills.types';
 

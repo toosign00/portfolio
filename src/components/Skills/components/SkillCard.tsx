@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from 'motion/react';
 import { skillItemVariants } from '@/motion/skillAnimations';
 import type { SkillCardProps } from '@/types/skills.types';
 import { SkillIcon } from './SkillIcon';
