@@ -188,8 +188,3 @@ todo.md
 # 임시 파일
 temp/
 tmp/
-
-# 개발 파일
-.claude
-.cursor
-.mcp.json
