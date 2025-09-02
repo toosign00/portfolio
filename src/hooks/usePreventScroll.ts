@@ -1,8 +1,5 @@
 import { useEffect } from 'react';
 
-/**
- * 스크롤바 너비를 계산하는 함수
- */
 let scrollbarWidthCache: number | null = null;
 
 const getScrollbarWidth = (): number => {
@@ -14,9 +11,6 @@ const getScrollbarWidth = (): number => {
   return scrollbarWidthCache;
 };
 
-/**
- * body 스크롤을 차단하는 함수
- */
 const blockBodyScroll = (): void => {
   const className = 'overflow-hidden';
   const isBlocked = document.body.classList.contains(className);
@@ -35,9 +29,6 @@ const blockBodyScroll = (): void => {
   document.body.classList.add(className);
 };
 
-/**
- * body 스크롤 차단을 해제하는 함수
- */
 const unblockBodyScroll = (): void => {
   const className = 'overflow-hidden';
   const isBlocked = document.body.classList.contains(className);
@@ -50,11 +41,6 @@ const unblockBodyScroll = (): void => {
   document.documentElement.style.removeProperty('--scrollbar-width');
 };
 
-/**
- * @function usePreventScroll
- * @description 모달이 열려있는 동안 배경 스크롤을 방지하는 최적화된 커스텀 훅
- * @param {boolean} shouldPrevent - 스크롤을 막을지 여부
- */
 export const usePreventScroll = (shouldPrevent: boolean = true) => {
   useEffect(() => {
     if (shouldPrevent) {
