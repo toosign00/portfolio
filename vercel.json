@@ -5,7 +5,7 @@
       "destination": "/index.html"
     },
     {
-      "source": "/((?!projects/).*)",
+      "source": "/((?!projects$|projects/).*)",
       "destination": "/index.html"
     }
   ],
