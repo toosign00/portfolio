@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ModalSkeleton } from '@/components/Skeleton/ModalSkeleton';
@@ -12,12 +12,6 @@ import { ProjectDetailList } from './components/ProjectDetailList';
 import { ProjectInfo } from './components/ProjectInfo';
 import { TechnologyStack } from './components/TechnologyStack';
 
-/**
- * @component ProjectModal
- * @description 프로젝트 상세 정보를 보여주는 모달 컴포넌트
- * @param {ProjectModalProps} props - 컴포넌트 props
- * @returns {JSX.Element} 프로젝트 모달 컴포넌트
- */
 export const ProjectModal = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -45,13 +39,13 @@ export const ProjectModal = () => {
   // 로딩 상태
   if (showSkeleton) {
     return (
-      <motion.div
+      <m.div
         className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2, ease: 'easeInOut' }}
       >
-        <motion.div
+        <m.div
           ref={modalRef}
           data-modal-content
           role='dialog'
@@ -71,8 +65,8 @@ export const ProjectModal = () => {
           }}
         >
           <ModalSkeleton onClose={handleClose} />
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     );
   }
 
@@ -82,14 +76,14 @@ export const ProjectModal = () => {
     const errorMessage = normalizeErrorMessage(error);
 
     return (
-      <motion.div
+      <m.div
         className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm'
         onClick={handleOverlayClick}
         initial={{ opacity: 0 }}
         animate={{ opacity: isClosing ? 0 : 1 }}
         transition={{ duration: 0.2, ease: 'easeInOut' }}
       >
-        <motion.div
+        <m.div
           ref={modalRef}
           data-modal-content
           className='relative mx-4 max-h-[80vh] w-full max-w-xl overflow-y-scroll rounded-xl border border-white/10 bg-ui-background px-4 py-10 shadow-2xl sm:mx-0 sm:px-8'
@@ -120,8 +114,8 @@ export const ProjectModal = () => {
               닫기
             </button>
           </div>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     );
   }
 
@@ -132,14 +126,14 @@ export const ProjectModal = () => {
   const details = project.details;
 
   return (
-    <motion.div
+    <m.div
       className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm'
       onClick={handleOverlayClick}
       initial={{ opacity: 0 }}
       animate={{ opacity: isClosing ? 0 : 1 }}
       transition={{ duration: 0.2, ease: 'easeInOut' }}
     >
-      <motion.div
+      <m.div
         ref={modalRef}
         data-modal-content
         className='relative mx-4 max-h-[85vh] w-full max-w-2xl overflow-y-scroll rounded-xl border border-white/10 bg-ui-background px-4 py-10 shadow-2xl sm:mx-0 sm:px-8'
@@ -161,7 +155,7 @@ export const ProjectModal = () => {
         <TechnologyStack technologies={project.technologies} />
         <ProjectInfo project={project} />
         <ProjectDetailList details={details} />
-      </motion.div>
-    </motion.div>
+      </m.div>
+    </m.div>
   );
 };
