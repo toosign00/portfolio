@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from 'motion/react';
 import { headerVariants } from '@/motion/sectionHeaderAnimations';
 import type { SectionHeaderProps } from '@/types/section.types';
 

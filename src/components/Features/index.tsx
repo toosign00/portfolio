@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from 'motion/react';
 import { features } from '@/constants/features.constants';
 import { useViewportAmount } from '@/hooks/useViewportAmount';
 import { SectionHeader } from '@/layout/SectionHeader';

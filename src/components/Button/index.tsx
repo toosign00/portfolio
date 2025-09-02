@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { motion } from 'motion/react';
 import type React from 'react';
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
@@ -29,7 +29,7 @@ export const Button = ({
   ...rest
 }: ButtonProps) => {
   const baseStyles =
-    'focus:ring-blue flex item-center justify-center text-center relative cursor-pointer overflow-hidden rounded-lg backdrop-blur-md transition-all duration-300 focus-visible:ring-2 focus:outline-none';
+    'focus:ring-blue flex items-center justify-center text-center relative cursor-pointer overflow-hidden rounded-lg backdrop-blur-md transition-all duration-300 focus-visible:ring-2 focus:outline-none';
 
   const getSizeStyles = (size: ButtonProps['size']) => {
     if (typeof size === 'object') {
@@ -69,7 +69,7 @@ export const Button = ({
     >
       <span className='relative z-10'>{children}</span>
       {variant === 'primary' && (
-        <m.div
+        <motion.div
           layoutId={isActive ? 'activeFilter' : undefined}
           className='absolute inset-0 bg-gradient-to-r from-blue/10 to-pink/10'
           transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}

@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { m } from 'motion/react';
 import { useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ModalSkeleton } from '@/components/Skeleton/ModalSkeleton';
