@@ -1,11 +1,14 @@
+import { domAnimation, LazyMotion } from 'framer-motion';
 import { BrowserRouter } from 'react-router-dom';
-import { AppRoutes } from '@/routes/AppRoutes';
+import { Router } from '@/Router';
 
 function App() {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <LazyMotion features={domAnimation}>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </LazyMotion>
   );
 }
 

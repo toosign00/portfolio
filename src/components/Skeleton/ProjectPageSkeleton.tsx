@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 interface ProjectPageSkeletonProps {
@@ -24,14 +24,14 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
         {/* 스켈레톤 내용 */}
         <article className='flex flex-col items-start gap-6'>
           {/* 제목 스켈레톤 */}
-          <motion.div
+          <m.div
             className='mb-1 h-8 w-3/4 rounded bg-white/10'
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           />
 
           {/* 요약 스켈레톤 */}
-          <motion.div
+          <m.div
             className='mb-1 h-5 w-1/2 rounded bg-white/10'
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 1.5, repeat: Infinity, delay: 0.1 }}
@@ -39,27 +39,27 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
 
           {/* 설명 스켈레톤 */}
           <div className='mb-2 w-full space-y-2'>
-            <motion.div
+            <m.div
               className='h-6 w-full rounded bg-white/10'
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
             />
-            <motion.div
+            <m.div
               className='h-6 w-2/3 rounded bg-white/10'
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
             />
-            <motion.div
+            <m.div
               className='h-6 w-4/5 rounded bg-white/10'
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
             />
-            <motion.div
+            <m.div
               className='h-6 w-3/4 rounded bg-white/10'
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
             />
-            <motion.div
+            <m.div
               className='h-6 w-5/6 rounded bg-white/10'
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: 0.6 }}
@@ -69,7 +69,7 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
           {/* 기술 스택 스켈레톤 */}
           <div className='flex flex-wrap gap-2'>
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <motion.div
+              <m.div
                 key={i}
                 className='h-6 w-16 rounded-lg bg-white/10 px-3 py-0.5'
                 animate={{ opacity: [0.5, 1, 0.5] }}
@@ -87,12 +87,12 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
             <div className='flex w-full flex-col gap-3 md:flex-row md:gap-2'>
               {/* 참여인원 */}
               <div className='flex flex-1 flex-col'>
-                <motion.div
+                <m.div
                   className='mb-1 h-3 w-16 rounded bg-white/10'
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 1.5, repeat: Infinity, delay: 0.8 }}
                 />
-                <motion.div
+                <m.div
                   className='h-4 w-12 rounded bg-white/10'
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 1.5, repeat: Infinity, delay: 0.9 }}
@@ -100,12 +100,12 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
               </div>
               {/* 기간 */}
               <div className='flex flex-1 flex-col'>
-                <motion.div
+                <m.div
                   className='mb-1 h-3 w-8 rounded bg-white/10'
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 1.5, repeat: Infinity, delay: 1.0 }}
                 />
-                <motion.div
+                <m.div
                   className='h-4 w-20 rounded bg-white/10'
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 1.5, repeat: Infinity, delay: 1.1 }}
@@ -113,18 +113,18 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
               </div>
               {/* 관련 링크 */}
               <div className='flex flex-1 flex-col'>
-                <motion.div
+                <m.div
                   className='mb-1 h-3 w-16 rounded bg-white/10'
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 1.5, repeat: Infinity, delay: 1.2 }}
                 />
                 <div className='flex gap-2'>
-                  <motion.div
+                  <m.div
                     className='h-4 w-12 rounded bg-white/10'
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 1.5, repeat: Infinity, delay: 1.3 }}
                   />
-                  <motion.div
+                  <m.div
                     className='h-4 w-16 rounded bg-white/10'
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 1.5, repeat: Infinity, delay: 1.4 }}
@@ -136,14 +136,14 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
 
           {/* 상세 내용 스켈레톤 */}
           <div className='mb-2'>
-            <motion.div
+            <m.div
               className='mb-2 h-5 w-20 rounded bg-white/10'
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: 1.5 }}
             />
             <ul className='space-y-2 pl-5'>
               {[1, 2, 3, 4, 5].map((i) => (
-                <motion.li
+                <m.li
                   key={i}
                   className='h-4 w-full rounded bg-white/10'
                   animate={{ opacity: [0.5, 1, 0.5] }}
@@ -160,7 +160,7 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
           {/* 추가 상세 내용 스켈레톤 */}
           <div className='space-y-2 pl-5'>
             {[1, 2, 3, 4, 5].map((i) => (
-              <motion.div
+              <m.div
                 key={i}
                 className='h-4 w-full rounded bg-white/10'
                 animate={{ opacity: [0.5, 1, 0.5] }}
@@ -176,7 +176,7 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
           {/* 추가 내용 스켈레톤 */}
           <div className='space-y-2 pl-5'>
             {[1, 2, 3, 4, 5].map((i) => (
-              <motion.div
+              <m.div
                 key={i}
                 className='h-4 w-full rounded bg-white/10'
                 animate={{ opacity: [0.5, 1, 0.5] }}

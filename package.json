@@ -1,11 +1,11 @@
 {
   "name": "hyunsoo-portfolio",
   "private": true,
-  "version": "2.1.3",
+  "version": "2.1.4",
   "type": "module",
   "module": "ES2022",
   "description": "프론트엔드 개발자 노현수의 포트폴리오 웹사이트",
-  "author": "Hyunsoo Roh",
+  "author": "Hyunsoo Ro",
   "license": "MIT",
   "homepage": "https://toosign.kr/",
   "repository": {
@@ -25,6 +25,7 @@
   },
   "scripts": {
     "dev": "vite --host",
+    "prebuild": "node scripts/generate-sitemap.js",
     "build": "tsc && vite build",
     "analyze": "vite build --mode analyze",
     "preview": "vite preview",
@@ -40,8 +41,8 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@radix-ui/react-dialog": "^1.1.15",
-    "@supabase/supabase-js": "^2.56.0",
-    "@tanstack/react-query": "^5.85.5",
+    "@supabase/supabase-js": "^2.57.0",
+    "@tanstack/react-query": "^5.85.9",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "es-toolkit": "^1.39.10",
@@ -56,14 +57,14 @@
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
     "@tailwindcss/vite": "^4.1.12",
-    "@types/react": "^19.1.11",
-    "@types/react-dom": "^19.1.7",
-    "@vitejs/plugin-react": "^5.0.1",
-    "concurrently": "^9.2.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "concurrently": "^9.2.1",
     "globals": "^16.3.0",
     "rollup-plugin-visualizer": "^6.0.3",
     "tailwindcss": "^4.1.12",
     "typescript": "~5.9.2",
-    "vite": "^7.1.3"
+    "vite": "^7.1.4"
   }
 }

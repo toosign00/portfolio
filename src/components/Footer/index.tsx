@@ -9,7 +9,7 @@ export const Footer = () => {
       <div className='mx-auto max-w-7xl'>
         <div className='flex flex-col items-center justify-between gap-8 md:flex-row'>
           <div className='text-center md:text-left'>
-            <h3 className='font-bold text-white text-xl'>Hyunsoo Roh</h3>
+            <h3 className='font-bold text-white text-xl'>Hyunsoo Ro</h3>
             <p className='mt-2 text-gray-400'>Frontend Developer</p>
           </div>
 
@@ -45,7 +45,7 @@ export const Footer = () => {
         </div>
 
         <div className='mt-8 border-gray text-center'>
-          <p className='text-gray-400 text-sm'>© {currentYear} Hyunsoo Roh. All rights reserved.</p>
+          <p className='text-gray-400 text-sm'>© {currentYear} Hyunsoo Ro. All rights reserved.</p>
         </div>
       </div>
     </footer>

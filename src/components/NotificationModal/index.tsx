@@ -1,5 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useEffect } from 'react';
 
 interface NotificationModalProps {
@@ -54,7 +54,7 @@ export const NotificationModal = ({
     <Dialog.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <Dialog.Portal>
         <Dialog.Overlay asChild>
-          <motion.div
+          <m.div
             className='fixed inset-0 z-50 bg-black/60 backdrop-blur-sm'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -62,7 +62,7 @@ export const NotificationModal = ({
           />
         </Dialog.Overlay>
         <Dialog.Content asChild>
-          <motion.div
+          <m.div
             className='-translate-x-1/2 -translate-y-1/2 fixed top-1/2 left-1/2 z-50 w-full max-w-md rounded-xl border border-white/10 bg-ui-background px-6 py-8 shadow-2xl'
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -85,7 +85,7 @@ export const NotificationModal = ({
                 </button>
               </Dialog.Close>
             </div>
-          </motion.div>
+          </m.div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

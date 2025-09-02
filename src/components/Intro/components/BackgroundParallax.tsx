@@ -1,29 +1,17 @@
-// 📁 components/BackgroundParallax.tsx
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import type { CSSProperties } from 'react';
+import { useScrollOptimized } from '@/hooks/useScrollOptimized';
 
 export function BackgroundParallax() {
-  const { scrollYProgress } = useScroll();
+  const scrollY = useScrollOptimized();
 
-  const backgroundY = useSpring(useTransform(scrollYProgress, [0, 1], ['0%', '50%']), {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
-
-  const motionStyle: CSSProperties = {
+  const style: CSSProperties = {
+    transform: `translateY(${scrollY * 0.3}px)`,
     willChange: 'transform',
   };
 
   return (
-    <motion.div
-      className='-z-10 absolute inset-0'
-      style={{
-        y: backgroundY,
-        ...motionStyle,
-      }}
-    >
+    <div className='-z-10 absolute inset-0' style={style}>
       <div className='absolute inset-0 bg-black bg-gradient-to-br' />
-    </motion.div>
+    </div>
   );
 }

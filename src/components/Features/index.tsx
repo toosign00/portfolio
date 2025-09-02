@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { features } from '@/constants/features.constants';
 import { useViewportAmount } from '@/hooks/useViewportAmount';
 import { SectionHeader } from '@/layout/SectionHeader';
@@ -17,7 +17,7 @@ export const Features = () => {
         useAnimation={true}
       />
       <div className='mx-auto max-w-6xl'>
-        <motion.div
+        <m.div
           variants={featureContainerVariants}
           initial='hidden'
           whileInView='visible'
@@ -29,11 +29,11 @@ export const Features = () => {
           className='grid gap-6 md:grid-cols-3'
         >
           {features.map((feature) => (
-            <motion.div key={feature.title} variants={featureItemVariants}>
+            <m.div key={feature.title} variants={featureItemVariants}>
               <FeatureCard title={feature.title} desc={feature.desc} icon={feature.icon} />
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </SectionLayout>
   );

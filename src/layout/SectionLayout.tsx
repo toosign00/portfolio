@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { sectionVariants } from '@/motion/commonAnimations';
 import type { SectionLayoutProps } from '@/types/section.types';
 
@@ -9,14 +9,14 @@ export const SectionLayout = ({
   useAnimation = true,
 }: SectionLayoutProps) => {
   const content = useAnimation ? (
-    <motion.div
+    <m.div
       variants={sectionVariants}
       initial='hidden'
       whileInView='visible'
       viewport={{ once: true, margin: '-50px' }}
     >
       {children}
-    </motion.div>
+    </m.div>
   ) : (
     children
   );

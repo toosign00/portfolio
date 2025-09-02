@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { headerVariants } from '@/motion/sectionHeaderAnimations';
 import type { SectionHeaderProps } from '@/types/section.types';
 
@@ -20,7 +20,7 @@ export const SectionHeader = ({
   }
 
   return (
-    <motion.div
+    <m.div
       variants={headerVariants}
       initial='hidden'
       whileInView='visible'
@@ -29,6 +29,6 @@ export const SectionHeader = ({
     >
       <h2 className='mb-4 font-bold text-2xl text-blue md:text-3xl'>{title}</h2>
       {description && <p className='text-base text-white md:text-lg'>{description}</p>}
-    </motion.div>
+    </m.div>
   );
 };

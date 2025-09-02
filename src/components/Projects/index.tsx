@@ -8,7 +8,7 @@ import { SectionLayout } from '@/layout/SectionLayout';
 import type { ProjectCardData } from '@/types/projectCard.types';
 import { ProjectCard } from './components/ProjectCard';
 
-export const Portfolio = () => {
+export const Projects = () => {
   const { displayedProjects, setShowAll, hasMoreProjects, loading, error } = useProjectsWithUI();
   const navigate = useNavigate();
   const location = useLocation();

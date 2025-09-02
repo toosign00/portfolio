@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import { useState } from 'react';
 import type { TooltipProps } from '@/types/skills.types';
 
@@ -19,7 +19,7 @@ export const Tooltip = ({ children, content }: TooltipProps) => {
       {children}
       <AnimatePresence>
         {isVisible && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
@@ -30,7 +30,7 @@ export const Tooltip = ({ children, content }: TooltipProps) => {
               <div className='whitespace-nowrap font-medium text-white text-xs'>{content}</div>
               <div className='-top-1 -translate-x-1/2 absolute left-1/2 h-2 w-2 rotate-45 border-white/10 border-t border-l bg-black/80' />
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>
