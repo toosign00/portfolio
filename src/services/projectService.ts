@@ -20,6 +20,7 @@ export const fetchProjects = async (): Promise<ProjectCardData[]> => {
     const { data, error } = await supabase
       .from('projects')
       .select('id, title, type, summary, technologies, thumbnail, color')
+      .eq('is_visible', true)
       .order('created_at', { ascending: false });
 
     if (error) {
@@ -57,7 +58,12 @@ export const fetchProjectById = async (id: string): Promise<Project> => {
       throw new ProjectServiceError('프로젝트 ID가 필요합니다.');
     }
 
-    const { data, error } = await supabase.from('projects').select('*').eq('id', id).single();
+    const { data, error } = await supabase
+      .from('projects')
+      .select('*')
+      .eq('id', id)
+      .eq('is_visible', true)
+      .single();
 
     if (error) {
       if (error.code === 'PGRST116') {
