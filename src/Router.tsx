@@ -29,7 +29,7 @@ export function Router() {
           <Route path={ROUTES.HOME} element={<HomePage />} />
         </Route>
 
-        {/* 방명록: MinimalLayout */}
+        {/* MinimalLayout - 방명록, 프로젝트, 404 Pages  */}
         <Route
           element={
             <MinimalLayout>
@@ -38,16 +38,6 @@ export function Router() {
           }
         >
           <Route path={ROUTES.GUESTBOOK} element={<GuestbookPage />} />
-        </Route>
-
-        {/* 프로젝트 상세, 404: MinimalLayout */}
-        <Route
-          element={
-            <MinimalLayout>
-              <Outlet />
-            </MinimalLayout>
-          }
-        >
           <Route path={ROUTES.PROJECT_DETAIL} element={<ProjectPage />} />
           <Route path='*' element={<NotFoundPage />} />
         </Route>

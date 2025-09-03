@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import type React from 'react';
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
@@ -69,7 +69,7 @@ export const Button = ({
     >
       <span className='relative z-10'>{children}</span>
       {variant === 'primary' && (
-        <motion.div
+        <m.div
           layoutId={isActive ? 'activeFilter' : undefined}
           className='absolute inset-0 bg-gradient-to-r from-blue/10 to-pink/10'
           transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
