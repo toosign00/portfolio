@@ -1,5 +1,5 @@
 import { m } from 'motion/react';
-import { features } from '@/constants/features.constants';
+import { features } from '@/data/features.data';
 import { useViewportAmount } from '@/hooks/useViewportAmount';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { SectionLayout } from '@/layout/SectionLayout';
