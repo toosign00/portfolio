@@ -7,11 +7,11 @@ export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 3 * 60 * 60 * 1000, // 3시간
-      gcTime: 4 * 60 * 60 * 1000,    // 4시간
+      gcTime: 4 * 60 * 60 * 1000, // 4시간
       retry: 1,
       refetchOnWindowFocus: false,
       refetchOnReconnect: true,
-        refetchOnMount: false, // 마운트 시 자동 refetch 방지
+      refetchOnMount: false, // 마운트 시 자동 refetch 방지
     },
     mutations: {
       retry: 1,
