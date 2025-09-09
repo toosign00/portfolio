@@ -1,7 +1,4 @@
-export interface NavItem {
-  label: string;
-  sectionIds: string[];
-}
+import type { NavItem } from '@/types/navigation.types';
 
 export const navItems: NavItem[] = [
   { label: '소개', sectionIds: ['intro', 'features'] },
