@@ -1,13 +1,12 @@
 import { QueryClient } from '@tanstack/react-query';
-import { persistQueryClient } from '@tanstack/react-query-persist-client';
-import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
+import { QUERY_KEYS } from '@/constants/queryKeys.constants';
 
 // React Query 클라이언트 설정
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 3 * 60 * 60 * 1000, // 3시간
-      gcTime: 4 * 60 * 60 * 1000, // 4시간
+      staleTime: 10 * 60 * 1000, // 10분
+      gcTime: 60 * 60 * 1000, // 1시간
       retry: 1,
       refetchOnWindowFocus: false,
       refetchOnReconnect: true,
@@ -19,24 +18,14 @@ export const queryClient = new QueryClient({
   },
 });
 
-// localStorage persister 설정
-const localStoragePersister = createAsyncStoragePersister({
-  storage: window.localStorage,
-  key: 'portfolio-query-cache',
+// 방명록 데이터는 실시간 업데이트
+queryClient.setQueryDefaults(QUERY_KEYS.GUESTBOOK.ALL, {
+  staleTime: 0, // 즉시 stale 처리
+  refetchOnMount: 'always', // 컴포넌트 마운트 시 매번 리패치
 });
 
-// 쿼리 클라이언트 persistence 설정
-persistQueryClient({
-  queryClient,
-  persister: localStoragePersister,
-  maxAge: 24 * 60 * 60 * 1000, // 24시간
-  buster: 'v1', // 캐시 버전 (스키마 변경 시 업데이트!!)
+// 무한 스크롤 방명록도 실시간 업데이트
+queryClient.setQueryDefaults([...QUERY_KEYS.GUESTBOOK.ALL, 'infinite'], {
+  staleTime: 0,
+  refetchOnMount: 'always',
 });
-
-// 쿼리 키 상수 정의
-export const QUERY_KEYS = {
-  PROJECTS: {
-    ALL: ['projects'] as const,
-    DETAIL: (id: string) => ['project', id] as const,
-  },
-} as const;
