@@ -1,31 +1,20 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { GUESTBOOK_CONSTANTS } from '@/constants/guestbook.constants';
 import { QUERY_KEYS } from '@/constants/queryKeys.constants';
-import {
-  createGuestbookEntry,
-  fetchGuestbookEntries,
-  GuestbookServiceError,
-} from '@/services/guestbookService';
+import { createGuestbookEntry, fetchGuestbookEntries } from '@/services/guestbookService';
+
+// 방명록 API 재시도 설정
+const MAX_RETRY_COUNT = 3;
+const RETRY_DELAY_BASE = 1000;
+const MAX_RETRY_DELAY = 30000;
 
 // 방명록 목록 조회
 export const useGuestbookEntries = () => {
   return useQuery({
     queryKey: QUERY_KEYS.GUESTBOOK.ALL,
     queryFn: fetchGuestbookEntries,
-    retry: (failureCount, error) => {
-      // 클라이언트 오류(4xx)는 재시도하지 않음
-      if (error instanceof GuestbookServiceError) {
-        const isClientError = error.code?.startsWith('4') || error.code === 'PGRST';
-        return !isClientError && failureCount < 2;
-      }
-      // 네트워크 오류는 설정된 횟수만큼 재시도
-      return failureCount < GUESTBOOK_CONSTANTS.API.MAX_RETRY_COUNT;
-    },
-    retryDelay: (attemptIndex) =>
-      Math.min(
-        GUESTBOOK_CONSTANTS.API.RETRY_DELAY_BASE * 2 ** attemptIndex,
-        GUESTBOOK_CONSTANTS.API.MAX_RETRY_DELAY
-      ), // 지수 백오프
+    // 오류 발생 시 최대 횟수까지 재시도
+    retry: (failureCount) => failureCount < MAX_RETRY_COUNT,
+    retryDelay: (attemptIndex) => Math.min(RETRY_DELAY_BASE * 2 ** attemptIndex, MAX_RETRY_DELAY), // 지수 백오프
   });
 };
 
