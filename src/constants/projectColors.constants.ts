@@ -15,7 +15,3 @@ export const colorClasses = {
     text: 'text-yellow',
   },
 } as const;
-
-export const getColorForIndex = (index: number, seed: number): Color => {
-  return colors[(seed + index) % colors.length];
-};
