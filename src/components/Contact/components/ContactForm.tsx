@@ -1,6 +1,9 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import xss from 'xss';
-import type { ContactFormData, ContactFormProps } from '@/types/contact.types';
+import type { z } from 'zod';
+import { contactFormSchema } from '@/schemas/contact.schema';
+import type { ContactFormProps } from '@/types/contact.types';
 
 const sanitizeInput = (value: string) => {
   return xss(value, {
@@ -16,9 +19,10 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ContactFormData>({
-    mode: 'onTouched',
-    reValidateMode: 'onChange',
+  } = useForm<z.infer<typeof contactFormSchema>>({
+    mode: 'onSubmit',
+    shouldFocusError: true,
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
       from_name: '',
       from_email: '',
@@ -26,7 +30,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
     },
   });
 
-  const onSubmitForm = async (data: ContactFormData) => {
+  const onSubmitForm = async (data: z.infer<typeof contactFormSchema>) => {
     const dataWithTime = {
       ...data,
       sent_time: new Date().toLocaleString('ko-KR', {
@@ -58,14 +62,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
         <input
           id='from_name'
           type='text'
-          {...register('from_name', {
-            required: '이름을 입력해주세요',
-            minLength: {
-              value: 2,
-              message: '이름은 2자 이상이어야 합니다',
-            },
-            setValueAs: (value: string) => sanitizeInput(value),
-          })}
+          {...register('from_name', { setValueAs: (value: string) => sanitizeInput(value) })}
           className='rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus:ring-blue focus-visible:ring-2'
         />
         <span className='min-h-[1.25rem] text-red-500 text-sm'>{errors.from_name?.message}</span>
@@ -78,14 +75,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
         <input
           id='from_email'
           type='email'
-          {...register('from_email', {
-            required: '이메일을 입력해주세요',
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: '유효한 이메일 주소를 입력해주세요',
-            },
-            setValueAs: (value: string) => sanitizeInput(value),
-          })}
+          {...register('from_email', { setValueAs: (value: string) => sanitizeInput(value) })}
           className='rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus:ring-blue focus-visible:ring-2'
         />
         <span className='min-h-[1.25rem] text-red-500 text-sm'>{errors.from_email?.message}</span>
@@ -98,10 +88,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
         <textarea
           id='message'
           rows={5}
-          {...register('message', {
-            required: '메시지를 입력해주세요',
-            setValueAs: (value: string) => sanitizeInput(value),
-          })}
+          {...register('message', { setValueAs: (value: string) => sanitizeInput(value) })}
           className='resize-none rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus:ring-blue focus-visible:ring-2'
         />
         <span className='min-h-[1.25rem] text-red-500 text-sm'>{errors.message?.message}</span>
