@@ -108,21 +108,3 @@ export const createGuestbookEntry = async (entry: CreateGuestbookEntry): Promise
   }
 };
 
-// 입력값 검증
-export const validateGuestbookEntry = (entry: CreateGuestbookEntry): string[] => {
-  const errors: string[] = [];
-
-  if (!entry.name.trim()) {
-    errors.push('이름을 입력해주세요.');
-  } else if (entry.name.trim().length > 50) {
-    errors.push('이름은 50자 이하로 입력해주세요.');
-  }
-
-  if (!entry.message.trim()) {
-    errors.push('메시지를 입력해주세요.');
-  } else if (entry.message.trim().length > 1000) {
-    errors.push('메시지는 1000자 이하로 입력해주세요.');
-  }
-
-  return errors;
-};
