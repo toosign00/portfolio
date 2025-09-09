@@ -1,4 +1,3 @@
-import { validateGuestbookEntry } from '@/services/guestbookService';
 import type { GuestbookFormData } from '@/types/guestbook.types';
 import { useCreateGuestbookEntry } from './useGuestbookQuery';
 import { useNotification } from './useNotification';
@@ -9,17 +8,6 @@ export const useGuestbookForm = () => {
 
   const handleSubmit = async (data: GuestbookFormData) => {
     try {
-      // 클라이언트 사이드 검증
-      const validationErrors = validateGuestbookEntry({
-        name: data.name,
-        message: data.message,
-      });
-
-      if (validationErrors.length > 0) {
-        showNotification('입력 오류', validationErrors.join('\n'), 'error');
-        return;
-      }
-
       // 서버로 데이터 전송
       await createMutation.mutateAsync({
         name: data.name,
