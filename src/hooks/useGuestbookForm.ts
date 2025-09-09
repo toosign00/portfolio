@@ -1,4 +1,3 @@
-import { GUESTBOOK_ERROR_MESSAGES } from '@/constants/guestbook.constants';
 import { validateGuestbookEntry } from '@/services/guestbookService';
 import type { GuestbookFormData } from '@/types/guestbook.types';
 import { useCreateGuestbookEntry } from './useGuestbookQuery';
@@ -27,28 +26,24 @@ export const useGuestbookForm = () => {
         message: data.message,
       });
 
-      showNotification(
-        '방명록 작성 완료',
-        GUESTBOOK_ERROR_MESSAGES.SUCCESS.CREATE_SUCCESS,
-        'success'
-      );
+      showNotification('방명록 작성 완료', '소중한 메시지를 남겨주셔서 감사합니다!', 'success');
     } catch (error) {
       console.error('방명록 작성 실패:', error);
 
-      let errorMessage: string = GUESTBOOK_ERROR_MESSAGES.API.GENERAL_ERROR;
+      let errorMessage: string = '방명록 작성 중 오류가 발생했습니다.';
 
       if (error instanceof Error) {
         // 네트워크 에러
         if (error.message.includes('fetch')) {
-          errorMessage = GUESTBOOK_ERROR_MESSAGES.API.NETWORK_ERROR;
+          errorMessage = '네트워크 연결을 확인해주세요.';
         }
-        // Supabase 에러
+        // 중복 에러
         else if (error.message.includes('duplicate') || error.message.includes('중복')) {
-          errorMessage = GUESTBOOK_ERROR_MESSAGES.API.DUPLICATE_ERROR;
+          errorMessage = '이미 등록된 내용입니다. 잠시 후 다시 시도해주세요.';
         }
         // 권한 에러
         else if (error.message.includes('permission') || error.message.includes('권한')) {
-          errorMessage = GUESTBOOK_ERROR_MESSAGES.API.PERMISSION_ERROR;
+          errorMessage = '접근 권한이 없습니다. 페이지를 새로고침 후 다시 시도해주세요.';
         }
         // 일반적인 에러
         else {
