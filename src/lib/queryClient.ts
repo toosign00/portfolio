@@ -1,20 +1,36 @@
 import { QueryClient } from '@tanstack/react-query';
+import { persistQueryClient } from '@tanstack/react-query-persist-client';
+import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
 
 // React Query 클라이언트 설정
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 5 * 60 * 1000, // 5분 (프로젝트 목록)
-      gcTime: 10 * 60 * 1000, // 10분 (가비지 컬렉션)
+      staleTime: 3 * 60 * 60 * 1000, // 3시간
+      gcTime: 4 * 60 * 60 * 1000,    // 4시간
       retry: 1,
       refetchOnWindowFocus: false,
       refetchOnReconnect: true,
-      refetchOnMount: true,
+        refetchOnMount: false, // 마운트 시 자동 refetch 방지
     },
     mutations: {
       retry: 1,
     },
   },
+});
+
+// localStorage persister 설정
+const localStoragePersister = createAsyncStoragePersister({
+  storage: window.localStorage,
+  key: 'portfolio-query-cache',
+});
+
+// 쿼리 클라이언트 persistence 설정
+persistQueryClient({
+  queryClient,
+  persister: localStoragePersister,
+  maxAge: 24 * 60 * 60 * 1000, // 24시간
+  buster: 'v1', // 캐시 버전 (스키마 변경 시 업데이트!!)
 });
 
 // 쿼리 키 상수 정의
