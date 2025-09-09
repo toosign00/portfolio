@@ -1,6 +1,7 @@
 import { m } from 'motion/react';
+import { navItems } from '@/constants/navigation.constants';
 import { useScrollSection } from '@/hooks/useScrollSection';
-import { type NavItem, navItems } from '../../constants/navigation.constants';
+import type { NavItem } from '@/types/navigation.types';
 
 export const NavBar = () => {
   const { active, setActive, isNavigating } = useScrollSection(navItems);
