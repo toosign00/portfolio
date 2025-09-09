@@ -1,6 +1,10 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { QUERY_KEYS } from '@/constants/queryKeys.constants';
-import { createGuestbookEntry, fetchGuestbookEntries } from '@/services/guestbookService';
+import {
+  createGuestbookEntry,
+  fetchGuestbookEntries,
+  fetchGuestbookEntriesPaginated,
+} from '@/services/guestbookService';
 
 // 방명록 API 재시도 설정
 const MAX_RETRY_COUNT = 3;
@@ -18,6 +22,20 @@ export const useGuestbookEntries = () => {
   });
 };
 
+// 방명록 무한 스크롤 조회
+export const useGuestbookInfiniteEntries = (pageSize = 10) => {
+  return useInfiniteQuery({
+    queryKey: [...QUERY_KEYS.GUESTBOOK.ALL, 'infinite', pageSize],
+    queryFn: async ({ pageParam }) => {
+      return fetchGuestbookEntriesPaginated(pageSize, pageParam as string | undefined);
+    },
+    getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,
+    initialPageParam: undefined as string | undefined,
+    retry: (failureCount) => failureCount < MAX_RETRY_COUNT,
+    retryDelay: (attemptIndex) => Math.min(RETRY_DELAY_BASE * 2 ** attemptIndex, MAX_RETRY_DELAY),
+  });
+};
+
 // 방명록 작성
 export const useCreateGuestbookEntry = () => {
   const queryClient = useQueryClient();
@@ -27,6 +45,7 @@ export const useCreateGuestbookEntry = () => {
     onSuccess: () => {
       // 성공 시 방명록 목록 새로고침
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.GUESTBOOK.ALL });
+      queryClient.invalidateQueries({ queryKey: [...QUERY_KEYS.GUESTBOOK.ALL, 'infinite'] });
     },
     onError: (error) => {
       console.error('방명록 작성 실패:', error);

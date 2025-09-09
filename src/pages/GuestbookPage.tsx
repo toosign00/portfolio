@@ -3,12 +3,17 @@ import { Button } from '@/components/Button';
 import { GuestbookForm, GuestbookList } from '@/components/Guestbook';
 import { NotificationModal } from '@/components/NotificationModal';
 import { useGuestbookForm } from '@/hooks/useGuestbookForm';
-import { useGuestbookEntries } from '@/hooks/useGuestbookQuery';
+import { useGuestbookEntries, useGuestbookInfiniteEntries } from '@/hooks/useGuestbookQuery';
 
 export const GuestbookPage = () => {
   const navigate = useNavigate();
   const { data: entries = [], isLoading } = useGuestbookEntries();
+  const infinite = useGuestbookInfiniteEntries(10);
   const { loading, handleSubmit, notification, hideNotification } = useGuestbookForm();
+
+  const flatInfiniteItems = infinite.data?.pages.flatMap((p) => p.items) ?? [];
+  const shouldUseInfinite = (entries?.length ?? 0) >= 10;
+  const totalCount = infinite.data?.pages[0]?.totalCount ?? entries.length;
 
   return (
     <>
@@ -36,7 +41,29 @@ export const GuestbookPage = () => {
             <GuestbookForm onSubmit={handleSubmit} loading={loading} />
 
             {/* 방명록 목록 */}
-            <GuestbookList entries={entries} loading={isLoading} />
+            {shouldUseInfinite ? (
+              <>
+                <GuestbookList
+                  entries={flatInfiniteItems}
+                  loading={infinite.isLoading}
+                  totalCount={totalCount}
+                />
+                <div className='mt-4 flex justify-center'>
+                  {infinite.hasNextPage && (
+                    <Button
+                      variant='secondary'
+                      size='sm'
+                      onClick={() => infinite.fetchNextPage()}
+                      disabled={infinite.isFetchingNextPage}
+                    >
+                      {infinite.isFetchingNextPage ? '불러오는 중...' : '더 보기'}
+                    </Button>
+                  )}
+                </div>
+              </>
+            ) : (
+              <GuestbookList entries={entries} loading={isLoading} />
+            )}
           </div>
         </div>
       </div>
