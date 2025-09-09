@@ -1,15 +1,11 @@
 import { throttle } from 'es-toolkit';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { NavItem } from '@/types/navigation.types';
 
 interface SectionPosition {
   top: number;
   bottom: number;
   label: string;
-}
-
-interface NavItem {
-  label: string;
-  sectionIds: string[];
 }
 
 const SCROLL_ANIMATION_TIMEOUT = 1200; // 스크롤 애니메이션 시간보다 약간 길게
@@ -19,10 +15,10 @@ export const useScrollSection = (navItems: NavItem[]) => {
   const [active, setActive] = useState<string | null>(null);
   const [isNavigating, setIsNavigating] = useState(false);
   const navigationTimeoutRef = useRef<number | null>(null);
+  const isNavigatingRef = useRef(false);
 
   const calculateActiveSection = useCallback(() => {
-    // 네비게이션 중이면 스크롤 기반 활성화 무시
-    if (isNavigating) {
+    if (isNavigatingRef.current) {
       return;
     }
 
@@ -70,7 +66,7 @@ export const useScrollSection = (navItems: NavItem[]) => {
     });
 
     setActive(closestSection);
-  }, [navItems, isNavigating]); // isNavigating을 dependency에 추가
+  }, [navItems]);
 
   // 수동으로 active 상태를 설정하는 함수 (버튼 클릭 시 사용)
   const setActiveManual = useCallback(
@@ -80,6 +76,7 @@ export const useScrollSection = (navItems: NavItem[]) => {
 
       // 네비게이션 플래그 설정
       setIsNavigating(true);
+      isNavigatingRef.current = true;
 
       // 기존 타이머 정리
       if (navigationTimeoutRef.current) {
@@ -89,7 +86,8 @@ export const useScrollSection = (navItems: NavItem[]) => {
       // 스크롤 애니메이션 완료 후 플래그 해제
       navigationTimeoutRef.current = window.setTimeout(() => {
         setIsNavigating(false);
-        // 플래그 해제 후 현재 위치 기준으로 다시 계산
+        isNavigatingRef.current = false;
+        // 플래그 해제 직후 현재 위치 기준으로 다시 계산 (ref 기반으로 최신 상태 반영)
         calculateActiveSection();
       }, SCROLL_ANIMATION_TIMEOUT);
     },
