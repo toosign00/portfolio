@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useMemo, useState } from 'react';
-import { QUERY_KEYS } from '@/lib/queryClient';
+import { QUERY_KEYS } from '@/constants/queryKeys.constants';
 import { fetchProjectById, fetchProjects, ProjectServiceError } from '@/services/projectService';
 import type { Project } from '@/types/projects.types';
 
