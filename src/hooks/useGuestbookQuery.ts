@@ -6,19 +6,11 @@ import {
   fetchGuestbookEntriesPaginated,
 } from '@/services/guestbookService';
 
-// 방명록 API 재시도 설정
-const MAX_RETRY_COUNT = 3;
-const RETRY_DELAY_BASE = 1000;
-const MAX_RETRY_DELAY = 30000;
-
 // 방명록 목록 조회
 export const useGuestbookEntries = () => {
   return useQuery({
     queryKey: QUERY_KEYS.GUESTBOOK.ALL,
     queryFn: fetchGuestbookEntries,
-    // 오류 발생 시 최대 횟수까지 재시도
-    retry: (failureCount) => failureCount < MAX_RETRY_COUNT,
-    retryDelay: (attemptIndex) => Math.min(RETRY_DELAY_BASE * 2 ** attemptIndex, MAX_RETRY_DELAY), // 지수 백오프
   });
 };
 
@@ -31,8 +23,6 @@ export const useGuestbookInfiniteEntries = (pageSize = 10) => {
     },
     getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,
     initialPageParam: undefined as string | undefined,
-    retry: (failureCount) => failureCount < MAX_RETRY_COUNT,
-    retryDelay: (attemptIndex) => Math.min(RETRY_DELAY_BASE * 2 ** attemptIndex, MAX_RETRY_DELAY),
   });
 };
 

@@ -7,13 +7,25 @@ import { useGuestbookEntries, useGuestbookInfiniteEntries } from '@/hooks/useGue
 
 export const GuestbookPage = () => {
   const navigate = useNavigate();
-  const { data: entries = [], isLoading } = useGuestbookEntries();
+  const { data: entries = [], isLoading, error, refetch } = useGuestbookEntries();
   const infinite = useGuestbookInfiniteEntries(10);
   const { loading, handleSubmit, notification, hideNotification } = useGuestbookForm();
 
   const flatInfiniteItems = infinite.data?.pages.flatMap((p) => p.items) ?? [];
   const shouldUseInfinite = (entries?.length ?? 0) >= 10;
   const totalCount = infinite.data?.pages[0]?.totalCount ?? entries.length;
+
+  // 에러 메시지 처리
+  const errorMessage = shouldUseInfinite ? infinite.error?.message || null : error?.message || null;
+
+  // 재시도 함수
+  const handleRetry = () => {
+    if (shouldUseInfinite) {
+      infinite.refetch();
+    } else {
+      refetch();
+    }
+  };
 
   return (
     <>
@@ -47,9 +59,11 @@ export const GuestbookPage = () => {
                   entries={flatInfiniteItems}
                   loading={infinite.isLoading}
                   totalCount={totalCount}
+                  error={errorMessage}
+                  onRetry={handleRetry}
                 />
                 <div className='mt-4 flex justify-center'>
-                  {infinite.hasNextPage && (
+                  {infinite.hasNextPage && !errorMessage && (
                     <Button
                       variant='secondary'
                       size='sm'
@@ -62,7 +76,12 @@ export const GuestbookPage = () => {
                 </div>
               </>
             ) : (
-              <GuestbookList entries={entries} loading={isLoading} />
+              <GuestbookList
+                entries={entries}
+                loading={isLoading}
+                error={errorMessage}
+                onRetry={handleRetry}
+              />
             )}
           </div>
         </div>
