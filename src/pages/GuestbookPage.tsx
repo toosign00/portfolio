@@ -3,28 +3,22 @@ import { Button } from '@/components/Button';
 import { GuestbookForm, GuestbookList } from '@/components/Guestbook';
 import { NotificationModal } from '@/components/NotificationModal';
 import { useGuestbookForm } from '@/hooks/useGuestbookForm';
-import { useGuestbookEntries, useGuestbookInfiniteEntries } from '@/hooks/useGuestbookQuery';
+import { useGuestbookInfiniteEntries } from '@/hooks/useGuestbookQuery';
 
 export const GuestbookPage = () => {
   const navigate = useNavigate();
-  const { data: entries = [], isLoading, error, refetch } = useGuestbookEntries();
   const infinite = useGuestbookInfiniteEntries(10);
   const { loading, handleSubmit, notification, hideNotification } = useGuestbookForm();
 
   const flatInfiniteItems = infinite.data?.pages.flatMap((p) => p.items) ?? [];
-  const shouldUseInfinite = (entries?.length ?? 0) >= 10;
-  const totalCount = infinite.data?.pages[0]?.totalCount ?? entries.length;
+  const totalCount = infinite.data?.pages[0]?.totalCount ?? 0;
 
   // 에러 메시지 처리
-  const errorMessage = shouldUseInfinite ? infinite.error?.message || null : error?.message || null;
+  const errorMessage = infinite.error?.message || null;
 
   // 재시도 함수
   const handleRetry = () => {
-    if (shouldUseInfinite) {
-      infinite.refetch();
-    } else {
-      refetch();
-    }
+    infinite.refetch();
   };
 
   return (
@@ -53,36 +47,25 @@ export const GuestbookPage = () => {
             <GuestbookForm onSubmit={handleSubmit} loading={loading} />
 
             {/* 방명록 목록 */}
-            {shouldUseInfinite ? (
-              <>
-                <GuestbookList
-                  entries={flatInfiniteItems}
-                  loading={infinite.isLoading}
-                  totalCount={totalCount}
-                  error={errorMessage}
-                  onRetry={handleRetry}
-                />
-                <div className='mt-4 flex justify-center'>
-                  {infinite.hasNextPage && !errorMessage && (
-                    <Button
-                      variant='secondary'
-                      size='sm'
-                      onClick={() => infinite.fetchNextPage()}
-                      disabled={infinite.isFetchingNextPage}
-                    >
-                      {infinite.isFetchingNextPage ? '불러오는 중...' : '더 보기'}
-                    </Button>
-                  )}
-                </div>
-              </>
-            ) : (
-              <GuestbookList
-                entries={entries}
-                loading={isLoading}
-                error={errorMessage}
-                onRetry={handleRetry}
-              />
-            )}
+            <GuestbookList
+              entries={flatInfiniteItems}
+              loading={infinite.isLoading}
+              totalCount={totalCount}
+              error={errorMessage}
+              onRetry={handleRetry}
+            />
+            <div className='mt-4 flex justify-center'>
+              {infinite.hasNextPage && !errorMessage && (
+                <Button
+                  variant='secondary'
+                  size='sm'
+                  onClick={() => infinite.fetchNextPage()}
+                  disabled={infinite.isFetchingNextPage}
+                >
+                  {infinite.isFetchingNextPage ? '불러오는 중...' : '더 보기'}
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </div>

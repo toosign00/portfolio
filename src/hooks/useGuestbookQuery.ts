@@ -1,18 +1,6 @@
-import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { QUERY_KEYS } from '@/constants/queryKeys.constants';
-import {
-  createGuestbookEntry,
-  fetchGuestbookEntries,
-  fetchGuestbookEntriesPaginated,
-} from '@/services/guestbookService';
-
-// 방명록 목록 조회
-export const useGuestbookEntries = () => {
-  return useQuery({
-    queryKey: QUERY_KEYS.GUESTBOOK.ALL,
-    queryFn: fetchGuestbookEntries,
-  });
-};
+import { createGuestbookEntry, fetchGuestbookEntriesPaginated } from '@/services/guestbookService';
 
 // 방명록 무한 스크롤 조회
 export const useGuestbookInfiniteEntries = (pageSize = 10) => {

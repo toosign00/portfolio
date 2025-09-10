@@ -12,31 +12,6 @@ export class GuestbookServiceError extends Error {
   }
 }
 
-// 방명록 목록 조회 (공개)
-export const fetchGuestbookEntries = async (): Promise<GuestbookEntry[]> => {
-  try {
-    const { data, error } = await supabase
-      .from('guestbook')
-      .select('id, name, message, created_at')
-      .eq('is_visible', true)
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      throw new GuestbookServiceError(`방명록 목록 조회 실패: ${error.message}`, error.code);
-    }
-
-    return data || [];
-  } catch (error) {
-    console.error('방명록 목록 조회 중 오류:', error);
-    if (error instanceof GuestbookServiceError) {
-      throw error;
-    }
-    throw new GuestbookServiceError(
-      error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.'
-    );
-  }
-};
-
 // 방명록 페이지네이션 조회 (무한 스크롤)
 export const fetchGuestbookEntriesPaginated = async (
   limit: number,
