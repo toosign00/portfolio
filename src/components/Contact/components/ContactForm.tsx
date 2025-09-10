@@ -65,7 +65,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
           {...register('from_name', { setValueAs: (value: string) => sanitizeInput(value) })}
           className='rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus:ring-blue focus-visible:ring-2'
         />
-        <span className='min-h-[1.25rem] text-red-500 text-sm'>{errors.from_name?.message}</span>
+        <span className='min-h-[1.25rem] text-red-400 text-sm'>{errors.from_name?.message}</span>
       </div>
 
       <div className='flex min-h-[5rem] flex-col gap-1'>
@@ -78,7 +78,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
           {...register('from_email', { setValueAs: (value: string) => sanitizeInput(value) })}
           className='rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus:ring-blue focus-visible:ring-2'
         />
-        <span className='min-h-[1.25rem] text-red-500 text-sm'>{errors.from_email?.message}</span>
+        <span className='min-h-[1.25rem] text-red-400 text-sm'>{errors.from_email?.message}</span>
       </div>
 
       <div className='flex min-h-[7rem] flex-col gap-1'>
@@ -91,7 +91,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
           {...register('message', { setValueAs: (value: string) => sanitizeInput(value) })}
           className='resize-none rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus:ring-blue focus-visible:ring-2'
         />
-        <span className='min-h-[1.25rem] text-red-500 text-sm'>{errors.message?.message}</span>
+        <span className='min-h-[1.25rem] text-red-400 text-sm'>{errors.message?.message}</span>
       </div>
 
       <button
