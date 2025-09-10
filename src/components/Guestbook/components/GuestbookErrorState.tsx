@@ -15,7 +15,7 @@ export const GuestbookErrorState = ({ onRetry }: GuestbookErrorStateProps) => {
         {onRetry && (
           <Button
             onClick={onRetry}
-            type='submit'
+            type='button'
             variant='primary'
             className='font-semibold'
             size='sm'
