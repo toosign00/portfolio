@@ -36,10 +36,7 @@ export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) =>
               <div className='relative space-y-2 pl-5'>
                 <span className='absolute top-0 left-0'>•</span>
                 {item.description.split('\n\n').map((paragraph, i) => (
-                  <p
-                    key={`${paragraph.slice(0, 20)}-${i}`}
-                    className='text-base text-gray-400 leading-relaxed'
-                  >
+                  <p key={`${item.title}-${i}`} className='text-base text-gray-400 leading-relaxed'>
                     {paragraph}
                   </p>
                 ))}
