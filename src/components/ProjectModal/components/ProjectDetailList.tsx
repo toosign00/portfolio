@@ -33,10 +33,17 @@ export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) =>
                 ))}
               </ul>
             ) : (
-              <p className='relative pl-5 text-base text-gray-400 leading-relaxed'>
+              <div className='relative space-y-2 pl-5'>
                 <span className='absolute top-0 left-0'>•</span>
-                {item.description}
-              </p>
+                {item.description.split('\n\n').map((paragraph, i) => (
+                  <p
+                    key={`${paragraph.slice(0, 20)}-${i}`}
+                    className='text-base text-gray-400 leading-relaxed'
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             )}
 
             {/* 이미지가 있으면 표시 */}
