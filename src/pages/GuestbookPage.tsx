@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/Button';
 import { GuestbookForm, GuestbookList } from '@/components/Guestbook';
@@ -9,6 +10,10 @@ export const GuestbookPage = () => {
   const navigate = useNavigate();
   const infinite = useGuestbookInfiniteEntries(10);
   const { loading, handleSubmit, notification, hideNotification } = useGuestbookForm();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const flatInfiniteItems = infinite.data?.pages.flatMap((p) => p.items) ?? [];
   const totalCount = infinite.data?.pages[0]?.totalCount ?? 0;
