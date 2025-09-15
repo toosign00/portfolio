@@ -1,10 +1,9 @@
+import { toast } from 'sonner';
 import type { GuestbookFormData } from '@/types/guestbook.types';
 import { useCreateGuestbookEntry } from './useGuestbookQuery';
-import { useNotification } from './useNotification';
 
 export const useGuestbookForm = () => {
   const createMutation = useCreateGuestbookEntry();
-  const { notification, showNotification, hideNotification } = useNotification();
 
   const handleSubmit = async (data: GuestbookFormData) => {
     try {
@@ -14,7 +13,7 @@ export const useGuestbookForm = () => {
         message: data.message,
       });
 
-      showNotification('방명록 작성 완료', '소중한 메시지를 남겨주셔서 감사합니다!', 'success');
+      toast.success('방명록 작성 완료', { description: '소중한 메시지를 남겨주셔서 감사합니다!' });
     } catch (error) {
       console.error('방명록 작성 실패:', error);
 
@@ -39,14 +38,12 @@ export const useGuestbookForm = () => {
         }
       }
 
-      showNotification('작성 실패', errorMessage, 'error');
+      toast.error('작성 실패', { description: errorMessage });
     }
   };
 
   return {
     loading: createMutation.isPending,
     handleSubmit,
-    notification,
-    hideNotification,
   };
 };

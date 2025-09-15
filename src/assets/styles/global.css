@@ -60,3 +60,30 @@
     bottom: max(1rem, env(safe-area-inset-bottom, 1rem) + 0.5rem);
   }
 }
+
+/* globals.css */
+
+/* 성공 토스트 아이콘 */
+[data-sonner-toast][data-type="success"] [data-icon] {
+  color: #00d4ff;
+}
+
+/* 에러 토스트 아이콘 */
+[data-sonner-toast][data-type="error"] [data-icon] {
+  color: #ff6b9d;
+}
+
+/* 로딩 토스트 아이콘 */
+[data-sonner-toast][data-type="loading"] [data-icon] {
+  color: #a1a8b0;
+}
+
+/* 경고 토스트 아이콘 */
+[data-sonner-toast][data-type="warning"] [data-icon] {
+  color: #fbbf24;
+}
+
+/* 정보 토스트 아이콘 */
+[data-sonner-toast][data-type="info"] [data-icon] {
+  color: #60a5fa;
+}

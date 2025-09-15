@@ -9,24 +9,20 @@ interface SectionPosition {
 }
 
 const SCROLL_ANIMATION_TIMEOUT = 1200; // 스크롤 애니메이션 시간보다 약간 길게
-const SCROLL_THROTTLE_INTERVAL = 16; // 60fps 기준 (1000ms / 60fps ≈ 16ms)
+const SCROLL_THROTTLE_INTERVAL = 100; // 100ms
 
 export const useScrollSection = (navItems: NavItem[]) => {
   const [active, setActive] = useState<string | null>(null);
   const [isNavigating, setIsNavigating] = useState(false);
   const navigationTimeoutRef = useRef<number | null>(null);
   const isNavigatingRef = useRef(false);
+  const sectionPositionsRef = useRef<SectionPosition[]>([]);
+  const isInitializedRef = useRef(false);
 
-  const calculateActiveSection = useCallback(() => {
-    if (isNavigatingRef.current) {
-      return;
-    }
-
-    const viewportHeight = window.innerHeight;
+  // 섹션 위치 캐싱 - resize나 초기 로딩 시에만 재계산
+  const updateSectionPositions = useCallback(() => {
     const scrollPosition = window.scrollY;
-    const viewportCenter = scrollPosition + viewportHeight / 2;
-
-    const sectionPositions: SectionPosition[] = navItems.flatMap((item) => {
+    sectionPositionsRef.current = navItems.flatMap((item) => {
       return item.sectionIds
         .map((id) => {
           const el = document.getElementById(id);
@@ -40,6 +36,24 @@ export const useScrollSection = (navItems: NavItem[]) => {
         })
         .filter(Boolean) as SectionPosition[];
     });
+    isInitializedRef.current = true;
+  }, [navItems]);
+
+  const calculateActiveSection = useCallback(() => {
+    if (isNavigatingRef.current) {
+      return;
+    }
+
+    // 초기화되지 않은 경우에만 섹션 위치 계산
+    if (!isInitializedRef.current) {
+      updateSectionPositions();
+    }
+
+    const viewportHeight = window.innerHeight;
+    const scrollPosition = window.scrollY;
+    const viewportCenter = scrollPosition + viewportHeight / 2;
+
+    const sectionPositions = sectionPositionsRef.current;
 
     // 현재 뷰포트에 보이는 섹션이 있는지 확인
     const visibleSections = sectionPositions.filter(
@@ -66,7 +80,7 @@ export const useScrollSection = (navItems: NavItem[]) => {
     });
 
     setActive(closestSection);
-  }, [navItems]);
+  }, [updateSectionPositions]);
 
   // 수동으로 active 상태를 설정하는 함수 (버튼 클릭 시 사용)
   const setActiveManual = useCallback(
@@ -96,17 +110,25 @@ export const useScrollSection = (navItems: NavItem[]) => {
 
   useEffect(() => {
     const throttledHandleScroll = throttle(calculateActiveSection, SCROLL_THROTTLE_INTERVAL);
+    const throttledHandleResize = throttle(updateSectionPositions, 250);
+
     window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+    window.addEventListener('resize', throttledHandleResize, { passive: true });
+
+    // 초기 계산
+    updateSectionPositions();
     calculateActiveSection();
 
     return () => {
       window.removeEventListener('scroll', throttledHandleScroll);
+      window.removeEventListener('resize', throttledHandleResize);
       throttledHandleScroll.cancel();
+      throttledHandleResize.cancel();
       if (navigationTimeoutRef.current) {
         clearTimeout(navigationTimeoutRef.current);
       }
     };
-  }, [calculateActiveSection]);
+  }, [calculateActiveSection, updateSectionPositions]);
 
   return {
     active,
