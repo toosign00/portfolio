@@ -6,7 +6,7 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   href?: string;
   as?: React.ElementType;
   to?: string;
-  size?: 'sm' | 'md' | 'lg' | { base: 'sm' | 'md' | 'lg'; md: 'sm' | 'md' | 'lg' };
+  size?: 'sm' | 'md' | 'lg';
   variant?: 'primary' | 'secondary' | 'shadow';
   className?: string;
   isActive?: boolean;
@@ -29,18 +29,15 @@ export const Button = ({
   ...rest
 }: ButtonProps) => {
   const baseStyles =
-    'focus:ring-blue flex items-center justify-center text-center relative cursor-pointer overflow-hidden rounded-lg backdrop-blur-md transition-all duration-300 focus-visible:ring-2 focus:outline-none';
+    'focus:ring-blue flex items-center justify-center text-center relative cursor-pointer overflow-hidden backdrop-blur-md transition-all duration-300 focus-visible:ring-2 focus:outline-none';
 
-  const getSizeStyles = (size: ButtonProps['size']) => {
-    if (typeof size === 'object') {
-      return `px-3 py-1.5 text-sm md:px-4 md:py-2 md:text-base`;
-    }
+  const getSizeStyles = (size: 'sm' | 'md' | 'lg') => {
     const sizeStyles = {
-      sm: 'px-3 py-1.5 text-sm',
-      md: 'px-4 py-2 text-base',
-      lg: 'px-5 py-2.5 text-lg',
+      sm: 'px-3 py-1.5 text-sm rounded-md',
+      md: 'px-4 py-2 text-base rounded-lg',
+      lg: 'px-5 py-2.5 text-lg rounded-xl',
     };
-    return sizeStyles[size as 'sm' | 'md' | 'lg'];
+    return sizeStyles[size];
   };
 
   const variantStyles = {

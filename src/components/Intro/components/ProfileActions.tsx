@@ -6,7 +6,8 @@ export const ProfileActions = () => {
     <div className='flex flex-row gap-4 sm:gap-6'>
       <Button
         href={PROFILE_CONSTANTS.RESUME.PATH}
-        size={{ base: 'md', md: 'lg' }}
+        size='sm'
+        className='md:rounded-lg md:px-4 md:py-2 md:text-base'
         variant='secondary'
         border={false}
         download
@@ -15,7 +16,8 @@ export const ProfileActions = () => {
       </Button>
       <Button
         href={PROFILE_CONSTANTS.SOCIAL.GITHUB}
-        size={{ base: 'md', md: 'lg' }}
+        size='sm'
+        className='md:rounded-lg md:px-4 md:py-2 md:text-base'
         variant='secondary'
         border={false}
       >
