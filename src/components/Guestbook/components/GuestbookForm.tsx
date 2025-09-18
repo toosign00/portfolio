@@ -32,7 +32,7 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
           <input
             {...register('name')}
             type='text'
-            className='w-full rounded-lg border border-white/20 bg-black/50 px-4 py-3 text-white placeholder-gray-400 transition-colors focus:border-blue-400 focus:outline-none'
+            className={`w-full resize-none rounded-lg border border-white/20 bg-black/50 px-4 py-3 text-white placeholder-gray-400 transition-all ${errors.name ? 'focus-ring-error' : 'focus-ring'}`}
             placeholder='이름을 입력하세요'
             disabled={loading}
             aria-label='이름 입력'
@@ -51,7 +51,7 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
           <textarea
             {...register('message')}
             rows={4}
-            className='w-full resize-none rounded-lg border border-white/20 bg-black/50 px-4 py-3 text-white placeholder-gray-400 transition-all focus:border-blue-400 focus:outline-none'
+            className={`w-full resize-none rounded-lg border border-white/20 bg-black/50 px-4 py-3 text-white placeholder-gray-400 transition-all ${errors.message ? 'focus-ring-error' : 'focus-ring'}`}
             placeholder='방명록에 남길 메시지를 작성해주세요'
             disabled={loading}
             aria-label='메시지 입력'
@@ -82,13 +82,7 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
             >
               초기화
             </Button>
-            <Button
-              type='submit'
-              variant='primary'
-              className='font-semibold'
-              size='sm'
-              disabled={loading}
-            >
+            <Button type='submit' variant='primary' size='sm' disabled={loading}>
               {loading ? '작성 중...' : '방명록 작성'}
             </Button>
           </div>

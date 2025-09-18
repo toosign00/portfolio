@@ -16,9 +16,12 @@ export function NotFoundPage() {
           <Button onClick={() => navigate(-1)} variant='secondary' size='md'>
             이전 페이지
           </Button>
-          <Button as={Link} to='/' variant='secondary' size='md'>
+          <Link
+            to='/'
+            className='focus-ring relative flex cursor-pointer items-center justify-center overflow-hidden rounded-md border border-white/10 bg-white/5 px-4 py-2 text-center font-normal text-base text-gray backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:text-white'
+          >
             홈으로
-          </Button>
+          </Link>
         </div>
       </div>
     </div>

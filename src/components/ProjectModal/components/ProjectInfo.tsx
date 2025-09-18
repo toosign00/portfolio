@@ -30,7 +30,7 @@ export const ProjectInfo = ({ project }: ProjectInfoProps) => {
               href={project.githubUrl}
               target='_blank'
               rel='noopener noreferrer'
-              className='underline transition-colors hover:text-blue-400'
+              className='focus-ring focus-ring underline transition-colors hover:text-blue'
             >
               깃허브
             </a>
@@ -39,7 +39,7 @@ export const ProjectInfo = ({ project }: ProjectInfoProps) => {
                 href={project.deployUrl}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='ml-4 underline transition-colors hover:text-white'
+                className='focus-ring focus-ring ml-4 underline transition-colors hover:text-blue'
               >
                 배포 사이트
               </a>

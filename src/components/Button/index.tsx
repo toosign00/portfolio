@@ -1,77 +1,51 @@
-import { m } from 'motion/react';
-import type React from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import { cva, type VariantProps } from 'class-variance-authority';
+import type * as React from 'react';
 
-interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  children: React.ReactNode;
-  href?: string;
-  as?: React.ElementType;
-  to?: string;
-  size?: 'sm' | 'md' | 'lg';
-  variant?: 'primary' | 'secondary' | 'shadow';
-  className?: string;
-  isActive?: boolean;
-  border?: boolean;
-  download?: string | boolean;
-}
+import { cn } from '@/utils/cnUtils';
 
-export const Button = ({
-  children,
-  href,
-  as,
-  size = 'md',
-  variant = 'primary',
-  className = '',
-  onClick,
-  isActive = false,
-  type = 'button',
-  border = true,
-  download,
-  ...rest
-}: ButtonProps) => {
-  const baseStyles =
-    'focus:ring-blue flex items-center justify-center text-center relative cursor-pointer overflow-hidden backdrop-blur-md transition-all duration-300 focus-visible:ring-2 focus:outline-none';
+const buttonVariants = cva(
+  "focus-ring inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium text-sm outline-none transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  {
+    variants: {
+      variant: {
+        primary: 'focus-ring-primary bg-blue font-semibold text-black hover:opacity-80',
+        secondary: 'border border-white/10 bg-white/5 text-gray hover:bg-white/10 hover:text-white',
+        shine:
+          'border border-blue/50 bg-blue/20 text-blue shadow-blue/25 shadow-lg hover:bg-blue/30',
+      },
+      size: {
+        sm: 'rounded-md px-3 py-1.5 text-sm',
+        md: 'rounded-md px-4 py-2 text-base',
+        lg: 'rounded-xl px-5 py-2.5 text-lg',
+      },
+    },
+    defaultVariants: {
+      variant: 'secondary',
+      size: 'md',
+    },
+  }
+);
 
-  const getSizeStyles = (size: 'sm' | 'md' | 'lg') => {
-    const sizeStyles = {
-      sm: 'px-3 py-1.5 text-sm rounded-md',
-      md: 'px-4 py-2 text-base rounded-lg',
-      lg: 'px-5 py-2.5 text-lg rounded-xl',
-    };
-    return sizeStyles[size];
-  };
-
-  const variantStyles = {
-    primary: `${border ? 'border border-blue/10' : ''} text-black bg-blue hover:opacity-80`,
-    secondary: `${border ? 'border border-white/10' : ''} text-gray bg-white/5 hover:bg-white/10 hover:text-white`,
-    shadow: `${border ? 'border border-blue/50' : ''} bg-blue/20 text-blue shadow-blue/25 shadow-lg hover:bg-blue/30`,
-  };
-
-  const commonProps = {
-    className: `${baseStyles} ${getSizeStyles(size)} ${variantStyles[variant]} ${className}`,
-    onClick,
-    ...rest,
-  };
-
-  const Component = as || (href ? 'a' : 'button');
+function Button({
+  className,
+  variant,
+  size,
+  asChild = false,
+  ...props
+}: React.ComponentProps<'button'> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+  }) {
+  const Comp = asChild ? Slot : 'button';
 
   return (
-    <Component
-      href={href}
-      type={Component === 'button' ? type : undefined}
-      {...(href && !download && Component === 'a'
-        ? { target: '_blank', rel: 'noopener noreferrer' }
-        : {})}
-      {...(download ? { download: typeof download === 'string' ? download : '' } : {})}
-      {...commonProps}
-    >
-      <span className='relative z-10'>{children}</span>
-      {variant === 'primary' && (
-        <m.div
-          layoutId={isActive ? 'activeFilter' : undefined}
-          className='absolute inset-0 bg-gradient-to-r from-blue/10 to-pink/10'
-          transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-        />
-      )}
-    </Component>
+    <Comp
+      data-slot='button'
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
   );
-};
+}
+
+export { Button, buttonVariants };

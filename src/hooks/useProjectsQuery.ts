@@ -45,9 +45,9 @@ export const useProjectsWithUI = () => {
   const { data: projects = [], isLoading: loading, error } = useProjects();
   const [showAll, setShowAll] = useState(false);
 
-  // 메모이제이션을 통한 성능 최적화
+  // 누적 방식: showAll이 false면 처음 3개, true면 전체
   const displayedProjects = useMemo(() => {
-    return showAll ? projects : projects.slice(0, 3);
+    return projects.slice(0, showAll ? projects.length : 3);
   }, [projects, showAll]);
 
   const hasMoreProjects = useMemo(() => {

@@ -8,12 +8,11 @@ export const SkillFilter = ({ filters, currentFilter, onFilterChange }: SkillFil
         <Button
           key={f.value}
           size='sm'
-          variant={currentFilter === f.value ? 'shadow' : 'secondary'}
+          variant={currentFilter === f.value ? 'shine' : 'secondary'}
           onClick={(e) => {
             e.preventDefault();
             onFilterChange(f.value);
           }}
-          isActive={currentFilter === f.value}
         >
           {f.label}
         </Button>

@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import { colorClasses } from '@/constants/projectColors.constants';
 import type { ProjectCardProps } from '@/types/projectCard.types';
 
-export const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
+export const ProjectCard = memo<ProjectCardProps>(({ project, onClick }: ProjectCardProps) => {
   const color = project.color ?? 'blue';
   const classes = colorClasses[color];
 
@@ -14,7 +15,7 @@ export const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
 
   return (
     <div
-      className={`group relative overflow-hidden rounded-lg bg-ui-background transition-all duration-300 focus:outline-none focus:ring-blue focus-visible:ring-2 ${classes.bg} w-full cursor-pointer text-left`}
+      className={`focus-ring group relative overflow-hidden rounded-lg bg-ui-background transition-all duration-300 ${classes.bg} w-full cursor-pointer text-left`}
       onClick={() => onClick(project)}
       onKeyDown={handleKeyDown}
       tabIndex={0}
@@ -61,4 +62,4 @@ export const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
       />
     </div>
   );
-};
+});

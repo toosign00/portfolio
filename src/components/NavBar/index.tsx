@@ -86,7 +86,7 @@ export const NavBar = () => {
                 <a
                   href={`#${item.sectionIds[0]}`}
                   onClick={(e) => handleClick(e, item)}
-                  className={`relative flex cursor-pointer items-center justify-center whitespace-nowrap rounded-full px-2 py-0.5 font-normal text-xs transition-colors duration-150 focus:outline-none focus:ring-blue focus-visible:ring-2 sm:px-3 sm:text-sm md:text-base ${
+                  className={`focus-ring relative flex cursor-pointer items-center justify-center whitespace-nowrap rounded-full px-2 py-0.5 font-normal text-xs transition-colors duration-150 focus:outline-none sm:px-3 sm:text-sm md:text-base ${
                     active === item.label ? 'text-white' : 'text-gray-300 hover:text-white'
                   }`}
                   aria-current={active === item.label ? 'page' : undefined}

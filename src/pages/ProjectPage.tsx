@@ -1,14 +1,13 @@
-import { IoArrowBackOutline, IoSearch } from 'react-icons/io5';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Button } from '@/components/Button';
+import { IoArrowBackOutline } from 'react-icons/io5';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { ProjectDetailList } from '@/components/ProjectModal/components/ProjectDetailList';
+import { ProjectInfo } from '@/components/ProjectModal/components/ProjectInfo';
+import { TechnologyStack } from '@/components/ProjectModal/components/TechnologyStack';
 import { ProjectPageSkeleton } from '@/components/Skeleton/ProjectPageSkeleton';
 import { useProject } from '@/hooks/useProjectsQuery';
 import { useProjectSkeletonLoading } from '@/hooks/useSkeletonLoading';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { isNotFoundError, normalizeErrorMessage } from '@/utils/errorUtils';
-import { ProjectDetailList } from './ProjectDetailList';
-import { ProjectInfo } from './ProjectInfo';
-import { TechnologyStack } from './TechnologyStack';
 
 export const ProjectPage = () => {
   const { id } = useParams();
@@ -37,12 +36,14 @@ export const ProjectPage = () => {
     return (
       <div className='flex min-h-screen flex-col items-center justify-center bg-project-background'>
         <div className='flex flex-col items-center'>
-          <IoSearch className='mx-auto mb-4 text-6xl text-gray-400' />
           <h1 className='mb-4 font-bold text-2xl text-white'>오류가 발생했습니다</h1>
           <p className='mb-8 text-gray-400'>{errorMessage}</p>
-          <Button variant='secondary' size='md' onClick={() => navigate('/')}>
+          <Link
+            to='/'
+            className='focus-ring relative flex cursor-pointer items-center justify-center overflow-hidden rounded-md border border-white/10 bg-white/5 px-4 py-2 text-center font-normal text-base text-gray backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:text-white'
+          >
             메인으로 돌아가기
-          </Button>
+          </Link>
         </div>
       </div>
     );
@@ -63,14 +64,13 @@ export const ProjectPage = () => {
   return (
     <div className='flex min-h-screen flex-col items-center justify-center bg-project-background'>
       <div className='w-full max-w-xl px-8 py-4'>
-        <button
-          type='button'
-          className='mb-8 flex cursor-pointer items-center gap-0.5 text-gray-400 text-sm hover:text-blue'
-          onClick={() => navigate('/')}
+        <Link
+          to='/'
+          className='focus-ring mb-8 flex w-fit cursor-pointer items-center gap-0.5 text-gray-400 text-sm hover:text-blue'
           aria-label='메인페이지로 돌아가기'
         >
           <IoArrowBackOutline className='text-lg' /> 메인으로 돌아가기
-        </button>
+        </Link>
 
         <article className='flex flex-col items-start gap-6'>
           <div>
