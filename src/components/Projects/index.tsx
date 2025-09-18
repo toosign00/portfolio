@@ -7,6 +7,7 @@ import { useProjectsWithUI } from '@/hooks/useProjectsQuery';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { SectionLayout } from '@/layout/SectionLayout';
 import type { ProjectCardData } from '@/types/projectCard.types';
+import { getColorForIndex } from '@/utils/colorUtils';
 import { ProjectCard } from './components/ProjectCard';
 
 export const Projects = () => {
@@ -41,10 +42,13 @@ export const Projects = () => {
         ) : (
           <>
             <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
-              {displayedProjects.map((project) => (
+              {displayedProjects.map((project, index) => (
                 <ProjectCard
                   key={project.id}
-                  project={project}
+                  project={{
+                    ...project,
+                    color: project.color || getColorForIndex(index, 0),
+                  }}
                   onClick={() => handleProjectClick(project)}
                 />
               ))}
