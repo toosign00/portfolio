@@ -1,9 +1,9 @@
-import { m } from 'motion/react';
-import { useRef } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
+import { AnimatePresence, m } from 'motion/react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Button } from '@/components/Button';
 import { ModalSkeleton } from '@/components/Skeleton/ModalSkeleton';
-import { useModalClose } from '@/hooks/useModalClose';
-import { usePreventScroll } from '@/hooks/usePreventScroll';
 import { useProject } from '@/hooks/useProjectsQuery';
 import { useProjectSkeletonLoading } from '@/hooks/useSkeletonLoading';
 import { isNotFoundError, normalizeErrorMessage } from '@/utils/errorUtils';
@@ -15,7 +15,6 @@ import { TechnologyStack } from './components/TechnologyStack';
 export const ProjectModal = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const modalRef = useRef<HTMLDivElement>(null);
 
   // React Query를 사용한 프로젝트 데이터 조회
   const { data: project, isPending, error } = useProject(id);
@@ -27,135 +26,108 @@ export const ProjectModal = () => {
     error,
   });
 
-  const handleClose = async () => {
-    await navigate(-1);
+  // 모달 상태 관리
+  const [isOpen, setIsOpen] = useState(!!id);
+  const [shouldNavigate, setShouldNavigate] = useState(false);
+
+  useEffect(() => {
+    setIsOpen(!!id);
+  }, [id]);
+
+  const handleOpenChange = async (open: boolean) => {
+    if (!open) {
+      setIsOpen(false);
+      setShouldNavigate(true);
+    }
   };
 
-  const { isClosing, handleOverlayClick } = useModalClose(handleClose);
-
-  // 스크롤 방지 훅 사용
-  usePreventScroll();
-
-  // 로딩 상태
-  if (showSkeleton) {
-    return (
-      <m.div
-        className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm'
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.2, ease: 'easeInOut' }}
-      >
-        <m.div
-          ref={modalRef}
-          data-modal-content
-          role='dialog'
-          className='relative mx-4 max-h-[85vh] w-full max-w-2xl overflow-y-scroll rounded-xl border border-white/10 bg-ui-background px-4 py-10 shadow-2xl sm:mx-0 sm:px-8'
-          tabIndex={-1}
-          initial={{ opacity: 0, y: 70, scale: 0.95 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1,
-          }}
-          transition={{
-            type: 'spring',
-            stiffness: 600,
-            damping: 40,
-            duration: 0.2,
-          }}
-        >
-          <ModalSkeleton onClose={handleClose} />
-        </m.div>
-      </m.div>
-    );
-  }
-
-  // 에러 상태
-  if (hasError) {
-    const isNotFound = isNotFoundError(error);
-    const errorMessage = normalizeErrorMessage(error);
-
-    return (
-      <m.div
-        className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm'
-        onClick={handleOverlayClick}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isClosing ? 0 : 1 }}
-        transition={{ duration: 0.2, ease: 'easeInOut' }}
-      >
-        <m.div
-          ref={modalRef}
-          data-modal-content
-          className='relative mx-4 max-h-[80vh] w-full max-w-xl overflow-y-scroll rounded-xl border border-white/10 bg-ui-background px-4 py-10 shadow-2xl sm:mx-0 sm:px-8'
-          tabIndex={-1}
-          initial={{ opacity: 0, y: 70, scale: 0.95 }}
-          animate={{
-            opacity: isClosing ? 0 : 1,
-            y: isClosing ? 70 : 0,
-            scale: isClosing ? 0.95 : 1,
-          }}
-          transition={{
-            type: 'spring',
-            stiffness: 600,
-            damping: 40,
-            duration: 0.2,
-          }}
-        >
-          <div className='text-center'>
-            <h2 className='mb-4 font-bold text-white text-xl'>
-              {isNotFound ? '프로젝트를 찾을 수 없습니다' : '오류가 발생했습니다'}
-            </h2>
-            <p className='mb-6 text-gray-400'>{errorMessage}</p>
-            <button
-              type='button'
-              onClick={handleClose}
-              className='rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700'
-            >
-              닫기
-            </button>
-          </div>
-        </m.div>
-      </m.div>
-    );
-  }
-
-  if (!project) {
-    return null;
-  }
-
-  const details = project.details;
+  const handleExitComplete = async () => {
+    if (shouldNavigate) {
+      setShouldNavigate(false);
+      await navigate(-1);
+    }
+  };
 
   return (
-    <m.div
-      className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm'
-      onClick={handleOverlayClick}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: isClosing ? 0 : 1 }}
-      transition={{ duration: 0.2, ease: 'easeInOut' }}
-    >
-      <m.div
-        ref={modalRef}
-        data-modal-content
-        className='relative mx-4 max-h-[85vh] w-full max-w-2xl overflow-y-scroll rounded-xl border border-white/10 bg-ui-background px-4 py-10 shadow-2xl sm:mx-0 sm:px-8'
-        tabIndex={-1}
-        initial={{ opacity: 0, y: 70, scale: 0.95 }}
-        animate={{
-          opacity: isClosing ? 0 : 1,
-          y: isClosing ? 70 : 0,
-          scale: isClosing ? 0.95 : 1,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 600,
-          damping: 40,
-          duration: 0.2,
-        }}
-      >
-        <ModalHeader project={project} onClose={handleClose} />
-        <TechnologyStack technologies={project.technologies} />
-        <ProjectInfo project={project} />
-        <ProjectDetailList details={details} />
-      </m.div>
-    </m.div>
+    <AnimatePresence onExitComplete={handleExitComplete}>
+      {isOpen && (
+        <Dialog.Root open={isOpen} onOpenChange={handleOpenChange}>
+          <Dialog.Portal forceMount>
+            <Dialog.Overlay asChild forceMount>
+              <m.div
+                className='fixed inset-0 z-50 bg-black/60 backdrop-blur-sm'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ type: 'tween', duration: 0.2, ease: 'easeInOut' }}
+              />
+            </Dialog.Overlay>
+            <div className='fixed inset-0 z-50 flex items-center justify-center'>
+              <Dialog.Content asChild forceMount>
+                <m.div
+                  className={`relative mx-4 overflow-y-scroll rounded-xl border border-white/10 bg-ui-background px-4 py-10 shadow-2xl sm:mx-0 sm:px-8 ${
+                    hasError
+                      ? 'max-h-[80vh] w-full max-w-xl overflow-hidden'
+                      : 'max-h-[85vh] w-full max-w-2xl'
+                  }`}
+                  initial={{ opacity: 0, y: 70, scale: 0.95 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                  }}
+                  exit={{ opacity: 0, y: 70, scale: 0.95 }}
+                  transition={{ type: 'tween', duration: 0.2, ease: 'easeInOut' }}
+                >
+                  {showSkeleton && (
+                    <>
+                      <Dialog.Title className='sr-only'>프로젝트 로딩 중</Dialog.Title>
+                      <Dialog.Description className='sr-only'>
+                        프로젝트 정보를 불러오고 있습니다.
+                      </Dialog.Description>
+                      <ModalSkeleton onClose={() => handleOpenChange(false)} />
+                    </>
+                  )}
+                  {hasError && (
+                    <div className='text-center'>
+                      <Dialog.Title className='mb-4 font-bold text-red-400 text-xl'>
+                        {isNotFoundError(error)
+                          ? '프로젝트를 찾을 수 없습니다'
+                          : '오류가 발생했습니다'}
+                      </Dialog.Title>
+                      <Dialog.Description className='mb-6 text-gray-400'>
+                        {normalizeErrorMessage(error)}
+                      </Dialog.Description>
+                      <Dialog.Close asChild>
+                        <Button type='button' variant='primary' size='md'>
+                          닫기
+                        </Button>
+                      </Dialog.Close>
+                    </div>
+                  )}
+                  {project && !showSkeleton && !hasError && (
+                    <>
+                      <ModalHeader project={project} />
+                      <TechnologyStack technologies={project.technologies} />
+                      <ProjectInfo project={project} />
+                      <ProjectDetailList details={project.details} />
+                      <Dialog.Close asChild>
+                        <button
+                          type='button'
+                          className='focus-ring absolute top-6 right-6 cursor-pointer text-2xl text-gray-400 hover:text-white'
+                          aria-label='모달 닫기'
+                        >
+                          ×
+                        </button>
+                      </Dialog.Close>
+                    </>
+                  )}
+                </m.div>
+              </Dialog.Content>
+            </div>
+          </Dialog.Portal>
+        </Dialog.Root>
+      )}
+    </AnimatePresence>
   );
 };

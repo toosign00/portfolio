@@ -2,7 +2,6 @@ import type { Project, ProjectDetail } from '@/types/projects.types';
 
 export interface ModalHeaderProps {
   project: Project;
-  onClose: () => void;
 }
 
 export interface ProjectDetailListProps {
