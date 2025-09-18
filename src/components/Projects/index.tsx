@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { IoReload } from 'react-icons/io5';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/Button';
@@ -13,9 +14,12 @@ export const Projects = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleProjectClick = async (project: ProjectCardData) => {
-    await navigate(getProjectPath(project.id), { state: { background: location } });
-  };
+  const handleProjectClick = useCallback(
+    async (project: ProjectCardData) => {
+      await navigate(getProjectPath(project.id), { state: { background: location } });
+    },
+    [navigate, location]
+  );
 
   return (
     <SectionLayout id='projects'>

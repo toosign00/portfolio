@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { contactInfo } from '@/data/contact.data';
 import { useContactForm } from '@/hooks/useContactForm';
 import { SectionHeader } from '@/layout/SectionHeader';
@@ -7,12 +7,7 @@ import { ContactForm } from './components/ContactForm';
 import { ContactInfo } from './components/ContactInfo';
 
 export const Contact = () => {
-  const navigate = useNavigate();
   const { loading, handleSubmit } = useContactForm();
-
-  const handleGuestbookNavigation = async () => {
-    await navigate('/guestbook');
-  };
 
   return (
     <SectionLayout>
@@ -24,14 +19,12 @@ export const Contact = () => {
       <ContactForm loading={loading} onSubmit={handleSubmit} />
 
       <div className='mt-8 flex justify-center'>
-        <button
-          type='button'
-          onClick={handleGuestbookNavigation}
-          aria-label='방명록 페이지로 이동'
-          className='mt-8 cursor-pointer rounded bg-blue px-4 py-2 font-semibold text-black transition hover:opacity-80 disabled:opacity-60'
+        <Link
+          to='/guestbook'
+          className='focus-ring relative flex cursor-pointer items-center justify-center overflow-hidden rounded-md border border-blue/10 bg-blue px-4 py-2 text-center font-semibold text-base text-black backdrop-blur-md transition-all duration-300 hover:opacity-80'
         >
           방명록 남기기
-        </button>
+        </Link>
       </div>
     </SectionLayout>
   );

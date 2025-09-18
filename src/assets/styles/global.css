@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 @font-face {
   font-family: "Pretendard Variable";
@@ -25,6 +28,23 @@
     "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+@layer utilities {
+  /* 기본 포커스 링 유틸리티 클래스 */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 focus-visible:ring-blue;
+  }
+
+  /* primary 버튼용 포커스 링 유틸리티 클래스 */
+  .focus-ring-primary {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 focus-visible:ring-white;
+  }
+
+  /* 에러 상태 포커스 링 유틸리티 클래스 */
+  .focus-ring-error {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-0 focus-visible:ring-red-400;
+  }
 }
 
 /* 스크롤 인디케이터 반응형 위치 조정 */

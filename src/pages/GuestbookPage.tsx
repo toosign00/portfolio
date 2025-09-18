@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/Button';
 import { GuestbookForm, GuestbookList } from '@/components/Guestbook';
 import { useGuestbookForm } from '@/hooks/useGuestbookForm';
 import { useGuestbookInfiniteEntries } from '@/hooks/useGuestbookQuery';
 
 export const GuestbookPage = () => {
-  const navigate = useNavigate();
   const infinite = useGuestbookInfiniteEntries(10);
   const { loading, handleSubmit } = useGuestbookForm();
 
@@ -31,9 +30,12 @@ export const GuestbookPage = () => {
       <div className='border-white/10 border-b p-6'>
         <div className='mx-auto flex max-w-4xl items-center justify-between'>
           <h1 className='font-bold text-2xl text-white'>방명록</h1>
-          <Button variant='secondary' size='sm' onClick={() => navigate('/')}>
+          <Link
+            to='/'
+            className='focus-ring relative flex cursor-pointer items-center justify-center overflow-hidden rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-center font-normal text-gray text-sm backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:text-white'
+          >
             메인으로 돌아가기
-          </Button>
+          </Link>
         </div>
       </div>
 

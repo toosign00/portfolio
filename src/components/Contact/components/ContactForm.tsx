@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import xss from 'xss';
 import type { z } from 'zod';
+import { Button } from '@/components/Button';
 import { contactFormSchema } from '@/schemas/contact.schema';
 import type { ContactFormProps } from '@/types/contact.types';
 
@@ -63,7 +64,9 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
           id='from_name'
           type='text'
           {...register('from_name', { setValueAs: (value: string) => sanitizeInput(value) })}
-          className='rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus:ring-blue focus-visible:ring-2'
+          className={`rounded border border-gray-700 bg-[#23272f] p-3 text-white ${
+            errors.from_name ? 'focus-ring-error' : 'focus-ring'
+          }`}
         />
         <span className='min-h-[1.25rem] text-red-400 text-sm'>{errors.from_name?.message}</span>
       </div>
@@ -76,7 +79,9 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
           id='from_email'
           type='email'
           {...register('from_email', { setValueAs: (value: string) => sanitizeInput(value) })}
-          className='rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus:ring-blue focus-visible:ring-2'
+          className={`rounded border border-gray-700 bg-[#23272f] p-3 text-white ${
+            errors.from_email ? 'focus-ring-error' : 'focus-ring'
+          }`}
         />
         <span className='min-h-[1.25rem] text-red-400 text-sm'>{errors.from_email?.message}</span>
       </div>
@@ -89,16 +94,14 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
           id='message'
           rows={5}
           {...register('message', { setValueAs: (value: string) => sanitizeInput(value) })}
-          className='resize-none rounded border border-gray-700 bg-[#23272f] p-3 text-white focus:outline-none focus:ring-blue focus-visible:ring-2'
+          className={`rounded border border-gray-700 bg-[#23272f] p-3 text-white ${
+            errors.message ? 'focus-ring-error' : 'focus-ring'
+          }`}
         />
         <span className='min-h-[1.25rem] text-red-400 text-sm'>{errors.message?.message}</span>
       </div>
 
-      <button
-        type='submit'
-        className='submit--btn cursor-pointer rounded bg-blue py-2 font-semibold text-black transition hover:opacity-80 disabled:opacity-60'
-        disabled={loading}
-      >
+      <Button type='submit' variant='primary' size='md' disabled={loading}>
         {loading ? (
           <span className='flex items-center justify-center gap-2'>
             <svg
@@ -124,7 +127,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
         ) : (
           <span>보내기</span>
         )}
-      </button>
+      </Button>
     </form>
   );
 };
