@@ -19,7 +19,7 @@ export const Footer = () => {
               target='_blank'
               rel='noopener noreferrer'
               aria-label='GitHub 프로필로 이동'
-              className='text-gray-400 transition-colors hover:text-blue'
+              className='focus-ring text-gray-400 transition-colors hover:text-blue'
             >
               <FaGithub size={24} />
             </a>
@@ -28,7 +28,7 @@ export const Footer = () => {
               target='_blank'
               rel='noopener noreferrer'
               aria-label='LinkedIn 프로필로 이동'
-              className='text-gray-400 transition-colors hover:text-blue'
+              className='focus-ring text-gray-400 transition-colors hover:text-blue'
             >
               <FaLinkedin size={24} />
             </a>
@@ -37,7 +37,7 @@ export const Footer = () => {
               target='_blank'
               rel='noopener noreferrer'
               aria-label='Velog 블로그로 이동'
-              className='text-gray-400 transition-colors hover:text-blue'
+              className='focus-ring text-gray-400 transition-colors hover:text-blue'
             >
               <SiVelog size={24} />
             </a>
