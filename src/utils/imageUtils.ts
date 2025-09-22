@@ -10,8 +10,9 @@ export const transformSrcImage = (originalUrl: string, options: ImageTransformOp
   try {
     const url = new URL(originalUrl);
 
-    // Cloudinary URL인지 확인
-    if (!url.hostname.includes('cloudinary.com')) {
+    // Cloudinary URL인지 확인 (정확한 호스트명 비교)
+    const allowedCloudinaryHosts = ['res.cloudinary.com'];
+    if (!allowedCloudinaryHosts.includes(url.hostname)) {
       return originalUrl;
     }
 
