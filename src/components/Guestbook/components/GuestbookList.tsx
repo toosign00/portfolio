@@ -2,7 +2,7 @@ import type { GuestbookListProps } from '@/types/guestbook.types';
 import { GuestbookEmptyState } from './GuestbookEmptyState';
 import { GuestbookEntry } from './GuestbookEntry';
 import { GuestbookErrorState } from './GuestbookErrorState';
-import { GuestbookLoadingSkeleton } from './GuestbookLoadingSkeleton';
+import { GuestbookSkeleton } from './GuestbookSkeleton';
 
 export const GuestbookList = ({
   entries,
@@ -12,7 +12,7 @@ export const GuestbookList = ({
   onRetry,
 }: GuestbookListProps & { totalCount?: number; error?: string | null; onRetry?: () => void }) => {
   if (loading) {
-    return <GuestbookLoadingSkeleton />;
+    return <GuestbookSkeleton />;
   }
 
   if (error) {

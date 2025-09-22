@@ -1,4 +1,3 @@
-import { m } from 'motion/react';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 interface ProjectPageSkeletonProps {
@@ -24,60 +23,27 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
         {/* 스켈레톤 내용 */}
         <article className='flex flex-col items-start gap-6'>
           {/* 제목 스켈레톤 */}
-          <m.div
-            className='mb-1 h-8 w-3/4 rounded bg-white/10'
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
+          <div className='mb-1 h-8 w-3/4 animate-pulse rounded bg-white/10' />
 
           {/* 요약 스켈레톤 */}
-          <m.div
-            className='mb-1 h-5 w-1/2 rounded bg-white/10'
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 1.5, repeat: Infinity, delay: 0.1 }}
-          />
+          <div className='mb-1 h-5 w-1/2 animate-pulse rounded bg-white/10' />
 
           {/* 설명 스켈레톤 */}
           <div className='mb-2 w-full space-y-2'>
-            <m.div
-              className='h-6 w-full rounded bg-white/10'
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
-            />
-            <m.div
-              className='h-6 w-2/3 rounded bg-white/10'
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
-            />
-            <m.div
-              className='h-6 w-4/5 rounded bg-white/10'
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
-            />
-            <m.div
-              className='h-6 w-3/4 rounded bg-white/10'
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
-            />
-            <m.div
-              className='h-6 w-5/6 rounded bg-white/10'
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.6 }}
-            />
+            {['w-full', 'w-2/3', 'w-4/5', 'w-3/4', 'w-5/6', 'w-3/5', 'w-9/10'].map((width) => (
+              <div
+                key={`description-${width}`}
+                className={`h-6 ${width} animate-pulse rounded bg-white/10`}
+              />
+            ))}
           </div>
 
           {/* 기술 스택 스켈레톤 */}
           <div className='flex flex-wrap gap-2'>
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <m.div
-                key={i}
-                className='h-6 w-16 rounded-lg bg-white/10 px-3 py-0.5'
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  delay: 0.7 + i * 0.1,
-                }}
+            {[1, 2, 3, 4, 5, 6].map((num) => (
+              <div
+                key={`tech-stack-${num}`}
+                className='h-6 w-16 animate-pulse rounded-lg bg-white/10 px-3 py-0.5'
               />
             ))}
           </div>
@@ -87,71 +53,33 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
             <div className='flex w-full flex-col gap-3 md:flex-row md:gap-2'>
               {/* 참여인원 */}
               <div className='flex flex-1 flex-col'>
-                <m.div
-                  className='mb-1 h-3 w-16 rounded bg-white/10'
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: 0.8 }}
-                />
-                <m.div
-                  className='h-4 w-12 rounded bg-white/10'
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: 0.9 }}
-                />
+                <div className='mb-1 h-3 w-16 animate-pulse rounded bg-white/10' />
+                <div className='h-4 w-12 animate-pulse rounded bg-white/10' />
               </div>
               {/* 기간 */}
               <div className='flex flex-1 flex-col'>
-                <m.div
-                  className='mb-1 h-3 w-8 rounded bg-white/10'
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: 1.0 }}
-                />
-                <m.div
-                  className='h-4 w-20 rounded bg-white/10'
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: 1.1 }}
-                />
+                <div className='mb-1 h-3 w-8 animate-pulse rounded bg-white/10' />
+                <div className='h-4 w-20 animate-pulse rounded bg-white/10' />
               </div>
               {/* 관련 링크 */}
               <div className='flex flex-1 flex-col'>
-                <m.div
-                  className='mb-1 h-3 w-16 rounded bg-white/10'
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: 1.2 }}
-                />
+                <div className='mb-1 h-3 w-16 animate-pulse rounded bg-white/10' />
                 <div className='flex gap-2'>
-                  <m.div
-                    className='h-4 w-12 rounded bg-white/10'
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 1.5, repeat: Infinity, delay: 1.3 }}
-                  />
-                  <m.div
-                    className='h-4 w-16 rounded bg-white/10'
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 1.5, repeat: Infinity, delay: 1.4 }}
-                  />
+                  <div className='h-4 w-12 animate-pulse rounded bg-white/10' />
+                  <div className='h-4 w-16 animate-pulse rounded bg-white/10' />
                 </div>
               </div>
             </div>
           </div>
 
           {/* 상세 내용 스켈레톤 */}
-          <div className='mb-2'>
-            <m.div
-              className='mb-2 h-5 w-20 rounded bg-white/10'
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 1.5 }}
-            />
-            <ul className='space-y-2 pl-5'>
-              {[1, 2, 3, 4, 5].map((i) => (
-                <m.li
-                  key={i}
-                  className='h-4 w-full rounded bg-white/10'
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    delay: 1.6 + i * 0.1,
-                  }}
+          <div className='mb-2 w-full'>
+            <div className='mb-2 h-5 w-20 animate-pulse rounded bg-white/10' />
+            <ul className='w-full space-y-2 pl-2'>
+              {['w-full', 'w-4/5', 'w-5/6', 'w-3/4', 'w-2/3'].map((width) => (
+                <li
+                  key={`detail-list-${width}`}
+                  className={`h-4 ${width} animate-pulse rounded bg-white/10`}
                 />
               ))}
             </ul>
@@ -159,32 +87,20 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
 
           {/* 추가 상세 내용 스켈레톤 */}
           <div className='space-y-2 pl-5'>
-            {[1, 2, 3, 4, 5].map((i) => (
-              <m.div
-                key={i}
-                className='h-4 w-full rounded bg-white/10'
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  delay: 2.1 + i * 0.1,
-                }}
+            {[1, 2, 3, 4, 5].map((num) => (
+              <div
+                key={`detail-content-${num}`}
+                className='h-4 w-full animate-pulse rounded bg-white/10'
               />
             ))}
           </div>
 
           {/* 추가 내용 스켈레톤 */}
           <div className='space-y-2 pl-5'>
-            {[1, 2, 3, 4, 5].map((i) => (
-              <m.div
-                key={i}
-                className='h-4 w-full rounded bg-white/10'
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  delay: 2.6 + i * 0.1,
-                }}
+            {[1, 2, 3, 4, 5].map((num) => (
+              <div
+                key={`additional-content-${num}`}
+                className='h-4 w-full animate-pulse rounded bg-white/10'
               />
             ))}
           </div>

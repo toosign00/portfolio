@@ -1,4 +1,4 @@
-export const GuestbookLoadingSkeleton = () => {
+export const GuestbookSkeleton = () => {
   const nameWidths = ['w-20', 'w-24', 'w-16'];
   const dateWidths = ['w-16', 'w-14', 'w-12'];
   const messageWidths = [

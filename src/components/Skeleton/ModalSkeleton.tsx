@@ -1,5 +1,3 @@
-import { m } from 'motion/react';
-
 interface ModalSkeletonProps {
   onClose?: () => void;
 }
@@ -21,54 +19,33 @@ export function ModalSkeleton({ onClose }: ModalSkeletonProps) {
 
       {/* ModalHeader 스켈레톤 */}
       {/* 제목 스켈레톤 */}
-      <m.div
-        className='mb-2 h-7 w-3/4 rounded bg-white/10 sm:h-9'
-        animate={{ opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
+      <div
+        className='mb-2 h-7 w-3/4 animate-pulse rounded bg-white/10 sm:h-9'
         style={{ lineHeight: '1.15' }}
       />
 
       {/* 요약 스켈레톤 */}
-      <m.div
-        className='mb-1 h-5 w-1/2 rounded bg-white/10'
-        animate={{ opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 1.5, repeat: Infinity, delay: 0.1 }}
+      <div
+        className='mb-1 h-5 w-1/2 animate-pulse rounded bg-white/10'
         style={{ lineHeight: '1.5' }}
       />
 
       {/* 설명 스켈레톤 */}
       <div className='mb-7 space-y-1.5'>
-        <m.div
-          className='h-5 w-full rounded bg-white/10'
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
+        <div
+          className='h-5 w-full animate-pulse rounded bg-white/10'
           style={{ lineHeight: '1.7' }}
         />
-        <m.div
-          className='h-5 w-4/5 rounded bg-white/10'
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
-        />
-        <m.div
-          className='h-5 w-2/3 rounded bg-white/10'
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
-        />
+        <div className='h-5 w-4/5 animate-pulse rounded bg-white/10' />
+        <div className='h-5 w-2/3 animate-pulse rounded bg-white/10' />
       </div>
 
       {/* TechnologyStack 스켈레톤 */}
       <div className='mb-7 flex flex-wrap gap-2'>
-        {[1, 2, 3, 4, 5, 6].map((i) => (
-          <m.div
-            key={i}
-            className='h-6 rounded-lg bg-white/10 px-3 py-0.5'
-            style={{ width: `${Math.random() * 40 + 60}px` }} // 가변 너비
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              delay: 0.5 + i * 0.1,
-            }}
+        {['w-16', 'w-20', 'w-14', 'w-18', 'w-12', 'w-16'].map((width) => (
+          <div
+            key={`tech-${width}`}
+            className={`h-6 ${width} animate-pulse rounded-lg bg-white/10 px-3 py-0.5`}
           />
         ))}
       </div>
@@ -78,48 +55,20 @@ export function ModalSkeleton({ onClose }: ModalSkeletonProps) {
         <div className='flex w-full flex-col gap-3 md:flex-row md:gap-2'>
           {/* 참여인원 */}
           <div className='flex flex-1 flex-col'>
-            <m.div
-              className='mb-1 h-3 w-16 rounded bg-white/10'
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.6 }}
-            />
-            <m.div
-              className='h-4 w-12 rounded bg-white/10'
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.7 }}
-            />
+            <div className='mb-1 h-3 w-16 animate-pulse rounded bg-white/10' />
+            <div className='h-4 w-12 animate-pulse rounded bg-white/10' />
           </div>
           {/* 기간 */}
           <div className='flex flex-1 flex-col'>
-            <m.div
-              className='mb-1 h-3 w-8 rounded bg-white/10'
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.8 }}
-            />
-            <m.div
-              className='h-4 w-20 rounded bg-white/10'
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.9 }}
-            />
+            <div className='mb-1 h-3 w-8 animate-pulse rounded bg-white/10' />
+            <div className='h-4 w-20 animate-pulse rounded bg-white/10' />
           </div>
           {/* 관련 링크 */}
           <div className='flex flex-1 flex-col'>
-            <m.div
-              className='mb-1 h-3 w-16 rounded bg-white/10'
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 1.0 }}
-            />
+            <div className='mb-1 h-3 w-16 animate-pulse rounded bg-white/10' />
             <div className='flex gap-4'>
-              <m.div
-                className='h-4 w-12 rounded bg-white/10'
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 1.5, repeat: Infinity, delay: 1.1 }}
-              />
-              <m.div
-                className='h-4 w-16 rounded bg-white/10'
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 1.5, repeat: Infinity, delay: 1.2 }}
-              />
+              <div className='h-4 w-12 animate-pulse rounded bg-white/10' />
+              <div className='h-4 w-16 animate-pulse rounded bg-white/10' />
             </div>
           </div>
         </div>
@@ -128,58 +77,33 @@ export function ModalSkeleton({ onClose }: ModalSkeletonProps) {
       {/* ProjectDetailList 스켈레톤 */}
       <div className='mb-6'>
         {/* 상세 내용 제목 */}
-        <m.div
-          className='mb-4 h-6 w-20 rounded bg-white/10'
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 1.5, repeat: Infinity, delay: 1.3 }}
+        <div
+          className='mb-4 h-6 w-20 animate-pulse rounded bg-white/10'
           style={{ letterSpacing: '-0.01em', lineHeight: '1.3' }}
         />
 
         {/* Detail 아이템들 */}
         <div className='space-y-6'>
-          {[1, 2, 3, 4].map((i) => (
+          {[1, 2, 3, 4].map((num) => (
             <div
-              key={i}
+              key={`detail-${num}`}
               className='leading-relaxed tracking-normal'
               style={{ lineHeight: '1.7', letterSpacing: '0.01em' }}
             >
               {/* Detail 제목 */}
-              <m.div
-                className='mb-3 h-5 w-3/4 rounded bg-white/10'
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  delay: 1.4 + i * 0.1,
-                }}
-              />
+              <div className='mb-3 h-5 w-3/4 animate-pulse rounded bg-white/10' />
 
-              {/* 이미지 스켈레톤 (일부 아이템에만) */}
-              {i % 2 === 0 && (
-                <m.div
-                  className='mb-4 h-48 w-full rounded-lg bg-white/10'
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    delay: 1.45 + i * 0.1,
-                  }}
-                />
+              {/* 이미지 스켈레톤 (짝수 아이템에만) */}
+              {num % 2 === 0 && (
+                <div className='mb-4 h-48 w-full animate-pulse rounded-lg bg-white/10' />
               )}
 
               {/* Detail 내용 - 리스트 형태 */}
               <div className='space-y-2 pl-5'>
-                {[1, 2, 3].map((j) => (
-                  <m.div
-                    key={j}
-                    className='h-4 rounded bg-white/10'
-                    style={{ width: `${Math.random() * 30 + 60}%` }}
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      delay: 1.5 + i * 0.1 + j * 0.05,
-                    }}
+                {['w-4/5', 'w-3/5', 'w-4/6'].map((width) => (
+                  <div
+                    key={`detail-content-${num}-${width}`}
+                    className={`h-4 ${width} animate-pulse rounded bg-white/10`}
                   />
                 ))}
               </div>
