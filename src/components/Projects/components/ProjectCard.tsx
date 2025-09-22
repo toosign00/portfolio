@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { colorClasses } from '@/constants/projectColors.constants';
 import type { ProjectCardProps } from '@/types/projectCard.types';
+import { generateSrcSet, getSrcSizes, transformSrcImage } from '@/utils/imageUtils';
 
 export const ProjectCard = memo<ProjectCardProps>(({ project, onClick }: ProjectCardProps) => {
   const color = project.color ?? 'blue';
@@ -24,7 +25,12 @@ export const ProjectCard = memo<ProjectCardProps>(({ project, onClick }: Project
     >
       <div className='aspect-[16/9] overflow-hidden'>
         <img
-          src={project.thumbnail}
+          src={transformSrcImage(project.thumbnail, {
+            width: 400,
+            quality: 100,
+          })}
+          srcSet={generateSrcSet(project.thumbnail)}
+          sizes={getSrcSizes()}
           alt={`${project.title}`}
           loading='lazy'
           decoding='async'
