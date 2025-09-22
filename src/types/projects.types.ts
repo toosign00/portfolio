@@ -1,4 +1,4 @@
-interface ProjectDetail {
+export interface ProjectDetail {
   title: string;
   description: string | string[];
   image?: string;
