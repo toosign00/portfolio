@@ -5,15 +5,6 @@ interface ProjectDetail {
   image_alt?: string;
 }
 
-export interface ProjectThumbnail {
-  baseUrl: string;
-  bucket: string;
-  keyBase: string;
-  filename: string;
-  widths: number[];
-  ext: string;
-}
-
 export interface Project {
   id: string;
   title: string;
@@ -28,7 +19,7 @@ export interface Project {
   githubAriaLabel?: string;
   deployUrl?: string;
   deployAriaLabel?: string;
-  thumbnail: ProjectThumbnail;
+  thumbnail: string;
   memberCount?: number;
   details?: ProjectDetail[];
   color?: 'blue' | 'pink' | 'yellow';
