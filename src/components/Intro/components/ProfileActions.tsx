@@ -1,5 +1,4 @@
 import { Button } from '@/components/Button';
-import { PROFILE_CONSTANTS } from '@/constants/profile.constants';
 
 export const ProfileActions = () => {
   return (
@@ -10,7 +9,7 @@ export const ProfileActions = () => {
         className='border-none md:rounded-lg md:px-4 md:py-2 md:text-base'
         variant='secondary'
       >
-        <a href={PROFILE_CONSTANTS.RESUME.PATH} download>
+        <a href='/assets/documents/CV.pdf' download='노현수_이력서.pdf'>
           이력서 다운로드
         </a>
       </Button>
@@ -20,7 +19,7 @@ export const ProfileActions = () => {
         className='border-none md:rounded-lg md:px-4 md:py-2 md:text-base'
         variant='secondary'
       >
-        <a href={PROFILE_CONSTANTS.SOCIAL.GITHUB} target='_blank'>
+        <a href='https://github.com/toosign00' target='_blank' rel='noopener noreferrer'>
           GitHub 방문하기
         </a>
       </Button>

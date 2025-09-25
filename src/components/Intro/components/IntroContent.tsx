@@ -48,12 +48,14 @@ export function IntroContent() {
       </m.div>
 
       <m.p
-        className='mb-8 max-w-2xl break-keep text-center text-base text-gray-300 leading-relaxed md:mb-12 md:text-lg lg:text-xl'
+        className='mb-8 max-w-xl break-keep text-center text-base text-gray-300 leading-relaxed md:mb-12 md:text-lg lg:text-xl'
         variants={descriptionVariants}
       >
-        React를 기반으로 사용자 중심의 웹 애플리케이션을 개발합니다.&nbsp;
+        사용자 경험과 코드 재사용성을 고려한 프론트엔드 개발을 하며&nbsp;
         <br className='hidden sm:block' />
-        함께 성장할 수 있는 팀에서 가치 있는 서비스를 만들어가고 싶습니다.
+        비효율적인 프로세스를 개선하는 것을 좋아합니다.&nbsp;
+        <br className='hidden sm:block' />
+        지속적인 학습과 성장을 통해 더 나은 개발자가 되고자 합니다.
       </m.p>
 
       <m.div variants={buttonContainerVariants} className='transform-gpu' style={transformStyle}>
