@@ -7,14 +7,12 @@ export const Tooltip = ({ children, content }: TooltipProps) => {
 
   return (
     <div
-      role='tooltip'
-      aria-label={content}
       className='relative'
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
       onFocus={() => setIsVisible(true)}
       onBlur={() => setIsVisible(false)}
-      aria-describedby='tooltip-content'
+      aria-describedby={isVisible ? 'tooltip-content' : undefined}
     >
       {children}
       <AnimatePresence>
@@ -26,7 +24,11 @@ export const Tooltip = ({ children, content }: TooltipProps) => {
             transition={{ duration: 0.2, ease: 'easeOut' }}
             className='-bottom-8.5 -translate-x-1/2 absolute left-1/2 z-50 transform'
           >
-            <div className='relative rounded-lg border border-white/10 bg-black/80 px-2 py-1 text-center shadow-xl'>
+            <div
+              id='tooltip-content'
+              role='tooltip'
+              className='relative rounded-lg border border-white/10 bg-black/80 px-2 py-1 text-center shadow-xl'
+            >
               <div className='whitespace-nowrap font-medium text-white text-xs'>{content}</div>
               <div className='-top-1 -translate-x-1/2 absolute left-1/2 h-2 w-2 rotate-45 border-white/10 border-t border-l bg-black/80' />
             </div>
