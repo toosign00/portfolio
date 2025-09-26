@@ -10,19 +10,17 @@ export interface Project {
   title: string;
   type: 'Team' | 'Personal';
   teamDetail?: string;
-  role: string;
   summary: string;
   description: string;
   timeFrame: string;
   technologies: string[];
   githubUrl: string;
-  githubAriaLabel?: string;
   deployUrl?: string;
-  deployAriaLabel?: string;
   thumbnail: string;
   memberCount?: number;
   details?: ProjectDetail[];
   color?: 'blue' | 'pink' | 'yellow';
   createdAt?: string;
   updatedAt?: string;
+  isVisible?: boolean;
 }
