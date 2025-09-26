@@ -22,21 +22,24 @@ export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) =>
             <h4 className='mb-3 font-semibold text-lg text-white'>{item.title}</h4>
 
             {Array.isArray(item.description) ? (
-              <ul className='list-disc space-y-2 pl-5'>
+              <ul className='list-disc space-y-3 pl-5'>
                 {item.description.map((line, i) => (
                   <li
                     key={`${line.slice(0, 20)}-${i}`}
-                    className='text-base text-gray-400 leading-relaxed'
+                    className='break-keep text-base text-gray-400 leading-relaxed'
                   >
                     {line}
                   </li>
                 ))}
               </ul>
             ) : (
-              <div className='relative space-y-2 pl-5'>
+              <div className='relative space-y-3 pl-5'>
                 <span className='absolute top-0 left-0'>•</span>
                 {item.description.split('\n\n').map((paragraph, i) => (
-                  <p key={`${item.title}-${i}`} className='text-base text-gray-400 leading-relaxed'>
+                  <p
+                    key={`${item.title}-${i}`}
+                    className='break-keep text-base text-gray-400 leading-relaxed'
+                  >
                     {paragraph}
                   </p>
                 ))}

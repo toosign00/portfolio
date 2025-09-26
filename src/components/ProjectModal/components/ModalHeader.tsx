@@ -17,11 +17,15 @@ export const ModalHeader = ({ project }: ModalHeaderProps) => {
           {project.summary}
         </div>
       </Dialog.Description>
-      <div
-        className='mb-7 whitespace-pre-line break-keep font-normal text-base text-white'
-        style={{ lineHeight: '1.7' }}
-      >
-        {project.description}
+      <div className='mb-7 space-y-4'>
+        {project.description.split('\n\n').map((paragraph, i) => (
+          <p
+            key={`${project.title}-desc-${i}`}
+            className='whitespace-pre-line break-keep font-normal text-base text-white leading-relaxed'
+          >
+            {paragraph}
+          </p>
+        ))}
       </div>
     </>
   );
