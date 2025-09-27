@@ -25,13 +25,12 @@ const generateSitemap = () => {
   
   const urls = [
     { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'weekly' },
+    { loc: `${baseUrl}/guestbook`, priority: '0.9', changefreq: 'weekly' },
   ];
 
   // 프로젝트 URL들 (동적으로 추가 가능)
   const projectUrls = [
-    'portfolio','film-metadata-app', 'willie-library', 'meme-repository', 
-    'my-life-story', 'ora-gung', 'type', 'olly', 
-    'minigame', 'film-magazine'
+    'green-mate', 'film-metadata-app', 'portfolio', 'ora-gung', 'type', 'olly'
   ].map(project => ({
     loc: `${baseUrl}/projects/${project}`,
     priority: '0.8',
