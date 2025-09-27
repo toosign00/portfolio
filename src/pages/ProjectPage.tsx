@@ -1,5 +1,6 @@
 import { IoArrowBackOutline } from 'react-icons/io5';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Button } from '@/components/Button';
 import { ProjectDetailList } from '@/components/ProjectModal/components/ProjectDetailList';
 import { ProjectInfo } from '@/components/ProjectModal/components/ProjectInfo';
 import { TechnologyStack } from '@/components/ProjectModal/components/TechnologyStack';
@@ -38,12 +39,9 @@ export const ProjectPage = () => {
         <div className='flex flex-col items-center'>
           <h1 className='mb-4 font-bold text-2xl text-white'>오류가 발생했습니다</h1>
           <p className='mb-8 text-gray-400'>{errorMessage}</p>
-          <Link
-            to='/'
-            className='focus-ring relative flex cursor-pointer items-center justify-center overflow-hidden rounded-md border border-white/10 bg-white/5 px-4 py-2 text-center font-normal text-base text-gray backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:text-white'
-          >
-            메인으로 돌아가기
-          </Link>
+          <Button variant='secondary' size='md' asChild>
+            <Link to='/'>메인으로 돌아가기</Link>
+          </Button>
         </div>
       </div>
     );

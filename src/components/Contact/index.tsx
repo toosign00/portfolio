@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/Button';
 import { contactInfo } from '@/data/contact.data';
 import { useContactForm } from '@/hooks/useContactForm';
 import { SectionHeader } from '@/layout/SectionHeader';
@@ -19,12 +20,9 @@ export const Contact = () => {
       <ContactForm loading={loading} onSubmit={handleSubmit} />
 
       <div className='mt-8 flex justify-center'>
-        <Link
-          to='/guestbook'
-          className='focus-ring-primary relative flex cursor-pointer items-center justify-center overflow-hidden rounded-md border border-blue/10 bg-blue px-4 py-2 text-center font-semibold text-base text-black backdrop-blur-md transition-all duration-300 hover:opacity-80'
-        >
-          방명록 남기기
-        </Link>
+        <Button variant='primary' size='md' asChild>
+          <Link to='/guestbook'>방명록 남기기</Link>
+        </Button>
       </div>
     </SectionLayout>
   );

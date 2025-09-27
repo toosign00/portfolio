@@ -30,12 +30,9 @@ export const GuestbookPage = () => {
       <div className='border-white/10 border-b p-6'>
         <div className='mx-auto flex max-w-4xl items-center justify-between'>
           <h1 className='font-bold text-2xl text-white'>방명록</h1>
-          <Link
-            to='/'
-            className='focus-ring relative flex cursor-pointer items-center justify-center overflow-hidden rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-center font-normal text-gray text-sm backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:text-white'
-          >
-            메인으로 돌아가기
-          </Link>
+          <Button variant='secondary' size='md' asChild>
+            <Link to='/'>메인으로 돌아가기</Link>
+          </Button>
         </div>
       </div>
 
