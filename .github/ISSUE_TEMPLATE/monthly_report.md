@@ -6,7 +6,7 @@ labels: 'Docs'
 assignees: 'toosign00'
 ---
 
-# YYYY년 MM월 월간 리포트
+# YYYY년 MM월 월간 이슈 리포트
 
 ## 이번 달 개발 목표
 - [ ] 목표 1
