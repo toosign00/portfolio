@@ -21,7 +21,7 @@ const getCurrentDate = () => {
 // 사이트맵 XML 생성
 const generateSitemap = () => {
   const currentDate = getCurrentDate();
-  const baseUrl = 'https://toosign.kr';
+  const baseUrl = 'https://toosign.dev';
   
   const urls = [
     { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'weekly' },

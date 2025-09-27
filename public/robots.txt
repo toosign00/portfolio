@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://toosign.kr/sitemap.xml
+Sitemap: https://toosign.dev/sitemap.xml

@@ -5,8 +5,7 @@
   "type": "module",
   "description": "프론트엔드 개발자 노현수의 포트폴리오 웹사이트",
   "author": "Hyunsoo Ro",
-  "license": "MIT",
-  "homepage": "https://toosign.kr/",
+  "homepage": "https://toosign.dev",
   "repository": {
     "type": "git",
     "url": "https://github.com/toosign00/portfolio"
