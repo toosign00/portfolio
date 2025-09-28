@@ -30,7 +30,7 @@ export const GuestbookPage = () => {
       <div className='border-white/10 border-b p-6'>
         <div className='mx-auto flex max-w-4xl items-center justify-between'>
           <h1 className='font-bold text-2xl text-white'>방명록</h1>
-          <Button variant='secondary' size='md' asChild>
+          <Button variant='secondary' size='sm' asChild>
             <Link to='/'>메인으로 돌아가기</Link>
           </Button>
         </div>
