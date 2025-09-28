@@ -42,12 +42,15 @@ export function ModalSkeleton({ onClose }: ModalSkeletonProps) {
 
       {/* TechnologyStack 스켈레톤 */}
       <div className='mb-7 flex flex-wrap gap-2'>
-        {['w-16', 'w-20', 'w-14', 'w-18', 'w-12', 'w-16'].map((width) => (
-          <div
-            key={`tech-${width}`}
-            className={`h-6 ${width} animate-pulse rounded-lg bg-white/10 px-3 py-0.5`}
-          />
-        ))}
+        {['w-16-1', 'w-20', 'w-14', 'w-18', 'w-12', 'w-16-2'].map((key) => {
+          const width = key.includes('-') ? key.split('-')[0] : key;
+          return (
+            <div
+              key={`tech-${key}`}
+              className={`h-6 ${width} animate-pulse rounded-lg bg-white/10 px-3 py-0.5`}
+            />
+          );
+        })}
       </div>
 
       {/* ProjectInfo 스켈레톤 */}
