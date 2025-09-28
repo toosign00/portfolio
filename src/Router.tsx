@@ -1,6 +1,8 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import { Outlet, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import ReactGA from 'react-ga4';
+import { Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import { ProjectModal } from '@/components/ProjectModal';
 import { ROUTES } from '@/constants/routes.constants';
 import { ErrorBoundary } from '@/error/ErrorBoundary';
@@ -14,6 +16,11 @@ import { ProjectPage } from '@/pages/ProjectPage';
 
 export function Router() {
   const { hasBackground, currentLocation } = useProjectPageDetection();
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({ hitType: 'pageview', page: location.pathname });
+  }, [location]);
 
   return (
     <ErrorBoundary>
