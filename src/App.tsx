@@ -1,11 +1,23 @@
 import { domMax, LazyMotion } from 'motion/react';
+import { useEffect } from 'react';
+import ReactGA from 'react-ga4';
 import { BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'sonner';
 import { useIsMobile } from '@/hooks/useMediaQuery';
+import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { Router } from '@/Router';
 
 function App() {
   const isMobile = useIsMobile();
+  useScrollTracking();
+
+  useEffect(() => {
+    // 프로덕션 환경에서만 GA 초기화
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.initialize('G-G21KRWVJZX');
+      ReactGA.send('pageview');
+    }
+  }, []);
 
   return (
     <LazyMotion features={domMax} strict>

@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import ReactGA from 'react-ga4';
 import { colorClasses } from '@/constants/projectColors.constants';
 import type { ProjectCardProps } from '@/types/projectCard.types';
 import { generateSrcSet, getSrcSizes, transformSrcImage } from '@/utils/imageUtils';
@@ -7,18 +8,28 @@ export const ProjectCard = memo<ProjectCardProps>(({ project, onClick }: Project
   const color = project.color ?? 'blue';
   const classes = colorClasses[color];
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
+  const projectClick = () => {
+    ReactGA.event('select_content', {
+      content_type: 'project',
+      content_id: project.id || project.title,
+      item_name: project.title,
+      item_category: project.type,
+    });
+    onClick(project);
+  };
+
+  const projectKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      onClick(project);
+      projectClick();
     }
   };
 
   return (
     <div
       className={`focus-ring group relative overflow-hidden rounded-lg bg-ui-background transition-all duration-300 ${classes.bg} w-full cursor-pointer text-left`}
-      onClick={() => onClick(project)}
-      onKeyDown={handleKeyDown}
+      onClick={projectClick}
+      onKeyDown={projectKeyDown}
       tabIndex={0}
       role='button'
       aria-label={`${project.title} 상세 보기`}

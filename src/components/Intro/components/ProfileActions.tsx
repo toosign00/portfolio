@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga4';
 import { Button } from '@/components/Button';
 import { supabase } from '@/lib/supabase';
 
@@ -16,6 +17,26 @@ export const ProfileActions = () => {
   // console.log(isIOSSafari);
   // console.log(navigator.userAgent);
 
+  const handleResumeDownload = () => {
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.event('file_download', {
+        file_name: '노현수_이력서.pdf',
+        file_extension: 'pdf',
+        link_url: data.publicUrl,
+      });
+    }
+  };
+
+  const handleGithubVisit = () => {
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.event('click', {
+        link_id: 'github_profile',
+        link_url: 'https://github.com/toosign00',
+        outbound: true,
+      });
+    }
+  };
+
   return (
     <div className='flex flex-row gap-4 sm:gap-6'>
       <Button
@@ -28,6 +49,7 @@ export const ProfileActions = () => {
           href={data.publicUrl}
           rel='noopener noreferrer'
           target={isIOSSafari ? '_blank' : '_self'}
+          onClick={handleResumeDownload}
         >
           이력서 다운로드
         </a>
@@ -38,7 +60,12 @@ export const ProfileActions = () => {
         className='border-none md:rounded-lg md:px-4 md:py-2 md:text-base'
         variant='secondary'
       >
-        <a href='https://github.com/toosign00' target='_blank' rel='noopener noreferrer'>
+        <a
+          href='https://github.com/toosign00'
+          target='_blank'
+          rel='noopener noreferrer'
+          onClick={handleGithubVisit}
+        >
           GitHub 방문하기
         </a>
       </Button>
