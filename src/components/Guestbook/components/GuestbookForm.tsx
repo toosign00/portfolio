@@ -1,10 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Button';
 import { guestbookFormSchema } from '@/schemas/guestbook.schema';
 import type { GuestbookFormData, GuestbookFormProps } from '@/types/guestbook.types';
-
 export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
+  const { t } = useTranslation();
+  const schema = guestbookFormSchema(t);
+
   const {
     register,
     handleSubmit,
@@ -14,7 +17,7 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
   } = useForm<GuestbookFormData>({
     mode: 'onSubmit',
     shouldFocusError: true,
-    resolver: zodResolver(guestbookFormSchema),
+    resolver: zodResolver(schema),
   });
 
   const message = watch('message');
@@ -33,9 +36,9 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
             {...register('name')}
             type='text'
             className={`w-full resize-none rounded-lg border border-white/20 bg-black/50 px-4 py-3 text-white placeholder-gray-400 transition-all ${errors.name ? 'focus-ring-error' : 'focus-ring'}`}
-            placeholder='이름을 입력하세요'
+            placeholder={t('guestbook.form.namePlaceholder')}
             disabled={loading}
-            aria-label='이름 입력'
+            aria-label={t('guestbook.form.nameLabel')}
             aria-describedby={errors.name ? 'name-error' : undefined}
             aria-invalid={!!errors.name}
           />
@@ -52,9 +55,9 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
             {...register('message')}
             rows={4}
             className={`w-full resize-none rounded-lg border border-white/20 bg-black/50 px-4 py-3 text-white placeholder-gray-400 transition-all ${errors.message ? 'focus-ring-error' : 'focus-ring'}`}
-            placeholder='방명록에 남길 메시지를 작성해주세요'
+            placeholder={t('guestbook.form.messagePlaceholder')}
             disabled={loading}
-            aria-label='메시지 입력'
+            aria-label={t('guestbook.form.messageLabel')}
             aria-describedby={errors.message ? 'message-error' : 'message-counter'}
             aria-invalid={!!errors.message}
           />
@@ -80,10 +83,10 @@ export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {
               onClick={() => reset()}
               disabled={loading}
             >
-              초기화
+              {t('guestbook.form.resetButton')}
             </Button>
             <Button type='submit' variant='primary' size='sm' disabled={loading}>
-              {loading ? '작성 중...' : '방명록 작성'}
+              {loading ? t('guestbook.form.submittingButton') : t('guestbook.form.submitButton')}
             </Button>
           </div>
         </div>

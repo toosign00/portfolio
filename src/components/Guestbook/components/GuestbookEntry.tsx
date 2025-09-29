@@ -1,7 +1,8 @@
 import type { GuestbookEntryProps } from '@/types/guestbook.types';
-import { formatRelativeTime } from '@/utils/timeUtils';
+import { useRelativeTime } from '@/hooks/useRelativeTime';
 
 export const GuestbookEntry = ({ entry }: GuestbookEntryProps) => {
+  const formatRelativeTime = useRelativeTime();
   return (
     <div className='mb-4 border-white/5 border-b pb-4 last:mb-0 last:border-b-0 last:pb-0'>
       <div className='mb-2 flex items-center gap-2'>
