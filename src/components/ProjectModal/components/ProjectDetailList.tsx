@@ -1,6 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import type { ProjectDetail } from '@/types/projects.types';
 
 export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) => {
+  const { t } = useTranslation();
   if (!details || details.length === 0) return null;
 
   return (
@@ -10,7 +12,7 @@ export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) =>
         className='mb-4 font-bold text-white text-xl tracking-tight'
         style={{ letterSpacing: '-0.01em', lineHeight: '1.3' }}
       >
-        상세 내용
+        {t('projectModals.details')}
       </h3>
       <ul className='space-y-6 text-gray-200' aria-labelledby='project-detail-list-title'>
         {details.map((item, idx) => (

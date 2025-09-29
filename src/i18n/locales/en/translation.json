@@ -1,0 +1,221 @@
+{
+  "common": {
+    "previousPage": "Previous Page",
+    "refresh": "Refresh",
+    "home": "Go to Home",
+    "loading": "Loading",
+    "close": "Close",
+    "error": "An error occurred",
+    "details": "Error details (for developers)",
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{{count}}m ago",
+      "hoursAgo": "{{count}}h ago",
+      "daysAgo": "{{count}}d ago",
+      "weeksAgo": "{{count}}w ago",
+      "monthsAgo": "{{count}}mo ago",
+      "yearsAgo": "{{count}}y ago",
+      "unknown": "Unknown"
+    },
+    "notFoundPage": {
+      "title": "Page Not Found",
+      "description": "The page you requested does not exist or may have been moved."
+    },
+    "errorFallback": {
+      "title": "Something Went Wrong",
+      "description": "Please refresh the page or return to home."
+    },
+    "unknownError": "An unknown error occurred.",
+    "toast": {
+      "email": {
+        "success": "Success!",
+        "successDescription": "Email sent successfully!",
+        "error": "Send failed",
+        "errorDescription": "Failed to send email. {{error}}"
+      },
+      "guestbook": {
+        "success": "Guestbook entry created",
+        "successDescription": "Thank you for your valuable message!",
+        "error": "Creation failed",
+        "errorDescription": "An error occurred while creating the guestbook entry. Please try again."
+      }
+    }
+  },
+  "navigation": {
+    "home": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "education": "Education",
+    "ariaLabel": "Main Navigation"
+  },
+  "intro": {
+    "greeting": "Hello,",
+    "rolePrefix": "I'm",
+    "role": "Hyunsoo Ro",
+    "name": "a frontend developer.",
+    "description": "",
+    "about": "I enjoy frontend development that considers user experience\nand code reusability, and I love improving inefficient processes.\nI strive to become a better developer through continuous learning and growth.",
+    "actions": {
+      "downloadResume": "Download CV",
+      "visitGithub": "Visit GitHub"
+    },
+    "fileName": "HyunsooRo_CV.pdf"
+  },
+  "features": {
+    "title": "Core Competencies",
+    "description": "A frontend developer who values communication and collaboration,\nsolves problems with persistence, and grows together with the team.",
+    "cards": [
+      {
+        "title": "Modern Frontend Development",
+        "desc": "I develop frontend applications based on React and TypeScript. I have experience using Tanstack Query, React Router, Zustand, and server-side rendering with Next.js."
+      },
+      {
+        "title": "Website Maintenance & Optimization",
+        "desc": "I continuously improve websites and focus on optimizing user experience. I've achieved 70% FCP and 46% LCP performance improvements through code splitting, bundle analysis, lazy loading, and image optimization."
+      },
+      {
+        "title": "Communication & Collaboration",
+        "desc": "I have experience working on projects through collaboration with planners, designers, and developers. I believe good communication leads to good results, so I value clear exchange of opinions in teamwork."
+      }
+    ]
+  },
+  "skills": {
+    "title": "Tech Stack & Tools",
+    "description": "Technologies I can currently use and those I'm learning.",
+    "filters": {
+      "all": "All",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "environment": "Environment & Deployment",
+      "etc": "Others"
+    },
+    "count": "{{count}} tech stacks"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Key projects where I learned and implemented new technologies.",
+    "loadingMessage": "Loading projects...",
+    "errorMessage": "Failed to load projects",
+    "moreProjects": "View More Projects",
+    "detailAriaLabel": "View Details"
+  },
+  "projectModals": {
+    "participantCount": "Team Size",
+    "period": "Period",
+    "relatedLinks": "Related Links",
+    "github": "GitHub",
+    "deployWebsite": "Live Site",
+    "details": "Details",
+    "loading": "Loading Project",
+    "loadingDescription": "Fetching project information.",
+    "notFound": "Project Not Found",
+    "error": "An Error Occurred"
+  },
+  "education": {
+    "title": "Education",
+    "items": [
+      {
+        "period": "02.2025 - 08.2025",
+        "org": "Likelion Bootcamp",
+        "course": "Frontend Development Bootcamp 13th Cohort",
+        "desc": [
+          "Acquired semantic markup implementation skills considering web standards and accessibility",
+          "Developed modern frontend development capabilities using TypeScript, React, Next.js, and Tailwind CSS",
+          "Enhanced practical skills through Git/GitHub-based collaboration and team projects"
+        ]
+      },
+      {
+        "period": "03.2023 - 02.2025",
+        "org": "Kaywon University of Art & Design",
+        "course": "Digital Media Design - Programming Track",
+        "desc": [
+          "Gained integrated perspective on the entire process from planning to development and cross-disciplinary collaboration skills",
+          "Acquired user-centered interface design methodology based on UI/UX design principles",
+          "Established foundational frontend development skills through core web technologies: HTML, CSS, and JavaScript"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Thank You",
+    "description": "If you have any questions, please feel free to contact me using the information below.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send",
+      "sending": "Sending...",
+      "placeholder": {
+        "name": "John Doe",
+        "email": "example@gmail.com",
+        "message": "Please enter your message."
+      },
+      "validation": {
+        "name": {
+          "min": "Name must be at least 2 characters",
+          "max": "Name must be 50 characters or less"
+        },
+        "email": {
+          "invalid": "Please enter a valid email address",
+          "max": "Email must be 100 characters or less"
+        },
+        "message": {
+          "min": "Please enter a message",
+          "max": "Message must be 1000 characters or less"
+        }
+      }
+    },
+    "guestbook": "Leave a Message"
+  },
+  "footer": {
+    "GitHubariaLabel": "GitHub Profile",
+    "LinkedInariaLabel": "LinkedIn Profile",
+    "VelogariaLabel": "Velog Blog"
+  },
+  "guestbook": {
+    "title": "Guestbook",
+    "backToMain": "Back to Main",
+    "description": "Feel free to leave any message you'd like to share with me!",
+    "loadMore": "Load More",
+    "loading": "Loading...",
+    "form": {
+      "namePlaceholder": "Enter your name",
+      "messagePlaceholder": "Write your message for the guestbook",
+      "nameLabel": "Name",
+      "messageLabel": "Message",
+      "resetButton": "Reset",
+      "submitButton": "Submit",
+      "submittingButton": "Submitting...",
+      "validation": {
+        "name": {
+          "required": "Please enter your name.",
+          "max": "Name must be 10 characters or less."
+        },
+        "message": {
+          "required": "Please enter a message.",
+          "max": "Message must be 1000 characters or less."
+        }
+      }
+    },
+    "list": {
+      "title": "{{count}} Messages",
+      "loadingLabel": "Loading guestbook"
+    },
+    "empty": {
+      "message": "No messages yet.",
+      "subMessage": "Be the first to leave a message!",
+      "ariaLabel": "Guestbook is empty"
+    },
+    "error": {
+      "title": "Failed to Load Guestbook",
+      "message": "An unexpected error occurred.",
+      "retryButton": "Retry"
+    }
+  },
+  "services": {
+    "email": {
+      "error": "Failed to send email.",
+      "unknownError": "An unknown error occurred."
+    }
+  }
+}

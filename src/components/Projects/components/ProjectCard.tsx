@@ -1,10 +1,12 @@
 import { memo } from 'react';
 import ReactGA from 'react-ga4';
+import { useTranslation } from 'react-i18next';
 import { colorClasses } from '@/constants/projectColors.constants';
 import type { ProjectCardProps } from '@/types/projectCard.types';
 import { generateSrcSet, getSrcSizes, transformSrcImage } from '@/utils/imageUtils';
 
 export const ProjectCard = memo<ProjectCardProps>(({ project, onClick }: ProjectCardProps) => {
+  const { t } = useTranslation();
   const color = project.color ?? 'blue';
   const classes = colorClasses[color];
 
@@ -32,7 +34,7 @@ export const ProjectCard = memo<ProjectCardProps>(({ project, onClick }: Project
       onKeyDown={projectKeyDown}
       tabIndex={0}
       role='button'
-      aria-label={`${project.title} 상세 보기`}
+      aria-label={`${project.title} ${t('projects.detailAriaLabel')}`}
     >
       <div className='aspect-[16/9] overflow-hidden'>
         <img

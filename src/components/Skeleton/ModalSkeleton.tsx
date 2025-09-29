@@ -1,8 +1,11 @@
+import { useTranslation } from 'react-i18next';
+
 interface ModalSkeletonProps {
   onClose?: () => void;
 }
 
 export function ModalSkeleton({ onClose }: ModalSkeletonProps) {
+  const { t } = useTranslation();
   return (
     <>
       {/* 닫기 버튼: 실제 모달과 동일하게 최상위 컨테이너 기준 */}
@@ -11,7 +14,7 @@ export function ModalSkeleton({ onClose }: ModalSkeletonProps) {
           type='button'
           onClick={onClose}
           className='absolute top-6 right-6 cursor-pointer text-2xl text-gray-400 hover:text-white'
-          aria-label='모달 닫기'
+          aria-label={t('common.close')}
         >
           ×
         </button>

@@ -4,8 +4,10 @@ import { Button } from '@/components/Button';
 import { GuestbookForm, GuestbookList } from '@/components/Guestbook';
 import { useGuestbookForm } from '@/hooks/useGuestbookForm';
 import { useGuestbookInfiniteEntries } from '@/hooks/useGuestbookQuery';
+import { useTranslation } from 'react-i18next';
 
 export const GuestbookPage = () => {
+  const { t } = useTranslation();
   const infinite = useGuestbookInfiniteEntries(10);
   const { loading, handleSubmit } = useGuestbookForm();
 
@@ -29,9 +31,9 @@ export const GuestbookPage = () => {
       {/* 헤더 */}
       <div className='border-white/10 border-b p-6'>
         <div className='mx-auto flex max-w-4xl items-center justify-between'>
-          <h1 className='font-bold text-2xl text-white'>방명록</h1>
+          <h1 className='font-bold text-2xl text-white'>{t('guestbook.title')}</h1>
           <Button variant='secondary' size='sm' asChild>
-            <Link to='/'>메인으로 돌아가기</Link>
+            <Link to='/'>{t('guestbook.backToMain')}</Link>
           </Button>
         </div>
       </div>
@@ -40,9 +42,7 @@ export const GuestbookPage = () => {
       <div className='flex-1 p-6'>
         <div className='mx-auto max-w-3xl'>
           <div className='mb-6'>
-            <p className='text-center text-gray-400 text-sm'>
-              저에게 하고 싶은 말씀을 자유롭게 남겨주세요!
-            </p>
+            <p className='text-center text-gray-400 text-sm'>{t('guestbook.description')}</p>
           </div>
 
           {/* 방명록 작성 폼 */}
@@ -64,7 +64,7 @@ export const GuestbookPage = () => {
                 onClick={() => infinite.fetchNextPage()}
                 disabled={infinite.isFetchingNextPage}
               >
-                {infinite.isFetchingNextPage ? '불러오는 중...' : '더 보기'}
+                {infinite.isFetchingNextPage ? t('guestbook.loading') : t('guestbook.loadMore')}
               </Button>
             )}
           </div>

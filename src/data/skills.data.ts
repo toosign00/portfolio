@@ -63,58 +63,58 @@ export const skills: SkillItem[] = [
   },
   {
     name: 'Git',
-    type: 'devops',
+    type: 'environment',
     iconName: 'SiGit',
     color: '#f34f29',
   },
   {
     name: 'GitHub',
-    type: 'devops',
+    type: 'environment',
     iconName: 'SiGithub',
     color: 'white',
   },
   {
     name: 'Vite',
-    type: 'devops',
+    type: 'environment',
     iconName: 'viteIcon',
     isImage: true,
   },
   {
     name: 'Vercel',
-    type: 'devops',
+    type: 'environment',
     iconName: 'SiVercel',
     color: 'white',
   },
   {
     name: 'Figma',
-    type: 'design',
+    type: 'etc',
     iconName: 'figmaIcon',
     isImage: true,
   },
   {
     name: 'Photoshop',
-    type: 'design',
+    type: 'etc',
     iconName: 'SiAdobephotoshop',
     color: '#31a8ff',
   },
   {
     name: 'Illustrator',
-    type: 'design',
+    type: 'etc',
     iconName: 'SiAdobeillustrator',
     color: '#ff9a00',
   },
   {
     name: 'Premiere Pro',
-    type: 'design',
+    type: 'etc',
     iconName: 'SiAdobepremierepro',
     color: '#9999ff',
   },
 ];
 
-export const filters: FilterOption[] = [
-  { label: '전체', value: 'all' },
-  { label: '프론트엔드', value: 'frontend' },
-  { label: '백엔드', value: 'backend' },
-  { label: '환경 및 배포', value: 'devops' },
-  { label: '디자인', value: 'design' },
+export const getFilters = (t: (key: string) => string): FilterOption[] => [
+  { label: t('skills.filters.all'), value: 'all' },
+  { label: t('skills.filters.frontend'), value: 'frontend' },
+  { label: t('skills.filters.backend'), value: 'backend' },
+  { label: t('skills.filters.environment'), value: 'environment' },
+  { label: t('skills.filters.etc'), value: 'etc' },
 ];

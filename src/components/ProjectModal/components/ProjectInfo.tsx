@@ -1,7 +1,9 @@
 import ReactGA from 'react-ga4';
+import { useTranslation } from 'react-i18next';
 import type { ProjectInfoProps } from '@/types/projectModal.types';
 
 export const ProjectInfo = ({ project }: ProjectInfoProps) => {
+  const { t } = useTranslation();
   // 인원/팀구성
   const memberInfo =
     project.type === 'Team' && project.teamDetail
@@ -33,17 +35,23 @@ export const ProjectInfo = ({ project }: ProjectInfoProps) => {
       <div className='flex w-full flex-col gap-3 md:flex-row md:gap-2'>
         {/* 참여인원 */}
         <div className='flex flex-1 flex-col'>
-          <div className='mb-1 font-semibold text-gray-400 text-xs'>참여인원</div>
+          <div className='mb-1 font-semibold text-gray-400 text-xs'>
+            {t('projectModals.participantCount')}
+          </div>
           <div className='font-normal text-sm text-white'>{memberInfo}</div>
         </div>
         {/* 기간 */}
         <div className='flex flex-1 flex-col'>
-          <div className='mb-1 font-semibold text-gray-400 text-xs'>기간</div>
+          <div className='mb-1 font-semibold text-gray-400 text-xs'>
+            {t('projectModals.period')}
+          </div>
           <div className='font-normal text-sm text-white'>{project.timeFrame}</div>
         </div>
         {/* 관련 링크 */}
         <div className='flex flex-1 flex-col'>
-          <div className='mb-1 font-semibold text-gray-400 text-xs'>관련 링크</div>
+          <div className='mb-1 font-semibold text-gray-400 text-xs'>
+            {t('projectModals.relatedLinks')}
+          </div>
           <div className='font-normal text-sm text-white'>
             <a
               href={project.githubUrl}
@@ -52,7 +60,7 @@ export const ProjectInfo = ({ project }: ProjectInfoProps) => {
               className='focus-ring focus-ring underline transition-colors hover:text-blue'
               onClick={handleGithubClick}
             >
-              깃허브
+              {t('projectModals.github')}
             </a>
             {project.deployUrl && (
               <a
@@ -62,7 +70,7 @@ export const ProjectInfo = ({ project }: ProjectInfoProps) => {
                 className='focus-ring focus-ring ml-4 underline transition-colors hover:text-blue'
                 onClick={handleDeployClick}
               >
-                배포 사이트
+                {t('projectModals.deployWebsite')}
               </a>
             )}
           </div>

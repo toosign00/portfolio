@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
-import { filters, skills } from '@/data/skills.data';
+import { useTranslation } from 'react-i18next';
+import { getFilters, skills } from '@/data/skills.data';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { SectionLayout } from '@/layout/SectionLayout';
 import type { SkillType } from '@/types/skills.types';
@@ -9,6 +10,7 @@ import { SkillGrid } from './components/SkillGrid';
 
 export const Skills = () => {
   const [filter, setFilter] = useState<SkillType | 'all'>('all');
+  const { t } = useTranslation();
 
   const filteredSkills = useMemo(() => {
     const filtered = filter === 'all' ? skills : skills.filter((skill) => skill.type === filter);
@@ -22,12 +24,9 @@ export const Skills = () => {
   return (
     <SectionLayout id='skills'>
       <div className='mx-auto max-w-6xl'>
-        <SectionHeader
-          title='기술 스택 및 도구'
-          description='현재 사용할 수 있는 기술들과 학습 중인 기술들입니다.'
-        />
+        <SectionHeader title={t('skills.title')} description={t('skills.description')} />
         <SkillFilter
-          filters={filters}
+          filters={getFilters(t)}
           currentFilter={filter}
           onFilterChange={(f) => setFilter(f as SkillType | 'all')}
         />

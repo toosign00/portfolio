@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@/components/Button';
@@ -13,7 +14,7 @@ import { isNotFoundError, normalizeErrorMessage } from '@/utils/errorUtils';
 export const ProjectPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   // React Query를 사용한 프로젝트 데이터 조회
   const { data: project, isPending, error } = useProject(id);
 
@@ -37,10 +38,10 @@ export const ProjectPage = () => {
     return (
       <div className='flex min-h-screen flex-col items-center justify-center bg-project-background'>
         <div className='flex flex-col items-center'>
-          <h1 className='mb-4 font-bold text-2xl text-white'>오류가 발생했습니다</h1>
+          <h1 className='mb-4 font-bold text-2xl text-white'>{t('common.error')}</h1>
           <p className='mb-8 text-gray-400'>{errorMessage}</p>
           <Button variant='secondary' size='md' asChild>
-            <Link to='/'>메인으로 돌아가기</Link>
+            <Link to='/'>{t('common.home')}</Link>
           </Button>
         </div>
       </div>
@@ -65,9 +66,9 @@ export const ProjectPage = () => {
         <Link
           to='/'
           className='focus-ring mb-8 flex w-fit cursor-pointer items-center gap-0.5 text-gray-400 text-sm hover:text-blue'
-          aria-label='메인페이지로 돌아가기'
+          aria-label={t('common.home')}
         >
-          <IoArrowBackOutline className='text-lg' /> 메인으로 돌아가기
+          <IoArrowBackOutline className='text-lg' /> {t('common.home')}
         </Link>
 
         <article className='flex flex-col items-start gap-6'>

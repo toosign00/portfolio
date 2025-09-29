@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { IoReload } from 'react-icons/io5';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/Button';
@@ -12,6 +13,7 @@ import { ProjectCard } from './components/ProjectCard';
 
 export const Projects = () => {
   const { displayedProjects, setShowAll, hasMoreProjects, loading, error } = useProjectsWithUI();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -24,19 +26,16 @@ export const Projects = () => {
 
   return (
     <SectionLayout id='projects'>
-      <SectionHeader
-        title='프로젝트'
-        description='새로운 기술을 학습하고 구현한 주요 프로젝트입니다.'
-      />
+      <SectionHeader title={t('projects.title')} description={t('projects.description')} />
       <div className='container mx-auto'>
         {loading ? (
           <div className='flex flex-col items-center justify-center py-12'>
             <IoReload className='mb-4 animate-spin text-4xl text-gray-400' />
-            <p className='text-gray-400'>프로젝트를 불러오는 중...</p>
+            <p className='text-gray-400'>{t('projects.loadingMessage')}</p>
           </div>
         ) : error ? (
           <div className='flex flex-col items-center justify-center py-12'>
-            <p className='mb-4 text-red-500'>프로젝트를 불러오는데 실패했습니다</p>
+            <p className='mb-4 text-red-500'>{t('projects.errorMessage')}</p>
             <p className='text-gray-400 text-sm'>{error}</p>
           </div>
         ) : (
@@ -61,7 +60,7 @@ export const Projects = () => {
                   onClick={() => setShowAll(true)}
                   className='mx-auto'
                 >
-                  더 많은 프로젝트 보기
+                  {t('projects.moreProjects')}
                 </Button>
               </div>
             )}

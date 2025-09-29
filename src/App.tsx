@@ -3,9 +3,11 @@ import { useEffect } from 'react';
 import ReactGA from 'react-ga4';
 import { BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'sonner';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { useIsMobile } from '@/hooks/useMediaQuery';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { Router } from '@/Router';
+import '@/i18n';
 
 function App() {
   const isMobile = useIsMobile();
@@ -23,6 +25,7 @@ function App() {
     <LazyMotion features={domMax} strict>
       <BrowserRouter>
         <Router />
+        <LanguageSwitcher />
         <Toaster
           position={isMobile ? 'bottom-center' : 'top-right'} // 토스트 위치 설정 (모바일: 하단 중앙, 데스크탑: 우측 상단)
           richColors={false} // 색상 강화 비활성화
