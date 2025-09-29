@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { ProjectPageSkeleton } from '@/components/ui/Skeleton/ProjectPageSkeleton';
 import { useProject } from '@/hooks/useProjectsQuery';
 import { useProjectSkeletonLoading } from '@/hooks/useSkeletonLoading';
+import { useLocalizedText } from '@/i18n/hooks/useLocalizedText';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { isNotFoundError, normalizeErrorMessage } from '@/utils/errorUtils';
 
@@ -15,6 +16,8 @@ export const ProjectPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const getLocalizedText = useLocalizedText();
+
   // React Query를 사용한 프로젝트 데이터 조회
   const { data: project, isPending, error } = useProject(id);
 
@@ -60,6 +63,10 @@ export const ProjectPage = () => {
 
   const details = project.details;
 
+  const localizedTitle = getLocalizedText(project.title);
+  const localizedSummary = getLocalizedText(project.summary);
+  const localizedDescription = getLocalizedText(project.description);
+
   return (
     <div className='flex min-h-screen flex-col items-center justify-center bg-project-background'>
       <div className='w-full max-w-xl px-8 py-4'>
@@ -73,13 +80,13 @@ export const ProjectPage = () => {
 
         <article className='flex flex-col items-start gap-6'>
           <div>
-            <h1 className='mb-1 font-bold text-2xl text-white sm:text-3xl'>{project.title}</h1>
-            <p className='text-gray text-sm'>{project.summary}</p>
+            <h1 className='mb-1 font-bold text-2xl text-white sm:text-3xl'>{localizedTitle}</h1>
+            <p className='text-gray text-sm'>{localizedSummary}</p>
           </div>
 
           <div className='w-full space-y-2'>
             <p className='whitespace-pre-line text-gray text-md leading-relaxed'>
-              {project.description}
+              {localizedDescription}
             </p>
           </div>
 

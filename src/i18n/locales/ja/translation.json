@@ -108,7 +108,8 @@
     "loading": "プロジェクト読み込み中",
     "loadingDescription": "プロジェクト情報を読み込んでいます。",
     "notFound": "プロジェクトが見つかりません",
-    "error": "エラーが発生しました"
+    "error": "エラーが発生しました",
+    "memberCount": "{{count}}名"
   },
   "education": {
     "title": "教育",

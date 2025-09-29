@@ -19,7 +19,7 @@ export const Projects = () => {
 
   const handleProjectClick = useCallback(
     async (project: ProjectCardData) => {
-      await navigate(getProjectPath(project.id), { state: { background: location } });
+      await navigate(getProjectPath(project.id.ko), { state: { background: location } });
     },
     [navigate, location]
   );
@@ -43,7 +43,7 @@ export const Projects = () => {
             <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
               {displayedProjects.map((project, index) => (
                 <ProjectCard
-                  key={project.id}
+                  key={project.id.ko}
                   project={{
                     ...project,
                     color: project.color || getColorForIndex(index, 0),

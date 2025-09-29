@@ -109,7 +109,8 @@
     "loading": "Loading Project",
     "loadingDescription": "Fetching project information.",
     "notFound": "Project Not Found",
-    "error": "An Error Occurred"
+    "error": "An Error Occurred",
+    "memberCount": "{{count}} people"
   },
   "education": {
     "title": "Education",

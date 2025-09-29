@@ -108,7 +108,8 @@
     "loading": "프로젝트 로딩 중",
     "loadingDescription": "프로젝트 정보를 불러오고 있습니다.",
     "notFound": "프로젝트를 찾을 수 없습니다",
-    "error": "오류가 발생했습니다"
+    "error": "오류가 발생했습니다",
+    "memberCount": "{{count}}명"
   },
   "education": {
     "title": "교육",

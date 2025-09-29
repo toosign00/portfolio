@@ -1,22 +1,29 @@
 import ReactGA from 'react-ga4';
 import { useTranslation } from 'react-i18next';
+import { useLocalizedText } from '@/i18n/hooks/useLocalizedText';
 import type { ProjectInfoProps } from '@/types/projectModal.types';
 
 export const ProjectInfo = ({ project }: ProjectInfoProps) => {
   const { t } = useTranslation();
+  const getLocalizedText = useLocalizedText();
+
+  const localizedTitle = getLocalizedText(project.title);
+  const localizedTeamDetail = project.teamDetail ? getLocalizedText(project.teamDetail) : null;
+  const localizedTimeFrame = getLocalizedText(project.timeFrame);
+
   // 인원/팀구성
   const memberInfo =
-    project.type === 'Team' && project.teamDetail
-      ? project.teamDetail
+    project.type === 'Team' && localizedTeamDetail
+      ? localizedTeamDetail
       : project.memberCount
-        ? `${project.memberCount}명`
+        ? t('projectModals.memberCount', { count: project.memberCount })
         : '';
 
   const handleGithubClick = () => {
     ReactGA.event('click', {
       link_id: 'project_github',
       link_url: project.githubUrl,
-      project_name: project.title,
+      project_name: localizedTitle,
       outbound: true,
     });
   };
@@ -25,7 +32,7 @@ export const ProjectInfo = ({ project }: ProjectInfoProps) => {
     ReactGA.event('click', {
       link_id: 'project_deploy',
       link_url: project.deployUrl,
-      project_name: project.title,
+      project_name: localizedTitle,
       outbound: true,
     });
   };
@@ -45,7 +52,7 @@ export const ProjectInfo = ({ project }: ProjectInfoProps) => {
           <div className='mb-1 font-semibold text-gray-400 text-xs'>
             {t('projectModals.period')}
           </div>
-          <div className='font-normal text-sm text-white'>{project.timeFrame}</div>
+          <div className='font-normal text-sm text-white'>{localizedTimeFrame}</div>
         </div>
         {/* 관련 링크 */}
         <div className='flex flex-1 flex-col'>
