@@ -10,7 +10,8 @@ export const useLocalizedText = () => {
     if (typeof text === 'string') return text;
 
     // 현재 언어로 텍스트 반환, 없으면 한국어로 fallback
-    const currentLang = i18n.language as keyof MultiLanguageText;
-    return text[currentLang] || text.ko;
+    const resolved = i18n.resolvedLanguage || i18n.language;
+    const baseLang = (resolved.split('-')[0] as keyof MultiLanguageText) || 'ko';
+    return text[baseLang] || text.ko;
   };
 };

@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { useLocalizedArray } from '@/i18n/hooks/useLocalizedArray';
 import { useLocalizedText } from '@/i18n/hooks/useLocalizedText';
 import type { ProjectDetail } from '@/types/projects.types';
 
 export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) => {
   const { t, i18n } = useTranslation();
   const getLocalizedText = useLocalizedText();
+  const getLocalizedArray = useLocalizedArray();
   if (!details || details.length === 0) return null;
 
   return (
@@ -28,15 +30,16 @@ export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) =>
             </h4>
 
             {(() => {
-              const currentLang = i18n.language as keyof typeof item.description;
-              const localizedDesc = item.description[currentLang] || item.description.ko;
+              const resolved = i18n.resolvedLanguage || i18n.language;
+              const baseLang = (resolved.split('-')[0] as keyof typeof item.description) || 'ko';
+              const localizedDesc = getLocalizedArray(item.description);
               const descArray = Array.isArray(localizedDesc) ? localizedDesc : [localizedDesc];
               return (
                 <ul className='space-y-2'>
                   {descArray.map((line, _i) => (
                     <li key={`${line.slice(0, 20)}-${line}`} className='ml-6 list-disc'>
                       <div
-                        className={`flex-1 ${i18n.language === 'ja' ? 'break-words' : 'break-keep'} text-base text-gray-400 leading-relaxed`}
+                        className={`flex-1 ${baseLang === 'ja' ? 'break-words' : 'break-keep'} text-base text-gray-400 leading-relaxed`}
                       >
                         {line.split('\n').map((textLine, lineIndex) => (
                           <div

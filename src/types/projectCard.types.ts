@@ -5,7 +5,7 @@ export interface ProjectCardProps {
   onClick: (project: ProjectCardData) => void;
 }
 export interface ProjectCardData {
-  id: MultiLanguageText;
+  id: string;
   title: MultiLanguageText;
   type: 'Team' | 'Personal';
   summary: MultiLanguageText;
