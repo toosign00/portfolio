@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/Button';
 import { guestbookFormSchema } from '@/schemas/guestbook.schema';
 import type { GuestbookFormData, GuestbookFormProps } from '@/types/guestbook.types';
 export const GuestbookForm = ({ onSubmit, loading }: GuestbookFormProps) => {

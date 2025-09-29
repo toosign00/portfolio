@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/Button';
 import { useContactForm } from '@/hooks/useContactForm';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { SectionLayout } from '@/layout/SectionLayout';

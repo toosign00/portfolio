@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import ReactGA from 'react-ga4';
 import { BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'sonner';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { useIsMobile } from '@/hooks/useMediaQuery';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { Router } from '@/Router';

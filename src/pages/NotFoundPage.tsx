@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/Button';
 
 export function NotFoundPage() {
   const navigate = useNavigate();

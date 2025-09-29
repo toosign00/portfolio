@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/Button';
 import { GuestbookForm, GuestbookList } from '@/components/Guestbook';
+import { Button } from '@/components/ui/Button';
 import { useGuestbookForm } from '@/hooks/useGuestbookForm';
 import { useGuestbookInfiniteEntries } from '@/hooks/useGuestbookQuery';
-import { useTranslation } from 'react-i18next';
 
 export const GuestbookPage = () => {
   const { t } = useTranslation();

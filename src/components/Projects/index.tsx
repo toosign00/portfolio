@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoReload } from 'react-icons/io5';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/Button';
 import { getProjectPath } from '@/constants/routes.constants';
 import { useProjectsWithUI } from '@/hooks/useProjectsQuery';
 import { SectionHeader } from '@/layout/SectionHeader';

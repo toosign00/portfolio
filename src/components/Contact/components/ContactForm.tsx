@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import xss from 'xss';
 import type { z } from 'zod';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/Button';
 import { contactFormSchema } from '@/schemas/contact.schema';
 import type { ContactFormProps } from '@/types/contact.types';
 

@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { IoArrowBackOutline } from 'react-icons/io5';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Button } from '@/components/Button';
 import { ProjectDetailList } from '@/components/ProjectModal/components/ProjectDetailList';
 import { ProjectInfo } from '@/components/ProjectModal/components/ProjectInfo';
 import { TechnologyStack } from '@/components/ProjectModal/components/TechnologyStack';
-import { ProjectPageSkeleton } from '@/components/Skeleton/ProjectPageSkeleton';
+import { Button } from '@/components/ui/Button';
+import { ProjectPageSkeleton } from '@/components/ui/Skeleton/ProjectPageSkeleton';
 import { useProject } from '@/hooks/useProjectsQuery';
 import { useProjectSkeletonLoading } from '@/hooks/useSkeletonLoading';
 import { NotFoundPage } from '@/pages/NotFoundPage';
