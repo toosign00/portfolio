@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { QUERY_KEYS } from '@/constants/queryKeys.constants';
 import { fetchProjectById, fetchProjects, ProjectServiceError } from '@/services/projectService';
 import type { Project } from '@/types/projects.types';
@@ -42,6 +43,7 @@ export const useProject = (id: string | undefined) => {
 
 // 프로젝트 목록 + UI 상태 관리 훅
 export const useProjectsWithUI = () => {
+  const { t } = useTranslation();
   const { data: projects = [], isLoading: loading, error } = useProjects();
   const [showAll, setShowAll] = useState(false);
 
@@ -62,8 +64,8 @@ export const useProjectsWithUI = () => {
       return error.message;
     }
 
-    return error.message || '알 수 없는 오류가 발생했습니다.';
-  }, [error]);
+    return error.message || t('common.unknownError');
+  }, [error, t]);
 
   return {
     projects,

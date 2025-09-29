@@ -1,6 +1,6 @@
 import type React from 'react';
 import { Component } from 'react';
-import { ErrorFallback } from '@/components/ErrorFallback';
+import { ErrorFallback } from '@/components/ui/ErrorFallback';
 import type { ErrorBoundaryProps, ErrorBoundaryState } from '@/types/error.types';
 
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {

@@ -1,23 +1,22 @@
+import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/Button';
 
 export function NotFoundPage() {
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   return (
     <div className='flex min-h-screen items-center justify-center bg-black text-white'>
       <div className='p-8 text-center'>
         <h1 className='mb-4 font-bold text-6xl text-red-500'>404</h1>
-        <h2 className='mb-4 font-semibold text-2xl'>페이지를 찾을 수 없습니다</h2>
-        <p className='mb-8 text-gray-400'>
-          요청하신 페이지가 존재하지 않거나 이동되었을 수 있습니다.
-        </p>
+        <h2 className='mb-4 font-semibold text-2xl'>{t('common.notFoundPage.title')}</h2>
+        <p className='mb-8 text-gray-400'>{t('common.notFoundPage.description')}</p>
         <div className='flex justify-center gap-4'>
           <Button onClick={() => navigate(-1)} variant='secondary' size='md'>
-            이전 페이지
+            {t('common.previousPage')}
           </Button>
           <Button variant='secondary' size='md' asChild>
-            <Link to='/'>홈으로</Link>
+            <Link to='/'>{t('common.home')}</Link>
           </Button>
         </div>
       </div>

@@ -1,10 +1,11 @@
 import ReactGA from 'react-ga4';
+import { useTranslation } from 'react-i18next';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiVelog } from 'react-icons/si';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
-
+  const { t } = useTranslation();
   const handleSocialClick = (platform: string, url: string) => {
     ReactGA.event('click', {
       link_id: `footer_${platform}`,
@@ -28,7 +29,7 @@ export const Footer = () => {
               href='https://github.com/toosign00'
               target='_blank'
               rel='noopener noreferrer'
-              aria-label='GitHub 프로필로 이동'
+              aria-label={t('footer.GitHubariaLabel')}
               className='focus-ring text-gray-400 transition-colors hover:text-blue'
               onClick={() => handleSocialClick('github', 'https://github.com/toosign00')}
             >
@@ -38,7 +39,7 @@ export const Footer = () => {
               href='https://www.linkedin.com/in/hyunsoo-roh-97871431b'
               target='_blank'
               rel='noopener noreferrer'
-              aria-label='LinkedIn 프로필로 이동'
+              aria-label={t('footer.LinkedInariaLabel')}
               className='focus-ring text-gray-400 transition-colors hover:text-blue'
               onClick={() =>
                 handleSocialClick('linkedin', 'https://www.linkedin.com/in/hyunsoo-roh-97871431b')
@@ -50,7 +51,7 @@ export const Footer = () => {
               href='https://velog.io/@toosign00'
               target='_blank'
               rel='noopener noreferrer'
-              aria-label='Velog 블로그로 이동'
+              aria-label={t('footer.VelogariaLabel')}
               className='focus-ring text-gray-400 transition-colors hover:text-blue'
               onClick={() => handleSocialClick('velog', 'https://velog.io/@toosign00')}
             >

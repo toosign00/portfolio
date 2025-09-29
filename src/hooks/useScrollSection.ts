@@ -5,7 +5,7 @@ import type { NavItem } from '@/types/navigation.types';
 interface SectionPosition {
   top: number;
   bottom: number;
-  label: string;
+  id: string;
 }
 
 const SCROLL_ANIMATION_TIMEOUT = 1200; // 스크롤 애니메이션 시간보다 약간 길게
@@ -31,7 +31,7 @@ export const useScrollSection = (navItems: NavItem[]) => {
           return {
             top: rect.top + scrollPosition,
             bottom: rect.top + rect.height + scrollPosition,
-            label: item.label,
+            id: item.id,
           };
         })
         .filter(Boolean) as SectionPosition[];
@@ -75,7 +75,7 @@ export const useScrollSection = (navItems: NavItem[]) => {
 
       if (distance < minDistance) {
         minDistance = distance;
-        closestSection = section.label;
+        closestSection = section.id;
       }
     });
 
@@ -84,9 +84,9 @@ export const useScrollSection = (navItems: NavItem[]) => {
 
   // 수동으로 active 상태를 설정하는 함수 (버튼 클릭 시 사용)
   const setActiveManual = useCallback(
-    (label: string) => {
+    (id: string) => {
       // 즉시 상태 변경
-      setActive(label);
+      setActive(id);
 
       // 네비게이션 플래그 설정
       setIsNavigating(true);

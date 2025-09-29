@@ -36,7 +36,8 @@
       "@hooks/*": ["hooks/*"],
       "@utils/*": ["utils/*"],
       "@services/*": ["services/*"],
-      "@lib/*": ["lib/*"]
+      "@lib/*": ["lib/*"],
+      "@i18n/*": ["i18n/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]

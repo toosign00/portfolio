@@ -1,7 +1,9 @@
 import { m } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 import type { SkillCounterProps } from '@/types/skills.types';
 
 export const SkillCounter = ({ count }: SkillCounterProps) => {
+  const { t } = useTranslation();
   return (
     <div className='mb-8 text-center'>
       <m.p
@@ -10,7 +12,7 @@ export const SkillCounter = ({ count }: SkillCounterProps) => {
         animate={{ opacity: 1, y: 0 }}
         className='text-gray text-sm'
       >
-        {count}개의 기술 스택
+        {t('skills.count', { count })}
       </m.p>
     </div>
   );

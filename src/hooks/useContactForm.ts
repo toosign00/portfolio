@@ -1,20 +1,27 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { sendContactEmail } from '@/services/emailService';
 import type { ContactFormData } from '@/types/contact.types';
 
 export const useContactForm = () => {
   const [loading, setLoading] = useState(false);
-
+  const { t } = useTranslation();
   const handleSubmit = async (formData: ContactFormData) => {
     setLoading(true);
     try {
       const result = await sendContactEmail(formData);
       if (result.success) {
-        toast.success('성공!', { description: '이메일이 성공적으로 전송되었습니다!' });
+        toast.success(t('common.toast.email.success'), {
+          description: t('common.toast.email.successDescription'),
+        });
         return true;
       }
-      toast.error('전송 실패', { description: result.error });
+      toast.error(t('common.toast.email.error'), {
+        description: t('common.toast.email.errorDescription', {
+          error: result.error ?? t('common.unknownError'),
+        }),
+      });
       return false;
     } finally {
       setLoading(false);

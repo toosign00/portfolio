@@ -1,22 +1,34 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import ReactGA from 'react-ga4';
-import { Outlet, Route, Routes, useLocation } from 'react-router-dom';
+import { Outlet, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { ProjectModal } from '@/components/ProjectModal';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
+import { ProjectPageSkeleton } from '@/components/ui/Skeleton/ProjectPageSkeleton';
 import { ROUTES } from '@/constants/routes.constants';
 import { ErrorBoundary } from '@/error/ErrorBoundary';
 import { useProjectPageDetection } from '@/hooks/useProjectPageDetection';
 import DefaultLayout from '@/layout/DefaultLayout';
 import MinimalLayout from '@/layout/MinimalLayout';
-import { GuestbookPage } from '@/pages/GuestbookPage';
 import { HomePage } from '@/pages/HomePage';
-import { NotFoundPage } from '@/pages/NotFoundPage';
-import { ProjectPage } from '@/pages/ProjectPage';
 
+// 컴포넌트 Lazy Loading, Suspense 사용
+const GuestbookPage = React.lazy(() =>
+  import('@/pages/GuestbookPage').then((module) => ({ default: module.GuestbookPage }))
+);
+const ProjectPage = React.lazy(() =>
+  import('@/pages/ProjectPage').then((module) => ({ default: module.ProjectPage }))
+);
+const NotFoundPage = React.lazy(() =>
+  import('@/pages/NotFoundPage').then((module) => ({ default: module.NotFoundPage }))
+);
+
+// Router 컴포넌트
 export function Router() {
   const { hasBackground, currentLocation } = useProjectPageDetection();
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     ReactGA.send({ hitType: 'pageview', page: location.pathname });
@@ -44,9 +56,30 @@ export function Router() {
             </MinimalLayout>
           }
         >
-          <Route path={ROUTES.GUESTBOOK} element={<GuestbookPage />} />
-          <Route path={ROUTES.PROJECT_DETAIL} element={<ProjectPage />} />
-          <Route path='*' element={<NotFoundPage />} />
+          <Route
+            path={ROUTES.GUESTBOOK}
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <GuestbookPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path={ROUTES.PROJECT_DETAIL}
+            element={
+              <Suspense fallback={<ProjectPageSkeleton onBack={() => navigate('/')} />}>
+                <ProjectPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path='*'
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <NotFoundPage />
+              </Suspense>
+            }
+          />
         </Route>
       </Routes>
 

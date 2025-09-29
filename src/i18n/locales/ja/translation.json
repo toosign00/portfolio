@@ -1,0 +1,221 @@
+{
+  "common": {
+    "previousPage": "前のページ",
+    "refresh": "更新",
+    "home": "メインに戻る",
+    "loading": "読み込み中",
+    "close": "閉める",
+    "error": "エラーが発生しました",
+    "details": "エラー詳細（開発用）",
+    "time": {
+      "justNow": "たった今",
+      "minutesAgo": "{{count}}分前",
+      "hoursAgo": "{{count}}時間前",
+      "daysAgo": "{{count}}日前",
+      "weeksAgo": "{{count}}週間前",
+      "monthsAgo": "{{count}}ヶ月前",
+      "yearsAgo": "{{count}}年前",
+      "unknown": "不明"
+    },
+    "notFoundPage": {
+      "title": "ページが見つかりません",
+      "description": "お探しのページは存在しないか、移動した可能性があります。"
+    },
+    "errorFallback": {
+      "title": "問題が発生しました",
+      "description": "ページを更新するか、ホームに戻ってください。"
+    },
+    "unknownError": "不明なエラーが発生しました。",
+    "toast": {
+      "email": {
+        "success": "成功!",
+        "successDescription": "メールが正常に送信されました!",
+        "error": "送信失敗",
+        "errorDescription": "メール送信に失敗しました。{{error}}"
+      },
+      "guestbook": {
+        "success": "ゲストブック作成完了",
+        "successDescription": "大切なメッセージをありがとうございます!",
+        "error": "作成失敗",
+        "errorDescription": "ゲストブック作成中にエラーが発生しました。もう一度お試しください。"
+      }
+    }
+  },
+  "navigation": {
+    "home": "紹介",
+    "skills": "技術",
+    "projects": "プロジェクト",
+    "education": "教育",
+    "ariaLabel": "メイン ナビゲーション"
+  },
+  "intro": {
+    "greeting": "こんにちは,",
+    "role": "フロントエンド 開発者",
+    "name": "ノ・ヒョンス",
+    "description": "です.",
+    "about": "ユーザーエクスペリエンスとコードの再利用性を考慮した\nフロントエンド開発を行い、非効率的なプロセスを改善することが好きです。\n継続的な学習と成長を通じて、より良い開発者になりたいと思っています。",
+    "actions": {
+      "downloadResume": "履歴書ダウンロード",
+      "visitGithub": "GitHub訪問"
+    },
+    "fileName": "ノ・ヒョンス_履歴書.pdf"
+  },
+  "features": {
+    "title": "コア能力",
+    "description": "コミュニケーションとコラボレーションを重視し、粘り強く問題を解決し、チームと共に成長するフロントエンド開発者です。",
+    "cards": [
+      {
+        "title": "モダンフロントエンド開発",
+        "desc": "ReactとTypeScriptをベースにフロントエンド開発を行っています。Tanstack Query、React Router、Zustandなどを活用した経験があり、Next.jsを使用したサーバーサイドレンダリングの経験があります。"
+      },
+      {
+        "title": "ウェブサイト保守及び最適化",
+        "desc": "ウェブサイトを継続的に改善し、ユーザーエクスペリエンスの最適化に努めています。コード分割、バンドル分析、lazy loading、画像最適化などを通じてFCP 70%、LCP 46%のパフォーマンス改善を達成した経験があります。"
+      },
+      {
+        "title": "コミュニケーション及び協業",
+        "desc": "企画者、デザイナー、開発者とのコラボレーションを通じてプロジェクトを進めた経験があります。結局、良いコミュニケーションが良い結果を生むと考えているため、協業する際に意見を明確にやり取りすることを重視しています。"
+      }
+    ]
+  },
+  "skills": {
+    "title": "技術スタック及びツール",
+    "description": "現在使用できる技術と学習中の技術です。",
+    "filters": {
+      "all": "すべて",
+      "frontend": "フロントエンド",
+      "backend": "バックエンド",
+      "environment": "環境及びデプロイ",
+      "etc": "その他"
+    },
+    "count": "{{count}}個の技術スタック"
+  },
+  "projects": {
+    "title": "プロジェクト",
+    "description": "新しい技術を学習し実装した主要プロジェクトです。",
+    "loadingMessage": "プロジェクトを読み込み中...",
+    "errorMessage": "プロジェクトの読み込みに失敗しました",
+    "moreProjects": "もっとプロジェクトを見る",
+    "detailAriaLabel": "詳細を見る"
+  },
+  "projectModals": {
+    "participantCount": "参加人数",
+    "period": "期間",
+    "relatedLinks": "関連リンク",
+    "github": "GitHub",
+    "deployWebsite": "デプロイサイト",
+    "details": "詳細内容",
+    "loading": "プロジェクト読み込み中",
+    "loadingDescription": "プロジェクト情報を読み込んでいます。",
+    "notFound": "プロジェクトが見つかりません",
+    "error": "エラーが発生しました",
+    "memberCount": "{{count}}名"
+  },
+  "education": {
+    "title": "教育",
+    "items": [
+      {
+        "period": "2025.02 - 2025.08",
+        "org": "ライオンブートキャンプ",
+        "course": "フロントエンドブートキャンプ13期修了",
+        "desc": [
+          "ウェブ標準とアクセシビリティを考慮したセマンティックマークアップ実装能力を習得",
+          "TypeScript、React、Next.js、Tailwind CSSを活用したモダンフロントエンド開発力を養成",
+          "Git/GitHubベースの協業とチームプロジェクトを通じて実務環境での能力を強化"
+        ]
+      },
+      {
+        "period": "2023.03 - 2025.02",
+        "org": "啓原芸術大学",
+        "course": "デジタルメディアデザイン学科 プログラミング専攻",
+        "desc": [
+          "企画から開発まで全体プロセスに対する統合的観点と多分野協業能力を習得",
+          "UI/UXデザイン原則に基づくユーザー中心のインターフェース設計方法論を習得",
+          "HTML、CSS、JavaScriptのコアウェブ技術を通じてフロントエンド開発の基礎力を確立"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "ありがとうございます",
+    "description": "ご質問がございましたら、下記の連絡先までご連絡ください。",
+    "form": {
+      "name": "お名前",
+      "email": "メールアドレス",
+      "message": "メッセージ",
+      "submit": "送信",
+      "sending": "送信中...",
+      "placeholder": {
+        "name": "山田太郎",
+        "email": "example@gmail.com",
+        "message": "メッセージを入力してください。"
+      },
+      "validation": {
+        "name": {
+          "min": "お名前は2文字以上で入力してください",
+          "max": "お名前は50文字以内で入力してください"
+        },
+        "email": {
+          "invalid": "有効なメールアドレスを入力してください",
+          "max": "メールアドレスは100文字以内で入力してください"
+        },
+        "message": {
+          "min": "メッセージを入力してください",
+          "max": "メッセージは1000文字以内で入力してください"
+        }
+      }
+    },
+    "guestbook": "メッセージを残す"
+  },
+  "footer": {
+    "GitHubariaLabel": "GitHub プロフィールに移動",
+    "LinkedInariaLabel": "LinkedIn プロフィールに移動",
+    "VelogariaLabel": "Velog ブログに移動"
+  },
+  "guestbook": {
+    "title": "ゲストブック",
+    "backToMain": "メインに戻る",
+    "description": "自由にメッセージを残してください！",
+    "loadMore": "もっと見る",
+    "loading": "読み込み中...",
+    "form": {
+      "namePlaceholder": "お名前を入力してください",
+      "messagePlaceholder": "ゲストブックに残すメッセージを作成してください",
+      "nameLabel": "お名前",
+      "messageLabel": "メッセージ",
+      "resetButton": "リセット",
+      "submitButton": "投稿",
+      "submittingButton": "投稿中...",
+      "validation": {
+        "name": {
+          "required": "お名前を入力してください。",
+          "max": "お名前は10文字以内で入力してください。"
+        },
+        "message": {
+          "required": "メッセージを入力してください。",
+          "max": "メッセージは1000文字以内で入力してください。"
+        }
+      }
+    },
+    "list": {
+      "title": "ゲストブック{{count}}件",
+      "loadingLabel": "ゲストブック読み込み中"
+    },
+    "empty": {
+      "message": "まだメッセージがありません。",
+      "subMessage": "最初のメッセージを残してみてください！",
+      "ariaLabel": "ゲストブックが空です"
+    },
+    "error": {
+      "title": "ゲストブック読み込み失敗",
+      "message": "予期しないエラーが発生しました。",
+      "retryButton": "再試行"
+    }
+  },
+  "services": {
+    "email": {
+      "error": "メール送信に失敗しました。",
+      "unknownError": "不明なエラーが発生しました。"
+    }
+  }
+}

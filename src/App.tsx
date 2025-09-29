@@ -6,6 +6,7 @@ import { Toaster } from 'sonner';
 import { useIsMobile } from '@/hooks/useMediaQuery';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { Router } from '@/Router';
+import '@/i18n';
 
 function App() {
   const isMobile = useIsMobile();

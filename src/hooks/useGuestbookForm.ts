@@ -1,44 +1,28 @@
+import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
+import { useCreateGuestbookEntry } from '@/hooks/useGuestbookQuery';
 import type { GuestbookFormData } from '@/types/guestbook.types';
-import { useCreateGuestbookEntry } from './useGuestbookQuery';
 
 export const useGuestbookForm = () => {
+  const { t } = useTranslation();
   const createMutation = useCreateGuestbookEntry();
 
   const handleSubmit = async (data: GuestbookFormData) => {
     try {
-      // 서버로 데이터 전송
       await createMutation.mutateAsync({
         name: data.name,
         message: data.message,
       });
 
-      toast.success('방명록 작성 완료', { description: '소중한 메시지를 남겨주셔서 감사합니다!' });
+      toast.success(t('common.toast.guestbook.success'), {
+        description: t('common.toast.guestbook.successDescription'),
+      });
     } catch (error) {
-      console.error('방명록 작성 실패:', error);
+      console.error('Guestbook creation failed:', error);
 
-      let errorMessage: string = '방명록 작성 중 오류가 발생했습니다.';
-
-      if (error instanceof Error) {
-        // 네트워크 에러
-        if (error.message.includes('fetch')) {
-          errorMessage = '네트워크 연결을 확인해주세요.';
-        }
-        // 중복 에러
-        else if (error.message.includes('duplicate') || error.message.includes('중복')) {
-          errorMessage = '이미 등록된 내용입니다. 잠시 후 다시 시도해주세요.';
-        }
-        // 권한 에러
-        else if (error.message.includes('permission') || error.message.includes('권한')) {
-          errorMessage = '접근 권한이 없습니다. 페이지를 새로고침 후 다시 시도해주세요.';
-        }
-        // 일반적인 에러
-        else {
-          errorMessage = error.message;
-        }
-      }
-
-      toast.error('작성 실패', { description: errorMessage });
+      toast.error(t('common.toast.guestbook.error'), {
+        description: t('common.toast.guestbook.errorDescription'),
+      });
     }
   };
 

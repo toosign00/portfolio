@@ -1,11 +1,19 @@
-import { educations } from '@/data/education.data';
+import { useTranslation } from 'react-i18next';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { SectionLayout } from '@/layout/SectionLayout';
 
 export const Education = () => {
+  const { t } = useTranslation();
+  const educations = t('education.items', { returnObjects: true }) as Array<{
+    period: string;
+    org: string;
+    course: string;
+    desc: string[];
+  }>;
+
   return (
     <SectionLayout id='education'>
-      <SectionHeader title='교육' useAnimation={false} />
+      <SectionHeader title={t('education.title')} useAnimation={false} />
       <div className='mx-auto max-w-3xl'>
         <ul className='space-y-20'>
           {educations.map((education, index) => (

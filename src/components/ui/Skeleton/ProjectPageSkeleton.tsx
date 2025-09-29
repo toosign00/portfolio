@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
 interface ProjectPageSkeletonProps {
@@ -5,6 +6,7 @@ interface ProjectPageSkeletonProps {
 }
 
 export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
+  const { t } = useTranslation();
   return (
     <div className='flex min-h-screen flex-col items-center justify-center bg-[#0a101a]'>
       <div className='w-full max-w-xl px-8 py-4'>
@@ -14,7 +16,7 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
             type='button'
             className='mb-8 flex cursor-pointer items-center gap-0.5 text-gray-400 text-sm hover:text-blue'
             onClick={onBack}
-            aria-label='메인페이지로 돌아가기'
+            aria-label={t('common.home')}
           >
             <IoArrowBackOutline className='text-lg' /> 메인으로 돌아가기
           </button>

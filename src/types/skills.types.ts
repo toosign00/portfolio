@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-export type SkillType = 'frontend' | 'backend' | 'devops' | 'design';
+export type SkillType = 'frontend' | 'backend' | 'environment' | 'etc';
 
 export interface SkillItem {
   name: string;

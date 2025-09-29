@@ -1,5 +1,6 @@
 import { m } from 'motion/react';
 import type { CSSProperties } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   buttonContainerVariants,
   containerVariants,
@@ -10,6 +11,7 @@ import {
 import { ProfileActions } from './ProfileActions';
 
 export function IntroContent() {
+  const { t, i18n } = useTranslation();
   const transformStyle: CSSProperties = {
     willChange: 'transform',
   };
@@ -26,36 +28,43 @@ export function IntroContent() {
           className='font-extrabold text-4xl text-white leading-tight sm:text-[42px] md:text-5xl lg:text-5xl'
           variants={titleLineVariants}
         >
-          안녕하세요,
+          {t('intro.greeting')}
         </m.h1>
         <m.h1
           className='font-extrabold text-4xl text-white leading-tight sm:text-[42px] md:text-5xl lg:text-5xl'
           variants={titleLineVariants}
         >
-          <span className='bg-gradient-to-r from-pink to-purple-500 bg-clip-text text-transparent'>
-            프론트엔드 개발자
-          </span>
+          {i18n.language === 'en' ? (
+            <>
+              <span className='text-white'>{t('intro.rolePrefix')} </span>
+              <span className='bg-gradient-to-r from-blue to-cyan-400 bg-clip-text text-transparent'>
+                {t('intro.role')}
+              </span>
+            </>
+          ) : (
+            <span className='bg-gradient-to-r from-pink to-purple-500 bg-clip-text text-transparent'>
+              {t('intro.role')}
+            </span>
+          )}
         </m.h1>
         <m.h1
           className='font-extrabold text-4xl text-white leading-tight sm:text-[42px] md:text-5xl lg:text-5xl'
           variants={titleLineVariants}
         >
-          <span className='bg-gradient-to-r from-blue to-cyan-400 bg-clip-text text-transparent'>
-            노현수
+          <span
+            className={`bg-gradient-to-r ${i18n.language === 'en' ? 'from-pink to-purple-500' : 'from-blue to-cyan-400'} bg-clip-text text-transparent`}
+          >
+            {t('intro.name')}
           </span>
-          <span className='text-white'> 입니다.</span>
+          <span className='text-white'>{t('intro.description')}</span>
         </m.h1>
       </m.div>
 
       <m.p
-        className='mb-8 max-w-xl break-keep text-center text-base text-gray-300 leading-relaxed md:mb-12 md:text-lg lg:text-xl'
+        className='mb-8 max-w-2xl whitespace-pre-line break-keep text-center text-base text-gray-300 leading-relaxed md:mb-12 md:text-lg lg:text-xl'
         variants={descriptionVariants}
       >
-        사용자 경험과 코드 재사용성을 고려한 프론트엔드 개발을 하며&nbsp;
-        <br className='hidden sm:block' />
-        비효율적인 프로세스를 개선하는 것을 좋아합니다.&nbsp;
-        <br className='hidden sm:block' />
-        지속적인 학습과 성장을 통해 더 나은 개발자가 되고자 합니다.
+        {t('intro.about')}
       </m.p>
 
       <m.div variants={buttonContainerVariants} className='transform-gpu' style={transformStyle}>

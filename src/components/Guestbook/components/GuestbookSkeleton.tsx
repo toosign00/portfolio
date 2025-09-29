@@ -1,4 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 export const GuestbookSkeleton = () => {
+  const { t } = useTranslation();
   const nameWidths = ['w-20', 'w-24', 'w-16'];
   const dateWidths = ['w-16', 'w-14', 'w-12'];
   const messageWidths = [
@@ -10,7 +13,7 @@ export const GuestbookSkeleton = () => {
   return (
     <div
       className='rounded-lg border border-white/10 bg-ui-background p-6'
-      aria-label='방명록 로딩 중'
+      aria-label={t('common.loading')}
       role='status'
     >
       <div className='space-y-4'>

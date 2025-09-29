@@ -1,9 +1,10 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { AnimatePresence, m } from 'motion/react';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button } from '@/components/Button';
-import { ModalSkeleton } from '@/components/Skeleton/ModalSkeleton';
+import { Button } from '@/components/ui/Button';
+import { ModalSkeleton } from '@/components/ui/Skeleton/ModalSkeleton';
 import { useProject } from '@/hooks/useProjectsQuery';
 import { useProjectSkeletonLoading } from '@/hooks/useSkeletonLoading';
 import { isNotFoundError, normalizeErrorMessage } from '@/utils/errorUtils';
@@ -15,7 +16,7 @@ import { TechnologyStack } from './components/TechnologyStack';
 export const ProjectModal = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-
+  const { t } = useTranslation();
   // React Query를 사용한 프로젝트 데이터 조회
   const { data: project, isPending, error } = useProject(id);
 
@@ -81,9 +82,9 @@ export const ProjectModal = () => {
                 >
                   {showSkeleton && (
                     <>
-                      <Dialog.Title className='sr-only'>프로젝트 로딩 중</Dialog.Title>
+                      <Dialog.Title className='sr-only'>{t('projectModals.loading')}</Dialog.Title>
                       <Dialog.Description className='sr-only'>
-                        프로젝트 정보를 불러오고 있습니다.
+                        {t('projectModals.loadingDescription')}
                       </Dialog.Description>
                       <ModalSkeleton onClose={() => handleOpenChange(false)} />
                     </>
@@ -92,15 +93,15 @@ export const ProjectModal = () => {
                     <div className='text-center'>
                       <Dialog.Title className='mb-4 font-bold text-red-400 text-xl'>
                         {isNotFoundError(error)
-                          ? '프로젝트를 찾을 수 없습니다'
-                          : '오류가 발생했습니다'}
+                          ? t('projectModals.notFound')
+                          : t('projectModals.error')}
                       </Dialog.Title>
                       <Dialog.Description className='mb-6 text-gray-400'>
                         {normalizeErrorMessage(error)}
                       </Dialog.Description>
                       <Dialog.Close asChild>
                         <Button type='button' variant='primary' size='md'>
-                          닫기
+                          {t('common.close')}
                         </Button>
                       </Dialog.Close>
                     </div>
@@ -115,7 +116,7 @@ export const ProjectModal = () => {
                         <button
                           type='button'
                           className='focus-ring absolute top-6 right-6 cursor-pointer text-2xl text-gray-400 hover:text-white'
-                          aria-label='모달 닫기'
+                          aria-label={t('common.close')}
                         >
                           ×
                         </button>

@@ -1,8 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import xss from 'xss';
 import type { z } from 'zod';
-import { Button } from '@/components/Button';
+import { Button } from '@/components/ui/Button';
 import { contactFormSchema } from '@/schemas/contact.schema';
 import type { ContactFormProps } from '@/types/contact.types';
 
@@ -15,15 +16,18 @@ const sanitizeInput = (value: string) => {
 };
 
 export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
+  const { t } = useTranslation();
+  const schema = contactFormSchema(t);
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<z.infer<typeof contactFormSchema>>({
+  } = useForm<z.infer<typeof schema>>({
     mode: 'onSubmit',
     shouldFocusError: true,
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(schema),
     defaultValues: {
       from_name: '',
       from_email: '',
@@ -31,7 +35,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
     },
   });
 
-  const onSubmitForm = async (data: z.infer<typeof contactFormSchema>) => {
+  const onSubmitForm = async (data: z.infer<typeof schema>) => {
     const dataWithTime = {
       ...data,
       sent_time: new Date().toLocaleString('ko-KR', {
@@ -58,13 +62,13 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
     >
       <div className='flex min-h-[5rem] flex-col gap-1'>
         <label htmlFor='from_name' className='text-left font-semibold text-white'>
-          이름
+          {t('contact.form.name')}
         </label>
         <input
           id='from_name'
           type='text'
           {...register('from_name', { setValueAs: (value: string) => sanitizeInput(value) })}
-          className={`rounded border border-gray-700 bg-[#23272f] p-3 text-white ${
+          className={`rounded border border-gray-700 bg-ui-background-gray p-3 text-white ${
             errors.from_name ? 'focus-ring-error' : 'focus-ring'
           }`}
         />
@@ -73,13 +77,13 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
 
       <div className='flex min-h-[5rem] flex-col gap-1'>
         <label htmlFor='from_email' className='text-left font-semibold text-white'>
-          이메일
+          {t('contact.form.email')}
         </label>
         <input
           id='from_email'
           type='email'
           {...register('from_email', { setValueAs: (value: string) => sanitizeInput(value) })}
-          className={`rounded border border-gray-700 bg-[#23272f] p-3 text-white ${
+          className={`rounded border border-gray-700 bg-ui-background-gray p-3 text-white ${
             errors.from_email ? 'focus-ring-error' : 'focus-ring'
           }`}
         />
@@ -88,13 +92,13 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
 
       <div className='flex min-h-[7rem] flex-col gap-1'>
         <label htmlFor='message' className='text-left font-semibold text-white'>
-          메시지
+          {t('contact.form.message')}
         </label>
         <textarea
           id='message'
           rows={5}
           {...register('message', { setValueAs: (value: string) => sanitizeInput(value) })}
-          className={`rounded border border-gray-700 bg-[#23272f] p-3 text-white ${
+          className={`rounded border border-gray-700 bg-ui-background-gray p-3 text-white ${
             errors.message ? 'focus-ring-error' : 'focus-ring'
           }`}
         />
@@ -109,9 +113,9 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
               viewBox='0 0 24 24'
-              aria-label='로딩 중'
+              aria-label={t('common.loading')}
             >
-              <title>로딩 스피너</title>
+              <title>{t('contact.form.loading')}</title>
               <circle
                 className='opacity-25'
                 cx='12'
@@ -122,10 +126,10 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
               />
               <path className='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8v8z' />
             </svg>
-            전송중...
+            {t('contact.form.sending')}
           </span>
         ) : (
-          <span>보내기</span>
+          <span>{t('contact.form.submit')}</span>
         )}
       </Button>
     </form>

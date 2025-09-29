@@ -1,5 +1,5 @@
 import { m } from 'motion/react';
-import { features } from '@/data/features.data';
+import { useTranslation } from 'react-i18next';
 import { useViewportAmount } from '@/hooks/useViewportAmount';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { SectionLayout } from '@/layout/SectionLayout';
@@ -8,12 +8,12 @@ import { FeatureCard } from './components/FeatureCard';
 
 export const Features = () => {
   const viewportAmount = useViewportAmount();
-
+  const { t } = useTranslation();
   return (
     <SectionLayout id='features' useAnimation={false}>
       <SectionHeader
-        title='핵심 역량'
-        description='소통과 협업을 중시하며 끈기로 문제를 해결하고, 팀과 함께 성장하는 프론트엔드 개발자입니다.'
+        title={t('features.title')}
+        description={t('features.description')}
         useAnimation={true}
       />
       <div className='mx-auto max-w-6xl'>
@@ -28,9 +28,9 @@ export const Features = () => {
           }}
           className='grid gap-6 md:grid-cols-3'
         >
-          {features.map((feature) => (
-            <m.div key={feature.title} variants={featureItemVariants}>
-              <FeatureCard title={feature.title} desc={feature.desc} icon={feature.icon} />
+          {[0, 1, 2].map((index) => (
+            <m.div key={`feature-${index}`} variants={featureItemVariants}>
+              <FeatureCard index={index} />
             </m.div>
           ))}
         </m.div>

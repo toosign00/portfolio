@@ -1,18 +1,28 @@
+export interface MultiLanguageText {
+  ko: string;
+  en?: string;
+  ja?: string;
+}
+
 export interface ProjectDetail {
-  title: string;
-  description: string | string[];
+  title: MultiLanguageText;
+  description: {
+    ko: string[];
+    en?: string[];
+    ja?: string[];
+  };
   image?: string;
-  image_alt?: string;
+  image_alt?: MultiLanguageText | null;
 }
 
 export interface Project {
   id: string;
-  title: string;
+  title: MultiLanguageText;
   type: 'Team' | 'Personal';
-  teamDetail?: string;
-  summary: string;
-  description: string;
-  timeFrame: string;
+  teamDetail?: MultiLanguageText | null;
+  summary: MultiLanguageText;
+  description: MultiLanguageText;
+  timeFrame: MultiLanguageText;
   technologies: string[];
   githubUrl: string;
   deployUrl?: string;
