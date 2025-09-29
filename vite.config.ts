@@ -33,6 +33,7 @@ export default defineConfig(({ mode }: { mode: string }) => ({
       { find: '@utils', replacement: '/src/utils' },
       { find: '@services', replacement: '/src/services' },
       { find: '@lib', replacement: '/src/lib' },
+      { find: '@i18n', replacement: '/src/i18n' },
     ],
   },
 
@@ -79,6 +80,8 @@ export default defineConfig(({ mode }: { mode: string }) => ({
       'react-hook-form',
       'xss',
       '@supabase/supabase-js',
+      'i18next',
+      'react-i18next',
     ],
   },
 }));
