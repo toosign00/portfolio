@@ -25,13 +25,13 @@ export function IntroContent() {
     >
       <m.div className='mb-4 text-center md:mb-6' variants={titleVariants}>
         <m.h1
-          className='font-extrabold text-4xl text-white leading-tight sm:text-[42px] md:text-5xl lg:text-5xl'
+          className='break-keep font-extrabold text-4xl text-white leading-tight sm:text-[42px] md:text-5xl lg:text-5xl'
           variants={titleLineVariants}
         >
           {t('intro.greeting')}
         </m.h1>
         <m.h1
-          className='font-extrabold text-4xl text-white leading-tight sm:text-[42px] md:text-5xl lg:text-5xl'
+          className='break-keep font-extrabold text-4xl text-white leading-tight sm:text-[42px] md:text-5xl lg:text-5xl'
           variants={titleLineVariants}
         >
           {i18n.resolvedLanguage === 'en' ? (
@@ -48,7 +48,7 @@ export function IntroContent() {
           )}
         </m.h1>
         <m.h1
-          className='font-extrabold text-4xl text-white leading-tight sm:text-[42px] md:text-5xl lg:text-5xl'
+          className='break-keep font-extrabold text-4xl text-white leading-tight sm:text-[42px] md:text-5xl lg:text-5xl'
           variants={titleLineVariants}
         >
           <span
@@ -61,7 +61,7 @@ export function IntroContent() {
       </m.div>
 
       <m.p
-        className={`${i18n.resolvedLanguage === 'ja' ? 'break-words' : 'break-keep'} mb-8 max-w-3xl whitespace-pre-line text-center text-base text-gray-300 leading-relaxed md:mb-12 md:text-lg lg:text-xl`}
+        className={`${i18n.resolvedLanguage === 'ja' ? 'break-words' : 'break-keep'} mb-8 max-w-2xl xs:whitespace-pre-line text-center text-base text-gray-300 leading-relaxed md:mb-12 md:text-lg lg:text-xl`}
         variants={descriptionVariants}
       >
         {t('intro.about')}
