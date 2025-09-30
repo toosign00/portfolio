@@ -41,8 +41,10 @@ export default defineConfig(({ mode }: { mode: string }) => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom', 'react-dom/client'],
-          'vendor-ui': [
+          'vendor-core': [
+            'react',
+            'react-dom',
+            'react-router-dom',
             'motion',
             'motion/react',
             '@radix-ui/react-dialog',
@@ -91,9 +93,11 @@ export default defineConfig(({ mode }: { mode: string }) => ({
       'react',
       'react-dom',
       'react-router-dom',
+      'motion',
       'motion/react',
-      'sonner',
       '@radix-ui/react-dialog',
+      'sonner',
+      '@radix-ui/react-slot',
       '@tanstack/react-query',
       'react-hook-form',
       '@hookform/resolvers/zod',
