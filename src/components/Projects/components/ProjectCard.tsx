@@ -2,24 +2,19 @@ import { memo } from 'react';
 import ReactGA from 'react-ga4';
 import { useTranslation } from 'react-i18next';
 import { colorClasses } from '@/constants/projectColors.constants';
-import { useLocalizedText } from '@/i18n/hooks/useLocalizedText';
 import type { ProjectCardProps } from '@/types/projectCard.types';
 import { generateSrcSet, getSrcSizes, transformSrcImage } from '@/utils/imageUtils';
 
 export const ProjectCard = memo<ProjectCardProps>(({ project, onClick }: ProjectCardProps) => {
   const { t } = useTranslation();
-  const getLocalizedText = useLocalizedText();
   const color = project.color ?? 'blue';
   const classes = colorClasses[color];
-
-  const localizedTitle = getLocalizedText(project.title);
-  const localizedSummary = getLocalizedText(project.summary);
 
   const projectClick = () => {
     ReactGA.event('select_content', {
       content_type: 'project',
-      content_id: project.id || localizedTitle,
-      item_name: localizedTitle,
+      content_id: project.id || project.title,
+      item_name: project.title,
       item_category: project.type,
     });
     onClick(project);
@@ -39,7 +34,7 @@ export const ProjectCard = memo<ProjectCardProps>(({ project, onClick }: Project
       onKeyDown={projectKeyDown}
       tabIndex={0}
       role='button'
-      aria-label={`${localizedTitle} ${t('projects.detailAriaLabel')}`}
+      aria-label={`${project.title} ${t('projects.detailAriaLabel')}`}
     >
       <div className='aspect-[16/9] overflow-hidden'>
         <img
@@ -49,7 +44,7 @@ export const ProjectCard = memo<ProjectCardProps>(({ project, onClick }: Project
           })}
           srcSet={generateSrcSet(project.thumbnail)}
           sizes={getSrcSizes()}
-          alt={`${localizedTitle}`}
+          alt={`${project.title}`}
           loading='lazy'
           decoding='async'
           className='z-20 h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105'
@@ -58,19 +53,19 @@ export const ProjectCard = memo<ProjectCardProps>(({ project, onClick }: Project
       <div className='p-5'>
         <div className='mb-3 flex items-center justify-between'>
           <h3 className='font-bold text-lg text-white transition-colors duration-300 group-hover:text-black'>
-            {localizedTitle}
+            {project.title}
           </h3>
           <span className='rounded bg-white/5 px-2 py-0.5 text-gray text-xs group-hover:bg-black/10 group-hover:text-black'>
             {project.type}
           </span>
         </div>
         <p className='mb-4 line-clamp-2 text-gray text-sm group-hover:text-black/80'>
-          {localizedSummary}
+          {project.summary}
         </p>
         <div className='mb-4 flex flex-wrap gap-1.5'>
           {project.technologies.slice(0, 5).map((tech, idx) => (
             <span
-              key={`${project.id || localizedTitle}-tech-${tech}-${idx}`}
+              key={`${project.id || project.title}-tech-${tech}-${idx}`}
               className='rounded-md bg-black/50 px-2 py-1 text-gray text-xs group-hover:bg-black/20 group-hover:text-black'
             >
               {tech}

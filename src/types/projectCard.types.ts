@@ -1,14 +1,12 @@
-import type { MultiLanguageText } from '@/types/projects.types';
-
 export interface ProjectCardProps {
   project: ProjectCardData;
   onClick: (project: ProjectCardData) => void;
 }
 export interface ProjectCardData {
   id: string;
-  title: MultiLanguageText;
+  title: string;
   type: 'Team' | 'Personal';
-  summary: MultiLanguageText;
+  summary: string;
   technologies: string[];
   thumbnail: string;
   color?: 'blue' | 'pink' | 'yellow';
