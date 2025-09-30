@@ -61,7 +61,7 @@ export function IntroContent() {
       </m.div>
 
       <m.p
-        className='mb-8 max-w-2xl whitespace-pre-line break-keep text-center text-base text-gray-300 leading-relaxed md:mb-12 md:text-lg lg:text-xl'
+        className={`${i18n.language === 'ja' ? 'break-words' : 'break-keep'} mb-8 max-w-2xl whitespace-pre-line text-center text-base text-gray-300 leading-relaxed md:mb-12 md:text-lg lg:text-xl`}
         variants={descriptionVariants}
       >
         {t('intro.about')}

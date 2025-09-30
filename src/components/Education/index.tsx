@@ -3,7 +3,7 @@ import { SectionHeader } from '@/layout/SectionHeader';
 import { SectionLayout } from '@/layout/SectionLayout';
 
 export const Education = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const educations = t('education.items', { returnObjects: true }) as Array<{
     period: string;
     org: string;
@@ -41,7 +41,7 @@ export const Education = () => {
                       {education.desc.map((item, idx) => (
                         <li
                           key={`${item.slice(0, 15)}-${idx}`}
-                          className='break-keep text-base text-white/80'
+                          className={`${i18n.language === 'ja' ? 'break-words' : 'break-keep'} text-base text-white/80`}
                         >
                           • {item}
                         </li>

@@ -1,4 +1,5 @@
 import { m } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 import { headerVariants } from '@/motion/sectionHeaderAnimations';
 import type { SectionHeaderProps } from '@/types/section.types';
 
@@ -8,11 +9,14 @@ export const SectionHeader = ({
   useAnimation = false,
   className = '',
 }: SectionHeaderProps) => {
+  const { i18n } = useTranslation();
   const headerContent = (
     <>
       <h2 className='mb-4 font-bold text-2xl text-blue md:text-3xl'>{title}</h2>
       {description && (
-        <p className='whitespace-pre-line break-keep text-base text-white md:text-lg'>
+        <p
+          className={`${i18n.language === 'ja' ? 'break-words' : 'break-keep'} whitespace-pre-line text-base text-white md:text-lg`}
+        >
           {description}
         </p>
       )}
