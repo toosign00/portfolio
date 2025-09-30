@@ -3,13 +3,16 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { QUERY_KEYS } from '@/constants/queryKeys.constants';
 import { fetchProjectById, fetchProjects, ProjectServiceError } from '@/services/projectService';
-import type { Project } from '@/types/projects.types';
+import type { Project, LanguageCode } from '@/types/projects.types';
 
 // 기본 프로젝트 목록 조회 훅 (화면에 표시할 기본 정보만)
 export const useProjects = () => {
+  const { i18n } = useTranslation();
+  const languageCode = (i18n.resolvedLanguage || 'ko') as LanguageCode;
+
   return useQuery({
-    queryKey: QUERY_KEYS.PROJECTS.ALL,
-    queryFn: fetchProjects,
+    queryKey: [...QUERY_KEYS.PROJECTS.ALL, languageCode],
+    queryFn: () => fetchProjects(languageCode),
     retry: (failureCount, error) => {
       // ProjectServiceError의 경우 재시도하지 않음
       if (error instanceof ProjectServiceError && error.code === 'NOT_FOUND') {
@@ -22,13 +25,16 @@ export const useProjects = () => {
 
 // 개별 프로젝트 상세 조회 훅 (모달에서 사용)
 export const useProject = (id: string | undefined) => {
+  const { i18n } = useTranslation();
+  const languageCode = (i18n.resolvedLanguage || 'ko') as LanguageCode;
+
   return useQuery({
-    queryKey: QUERY_KEYS.PROJECTS.DETAIL(id || ''),
+    queryKey: [...QUERY_KEYS.PROJECTS.DETAIL(id || ''), languageCode],
     queryFn: () => {
       if (!id) {
         throw new ProjectServiceError('프로젝트 ID가 필요합니다.');
       }
-      return fetchProjectById(id);
+      return fetchProjectById(id, languageCode);
     },
     enabled: !!id, // id가 있을 때만 실행
     retry: (failureCount, error) => {

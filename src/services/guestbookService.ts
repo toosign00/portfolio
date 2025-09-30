@@ -33,7 +33,7 @@ export const fetchGuestbookEntriesPaginated = async (
 
     if (error) {
       throw new GuestbookServiceError(
-        `방명록 페이지네이션 조회 실패: ${error.message}`,
+        `Failed to retrieve guestbook pagination: ${error.message}`,
         error.code
       );
     }
@@ -45,12 +45,12 @@ export const fetchGuestbookEntriesPaginated = async (
     const nextCursor = hasMore ? items[items.length - 1]?.created_at : undefined;
     return { items, nextCursor, totalCount: count ?? items.length };
   } catch (error) {
-    console.error('방명록 페이지네이션 조회 중 오류:', error);
+    console.error('Failed to retrieve guestbook pagination:', error);
     if (error instanceof GuestbookServiceError) {
       throw error;
     }
     throw new GuestbookServiceError(
-      error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.'
+      error instanceof Error ? error.message : 'An unknown error occurred.'
     );
   }
 };
@@ -70,15 +70,18 @@ export const createGuestbookEntry = async (entry: CreateGuestbookEntry): Promise
     ]);
 
     if (error) {
-      throw new GuestbookServiceError(`방명록 작성 실패: ${error.message}`, error.code);
+      throw new GuestbookServiceError(
+        `Failed to create guestbook entry: ${error.message}`,
+        error.code
+      );
     }
   } catch (error) {
-    console.error('방명록 작성 중 오류:', error);
+    console.error('Failed to create guestbook entry:', error);
     if (error instanceof GuestbookServiceError) {
       throw error;
     }
     throw new GuestbookServiceError(
-      error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.'
+      error instanceof Error ? error.message : 'An unknown error occurred.'
     );
   }
 };

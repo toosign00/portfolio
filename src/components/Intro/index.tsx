@@ -1,5 +1,3 @@
-// import { SectionLayout } from '@/layout/SectionLayout';
-
 import { useScrollOptimized } from '@/hooks/useScrollOptimized';
 import type { IntroProps } from '@/types/intro.types';
 import { BackgroundParallax } from './components/BackgroundParallax';
@@ -13,7 +11,7 @@ export function Intro({ className }: IntroProps) {
   return (
     <section
       id='intro'
-      className={`relative flex min-h-screen items-center justify-center overflow-hidden px-8 pb-32 md:pb-24 ${className || ''}`}
+      className={`relative flex min-h-screen items-start justify-center overflow-hidden px-8 pt-24 pb-32 md:pb-24 ${className || ''}`}
     >
       <BackgroundParallax />
       <FloatingElements />

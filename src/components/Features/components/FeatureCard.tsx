@@ -26,7 +26,7 @@ export const FeatureCard = ({ index }: FeatureCardProps) => {
           {cards?.[index]?.title ?? ''}
         </h2>
         <p
-          className={`${i18n.language === 'ja' ? 'break-words' : 'break-keep'} whitespace-pre-wrap text-base text-gray leading-relaxed`}
+          className={`${i18n.resolvedLanguage === 'ja' ? 'break-words' : 'break-keep'} whitespace-pre-wrap text-base text-gray leading-relaxed`}
         >
           {cards?.[index]?.desc ?? ''}
         </p>

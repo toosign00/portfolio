@@ -54,7 +54,7 @@
     "role": "Hyunsoo Ro",
     "name": "a frontend developer.",
     "description": "",
-    "about": "I enjoy frontend development that considers user experience\nand code reusability, and I love improving inefficient processes.\nI strive to become a better developer through continuous learning and growth.",
+    "about": "I build user-focused frontend with reusable code, and I'm passionate about streamlining inefficient workflows. I'm committed to continuous learning and growth.",
     "actions": {
       "downloadResume": "Download CV",
       "visitGithub": "Visit GitHub"
@@ -211,12 +211,6 @@
       "title": "Failed to Load Guestbook",
       "message": "An unexpected error occurred.",
       "retryButton": "Retry"
-    }
-  },
-  "services": {
-    "email": {
-      "error": "Failed to send email.",
-      "unknownError": "An unknown error occurred."
     }
   }
 }

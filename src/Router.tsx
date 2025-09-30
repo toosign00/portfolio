@@ -3,7 +3,6 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import React, { Suspense, useEffect } from 'react';
 import ReactGA from 'react-ga4';
 import { Outlet, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { ProjectModal } from '@/components/ProjectModal';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { ProjectPageSkeleton } from '@/components/ui/Skeleton/ProjectPageSkeleton';
 import { ROUTES } from '@/constants/routes.constants';
@@ -22,6 +21,9 @@ const ProjectPage = React.lazy(() =>
 );
 const NotFoundPage = React.lazy(() =>
   import('@/pages/NotFoundPage').then((module) => ({ default: module.NotFoundPage }))
+);
+const ProjectModal = React.lazy(() =>
+  import('@/components/ProjectModal').then((module) => ({ default: module.ProjectModal }))
 );
 
 // Router 컴포넌트
@@ -86,7 +88,14 @@ export function Router() {
       {/* 모달 라우트는 기존대로 */}
       {hasBackground && (
         <Routes>
-          <Route path={ROUTES.PROJECT_DETAIL} element={<ProjectModal />} />
+          <Route
+            path={ROUTES.PROJECT_DETAIL}
+            element={
+              <Suspense fallback={null}>
+                <ProjectModal />
+              </Suspense>
+            }
+          />
         </Routes>
       )}
 
