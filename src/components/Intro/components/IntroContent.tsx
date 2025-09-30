@@ -34,7 +34,7 @@ export function IntroContent() {
           className='font-extrabold text-4xl text-white leading-tight sm:text-[42px] md:text-5xl lg:text-5xl'
           variants={titleLineVariants}
         >
-          {i18n.language === 'en' ? (
+          {i18n.resolvedLanguage === 'en' ? (
             <>
               <span className='text-white'>{t('intro.rolePrefix')} </span>
               <span className='bg-gradient-to-r from-blue to-cyan-400 bg-clip-text text-transparent'>
@@ -52,7 +52,7 @@ export function IntroContent() {
           variants={titleLineVariants}
         >
           <span
-            className={`bg-gradient-to-r ${i18n.language === 'en' ? 'from-pink to-purple-500' : 'from-blue to-cyan-400'} bg-clip-text text-transparent`}
+            className={`bg-gradient-to-r ${i18n.resolvedLanguage === 'en' ? 'from-pink to-purple-500' : 'from-blue to-cyan-400'} bg-clip-text text-transparent`}
           >
             {t('intro.name')}
           </span>
@@ -61,7 +61,7 @@ export function IntroContent() {
       </m.div>
 
       <m.p
-        className={`${i18n.language === 'ja' ? 'break-words' : 'break-keep'} mb-8 max-w-2xl whitespace-pre-line text-center text-base text-gray-300 leading-relaxed md:mb-12 md:text-lg lg:text-xl`}
+        className={`${i18n.resolvedLanguage === 'ja' ? 'break-words' : 'break-keep'} mb-8 max-w-3xl whitespace-pre-line text-center text-base text-gray-300 leading-relaxed md:mb-12 md:text-lg lg:text-xl`}
         variants={descriptionVariants}
       >
         {t('intro.about')}

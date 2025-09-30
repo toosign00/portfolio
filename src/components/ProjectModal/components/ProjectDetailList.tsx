@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import i18n from '@/i18n';
 import type { ProjectDetail } from '@/types/projects.types';
 
 export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) => {
@@ -28,7 +29,7 @@ export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) =>
                 {item.description.map((line, i) => (
                   <li
                     key={`${line.slice(0, 20)}-${i}`}
-                    className='break-keep text-base text-gray-400 leading-relaxed'
+                    className={`${i18n.resolvedLanguage === 'ja' ? 'break-words' : 'break-keep'} text-base text-gray-400 leading-relaxed`}
                   >
                     {line}
                   </li>
@@ -40,7 +41,7 @@ export const ProjectDetailList = ({ details }: { details?: ProjectDetail[] }) =>
                 {item.description.split('\n\n').map((paragraph, i) => (
                   <p
                     key={`${item.title}-${i}`}
-                    className='break-keep text-base text-gray-400 leading-relaxed'
+                    className={`${i18n.resolvedLanguage === 'ja' ? 'break-words' : 'break-keep'} text-base text-gray-400 leading-relaxed`}
                   >
                     {paragraph}
                   </p>

@@ -1,4 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog';
+import i18n from '@/i18n';
 import type { ModalHeaderProps } from '@/types/projectModal.types';
 
 export const ModalHeader = ({ project }: ModalHeaderProps) => {
@@ -13,7 +14,10 @@ export const ModalHeader = ({ project }: ModalHeaderProps) => {
         </h2>
       </Dialog.Title>
       <Dialog.Description asChild>
-        <div className='mb-1 font-semibold text-gray text-sm' style={{ lineHeight: '1.5' }}>
+        <div
+          className={`${i18n.resolvedLanguage === 'ja' ? 'break-words' : 'break-keep'} mb-1 font-semibold text-gray text-sm`}
+          style={{ lineHeight: '1.5' }}
+        >
           {project.summary}
         </div>
       </Dialog.Description>
@@ -21,7 +25,7 @@ export const ModalHeader = ({ project }: ModalHeaderProps) => {
         {project.description.split('\n\n').map((paragraph, i) => (
           <p
             key={`${project.title}-desc-${i}`}
-            className='whitespace-pre-line break-keep font-normal text-base text-white leading-relaxed'
+            className={`${i18n.resolvedLanguage === 'ja' ? 'break-words' : 'break-keep'} whitespace-pre-line font-normal text-base text-white leading-relaxed`}
           >
             {paragraph}
           </p>

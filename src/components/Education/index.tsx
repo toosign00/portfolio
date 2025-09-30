@@ -41,7 +41,7 @@ export const Education = () => {
                       {education.desc.map((item, idx) => (
                         <li
                           key={`${item.slice(0, 15)}-${idx}`}
-                          className={`${i18n.language === 'ja' ? 'break-words' : 'break-keep'} text-base text-white/80`}
+                          className={`${i18n.resolvedLanguage === 'ja' ? 'break-words' : 'break-keep'} text-base text-white/80`}
                         >
                           • {item}
                         </li>
