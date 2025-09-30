@@ -211,11 +211,5 @@
       "message": "予期しないエラーが発生しました。",
       "retryButton": "再試行"
     }
-  },
-  "services": {
-    "email": {
-      "error": "メール送信に失敗しました。",
-      "unknownError": "不明なエラーが発生しました。"
-    }
   }
 }

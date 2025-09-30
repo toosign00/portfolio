@@ -24,7 +24,10 @@ export const fetchProjects = async (): Promise<ProjectCardData[]> => {
       .order('created_at', { ascending: false });
 
     if (error) {
-      throw new ProjectServiceError(`프로젝트 목록 조회 실패: ${error.message}`, error.code);
+      throw new ProjectServiceError(
+        `Failed to retrieve project list: ${error.message}`,
+        error.code
+      );
     }
 
     // snake_case를 camelCase로 변환
@@ -32,12 +35,12 @@ export const fetchProjects = async (): Promise<ProjectCardData[]> => {
 
     return convertedData;
   } catch (error) {
-    console.error('프로젝트 목록 조회 중 오류:', error);
+    console.error('Failed to retrieve project list:', error);
     if (error instanceof ProjectServiceError) {
       throw error;
     }
     throw new ProjectServiceError(
-      error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.'
+      error instanceof Error ? error.message : 'An unknown error occurred.'
     );
   }
 };
@@ -46,7 +49,7 @@ export const fetchProjects = async (): Promise<ProjectCardData[]> => {
 export const fetchProjectById = async (id: string): Promise<Project> => {
   try {
     if (!id) {
-      throw new ProjectServiceError('프로젝트 ID가 필요합니다.');
+      throw new ProjectServiceError('Project ID is required.');
     }
 
     const { data, error } = await supabase
@@ -58,13 +61,16 @@ export const fetchProjectById = async (id: string): Promise<Project> => {
 
     if (error) {
       if (error.code === 'PGRST116') {
-        throw new ProjectServiceError(`프로젝트를 찾을 수 없습니다: ${id}`, 'NOT_FOUND');
+        throw new ProjectServiceError(`Project not found: ${id}`, 'NOT_FOUND');
       }
-      throw new ProjectServiceError(`프로젝트 상세 조회 실패: ${error.message}`, error.code);
+      throw new ProjectServiceError(
+        `Failed to retrieve project detail: ${error.message}`,
+        error.code
+      );
     }
 
     if (!data) {
-      throw new ProjectServiceError(`프로젝트를 찾을 수 없습니다: ${id}`, 'NOT_FOUND');
+      throw new ProjectServiceError(`Project not found: ${id}`, 'NOT_FOUND');
     }
 
     // snake_case를 camelCase로 변환
@@ -72,12 +78,12 @@ export const fetchProjectById = async (id: string): Promise<Project> => {
 
     return convertedData;
   } catch (error) {
-    console.error('프로젝트 상세 조회 중 오류:', { projectId: id }, error);
+    console.error('Failed to retrieve project detail:', { projectId: id }, error);
     if (error instanceof ProjectServiceError) {
       throw error;
     }
     throw new ProjectServiceError(
-      error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.'
+      error instanceof Error ? error.message : 'An unknown error occurred.'
     );
   }
 };

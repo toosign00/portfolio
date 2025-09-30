@@ -212,11 +212,5 @@
       "message": "An unexpected error occurred.",
       "retryButton": "Retry"
     }
-  },
-  "services": {
-    "email": {
-      "error": "Failed to send email.",
-      "unknownError": "An unknown error occurred."
-    }
   }
 }

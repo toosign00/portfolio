@@ -211,11 +211,5 @@
       "message": "예상치 못한 오류가 발생했습니다.",
       "retryButton": "다시 시도"
     }
-  },
-  "services": {
-    "email": {
-      "error": "이메일 전송에 실패했습니다.",
-      "unknownError": "알 수 없는 오류가 발생했습니다."
-    }
   }
 }

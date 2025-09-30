@@ -25,9 +25,9 @@ export const sendContactEmail = async (formData: EmailParams) => {
     if (response.status === 200) {
       return { success: true };
     }
-    throw new Error('이메일 전송에 실패했습니다.');
+    throw new Error('Failed to send email.');
   } catch (error: unknown) {
-    console.error('이메일 전송 오류:', error);
+    console.error('Failed to send email:', error);
     return {
       success: false,
       error:
@@ -35,7 +35,7 @@ export const sendContactEmail = async (formData: EmailParams) => {
           ? (error as { text: string }).text
           : error instanceof Error
             ? error.message
-            : '알 수 없는 오류가 발생했습니다.',
+            : 'An unknown error occurred.',
     };
   }
 };
