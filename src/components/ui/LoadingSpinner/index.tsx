@@ -1,6 +1,6 @@
 import type { LoadingSpinnerProps } from '@/types/loadingSpinner.types';
 
-export function LoadingSpinner({ size = 'md', message = 'Loading...' }: LoadingSpinnerProps) {
+export function LoadingSpinner({ size = 'md' }: LoadingSpinnerProps) {
   const sizeClasses = {
     sm: 'h-6 w-6',
     md: 'h-8 w-8',
@@ -12,7 +12,6 @@ export function LoadingSpinner({ size = 'md', message = 'Loading...' }: LoadingS
       <div
         className={`${sizeClasses[size]} animate-spin rounded-full border-2 border-white/20 border-t-blue`}
       />
-      {message && <p className='font-medium text-gray text-sm'>{message}</p>}
     </div>
   );
 }
