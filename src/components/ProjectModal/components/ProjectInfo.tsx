@@ -9,7 +9,7 @@ export const ProjectInfo = ({ project }: ProjectInfoProps) => {
     project.type === 'Team' && project.teamDetail
       ? project.teamDetail
       : project.memberCount
-        ? `${project.memberCount}명`
+        ? t('projectModals.memberCount', { count: project.memberCount })
         : '';
 
   const handleGithubClick = () => {
