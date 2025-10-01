@@ -77,7 +77,6 @@
         "noUnknownAtRules": "off"
       },
       "complexity": {
-        "noVoid": "error",
         "useLiteralKeys": "error",
         "noImportantStyles": "off"
       },
