@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-jp-dynamic-subset.min.css");
-
 @theme {
   --color-blue: #00d4ff;
   --color-pink: #ff6b9d;
