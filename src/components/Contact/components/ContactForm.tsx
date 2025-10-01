@@ -1,19 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import xss from 'xss';
 import type { z } from 'zod';
 import { Button } from '@/components/ui/Button';
 import { contactFormSchema } from '@/schemas/contact.schema';
 import type { ContactFormProps } from '@/types/contact.types';
-
-const sanitizeInput = (value: string) => {
-  return xss(value, {
-    whiteList: {}, // 모든 HTML 태그 제거
-    stripIgnoreTag: true, // 알 수 없는 태그 제거
-    stripIgnoreTagBody: ['script'], // script 태그 내용 제거
-  });
-};
 
 export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
   const { t } = useTranslation();
@@ -67,7 +58,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
         <input
           id='from_name'
           type='text'
-          {...register('from_name', { setValueAs: (value: string) => sanitizeInput(value) })}
+          {...register('from_name')}
           className={`rounded border border-gray-700 bg-ui-background-gray p-3 text-white ${
             errors.from_name ? 'focus-ring-error' : 'focus-ring'
           }`}
@@ -82,7 +73,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
         <input
           id='from_email'
           type='email'
-          {...register('from_email', { setValueAs: (value: string) => sanitizeInput(value) })}
+          {...register('from_email')}
           className={`rounded border border-gray-700 bg-ui-background-gray p-3 text-white ${
             errors.from_email ? 'focus-ring-error' : 'focus-ring'
           }`}
@@ -97,7 +88,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
         <textarea
           id='message'
           rows={5}
-          {...register('message', { setValueAs: (value: string) => sanitizeInput(value) })}
+          {...register('message')}
           className={`rounded border border-gray-700 bg-ui-background-gray p-3 text-white ${
             errors.message ? 'focus-ring-error' : 'focus-ring'
           }`}
