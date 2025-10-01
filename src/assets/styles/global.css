@@ -1,13 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Pretendard JP Variable";
-  font-weight: 45 920;
-  font-style: normal;
-  font-display: optional;
-  src: url("../fonts/PretendardJPVariable.woff2") format("woff2-variations");
-}
-
 @theme {
   --color-blue: #00d4ff;
   --color-pink: #ff6b9d;

@@ -41,21 +41,13 @@ export default defineConfig(({ mode }: { mode: string }) => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor-core': [
-            'react',
-            'react-dom',
-            'react-router-dom',
-            'motion',
-            'motion/react',
-            '@radix-ui/react-dialog',
-            'sonner',
-            '@radix-ui/react-slot',
-          ],
+          'vendor-core': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-animation': ['motion', 'motion/react'],
+          'vendor-ui': ['@radix-ui/react-dialog', 'sonner', '@radix-ui/react-slot', 'react-icons'],
           'vendor-data': ['@tanstack/react-query', '@supabase/supabase-js'],
           'vendor-form': ['react-hook-form', '@hookform/resolvers', 'zod', '@emailjs/browser'],
           'vendor-utils': [
             'es-toolkit',
-            'xss',
             'clsx',
             'tailwind-merge',
             'class-variance-authority',
@@ -84,8 +76,6 @@ export default defineConfig(({ mode }: { mode: string }) => ({
         },
       },
     },
-    chunkSizeWarningLimit: 500,
-    assetsInlineLimit: 4096,
   },
 
   optimizeDeps: {
@@ -108,7 +98,6 @@ export default defineConfig(({ mode }: { mode: string }) => ({
       'react-i18next',
       'i18next-browser-languagedetector',
       'es-toolkit',
-      'xss',
     ],
   },
 }));
