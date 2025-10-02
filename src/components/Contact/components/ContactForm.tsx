@@ -58,6 +58,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
         <input
           id='from_name'
           type='text'
+          placeholder={t('contact.form.placeholder.name')}
           {...register('from_name')}
           className={`rounded border border-gray-700 bg-ui-background-gray p-3 text-white ${
             errors.from_name ? 'focus-ring-error' : 'focus-ring'
@@ -73,6 +74,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
         <input
           id='from_email'
           type='email'
+          placeholder={t('contact.form.placeholder.email')}
           {...register('from_email')}
           className={`rounded border border-gray-700 bg-ui-background-gray p-3 text-white ${
             errors.from_email ? 'focus-ring-error' : 'focus-ring'
@@ -88,6 +90,7 @@ export const ContactForm = ({ loading, onSubmit }: ContactFormProps) => {
         <textarea
           id='message'
           rows={5}
+          placeholder={t('contact.form.placeholder.message')}
           {...register('message')}
           className={`rounded border border-gray-700 bg-ui-background-gray p-3 text-white ${
             errors.message ? 'focus-ring-error' : 'focus-ring'

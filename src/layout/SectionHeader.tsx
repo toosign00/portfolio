@@ -15,7 +15,7 @@ export const SectionHeader = ({
       <h2 className='mb-4 font-bold text-2xl text-blue md:text-3xl'>{title}</h2>
       {description && (
         <p
-          className={`${i18n.resolvedLanguage === 'ja' ? 'break-words' : 'break-keep'} whitespace-pre-line text-base text-white md:text-lg`}
+          className={`${i18n.resolvedLanguage === 'ja' ? 'break-words' : 'break-keep'} mx-auto max-w-2xl whitespace-pre-line text-base text-white md:text-lg`}
         >
           {description}
         </p>

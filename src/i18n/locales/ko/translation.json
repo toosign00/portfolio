@@ -148,7 +148,7 @@
       "placeholder": {
         "name": "홍길동",
         "email": "example@gmail.com",
-        "message": "메시지를 입력해주세요."
+        "message": "메시지를 입력해주세요"
       },
       "validation": {
         "name": {
@@ -188,12 +188,12 @@
       "submittingButton": "작성 중...",
       "validation": {
         "name": {
-          "required": "이름을 입력해주세요.",
-          "max": "이름은 10자 이하로 입력해주세요."
+          "required": "이름을 입력해주세요",
+          "max": "이름은 10자 이하로 입력해주세요"
         },
         "message": {
-          "required": "메시지를 입력해주세요.",
-          "max": "메시지는 1000자 이하로 입력해주세요."
+          "required": "메시지를 입력해주세요",
+          "max": "메시지는 1000자 이하로 입력해주세요"
         }
       }
     },
