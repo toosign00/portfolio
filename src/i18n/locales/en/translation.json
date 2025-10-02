@@ -149,7 +149,7 @@
       "placeholder": {
         "name": "John Doe",
         "email": "example@gmail.com",
-        "message": "Please enter your message."
+        "message": "Please enter your message"
       },
       "validation": {
         "name": {
@@ -189,12 +189,12 @@
       "submittingButton": "Submitting...",
       "validation": {
         "name": {
-          "required": "Please enter your name.",
-          "max": "Name must be 10 characters or less."
+          "required": "Please enter your name",
+          "max": "Name must be 10 characters or less"
         },
         "message": {
-          "required": "Please enter a message.",
-          "max": "Message must be 1000 characters or less."
+          "required": "Please enter a message",
+          "max": "Message must be 1000 characters or less"
         }
       }
     },

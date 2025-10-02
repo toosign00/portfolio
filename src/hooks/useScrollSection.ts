@@ -1,64 +1,31 @@
-import { throttle } from 'es-toolkit';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { NavItem } from '@/types/navigation.types';
 
-interface SectionPosition {
-  top: number;
-  bottom: number;
-  id: string;
+interface VisibleSection {
+  navId: string;
+  element: Element;
 }
 
 const SCROLL_ANIMATION_TIMEOUT = 1200; // 스크롤 애니메이션 시간보다 약간 길게
-const SCROLL_THROTTLE_INTERVAL = 100; // 100ms
 
 export const useScrollSection = (navItems: NavItem[]) => {
   const [active, setActive] = useState<string | null>(null);
   const [isNavigating, setIsNavigating] = useState(false);
   const navigationTimeoutRef = useRef<number | null>(null);
   const isNavigatingRef = useRef(false);
-  const sectionPositionsRef = useRef<SectionPosition[]>([]);
-  const isInitializedRef = useRef(false);
+  const visibleSectionsRef = useRef<Map<string, VisibleSection>>(new Map());
+  const rafRef = useRef<number | null>(null);
 
-  // 섹션 위치 캐싱 - resize나 초기 로딩 시에만 재계산
-  const updateSectionPositions = useCallback(() => {
-    const scrollPosition = window.scrollY;
-    sectionPositionsRef.current = navItems.flatMap((item) => {
-      return item.sectionIds
-        .map((id) => {
-          const el = document.getElementById(id);
-          if (!el) return null;
-          const rect = el.getBoundingClientRect();
-          return {
-            top: rect.top + scrollPosition,
-            bottom: rect.top + rect.height + scrollPosition,
-            id: item.id,
-          };
-        })
-        .filter(Boolean) as SectionPosition[];
-    });
-    isInitializedRef.current = true;
-  }, [navItems]);
-
-  const calculateActiveSection = useCallback(() => {
+  const updateActiveSection = useCallback(() => {
     if (isNavigatingRef.current) {
       return;
-    }
-
-    // 초기화되지 않은 경우에만 섹션 위치 계산
-    if (!isInitializedRef.current) {
-      updateSectionPositions();
     }
 
     const viewportHeight = window.innerHeight;
     const scrollPosition = window.scrollY;
     const viewportCenter = scrollPosition + viewportHeight / 2;
 
-    const sectionPositions = sectionPositionsRef.current;
-
-    // 현재 뷰포트에 보이는 섹션이 있는지 확인
-    const visibleSections = sectionPositions.filter(
-      (section) => section.top <= viewportCenter && section.bottom >= viewportCenter
-    );
+    const visibleSections = Array.from(visibleSectionsRef.current.values());
 
     // 보이는 섹션이 없으면 null 반환
     if (visibleSections.length === 0) {
@@ -66,21 +33,22 @@ export const useScrollSection = (navItems: NavItem[]) => {
       return;
     }
 
-    let closestSection = null;
+    let closestNavId = null;
     let minDistance = Infinity;
 
     visibleSections.forEach((section) => {
-      const sectionCenter = (section.top + section.bottom) / 2;
+      const rect = section.element.getBoundingClientRect();
+      const sectionCenter = rect.top + scrollPosition + rect.height / 2;
       const distance = Math.abs(sectionCenter - viewportCenter);
 
       if (distance < minDistance) {
         minDistance = distance;
-        closestSection = section.id;
+        closestNavId = section.navId;
       }
     });
 
-    setActive(closestSection);
-  }, [updateSectionPositions]);
+    setActive(closestNavId);
+  }, []);
 
   // 수동으로 active 상태를 설정하는 함수 (버튼 클릭 시 사용)
   const setActiveManual = useCallback(
@@ -101,38 +69,80 @@ export const useScrollSection = (navItems: NavItem[]) => {
       navigationTimeoutRef.current = window.setTimeout(() => {
         setIsNavigating(false);
         isNavigatingRef.current = false;
-        // 플래그 해제 직후 현재 위치 기준으로 다시 계산 (ref 기반으로 최신 상태 반영)
-        calculateActiveSection();
+        // 플래그 해제 직후 현재 위치 기준으로 다시 계산
+        updateActiveSection();
       }, SCROLL_ANIMATION_TIMEOUT);
     },
-    [calculateActiveSection]
+    [updateActiveSection]
   );
 
   useEffect(() => {
-    const throttledHandleScroll = throttle(calculateActiveSection, SCROLL_THROTTLE_INTERVAL);
-    const throttledHandleResize = throttle(updateSectionPositions, 250);
+    const observers = new Map<string, IntersectionObserver>();
 
-    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
-    window.addEventListener('resize', throttledHandleResize, { passive: true });
+    navItems.forEach((item) => {
+      item.sectionIds.forEach((sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (!element) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                visibleSectionsRef.current.set(sectionId, {
+                  navId: item.id,
+                  element: entry.target,
+                });
+              } else {
+                visibleSectionsRef.current.delete(sectionId);
+              }
+            });
+            updateActiveSection();
+          },
+          {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0,
+          }
+        );
+
+        observer.observe(element);
+        observers.set(sectionId, observer);
+      });
+    });
+
+    // 스크롤 이벤트 핸들러 (requestAnimationFrame으로 최적화)
+    const handleScroll = () => {
+      if (rafRef.current) {
+        return;
+      }
+      rafRef.current = requestAnimationFrame(() => {
+        updateActiveSection();
+        rafRef.current = null;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     // 초기 계산
-    updateSectionPositions();
-    calculateActiveSection();
+    updateActiveSection();
 
     return () => {
-      window.removeEventListener('scroll', throttledHandleScroll);
-      window.removeEventListener('resize', throttledHandleResize);
-      throttledHandleScroll.cancel();
-      throttledHandleResize.cancel();
+      observers.forEach((observer) => {
+        observer.disconnect();
+      });
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
       if (navigationTimeoutRef.current) {
         clearTimeout(navigationTimeoutRef.current);
       }
     };
-  }, [calculateActiveSection, updateSectionPositions]);
+  }, [navItems, updateActiveSection]);
 
   return {
     active,
     setActive: setActiveManual,
-    isNavigating, // 이제 반응형 상태값 반환
+    isNavigating,
   };
 };

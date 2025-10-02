@@ -18,7 +18,7 @@ export function ProjectPageSkeleton({ onBack }: ProjectPageSkeletonProps) {
             onClick={onBack}
             aria-label={t('common.home')}
           >
-            <IoArrowBackOutline className='text-lg' /> 메인으로 돌아가기
+            <IoArrowBackOutline className='text-lg' /> {t('common.home')}
           </button>
         )}
 

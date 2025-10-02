@@ -2,49 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://toosign.dev/</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://toosign.dev/guestbook</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toosign.dev/en</loc>
+    <lastmod>2025-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://toosign.dev/ja</loc>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://toosign.dev/projects/green-mate</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toosign.dev/projects/film-metadata-app</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toosign.dev/projects/portfolio</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toosign.dev/projects/ora-gung</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toosign.dev/projects/type</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://toosign.dev/projects/olly</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

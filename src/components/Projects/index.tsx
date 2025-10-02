@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { IoReload } from 'react-icons/io5';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/Button';
-import { getProjectPath } from '@/constants/routes.constants';
 import { useProjectsWithUI } from '@/hooks/useProjectsQuery';
 import { SectionHeader } from '@/layout/SectionHeader';
 import { SectionLayout } from '@/layout/SectionLayout';
@@ -13,15 +12,21 @@ import { ProjectCard } from './components/ProjectCard';
 
 export const Projects = () => {
   const { displayedProjects, setShowAll, hasMoreProjects, loading, error } = useProjectsWithUI();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleProjectClick = useCallback(
     async (project: ProjectCardData) => {
-      await navigate(getProjectPath(project.id), { state: { background: location } });
+      const projectPath =
+        i18n.language === 'ko'
+          ? `/projects/${project.id}`
+          : `/${i18n.language}/projects/${project.id}`;
+      await navigate(projectPath, {
+        state: { background: location },
+      });
     },
-    [navigate, location]
+    [navigate, location, i18n.language]
   );
 
   return (

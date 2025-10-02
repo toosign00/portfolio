@@ -5,9 +5,11 @@ import { GuestbookForm, GuestbookList } from '@/components/Guestbook';
 import { Button } from '@/components/ui/Button';
 import { useGuestbookForm } from '@/hooks/useGuestbookForm';
 import { useGuestbookInfiniteEntries } from '@/hooks/useGuestbookQuery';
+import { useLocalizedPath } from '@/hooks/useLocalizedNavigation';
 
 export const GuestbookPage = () => {
   const { t } = useTranslation();
+  const homePath = useLocalizedPath('/');
   const infinite = useGuestbookInfiniteEntries(10);
   const { loading, handleSubmit } = useGuestbookForm();
 
@@ -33,7 +35,7 @@ export const GuestbookPage = () => {
         <div className='mx-auto flex max-w-4xl items-center justify-between'>
           <h1 className='font-bold text-2xl text-white'>{t('guestbook.title')}</h1>
           <Button variant='secondary' size='sm' asChild>
-            <Link to='/'>{t('guestbook.backToMain')}</Link>
+            <Link to={homePath}>{t('guestbook.backToMain')}</Link>
           </Button>
         </div>
       </div>

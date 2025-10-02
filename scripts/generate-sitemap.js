@@ -26,6 +26,8 @@ const generateSitemap = () => {
   const urls = [
     { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'weekly' },
     { loc: `${baseUrl}/guestbook`, priority: '0.9', changefreq: 'weekly' },
+    { loc: `${baseUrl}/en`, priority: '0.9', changefreq: 'weekly' },
+    { loc: `${baseUrl}/ja`, priority: '0.9', changefreq: 'weekly' },
   ];
 
   // 프로젝트 URL들 (동적으로 추가 가능)

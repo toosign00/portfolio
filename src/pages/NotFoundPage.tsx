@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/Button';
+import { useLocalizedPath } from '@/hooks/useLocalizedNavigation';
 
 export function NotFoundPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const homePath = useLocalizedPath('/');
   return (
     <div className='flex min-h-screen items-center justify-center bg-black text-white'>
       <div className='p-8 text-center'>
@@ -16,7 +18,7 @@ export function NotFoundPage() {
             {t('common.previousPage')}
           </Button>
           <Button variant='secondary' size='md' asChild>
-            <Link to='/'>{t('common.home')}</Link>
+            <Link to={homePath}>{t('common.home')}</Link>
           </Button>
         </div>
       </div>
