@@ -2,14 +2,12 @@ import { cubicBezier, m } from 'motion/react';
 import React, { useMemo } from 'react';
 
 interface ScrollIndicatorProps {
-  scrollY: number;
+  isVisible: boolean;
 }
 
 export const ScrollIndicator = React.memo(function ScrollIndicator({
-  scrollY,
+  isVisible,
 }: ScrollIndicatorProps) {
-  const isVisible = scrollY <= 50;
-
   const containerVariants = useMemo(
     () => ({
       initial: {
