@@ -25,9 +25,10 @@ i18n
     resources,
     fallbackLng: 'ko', // 감지된 언어가 지원되지 않을 때 사용할 기본 언어
 
-    // 언어 감지 설정 (브라우저 언어 사용)
+    // 언어 감지 설정 (URL path 우선, 브라우저 언어 후순위)
     detection: {
-      order: ['navigator'],
+      order: ['path', 'navigator'],
+      lookupFromPathIndex: 0, // /:lang 형식
     },
 
     interpolation: {
