@@ -19,7 +19,7 @@ jobs:
           echo "Keeping Supabase project active..."
 
           response=$(curl -s -w "\n%{http_code}" \
-            "$SUPABASE_URL/rest/v1/projects?select=id,title,type,summary,technologies,thumbnail,color&is_visible=eq.true&order=created_at.desc" \
+            "$SUPABASE_URL/rest/v1/projects?select=id,type,technologies,thumbnail,color,project_translations!inner(title,summary)&is_visible=eq.true&project_translations.language_code=eq.ko&order=created_at.desc" \
             -H "apikey: $SUPABASE_ANON_KEY" \
             -H "Content-Type: application/json")
 
@@ -30,7 +30,7 @@ jobs:
             project_count=$(echo "$body" | jq '. | length')
             echo "Projects API is active - Found $project_count visible projects"
             echo "Sample project titles:"
-            echo "$body" | jq -r '.[0:3][] | "  - \(.title)"' 2>/dev/null || echo "  (No projects to display)"
+            echo "$body" | jq -r '.[0:3][] | "  - \(.project_translations[0].title)"' 2>/dev/null || echo "  (No projects to display)"
           else
             echo "Failed to fetch projects from Supabase (HTTP $http_code)"
             echo "Response: $body"
