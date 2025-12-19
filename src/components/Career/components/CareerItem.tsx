@@ -4,7 +4,7 @@ import { Badge } from './Badge';
 export function CareerItem({ period, company, role, description, skills }: CareerItemProps) {
   return (
     <div className='relative border-white border-l pl-8 text-left'>
-      <div className='-translate-x-[0.5625rem] absolute top-0 left-0 h-4 w-4 rounded-full border-4 border-pink bg-white' />
+      <div className='absolute top-0 left-0 h-4 w-4 -translate-x-2.25 rounded-full border-4 border-pink bg-white' />
 
       <div className='mb-2 text-gray text-sm'>{period}</div>
       <h3 className='mb-1 font-semibold text-white text-xl'>{company}</h3>

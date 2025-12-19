@@ -22,7 +22,7 @@ export const Tooltip = ({ children, content }: TooltipProps) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className='-bottom-8.5 -translate-x-1/2 absolute left-1/2 z-50 transform'
+            className='absolute -bottom-8.5 left-1/2 z-50 -translate-x-1/2 transform'
           >
             <div
               id='tooltip-content'
@@ -30,7 +30,7 @@ export const Tooltip = ({ children, content }: TooltipProps) => {
               className='relative rounded-lg border border-white/10 bg-black px-2 py-1 text-center shadow-xl'
             >
               <div className='whitespace-nowrap font-medium text-white text-xs'>{content}</div>
-              <div className='-top-1 -translate-x-1/2 absolute left-1/2 h-2 w-2 rotate-45 border-white/10 border-t border-l bg-black/80' />
+              <div className='absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 border-white/10 border-t border-l bg-black/80' />
             </div>
           </m.div>
         )}

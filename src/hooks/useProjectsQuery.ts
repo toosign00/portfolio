@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { QUERY_KEYS } from '@/constants/queryKeys.constants';
 import { fetchProjectById, fetchProjects, ProjectServiceError } from '@/services/projectService';
-import type { Project, LanguageCode } from '@/types/projects.types';
+import type { LanguageCode, Project } from '@/types/projects.types';
 
 // 기본 프로젝트 목록 조회 훅 (화면에 표시할 기본 정보만)
 export const useProjects = () => {

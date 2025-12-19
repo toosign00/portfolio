@@ -94,7 +94,7 @@ export const ScrollIndicator = React.memo(function ScrollIndicator({
 
   return (
     <m.div
-      className='scroll-indicator -translate-x-1/2 pointer-events-none fixed left-1/2 transform'
+      className='scroll-indicator pointer-events-none fixed left-1/2 -translate-x-1/2 transform'
       style={{
         willChange: 'transform, opacity',
       }}
