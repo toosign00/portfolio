@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { GuestbookForm, GuestbookList } from '@/components/Guestbook';
 import { Button } from '@/components/ui/Button';
 import { useGuestbookForm } from '@/hooks/useGuestbookForm';
@@ -12,10 +12,20 @@ export const GuestbookPage = () => {
   const homePath = useLocalizedPath('/');
   const infinite = useGuestbookInfiniteEntries(10);
   const { loading, handleSubmit } = useGuestbookForm();
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleBack = () => {
+    const state = window.history.state as { idx?: number } | null;
+    if (state && typeof state.idx === 'number' && state.idx > 0) {
+      navigate(-1);
+    } else {
+      navigate(homePath, { replace: true });
+    }
+  };
 
   const flatInfiniteItems = infinite.data?.pages.flatMap((p) => p.items) ?? [];
   const totalCount = infinite.data?.pages[0]?.totalCount ?? 0;
@@ -34,8 +44,8 @@ export const GuestbookPage = () => {
       <div className='border-white/10 border-b p-6'>
         <div className='mx-auto flex max-w-4xl items-center justify-between'>
           <h1 className='font-bold text-2xl text-white'>{t('guestbook.title')}</h1>
-          <Button variant='secondary' size='sm' asChild>
-            <Link to={homePath}>{t('guestbook.backToMain')}</Link>
+          <Button variant='secondary' size='sm' onClick={handleBack}>
+            {t('guestbook.backToMain')}
           </Button>
         </div>
       </div>
