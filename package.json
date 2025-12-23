@@ -54,6 +54,7 @@
     "react-i18next": "^16.5.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.11.0",
+    "react-snowfall": "^2.4.0",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
     "zod": "^4.2.1"
