@@ -1,5 +1,5 @@
-import type { GuestbookEntryProps } from '@/types/guestbook.types';
 import { useRelativeTime } from '@/hooks/useRelativeTime';
+import type { GuestbookEntryProps } from '@/types/guestbook.types';
 
 export const GuestbookEntry = ({ entry }: GuestbookEntryProps) => {
   const formatRelativeTime = useRelativeTime();
@@ -11,7 +11,7 @@ export const GuestbookEntry = ({ entry }: GuestbookEntryProps) => {
       </div>
 
       {/* 메시지 */}
-      <div className='whitespace-pre-wrap break-words text-gray-200 text-sm leading-relaxed'>
+      <div className='wrap-break-word whitespace-pre-wrap text-gray-200 text-sm leading-relaxed'>
         {entry.message}
       </div>
     </div>

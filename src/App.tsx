@@ -6,6 +6,7 @@ import { Toaster } from 'sonner';
 import { useIsMobile } from '@/hooks/useMediaQuery';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { Router } from '@/Router';
+import { SnowrEffect } from '@/components/SnowEffect';
 import '@/i18n';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <LazyMotion features={domMax} strict>
+      <SnowrEffect />
       <BrowserRouter>
         <Router />
         <Toaster

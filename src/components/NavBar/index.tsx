@@ -98,7 +98,7 @@ export const NavBar = () => {
                 </a>
                 {active === item.id && (
                   <m.div
-                    className='-z-10 pointer-events-none absolute inset-0 rounded-full bg-[#0E1623]'
+                    className='pointer-events-none absolute inset-0 -z-10 rounded-full bg-[#0E1623]'
                     layoutId='activeNavItem'
                     transition={{
                       type: 'spring',

@@ -1,6 +1,5 @@
 import { m } from 'motion/react';
 import type { CSSProperties } from 'react';
-import { useMemo } from 'react';
 import { floatingVariants } from '@/motion/intoAnimations';
 import type { FloatingElementConfig } from '@/types/intro.types';
 
@@ -28,7 +27,7 @@ const FLOATING_CONFIG: FloatingElementConfig[] = [
 ];
 
 export function FloatingElements() {
-  const elements = useMemo<FloatingElementConfig[]>(() => FLOATING_CONFIG, []);
+  const elements = FLOATING_CONFIG;
 
   const motionStyle: CSSProperties = {
     willChange: 'transform',
