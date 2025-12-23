@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoReload } from 'react-icons/io5';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -16,18 +15,15 @@ export const Projects = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleProjectClick = useCallback(
-    async (project: ProjectCardData) => {
-      const projectPath =
-        i18n.language === 'ko'
-          ? `/projects/${project.id}`
-          : `/${i18n.language}/projects/${project.id}`;
-      await navigate(projectPath, {
-        state: { background: location },
-      });
-    },
-    [navigate, location, i18n.language]
-  );
+  const handleProjectClick = async (project: ProjectCardData) => {
+    const projectPath =
+      i18n.language === 'ko'
+        ? `/projects/${project.id}`
+        : `/${i18n.language}/projects/${project.id}`;
+    await navigate(projectPath, {
+      state: { background: location },
+    });
+  };
 
   return (
     <SectionLayout id='projects'>

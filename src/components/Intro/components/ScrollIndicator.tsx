@@ -1,96 +1,83 @@
 import { cubicBezier, m } from 'motion/react';
-import React, { useMemo } from 'react';
 
 interface ScrollIndicatorProps {
   isVisible: boolean;
 }
 
-export const ScrollIndicator = React.memo(function ScrollIndicator({
+export function ScrollIndicator({
   isVisible,
 }: ScrollIndicatorProps) {
-  const containerVariants = useMemo(
-    () => ({
-      initial: {
-        opacity: 0,
-        y: 30,
-        scale: 0.8,
+  const containerVariants = {
+    initial: {
+      opacity: 0,
+      y: 30,
+      scale: 0.8,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        delay: 2.5,
+        duration: 0.8,
+        ease: cubicBezier(0.25, 0.46, 0.45, 0.94),
       },
-      visible: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-          delay: 2.5,
-          duration: 0.8,
-          ease: cubicBezier(0.25, 0.46, 0.45, 0.94),
-        },
+    },
+    hidden: {
+      opacity: 0,
+      y: 20,
+      scale: 0.9,
+      transition: {
+        duration: 0.4,
+        ease: cubicBezier(0.25, 0.46, 0.45, 0.94),
       },
-      hidden: {
-        opacity: 0,
-        y: 20,
-        scale: 0.9,
-        transition: {
-          duration: 0.4,
-          ease: cubicBezier(0.25, 0.46, 0.45, 0.94),
-        },
-      },
-    }),
-    []
-  );
+    },
+  };
 
-  const floatingVariants = useMemo(
-    () => ({
-      animate: {
-        y: [0, -8, 0],
-        transition: {
-          duration: 3,
-          repeat: Infinity,
-          ease: cubicBezier(0.445, 0.05, 0.55, 0.95),
-          repeatType: 'loop' as const,
-        },
+  const floatingVariants = {
+    animate: {
+      y: [0, -8, 0],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        ease: cubicBezier(0.445, 0.05, 0.55, 0.95),
+        repeatType: 'loop' as const,
       },
-    }),
-    []
-  );
+    },
+  };
 
-  const dotVariants = useMemo(
-    () => ({
-      animate: {
-        y: [0, 16, 0],
-        opacity: [1, 1, 0.3, 1],
-        transition: {
-          duration: 2.5,
-          repeat: Infinity,
-          ease: cubicBezier(0.25, 0.46, 0.45, 0.94),
-          times: [0, 0.5, 0.8, 1],
-          repeatType: 'loop' as const,
-        },
+  const dotVariants = {
+    animate: {
+      y: [0, 16, 0],
+      opacity: [1, 1, 0.3, 1],
+      transition: {
+        duration: 2.5,
+        repeat: Infinity,
+        ease: cubicBezier(0.25, 0.46, 0.45, 0.94),
+        times: [0, 0.5, 0.8, 1],
+        repeatType: 'loop' as const,
       },
-    }),
-    []
-  );
+    },
+  };
 
-  const textVariants = useMemo(
-    () => ({
-      initial: { opacity: 0, y: 10 },
-      visible: {
-        opacity: 0.7,
-        y: 0,
-        transition: {
-          delay: 3.2,
-          duration: 0.6,
-        },
+  const textVariants = {
+    initial: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 0.7,
+      y: 0,
+      transition: {
+        delay: 3.2,
+        duration: 0.6,
       },
-      hidden: {
-        opacity: 0,
-        y: 5,
-        transition: {
-          duration: 0.3,
-        },
+    },
+    hidden: {
+      opacity: 0,
+      y: 5,
+      transition: {
+        duration: 0.3,
       },
-    }),
-    []
-  );
+    },
+  };
 
   return (
     <m.div
@@ -136,4 +123,4 @@ export const ScrollIndicator = React.memo(function ScrollIndicator({
       </m.div>
     </m.div>
   );
-});
+}

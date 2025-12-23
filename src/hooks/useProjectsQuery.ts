@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { QUERY_KEYS } from '@/constants/queryKeys.constants';
 import { fetchProjectById, fetchProjects, ProjectServiceError } from '@/services/projectService';
@@ -54,24 +54,16 @@ export const useProjectsWithUI = () => {
   const [showAll, setShowAll] = useState(false);
 
   // 누적 방식: showAll이 false면 처음 3개, true면 전체
-  const displayedProjects = useMemo(() => {
-    return projects.slice(0, showAll ? projects.length : 3);
-  }, [projects, showAll]);
+  const displayedProjects = projects.slice(0, showAll ? projects.length : 3);
 
-  const hasMoreProjects = useMemo(() => {
-    return !showAll && projects.length > 3;
-  }, [projects.length, showAll]);
+  const hasMoreProjects = !showAll && projects.length > 3;
 
   // 에러 메시지 정규화
-  const normalizedError = useMemo(() => {
-    if (!error) return null;
-
-    if (error instanceof ProjectServiceError) {
-      return error.message;
-    }
-
-    return error.message || t('common.unknownError');
-  }, [error, t]);
+  const normalizedError = !error
+    ? null
+    : error instanceof ProjectServiceError
+      ? error.message
+      : error.message || t('common.unknownError');
 
   return {
     projects,
@@ -86,24 +78,22 @@ export const useProjectsWithUI = () => {
 
 // 프로젝트 데이터 유효성 검사 훅
 export const useProjectValidation = (project: Project | undefined) => {
-  return useMemo(() => {
-    if (!project) return { isValid: false, missingFields: [] };
+  if (!project) return { isValid: false, missingFields: [] };
 
-    const requiredFields = ['title', 'description', 'technologies', 'details'] as const;
+  const requiredFields = ['title', 'description', 'technologies', 'details'] as const;
 
-    const missingFields = requiredFields.filter((field) => {
-      if (field === 'technologies') {
-        return !project.technologies || project.technologies.length === 0;
-      }
-      if (field === 'details') {
-        return !project.details || project.details.length === 0;
-      }
-      return !project[field];
-    });
+  const missingFields = requiredFields.filter((field) => {
+    if (field === 'technologies') {
+      return !project.technologies || project.technologies.length === 0;
+    }
+    if (field === 'details') {
+      return !project.details || project.details.length === 0;
+    }
+    return !project[field];
+  });
 
-    return {
-      isValid: missingFields.length === 0,
-      missingFields,
-    };
-  }, [project]);
+  return {
+    isValid: missingFields.length === 0,
+    missingFields,
+  };
 };
