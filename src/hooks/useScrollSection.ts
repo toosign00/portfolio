@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { NavItem } from '@/types/navigation.types';
 
 interface VisibleSection {
@@ -16,7 +16,7 @@ export const useScrollSection = (navItems: NavItem[]) => {
   const visibleSectionsRef = useRef<Map<string, VisibleSection>>(new Map());
   const rafRef = useRef<number | null>(null);
 
-  const updateActiveSection = () => {
+  const updateActiveSection = useCallback(() => {
     if (isNavigatingRef.current) {
       return;
     }
@@ -48,30 +48,33 @@ export const useScrollSection = (navItems: NavItem[]) => {
     });
 
     setActive(closestNavId);
-  };
+  }, []);
 
   // 수동으로 active 상태를 설정하는 함수 (버튼 클릭 시 사용)
-  const setActiveManual = (id: string) => {
-    // 즉시 상태 변경
-    setActive(id);
+  const setActiveManual = useCallback(
+    (id: string) => {
+      // 즉시 상태 변경
+      setActive(id);
 
-    // 네비게이션 플래그 설정
-    setIsNavigating(true);
-    isNavigatingRef.current = true;
+      // 네비게이션 플래그 설정
+      setIsNavigating(true);
+      isNavigatingRef.current = true;
 
-    // 기존 타이머 정리
-    if (navigationTimeoutRef.current) {
-      clearTimeout(navigationTimeoutRef.current);
-    }
+      // 기존 타이머 정리
+      if (navigationTimeoutRef.current) {
+        clearTimeout(navigationTimeoutRef.current);
+      }
 
-    // 스크롤 애니메이션 완료 후 플래그 해제
-    navigationTimeoutRef.current = window.setTimeout(() => {
-      setIsNavigating(false);
-      isNavigatingRef.current = false;
-      // 플래그 해제 직후 현재 위치 기준으로 다시 계산
-      updateActiveSection();
-    }, SCROLL_ANIMATION_TIMEOUT);
-  };
+      // 스크롤 애니메이션 완료 후 플래그 해제
+      navigationTimeoutRef.current = window.setTimeout(() => {
+        setIsNavigating(false);
+        isNavigatingRef.current = false;
+        // 플래그 해제 직후 현재 위치 기준으로 다시 계산
+        updateActiveSection();
+      }, SCROLL_ANIMATION_TIMEOUT);
+    },
+    [updateActiveSection]
+  );
 
   useEffect(() => {
     const observers = new Map<string, IntersectionObserver>();
