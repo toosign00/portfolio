@@ -3,10 +3,20 @@ import react from '@vitejs/plugin-react';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 
+const ReactCompilerConfig = {
+  target: "19", 
+};
+
 export default defineConfig(({ mode }: { mode: string }) => ({
-  plugins: [
-    react(),
-    tailwindcss(),
+plugins: [
+    tailwindcss(), 
+    react({
+      babel: {
+        plugins: [
+          ['babel-plugin-react-compiler', ReactCompilerConfig],
+        ],
+      },
+    }),
     ...(mode === 'analyze'
       ? [
           visualizer({
@@ -18,7 +28,6 @@ export default defineConfig(({ mode }: { mode: string }) => ({
         ]
       : []),
   ],
-
   resolve: {
     alias: [
       { find: '@', replacement: '/src' },
